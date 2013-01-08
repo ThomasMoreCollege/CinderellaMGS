@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D2BAFC4A-9A1A-4435-9167-689DCFF6B51F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CinderellaMGS</RootNamespace>
+    <AssemblyName>CinderellaMGS</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\App_Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Child_Forms\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Child_Forms\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Child_Forms\AddCinderella.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Child_Forms\AddCinderella.Designer.cs">
+      <DependentUpon>AddCinderella.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Child_Forms\Add_Godmother.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Child_Forms\Add_Godmother.Designer.cs">
+      <DependentUpon>Add_Godmother.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Forms\Administration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Forms\Administration.Designer.cs">
+      <DependentUpon>Administration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parent_Forms\Checkout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parent_Forms\Checkout.Designer.cs">
+      <DependentUpon>Checkout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parent_Forms\CinderellaCheckIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parent_Forms\CinderellaCheckIn.Designer.cs">
+      <DependentUpon>CinderellaCheckIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Child_Forms\ConnectionString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Child_Forms\ConnectionString.Designer.cs">
+      <DependentUpon>ConnectionString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Child_Forms\Delete_Godmother.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Child_Forms\Delete_Godmother.Designer.cs">
+      <DependentUpon>Delete_Godmother.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Child_Forms\DispDataset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Child_Forms\DispDataset.Designer.cs">
+      <DependentUpon>DispDataset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Child_Forms\ExecuteQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Child_Forms\ExecuteQuery.Designer.cs">
+      <DependentUpon>ExecuteQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parent_Forms\GodMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parent_Forms\GodMode.Designer.cs">
+      <DependentUpon>GodMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Child_Forms\GodmotherCheckin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Child_Forms\GodmotherCheckin.Designer.cs">
+      <DependentUpon>GodmotherCheckin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parent_Forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parent_Forms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parent_Forms\ManageGodmothers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parent_Forms\ManageGodmothers.Designer.cs">
+      <DependentUpon>ManageGodmothers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Forms\Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Forms\Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Child_Forms\ServerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Child_Forms\ServerForm.Designer.cs">
+      <DependentUpon>ServerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharedCode\DatabaseIO.cs" />
+    <Compile Include="SharedCode\GlobalVar.cs" />
+    <Compile Include="SharedCode\ModifyRegistry.cs" />
+    <Compile Include="SharedCode\SQL_Queries.cs" />
+    <Compile Include="SharedCode\UserAccounts.cs" />
+    <Compile Include="Parent_Forms\User_Mngt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parent_Forms\User_Mngt.Designer.cs">
+      <DependentUpon>User_Mngt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parent_Forms\Waiting_Area.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parent_Forms\Waiting_Area.Designer.cs">
+      <DependentUpon>Waiting_Area.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Child_Forms\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child_Forms\AddCinderella.resx">
+      <DependentUpon>AddCinderella.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child_Forms\Add_Godmother.resx">
+      <DependentUpon>Add_Godmother.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_Forms\Administration.resx">
+      <DependentUpon>Administration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parent_Forms\Checkout.resx">
+      <DependentUpon>Checkout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parent_Forms\CinderellaCheckIn.resx">
+      <DependentUpon>CinderellaCheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child_Forms\ConnectionString.resx">
+      <DependentUpon>ConnectionString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child_Forms\Delete_Godmother.resx">
+      <DependentUpon>Delete_Godmother.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child_Forms\DispDataset.resx">
+      <DependentUpon>DispDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child_Forms\ExecuteQuery.resx">
+      <DependentUpon>ExecuteQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parent_Forms\GodMode.resx">
+      <DependentUpon>GodMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child_Forms\GodmotherCheckin.resx">
+      <DependentUpon>GodmotherCheckin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parent_Forms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parent_Forms\ManageGodmothers.resx">
+      <DependentUpon>ManageGodmothers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_Forms\Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child_Forms\ServerForm.resx">
+      <DependentUpon>ServerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parent_Forms\User_Mngt.resx">
+      <DependentUpon>User_Mngt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parent_Forms\Waiting_Area.resx">
+      <DependentUpon>Waiting_Area.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoSmall.jpg" />
+    <EmbeddedResource Include="Resources\TMCshield.png" />
+    <EmbeddedResource Include="Resources\left-arrow.gif" />
+    <EmbeddedResource Include="Resources\right-arrow.gif" />
+    <EmbeddedResource Include="Resources\App_Icon.ico" />
+    <EmbeddedResource Include="Resources\Icons\users.png" />
+    <EmbeddedResource Include="Resources\Icons\add1-64.png" />
+    <EmbeddedResource Include="Resources\Icons\add2-64.png" />
+    <EmbeddedResource Include="Resources\Icons\addressbook64.png" />
+    <EmbeddedResource Include="Resources\Icons\alarm64.png" />
+    <EmbeddedResource Include="Resources\Icons\alert64.png" />
+    <EmbeddedResource Include="Resources\Icons\application64.png" />
+    <EmbeddedResource Include="Resources\Icons\back64.png" />
+    <EmbeddedResource Include="Resources\Icons\calculator64.png" />
+    <EmbeddedResource Include="Resources\Icons\calendar64.png" />
+    <EmbeddedResource Include="Resources\Icons\cancel64.png" />
+    <EmbeddedResource Include="Resources\Icons\cart64.png" />
+    <EmbeddedResource Include="Resources\Icons\chart64.png" />
+    <EmbeddedResource Include="Resources\Icons\chat64.png" />
+    <EmbeddedResource Include="Resources\Icons\close64.png" />
+    <EmbeddedResource Include="Resources\Icons\computer64.png" />
+    <EmbeddedResource Include="Resources\Icons\configure64.png" />
+    <EmbeddedResource Include="Resources\Icons\contact64.png" />
+    <EmbeddedResource Include="Resources\Icons\copy64.png" />
+    <EmbeddedResource Include="Resources\Icons\cut64.png" />
+    <EmbeddedResource Include="Resources\Icons\delete64.png" />
+    <EmbeddedResource Include="Resources\Icons\disc64.png" />
+    <EmbeddedResource Include="Resources\Icons\documents64.png" />
+    <EmbeddedResource Include="Resources\Icons\down64.png" />
+    <EmbeddedResource Include="Resources\Icons\edit64.png" />
+    <EmbeddedResource Include="Resources\Icons\event64.png" />
+    <EmbeddedResource Include="Resources\Icons\export64.png" />
+    <EmbeddedResource Include="Resources\Icons\forward64.png" />
+    <EmbeddedResource Include="Resources\Icons\import64.png" />
+    <EmbeddedResource Include="Resources\Icons\info-64.png" />
+    <EmbeddedResource Include="Resources\Icons\up64.png" />
+    <EmbeddedResource Include="Resources\Icons\users_64.png" />
+    <EmbeddedResource Include="Resources\Icons\female_user.png" />
+    <EmbeddedResource Include="Resources\Icons\edit_female_user.png" />
+    <Content Include="Resources\Icons\ribbon.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

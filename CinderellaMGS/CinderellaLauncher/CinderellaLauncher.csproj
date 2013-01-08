@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{94F24594-F4D7-4247-8A1F-F3640D5A74E0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CinderellaLauncher</RootNamespace>
+    <AssemblyName>CinderellaLauncher</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\App_Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EXCELPIA">
+      <HintPath>..\BusinessLogic\EXCELPIA.DLL</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class Definitions\CinderellaClass.cs" />
+    <Compile Include="Class Definitions\FairyGodmother.cs" />
+    <Compile Include="Forms\About\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\About\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddCinderella\AddCinderella.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCinderella\AddCinderella.Designer.cs">
+      <DependentUpon>AddCinderella.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Administration\AdminMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Administration\AdminMenu.Designer.cs">
+      <DependentUpon>AdminMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Administration\DBManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Administration\DBManagement.Designer.cs">
+      <DependentUpon>DBManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Administration\Import_Wait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Administration\Import_Wait.Designer.cs">
+      <DependentUpon>Import_Wait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Administration\Information\Statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Administration\Information\Statistics.Designer.cs">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Administration\MasterSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Administration\MasterSearch.Designer.cs">
+      <DependentUpon>MasterSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Alterations\Alterations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alterations\Alterations.Designer.cs">
+      <DependentUpon>Alterations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Chat\ClientApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Chat\ClientApp.Designer.cs">
+      <DependentUpon>ClientApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CheckIn\changeAppointmentTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CheckIn\changeAppointmentTime.Designer.cs">
+      <DependentUpon>changeAppointmentTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CheckIn\CheckIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CheckIn\CheckIn.Designer.cs">
+      <DependentUpon>CheckIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CheckIn\UndoCinderellaCheckIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CheckIn\UndoCinderellaCheckIn.Designer.cs">
+      <DependentUpon>UndoCinderellaCheckIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CheckOut\CheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CheckOut\CheckOut.Designer.cs">
+      <DependentUpon>CheckOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Login\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main_Menu\MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main_Menu\MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Administration\Information\ViewCinderellas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Administration\Information\ViewCinderellas.Designer.cs">
+      <DependentUpon>ViewCinderellas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Administration\StatusControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Administration\StatusControl.Designer.cs">
+      <DependentUpon>StatusControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ManageFairyGodmothers\AddFairyGodmother.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ManageFairyGodmothers\AddFairyGodmother.Designer.cs">
+      <DependentUpon>AddFairyGodmother.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ManageFairyGodmothers\UndoCheckIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ManageFairyGodmothers\UndoCheckIn.Designer.cs">
+      <DependentUpon>UndoCheckIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ShoppingMgt\ShoppingMgt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShoppingMgt\ShoppingMgt.Designer.cs">
+      <DependentUpon>ShoppingMgt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ManageFairyGodmothers\FGCheckIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ManageFairyGodmothers\FGCheckIn.Designer.cs">
+      <DependentUpon>FGCheckIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MatchMaking\MatchMaking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MatchMaking\MatchMaking.Designer.cs">
+      <DependentUpon>MatchMaking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Project Resources\ApointmentListIO.cs" />
+    <Compile Include="Project Resources\DatabaseIO.cs" />
+    <Compile Include="Project Resources\SQL_Queries.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Documentation\Database\Triggers\CinCheckOutStatusTrigger.sql" />
+    <Content Include="Documentation\Database\Triggers\CinDeleteStatusTrigger.sql" />
+    <Content Include="Documentation\Database\Triggers\CinShoppingStatusTrigger.sql" />
+    <Content Include="Documentation\Database\Triggers\FGDeleteStatusTrigger.sql" />
+    <Content Include="Documentation\Database\Triggers\FGUpdateStatusTrigger.sql" />
+    <Content Include="Documentation\Database\Triggers\newCinderellaTrigger.sql" />
+    <Content Include="Documentation\Database\Triggers\newFGTrigger.sql" />
+    <Content Include="Documentation\Database\Triggers\UpdateStatusTrigger.sql" />
+    <Content Include="Resources\App_Icon.ico" />
+    <Content Include="Resources\Icons\add1-64.png" />
+    <Content Include="Resources\Icons\add2-64.png" />
+    <Content Include="Resources\Icons\addressbook64.png" />
+    <Content Include="Resources\Icons\alarm64.png" />
+    <Content Include="Resources\Icons\alert64.png" />
+    <Content Include="Resources\Icons\application64.png" />
+    <Content Include="Resources\Icons\back64.png" />
+    <Content Include="Resources\Icons\calculator64.png" />
+    <Content Include="Resources\Icons\calendar64.png" />
+    <Content Include="Resources\Icons\cancel64.png" />
+    <Content Include="Resources\Icons\cart64.png" />
+    <Content Include="Resources\Icons\chart64.png" />
+    <Content Include="Resources\Icons\chat64.png" />
+    <Content Include="Resources\Icons\close64.png" />
+    <Content Include="Resources\Icons\computer64.png" />
+    <Content Include="Resources\Icons\configure64.png" />
+    <Content Include="Resources\Icons\contact64.png" />
+    <Content Include="Resources\Icons\copy64.png" />
+    <Content Include="Resources\Icons\cut64.png" />
+    <Content Include="Resources\Icons\delete64.png" />
+    <Content Include="Resources\Icons\disc64.png" />
+    <Content Include="Resources\Icons\documents64.png" />
+    <Content Include="Resources\Icons\down64.png" />
+    <Content Include="Resources\Icons\edit64.png" />
+    <Content Include="Resources\Icons\edit_female_user.png" />
+    <Content Include="Resources\Icons\event64.png" />
+    <Content Include="Resources\Icons\export64.png" />
+    <Content Include="Resources\Icons\female_user.png" />
+    <Content Include="Resources\Icons\forward64.png" />
+    <Content Include="Resources\Icons\import64.png" />
+    <Content Include="Resources\Icons\info-64.png" />
+    <Content Include="Resources\Icons\ribbon.jpg" />
+    <Content Include="Resources\Icons\up64.png" />
+    <Content Include="Resources\Icons\users.png" />
+    <Content Include="Resources\Icons\users_64.png" />
+    <Content Include="Resources\left-arrow.gif" />
+    <Content Include="Resources\logoSmall.jpg" />
+    <Content Include="Resources\right-arrow.gif" />
+    <Content Include="Resources\TMCshield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\About\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddCinderella\AddCinderella.resx">
+      <DependentUpon>AddCinderella.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Administration\AdminMenu.resx">
+      <DependentUpon>AdminMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Administration\DBManagement.resx">
+      <DependentUpon>DBManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Administration\Import_Wait.resx">
+      <DependentUpon>Import_Wait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Administration\Information\Statistics.resx">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Administration\MasterSearch.resx">
+      <DependentUpon>MasterSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alterations\Alterations.resx">
+      <DependentUpon>Alterations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Chat\ClientApp.resx">
+      <DependentUpon>ClientApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CheckIn\changeAppointmentTime.resx">
+      <DependentUpon>changeAppointmentTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CheckIn\CheckIn.resx">
+      <DependentUpon>CheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CheckIn\UndoCinderellaCheckIn.resx">
+      <DependentUpon>UndoCinderellaCheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CheckOut\CheckOut.resx">
+      <DependentUpon>CheckOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main_Menu\MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Administration\Information\ViewCinderellas.resx">
+      <DependentUpon>ViewCinderellas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ManageFairyGodmothers\AddFairyGodmother.resx">
+      <DependentUpon>AddFairyGodmother.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ManageFairyGodmothers\FGCheckIn.resx">
+      <DependentUpon>FGCheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Administration\StatusControl.resx">
+      <DependentUpon>StatusControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ManageFairyGodmothers\UndoCheckIn.resx">
+      <DependentUpon>UndoCheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ShoppingMgt\ShoppingMgt.resx">
+      <DependentUpon>ShoppingMgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MatchMaking\MatchMaking.resx">
+      <DependentUpon>MatchMaking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{9C798138-7525-456D-B328-FFBF54091259}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Documentation\Database\ERDiagram.dia" />
+    <None Include="Documentation\Database\RDBSchema.dia" />
+    <None Include="Documentation\Database\Triggers and Assertions.docx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
