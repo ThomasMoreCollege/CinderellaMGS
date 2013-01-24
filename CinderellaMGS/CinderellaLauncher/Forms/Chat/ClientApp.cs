@@ -347,6 +347,11 @@ namespace CinderellaLauncher
         {
             txtChatName.Focus();
         }
+        //This will close the connection on form close
+        private void ClientApp_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            closeConnection("");
+        }
     }
   }
 
