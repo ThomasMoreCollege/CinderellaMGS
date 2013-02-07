@@ -50,12 +50,13 @@
             this.txtIp.Size = new System.Drawing.Size(124, 20);
             this.txtIp.TabIndex = 1;
             this.txtIp.Text = "127.0.0.1";
+
             // 
             // listenButton
             // 
-            this.listenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listenButton.Location = new System.Drawing.Point(229, 12);
             this.listenButton.Name = "listenButton";
             this.listenButton.Size = new System.Drawing.Size(91, 23);
@@ -66,9 +67,9 @@
             // 
             // txtLog
             // 
-            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLog.Location = new System.Drawing.Point(12, 40);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";

@@ -125,5 +125,6 @@ namespace Chat_Server
             // Updates the log with the message
             txtLog.AppendText(strMessage + "\r\n");
         }
+
     }
 }

@@ -208,7 +208,7 @@ namespace CinderellaLauncher
                 {
                     Thread.CurrentThread.Abort();
                     MessageBox.Show(Thread.CurrentThread.ToString());
-                    ClientApp.ActiveForm.Close();
+                    ClientApp.ActiveForm.Close(); 
                 }
                 catch (InvalidOperationException except)
                 {

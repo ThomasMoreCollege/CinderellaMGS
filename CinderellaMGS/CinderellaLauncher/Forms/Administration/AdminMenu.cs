@@ -210,8 +210,6 @@ namespace CinderellaLauncher
         {
             Thread ms = new Thread(() => Application.Run(new MasterSearch()));
             ms.Start();
-        }
-
-       
+        }       
     }
 }

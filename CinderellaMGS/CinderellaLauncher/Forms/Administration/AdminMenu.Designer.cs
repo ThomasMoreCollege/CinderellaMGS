@@ -41,6 +41,7 @@
             this.viewCinderellasButton = new System.Windows.Forms.Button();
             this.pairingButton = new System.Windows.Forms.Button();
             this.masterSearchButton = new System.Windows.Forms.Button();
+            this.startChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +90,8 @@
             // chatToolStripMenuItem
             // 
             this.chatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.chatNowToolStripMenuItem});
+            this.chatNowToolStripMenuItem,
+            this.startChatToolStripMenuItem});
             this.chatToolStripMenuItem.Name = "chatToolStripMenuItem";
             this.chatToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.chatToolStripMenuItem.Text = "Chat";
@@ -97,7 +99,7 @@
             // chatNowToolStripMenuItem
             // 
             this.chatNowToolStripMenuItem.Name = "chatNowToolStripMenuItem";
-            this.chatNowToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.chatNowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.chatNowToolStripMenuItem.Text = "Chat Now";
             this.chatNowToolStripMenuItem.Click += new System.EventHandler(this.chatNowToolStripMenuItem_Click);
             // 
@@ -206,6 +208,12 @@
             this.masterSearchButton.UseVisualStyleBackColor = false;
             this.masterSearchButton.Click += new System.EventHandler(this.masterSearchButton_Click);
             // 
+            // startChatToolStripMenuItem
+            // 
+            this.startChatToolStripMenuItem.Name = "startChatToolStripMenuItem";
+            this.startChatToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startChatToolStripMenuItem.Text = "Start Chat";
+            // 
             // AdminMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,5 +255,6 @@
         private System.Windows.Forms.ToolStripMenuItem chatNowToolStripMenuItem;
         private System.Windows.Forms.Button pairingButton;
         private System.Windows.Forms.Button masterSearchButton;
+        private System.Windows.Forms.ToolStripMenuItem startChatToolStripMenuItem;
     }
 }
