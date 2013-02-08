@@ -278,9 +278,9 @@ namespace CinderellaLauncher
         }
 
         //send the message after pressing the enter key
-        private void txtMessage_KeyPress(object sender, KeyPressEventArgs pressEnter)
+        private void txtMessage_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (pressEnter.KeyChar == (char)13)
+            if (e.KeyChar == (char)13)
             {
                 sendMessage();
                 txtMessage.Focus();
@@ -352,6 +352,11 @@ namespace CinderellaLauncher
         {
             closeConnection("");
         }
+
+
+     
+        }
+
     }
-  }
+  
 

@@ -159,6 +159,7 @@
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.Size = new System.Drawing.Size(299, 20);
             this.txtMessage.TabIndex = 0;
+            this.txtMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txtMessage_KeyPress);
             // 
             // ClientApp
             // 
