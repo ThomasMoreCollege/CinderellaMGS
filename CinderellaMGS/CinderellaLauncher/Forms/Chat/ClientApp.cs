@@ -149,6 +149,31 @@ namespace CinderellaLauncher
             }
         }
 
+        private void txtChatName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (connect == false)
+                {
+                    if (txtChatName.Text != "")
+                    {
+                        //initialize the connection
+                        InitializeConnection();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Enter your chat name");
+                    }
+
+                }
+                else
+                {
+                    //shut the connection down after being connected
+                    closeConnection("User has disconnected");
+                }
+            }
+        }
+
         //create the initialized connection as a method
         private void InitializeConnection()
         {
@@ -348,9 +373,10 @@ namespace CinderellaLauncher
             txtChatName.Focus();
         }
         //This will close the connection on form close
+       
         private void ClientApp_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            closeConnection("");
+            closeConnection("User has disconnected");
         }
 
 
