@@ -86,6 +86,8 @@
             this.refreshButtonFGCheckIn = new System.Windows.Forms.Button();
             this.shiftComboBox = new System.Windows.Forms.ComboBox();
             this.viewShiftLabel = new System.Windows.Forms.Label();
+            this.BarcodeLabel = new System.Windows.Forms.Label();
+            this.BarcodeTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.fgDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -719,12 +721,30 @@
             this.viewShiftLabel.TabIndex = 48;
             this.viewShiftLabel.Text = "View Shift: ";
             // 
+            // BarcodeLabel
+            // 
+            this.BarcodeLabel.AutoSize = true;
+            this.BarcodeLabel.Location = new System.Drawing.Point(420, 665);
+            this.BarcodeLabel.Name = "BarcodeLabel";
+            this.BarcodeLabel.Size = new System.Drawing.Size(32, 13);
+            this.BarcodeLabel.TabIndex = 50;
+            this.BarcodeLabel.Text = "Scan";
+            // 
+            // BarcodeTextBox
+            // 
+            this.BarcodeTextBox.Location = new System.Drawing.Point(474, 662);
+            this.BarcodeTextBox.Name = "BarcodeTextBox";
+            this.BarcodeTextBox.Size = new System.Drawing.Size(306, 20);
+            this.BarcodeTextBox.TabIndex = 49;
+            // 
             // FGCheckIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(902, 694);
+            this.Controls.Add(this.BarcodeLabel);
+            this.Controls.Add(this.BarcodeTextBox);
             this.Controls.Add(this.viewShiftLabel);
             this.Controls.Add(this.shiftComboBox);
             this.Controls.Add(this.refreshButtonFGCheckIn);
@@ -756,10 +776,14 @@
             this.satPMTab.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            this.BarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(BarcodeTextBox_KeyPress);
         }
 
         #endregion
+
+
+
+        
 
         private System.Windows.Forms.DataGridView fgDGV;
         private System.Windows.Forms.Label selectLabel;
@@ -816,5 +840,7 @@
         private System.Windows.Forms.Button clearButton2;
         private System.Windows.Forms.Button clearButton3;
         private System.Windows.Forms.ToolStripMenuItem addFairyGodmotherToolStripMenuItem;
+        private System.Windows.Forms.Label BarcodeLabel;
+        private System.Windows.Forms.TextBox BarcodeTextBox;
     }
 }

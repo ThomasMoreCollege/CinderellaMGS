@@ -681,5 +681,66 @@ namespace CinderellaLauncher
             }
             MessageBox.Show("File: C:\\CinderellaMGS\\cinderellamgs\\CinderellaMGS\\Documentation\\Help\\UserManual.pdf   Does Not Exist.");
         }
+        //Barcode scanns and checks in FairyGodmother Error checking needed yet
+        private void BarcodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                {
+                    //try
+                    //{
+                        // MessageBox.Show("FriPMRID: " + friPMRoleID + " - SatAMRID: " + satAMRoleID + " - SatPMRID " + satPMRoleID);
+                        // MessageBox.Show(worksFriPM.ToString() + worksSatAM.ToString() + worksSatPM.ToString());
+                        if (Convert.ToInt32(friPMRoleID) > 0 || Convert.ToInt32(satAMRoleID) > 0 || Convert.ToInt32(satPMRoleID) > 0)
+                        {
+
+                            // Get ID of the fairygodmother From the textbox
+                            string id = BarcodeTextBox.Text;
+
+
+
+                            if (worksFriPM)
+                            {
+                                query.AddGodmotherShift(id, "1", friPMRoleID);
+                            }
+                            if (worksSatAM)
+                            {
+                                query.AddGodmotherShift(id, "2", satAMRoleID);
+                            }
+                            if (worksSatPM)
+                            {
+                                query.AddGodmotherShift(id, "3", satPMRoleID);
+                            }
+
+
+                            query.setFGStatus(id, 4);
+
+
+                            // Refresh DGV
+                            SqlCommand searchCommand = new SqlCommand(query.fgListStatus("1"));
+                            fgDGVBindingSource.EndEdit();
+                            fgDGVDataTable.Clear();
+
+                            fgDGVDataAdapter.SelectCommand = searchCommand;
+                            fgDGVDataAdapter.SelectCommand.Connection = connection;
+
+                            fgDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                            fgDGVDataAdapter.Fill(fgDGVDataTable);
+
+                            fgDGV.Refresh();
+                            fgDGV.ClearSelection();
+                            //  fgDGV.AutoResizeColumns();
+                        }
+                        else
+                            MessageBox.Show("You must select a role");
+                  //  }
+                //    catch (ArgumentOutOfRangeException noSelection)
+                   // {
+                    //    MessageBox.Show("You must select someone.");
+                   // }
+
+                }
+            }
+        }
     }
 }

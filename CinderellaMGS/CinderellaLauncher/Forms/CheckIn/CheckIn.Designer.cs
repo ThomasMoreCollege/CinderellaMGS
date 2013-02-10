@@ -58,8 +58,6 @@
             this.searchLabel = new System.Windows.Forms.Label();
             this.changeAppointmentButton = new System.Windows.Forms.Button();
             this.refreshButtonCheckIn = new System.Windows.Forms.Button();
-            this.BarcodeTextBox = new System.Windows.Forms.TextBox();
-            this.BarcodeLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchDGV)).BeginInit();
@@ -390,22 +388,6 @@
             this.refreshButtonCheckIn.UseVisualStyleBackColor = false;
             this.refreshButtonCheckIn.Click += new System.EventHandler(this.refreshButtonCheckIn_Click);
             // 
-            // BarcodeTextBox
-            // 
-            this.BarcodeTextBox.Location = new System.Drawing.Point(141, 40);
-            this.BarcodeTextBox.Name = "BarcodeTextBox";
-            this.BarcodeTextBox.Size = new System.Drawing.Size(306, 26);
-            this.BarcodeTextBox.TabIndex = 1;
-            // 
-            // BarcodeLabel
-            // 
-            this.BarcodeLabel.AutoSize = true;
-            this.BarcodeLabel.Location = new System.Drawing.Point(40, 43);
-            this.BarcodeLabel.Name = "BarcodeLabel";
-            this.BarcodeLabel.Size = new System.Drawing.Size(46, 20);
-            this.BarcodeLabel.TabIndex = 22;
-            this.BarcodeLabel.Text = "Scan";
-            // 
             // CheckIn
             // 
             this.AcceptButton = this.searchButton;
@@ -413,8 +395,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(795, 552);
-            this.Controls.Add(this.BarcodeLabel);
-            this.Controls.Add(this.BarcodeTextBox);
             this.Controls.Add(this.refreshButtonCheckIn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.changeAppointmentButton);
@@ -467,8 +447,6 @@
         private System.Windows.Forms.Button changeAppointmentButton;
         private System.Windows.Forms.Button refreshButtonCheckIn;
         private System.Windows.Forms.ToolStripMenuItem undoCinderellaCheckInToolStripMenuItem;
-        private System.Windows.Forms.TextBox BarcodeTextBox;
-        private System.Windows.Forms.Label BarcodeLabel;
 
         //   private System.Windows.Forms.DataGridViewTextBoxColumn apptDateTimeDataGridViewTextBoxColumn;
 
