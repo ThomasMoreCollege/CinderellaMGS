@@ -34,6 +34,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chatNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importCinderella = new System.Windows.Forms.Button();
             this.importGodMothers = new System.Windows.Forms.Button();
             this.databaseMgtButton = new System.Windows.Forms.Button();
@@ -41,7 +42,6 @@
             this.viewCinderellasButton = new System.Windows.Forms.Button();
             this.pairingButton = new System.Windows.Forms.Button();
             this.masterSearchButton = new System.Windows.Forms.Button();
-            this.startChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,6 +102,13 @@
             this.chatNowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.chatNowToolStripMenuItem.Text = "Chat Now";
             this.chatNowToolStripMenuItem.Click += new System.EventHandler(this.chatNowToolStripMenuItem_Click);
+            // 
+            // startChatToolStripMenuItem
+            // 
+            this.startChatToolStripMenuItem.Name = "startChatToolStripMenuItem";
+            this.startChatToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startChatToolStripMenuItem.Text = "Start Chat";
+            this.startChatToolStripMenuItem.Click += new System.EventHandler(this.startChatToolStripMenuItem_Click);
             // 
             // importCinderella
             // 
@@ -207,12 +214,6 @@
             this.masterSearchButton.Text = "Master Search";
             this.masterSearchButton.UseVisualStyleBackColor = false;
             this.masterSearchButton.Click += new System.EventHandler(this.masterSearchButton_Click);
-            // 
-            // startChatToolStripMenuItem
-            // 
-            this.startChatToolStripMenuItem.Name = "startChatToolStripMenuItem";
-            this.startChatToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.startChatToolStripMenuItem.Text = "Start Chat";
             // 
             // AdminMenu
             // 

@@ -50,7 +50,6 @@
             this.txtIp.Size = new System.Drawing.Size(124, 20);
             this.txtIp.TabIndex = 1;
             this.txtIp.Text = "127.0.0.1";
-
             // 
             // listenButton
             // 
@@ -88,6 +87,7 @@
             this.Controls.Add(this.ipLabel);
             this.Name = "ChatServerWindow";
             this.Text = "Chat Server";
+            this.Load += new System.EventHandler(this.ChatServerWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
-
+using System.Diagnostics;
 
 namespace CinderellaLauncher
 {
@@ -210,6 +210,11 @@ namespace CinderellaLauncher
         {
             Thread ms = new Thread(() => Application.Run(new MasterSearch()));
             ms.Start();
+        }
+
+        private void startChatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("C:\\Users\\Combs\\Documents\\GitHub\\CinderellaMGS\\CinderellaMGS\\Chat_Server\\obj\\x86\\Debug\\Chat_Server.exe");
         }       
     }
 }

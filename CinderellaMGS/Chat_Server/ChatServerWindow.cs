@@ -126,5 +126,10 @@ namespace Chat_Server
             txtLog.AppendText(strMessage + "\r\n");
         }
 
+        private void ChatServerWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
