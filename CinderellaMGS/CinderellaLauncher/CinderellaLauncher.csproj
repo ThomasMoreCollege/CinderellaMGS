@@ -95,34 +95,34 @@
     <Compile Include="Forms\AddCinderella\AddCinderella.Designer.cs">
       <DependentUpon>AddCinderella.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Administration\AdminMenu.cs">
+    <Compile Include="Forms\Main_Menu\Administration\AdminMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Administration\AdminMenu.Designer.cs">
+    <Compile Include="Forms\Main_Menu\Administration\AdminMenu.Designer.cs">
       <DependentUpon>AdminMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Administration\DBManagement.cs">
+    <Compile Include="Forms\Main_Menu\Administration\DBManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Administration\DBManagement.Designer.cs">
+    <Compile Include="Forms\Main_Menu\Administration\DBManagement.Designer.cs">
       <DependentUpon>DBManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Administration\Import_Wait.cs">
+    <Compile Include="Forms\Main_Menu\Administration\Import_Wait.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Administration\Import_Wait.Designer.cs">
+    <Compile Include="Forms\Main_Menu\Administration\Import_Wait.Designer.cs">
       <DependentUpon>Import_Wait.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Administration\Information\Statistics.cs">
+    <Compile Include="Forms\Main_Menu\Administration\Information\Statistics.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Administration\Information\Statistics.Designer.cs">
+    <Compile Include="Forms\Main_Menu\Administration\Information\Statistics.Designer.cs">
       <DependentUpon>Statistics.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Administration\MasterSearch.cs">
+    <Compile Include="Forms\Main_Menu\Administration\MasterSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Administration\MasterSearch.Designer.cs">
+    <Compile Include="Forms\Main_Menu\Administration\MasterSearch.Designer.cs">
       <DependentUpon>MasterSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Alterations\Alterations.cs">
@@ -173,16 +173,16 @@
     <Compile Include="Forms\Main_Menu\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Administration\Information\ViewCinderellas.cs">
+    <Compile Include="Forms\Main_Menu\Administration\Information\ViewCinderellas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Administration\Information\ViewCinderellas.Designer.cs">
+    <Compile Include="Forms\Main_Menu\Administration\Information\ViewCinderellas.Designer.cs">
       <DependentUpon>ViewCinderellas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Administration\StatusControl.cs">
+    <Compile Include="Forms\Main_Menu\Administration\StatusControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Administration\StatusControl.Designer.cs">
+    <Compile Include="Forms\Main_Menu\Administration\StatusControl.Designer.cs">
       <DependentUpon>StatusControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ManageFairyGodmothers\AddFairyGodmother.cs">
@@ -288,19 +288,19 @@
     <EmbeddedResource Include="Forms\AddCinderella\AddCinderella.resx">
       <DependentUpon>AddCinderella.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Administration\AdminMenu.resx">
+    <EmbeddedResource Include="Forms\Main_Menu\Administration\AdminMenu.resx">
       <DependentUpon>AdminMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Administration\DBManagement.resx">
+    <EmbeddedResource Include="Forms\Main_Menu\Administration\DBManagement.resx">
       <DependentUpon>DBManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Administration\Import_Wait.resx">
+    <EmbeddedResource Include="Forms\Main_Menu\Administration\Import_Wait.resx">
       <DependentUpon>Import_Wait.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Administration\Information\Statistics.resx">
+    <EmbeddedResource Include="Forms\Main_Menu\Administration\Information\Statistics.resx">
       <DependentUpon>Statistics.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Administration\MasterSearch.resx">
+    <EmbeddedResource Include="Forms\Main_Menu\Administration\MasterSearch.resx">
       <DependentUpon>MasterSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alterations\Alterations.resx">
@@ -327,7 +327,7 @@
     <EmbeddedResource Include="Forms\Main_Menu\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Administration\Information\ViewCinderellas.resx">
+    <EmbeddedResource Include="Forms\Main_Menu\Administration\Information\ViewCinderellas.resx">
       <DependentUpon>ViewCinderellas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ManageFairyGodmothers\AddFairyGodmother.resx">
@@ -336,7 +336,7 @@
     <EmbeddedResource Include="Forms\ManageFairyGodmothers\FGCheckIn.resx">
       <DependentUpon>FGCheckIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Administration\StatusControl.resx">
+    <EmbeddedResource Include="Forms\Main_Menu\Administration\StatusControl.resx">
       <DependentUpon>StatusControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ManageFairyGodmothers\UndoCheckIn.resx">

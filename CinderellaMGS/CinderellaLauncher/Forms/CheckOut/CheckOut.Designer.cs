@@ -78,6 +78,8 @@
             this.dressRetrievedButton = new System.Windows.Forms.Button();
             this.dressesDoneLabel = new System.Windows.Forms.Label();
             this.dressesDoneDGV = new System.Windows.Forms.DataGridView();
+            this.CheckOutBarcodeLabel = new System.Windows.Forms.Label();
+            this.CheckOutBarcodeTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.searchDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -684,12 +686,31 @@
             this.dressesDoneDGV.Size = new System.Drawing.Size(345, 172);
             this.dressesDoneDGV.TabIndex = 55;
             // 
+            // CheckOutBarcodeLabel
+            // 
+            this.CheckOutBarcodeLabel.AutoSize = true;
+            this.CheckOutBarcodeLabel.Location = new System.Drawing.Point(345, 521);
+            this.CheckOutBarcodeLabel.Name = "CheckOutBarcodeLabel";
+            this.CheckOutBarcodeLabel.Size = new System.Drawing.Size(32, 13);
+            this.CheckOutBarcodeLabel.TabIndex = 56;
+            this.CheckOutBarcodeLabel.Text = "Scan";
+            // 
+            // CheckOutBarcodeTextBox
+            // 
+            this.CheckOutBarcodeTextBox.Location = new System.Drawing.Point(399, 518);
+            this.CheckOutBarcodeTextBox.Name = "CheckOutBarcodeTextBox";
+            this.CheckOutBarcodeTextBox.Size = new System.Drawing.Size(306, 20);
+            this.CheckOutBarcodeTextBox.TabIndex = 55;
+            this.CheckOutBarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckOutBarcodeTextBox_KeyPress);
+            // 
             // CheckOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(906, 556);
+            this.Controls.Add(this.CheckOutBarcodeLabel);
+            this.Controls.Add(this.CheckOutBarcodeTextBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.refreshButtonCheckOut);
@@ -789,5 +810,7 @@
         private System.Windows.Forms.Button dressRetrievedButton;
         private System.Windows.Forms.Label dressesDoneLabel;
         private System.Windows.Forms.DataGridView dressesDoneDGV;
+        private System.Windows.Forms.Label CheckOutBarcodeLabel;
+        private System.Windows.Forms.TextBox CheckOutBarcodeTextBox;
     }
 }

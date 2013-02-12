@@ -696,6 +696,7 @@ namespace CinderellaLauncher
 
                             // Get ID of the fairygodmother From the textbox
                             string id = BarcodeTextBox.Text;
+                            BarcodeTextBox.Text = "";
 
 
 

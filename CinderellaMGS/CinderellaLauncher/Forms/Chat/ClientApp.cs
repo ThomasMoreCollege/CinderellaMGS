@@ -373,6 +373,7 @@ namespace CinderellaLauncher
             txtChatName.Focus();
         }
         //This will close the connection on form close
+        //check and make sure this is getting called on form close or if we have to edit ClientApp.Designer.cs to add it in.
        
         private void ClientApp_FormClosing(Object sender, FormClosingEventArgs e)
         {
