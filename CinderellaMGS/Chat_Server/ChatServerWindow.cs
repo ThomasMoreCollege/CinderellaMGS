@@ -126,10 +126,24 @@ namespace Chat_Server
             txtLog.AppendText(strMessage + "\r\n");
         }
 
-        private void ChatServerWindow_Load(object sender, EventArgs e)
+        private string GetIP()
         {
+            string strHostName = "";
+            strHostName = System.Net.Dns.GetHostName();
+
+            IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(strHostName);
+
+            IPAddress[] addr = ipEntry.AddressList;
+
+            return addr[addr.Length - 1].ToString();
 
         }
+
+        private void ChatServerWindow_Load(object sender, EventArgs e)
+        {
+            txtIp.Text = GetIP();
+        }
+
 
     }
 }

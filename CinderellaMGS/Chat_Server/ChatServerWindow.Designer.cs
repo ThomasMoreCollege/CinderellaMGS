@@ -49,7 +49,6 @@
             this.txtIp.Name = "txtIp";
             this.txtIp.Size = new System.Drawing.Size(124, 20);
             this.txtIp.TabIndex = 1;
-            this.txtIp.Text = "127.0.0.1";
             // 
             // listenButton
             // 
