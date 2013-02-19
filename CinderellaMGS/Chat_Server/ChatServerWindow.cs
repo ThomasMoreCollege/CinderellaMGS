@@ -126,7 +126,7 @@ namespace Chat_Server
             txtLog.AppendText(strMessage + "\r\n");
         }
 
-        private string GetIP()
+        public string GetIP()
         {
             string strHostName = "";
             strHostName = System.Net.Dns.GetHostName();
@@ -143,7 +143,5 @@ namespace Chat_Server
         {
             txtIp.Text = GetIP();
         }
-
-
     }
 }

@@ -71,7 +71,7 @@ namespace CinderellaLauncher
         public ClientApp()
         {
             //on application exit, don't forget to disconnect first
-            Application.ApplicationExit += new EventHandler(onAppExit);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(onAppExit);
             InitializeComponent();
         }
 
@@ -343,7 +343,7 @@ namespace CinderellaLauncher
             tcpServer.Close();
         }
 
-        public void onAppExit(object sender, EventArgs e)
+        public void onAppExit(object sender, FormClosingEventArgs e)
         {
             if (connect == true)
             {
@@ -360,28 +360,33 @@ namespace CinderellaLauncher
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ClientApp_FormClosing(object sender, FormClosedEventArgs e)
+        private void ClientApp_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //onAppExit(sender, e);
+            connectButton_Click(sender, e);
+            closeConnection("User has disconnected");
             Thread.CurrentThread.Abort();
             ClientApp.ActiveForm.Dispose();
             ClientApp.ActiveForm.Close();
         }
-
+        /*private FormClosingEventHandler ClientApp_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            onAppExit(sender, e);
+            connectButton_Click(sender, e);
+            closeConnection("User has disconnected");
+            Thread.CurrentThread.Abort();
+            ClientApp.ActiveForm.Dispose();
+            ClientApp.ActiveForm.Close();
+        }*/
         //this focus on the chat name text box once the chat is launched.
         private void ClientApp_Load(object sender, EventArgs e)
         {
             txtChatName.Focus();
         }
+
         //This will close the connection on form close
         //check and make sure this is getting called on form close or if we have to edit ClientApp.Designer.cs to add it in.
-       
-        private void ClientApp_FormClosing(Object sender, FormClosingEventArgs e)
-        {
-            closeConnection("User has disconnected");
-        }
 
-
-     
         }
 
     }

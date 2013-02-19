@@ -43,7 +43,6 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
-            
             // 
             // splitContainer1
             // 
@@ -101,7 +100,7 @@
             this.txtChatName.Name = "txtChatName";
             this.txtChatName.Size = new System.Drawing.Size(100, 20);
             this.txtChatName.TabIndex = 3;
-            this.txtChatName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txtChatName_KeyPress);
+            this.txtChatName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChatName_KeyPress);
             // 
             // txtIP
             // 
@@ -161,7 +160,7 @@
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.Size = new System.Drawing.Size(299, 20);
             this.txtMessage.TabIndex = 0;
-            this.txtMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txtMessage_KeyPress);
+            this.txtMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMessage_KeyPress);
             // 
             // ClientApp
             // 
@@ -173,6 +172,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClientApp";
             this.Text = "Client App";
+
             this.Resize += new System.EventHandler(this.ClientApp_Resize);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
