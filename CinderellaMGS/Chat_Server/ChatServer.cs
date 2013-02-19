@@ -12,6 +12,7 @@ using System.Collections;
 //http://www.geekpedia.com/tutorial240_Csharp-Chat-Part-2---Building-the-Chat-Client.html
 
 namespace Chat_Server
+
 {  
     /*Above is where the delegates and methods are set to
      be implemented in the chat server class.  The chat server
