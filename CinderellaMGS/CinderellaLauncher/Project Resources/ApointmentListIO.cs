@@ -33,13 +33,12 @@ namespace BusinessLogic
         {
             int overallPercent = 0;
             int percentCounter = 0;
-           // Console.WriteLine(Thread.CurrentThread.ToString());
+
             SQL_Queries yay = new SQL_Queries();
             //NOTE: for excel files row and column numbers start at 1 not zero.
 
             //creates excel object and gets the file ready to read
 
-            //  string[,] valueSet;
             string[] errors = { "No Good" };
             OpenFileDialog fileToBeRead = new OpenFileDialog();
             ExcelReader.Application intermediary = new ExcelReader.Application();
@@ -81,14 +80,14 @@ namespace BusinessLogic
                         {
                             if (columns == 4)
                             {
-                                //  continue;
+
                             }
 
                             what = closetSheet.Cells[rows, columns].Value;
-                            // object whatme = cinderellaSheet.Cells[rows, columns];
+
                             if (what == null)
                             {
-                                // Console.WriteLine("WHAT IS GOING ON");
+
                             }
                             else
                             {
@@ -169,12 +168,10 @@ namespace BusinessLogic
 
                             if (closetSheet.Cells[rows, 6].Value.ToString() == "PM")
                             {
-                                //   timeConv = timeConv.AddHours(12);
-                                //   Console.WriteLine(timeConv.ToShortTimeString());
+
                                 if (timeConv.ToShortTimeString() == "12:00 PM" || timeConv.ToShortTimeString() == "12:30 PM")
                                 {
-                                    //closetSheet.Cells[rows, 6].Value = "PM";
-                                    //  timeConv = timeConv.AddHours(12);
+
                                 }
                                 else
                                 {
@@ -201,7 +198,7 @@ namespace BusinessLogic
                             yay.addCinderellaAndReferral(closetSheet.Cells[rows, 11].Value.ToString() + closetSheet.Cells[rows, 12].Value.ToString(), closetSheet.Cells[rows, 10].Value.ToString(), closetSheet.Cells[rows, 8].Value.ToString(), closetSheet.Cells[rows, 9].Value.ToString(), converter.ToString(), timeConv.ToString(), "");
 
                             percentCounter++;
-                            //closer to 4.76
+
                             if (percentCounter == 4)
                             {
                                 CinderellaLauncher.AdminMenu.cinderellaProgess.Value += 1;
@@ -230,7 +227,7 @@ namespace BusinessLogic
 
 
 
-                    // Console.ReadLine();
+
                     closetBook.Close();
                     intermediary.Quit();
                     Marshal.ReleaseComObject(intermediary);
@@ -259,11 +256,11 @@ namespace BusinessLogic
 
             //creates excel object and gets the file ready to read
 
-            //  string[,] valueSet;
+
             string[] errors = { "No Good2" };
             OpenFileDialog fileToBeRead = new OpenFileDialog();
             ExcelReader.Application intermediary2 = new ExcelReader.Application();
-            //  object[] particulars = new object[4];
+
                object whatelement;
                object shiftElement;
                int shiftID = 0;
@@ -290,17 +287,16 @@ namespace BusinessLogic
 
                     ExcelReader.Worksheet closetSheet2 = closetBook2.Worksheets.get_Item(3);
                     ExcelReader.Range closetTuples2 = closetSheet2.UsedRange;
-                   // bool iKnow = false;
+
                     for (int rows = 5; rows <= closetTuples2.Rows.Count; rows++)
                     {
                         for (int columns = 1; columns < 11; columns++)
                         {
                             whatelement = closetSheet2.Cells[rows, columns].Value;
-                            // object whatme = cinderellaSheet.Cells[rows, columns];
+
                             if (whatelement == null)
                             {
                                 continue;
-                                // Console.WriteLine("WHAT IS GOING ON");
                             }
                                 if (whatelement.ToString().Trim().Contains('(') && whatelement.ToString().Trim().Contains(')') && whatelement.ToString().Trim().Contains('-'))
                                 {
@@ -310,12 +306,7 @@ namespace BusinessLogic
                                     whatelement = whatelement.ToString().Trim().Replace("-", "");
                                     whatelement = whatelement.ToString().Trim().Replace(" ", "");
 
-                                    //   Console.WriteLine(whatelement.ToString().Trim());
-                                    //     Console.WriteLine("Press any key to continue...");
-                                    //      Console.ReadKey(true);
-
                                     closetSheet2.Cells[rows, 9] = whatelement.ToString().Trim();
-                                  //  Console.WriteLine(closetSheet2.Cells[rows, 9].Value.ToString());
                                 }
                                
                                 if (whatelement.ToString().Trim().Contains("'"))
@@ -329,11 +320,6 @@ namespace BusinessLogic
                                        
                                     
                                 }
-                                //   Console.WriteLine(whatelement.ToString());
-                                //   Console.WriteLine("Press any key to continue...");
-                                //    Console.ReadKey(true);
-
-
                             }
                     
                         try
@@ -369,13 +355,11 @@ namespace BusinessLogic
                              }
                              else if (closetSheet2.Cells[rows, 9].Value == null)
                              {
-                                 //  Console.WriteLine("What the fuck");
                                  yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), "NULL", closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
                                  continue;
                              }
                             else if (closetSheet2.Cells[rows, 5].Value == null)
                             {
-                             //  Console.WriteLine(closetSheet2.Cells[rows,8].Value);
                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
                                 continue;
                             }
@@ -384,19 +368,7 @@ namespace BusinessLogic
                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString() + closetSheet2.Cells[rows, 5].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
                                 continue;
                             }
-                          /*  else
-                            {
-                                Console.WriteLine("MEH");
-                                yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
-                            }*/
-                          
-                         /*   else if (closetSheet2.Cells[rows, 9].Value == null || closetSheet2.Cells[rows, 5] == null)
-                            {
-                                Console.WriteLine(closetSheet2.Cells[rows, 2].Value.ToString());
-                                closetSheet2.Cells[rows, 9].Value = "";
-                                
-                                yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
-                            }*/
+
                         }
                         catch (RuntimeBinderException ohno)
                         {
@@ -420,22 +392,12 @@ namespace BusinessLogic
                             //If a godmother's role changes when a time slot changes, that must be
                             //stored
                             shiftElement = closetSheet2.Cells[rightSideRows, columnSides].Value;
-                           /*  if (columnSides == 11)
-                            {
-                                Console.WriteLine("test");
-                                Console.WriteLine(shiftElement.ToString().Trim());
-                            }*/
+
                             if (shiftElement == null)
                             {
                                 continue;
                             }
-                         /*   if (shiftElement.ToString().Trim().Contains("'"))
-                            {
-                                shiftElement = shiftElement.ToString().Trim().Replace("'", "''");
-                                closetSheet2.Cells[rightSideRows, columnSides] = shiftElement.ToString().Trim();
-                            }*/
 
-                         //   Console.WriteLine(shiftElement.ToString().Trim());
                             if (shiftElement.ToString().Trim() == "X")
                             {
                                 if (roleID > 0 && shiftID > 0)
