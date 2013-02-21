@@ -1886,7 +1886,7 @@ namespace CinderellaLauncher
         public void addAlterations(string cindID)
         {
 
-            string query = "INSERT INTO Alteration (cinderellaID,startAlterationTime, straps,darts,fixZipper,generalMending,generalTakeIn,bust,hem,DressRetrieved) VALUES (" + cindID + ",GETDATE(),0,0,0,0,0,0,0,0)";
+            string query = "INSERT INTO Alteration (cinderellaID,startAlterationTime, straps,darts,fixZipper,generalMending,generalTakeIn,bust,hem) VALUES (" + cindID + ",GETDATE(),0,0,0,0,0,0,0)";
 
             database.ExecuteQuery(query);
 

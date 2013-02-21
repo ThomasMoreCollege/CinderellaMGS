@@ -47,9 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChatConnection.cs" />
-    <Compile Include="ChatServer.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="ChatServer.cs" />
     <Compile Include="ChatServerWindow.cs">
       <SubType>Form</SubType>
     </Compile>
