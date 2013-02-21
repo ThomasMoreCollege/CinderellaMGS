@@ -504,17 +504,18 @@
             // 
             // BarcodeTextBoxAlterations
             // 
-            this.BarcodeTextBoxAlterations.Location = new System.Drawing.Point(241, 343);
+            this.BarcodeTextBoxAlterations.Location = new System.Drawing.Point(153, 491);
             this.BarcodeTextBoxAlterations.Name = "BarcodeTextBoxAlterations";
-            this.BarcodeTextBoxAlterations.Size = new System.Drawing.Size(100, 20);
+            this.BarcodeTextBoxAlterations.Size = new System.Drawing.Size(185, 20);
             this.BarcodeTextBoxAlterations.TabIndex = 37;
             // 
             // AlterationsScanLabel
             // 
             this.AlterationsScanLabel.AutoSize = true;
-            this.AlterationsScanLabel.Location = new System.Drawing.Point(176, 350);
+            this.AlterationsScanLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlterationsScanLabel.Location = new System.Drawing.Point(84, 493);
             this.AlterationsScanLabel.Name = "AlterationsScanLabel";
-            this.AlterationsScanLabel.Size = new System.Drawing.Size(32, 13);
+            this.AlterationsScanLabel.Size = new System.Drawing.Size(42, 18);
             this.AlterationsScanLabel.TabIndex = 38;
             this.AlterationsScanLabel.Text = "Scan";
             // 
@@ -523,7 +524,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(978, 485);
+            this.ClientSize = new System.Drawing.Size(978, 523);
             this.Controls.Add(this.AlterationsScanLabel);
             this.Controls.Add(this.BarcodeTextBoxAlterations);
             this.Controls.Add(this.refreshButtonAlterations);

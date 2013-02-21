@@ -66,6 +66,7 @@
   <ItemGroup>
     <None Include="..\CinderellaLauncher\App.config">
       <Link>App.config</Link>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
