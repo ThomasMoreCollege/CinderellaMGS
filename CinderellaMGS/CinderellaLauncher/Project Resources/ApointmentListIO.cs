@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-//using Microsoft.Office.Interop;
 using Microsoft.CSharp.RuntimeBinder;
 using ExcelReader = Microsoft.Office.Interop.Excel;
 using System.Data.SqlClient;
@@ -31,19 +30,29 @@ namespace BusinessLogic
         [STAThread]
         public void readCinderellas()
         {
+            //For the progress bar implemented at lines 207 through 219.
             int overallPercent = 0;
             int percentCounter = 0;
 
+            //Creates a new query for to move the data into the database.
             SQL_Queries yay = new SQL_Queries();
             //NOTE: for excel files row and column numbers start at 1 not zero.
 
             //creates excel object and gets the file ready to read
 
             string[] errors = { "No Good" };
+
+            //Calls a new open file dialog to select Excel file to be read.
             OpenFileDialog fileToBeRead = new OpenFileDialog();
+
+            //Opens a new instance of Excel.
             ExcelReader.Application intermediary = new ExcelReader.Application();
+
+            //Prepares to accept a new object(in this case an Excel file.)
             object[] particulars = new object[4];
             object what;
+
+            //Filters for only Excel Files.
             fileToBeRead.Filter = "Worksheets (*.xls;*.xlsx;*.xlsb;*.xlsm) | *.xls; *.xlsx; *.xlsb; *.xlsm";
             fileToBeRead.Multiselect = false;
             DialogResult selection = fileToBeRead.ShowDialog();
@@ -61,18 +70,16 @@ namespace BusinessLogic
                     MessageBox.Show("Error: Invalid file Type.");
                     return;
                 }
-                
+                    //closetBook will refer to the entire workbook selected to be read
                     ExcelReader.Workbook closetBook = intermediary.Workbooks.Open(fileToBeRead.FileName, Type.Missing, false, Type.Missing, Type.Missing, Type.Missing, true);
 
-
+                    //closetSheet will refer to the data sheet where the Cinderellas's infomation is stored.
                     ExcelReader.Worksheet closetSheet = closetBook.Worksheets.get_Item(1);
+
+                    //closetTuples refers to only the used range of cells in the Excel sheet.
                     ExcelReader.Range closetTuples = closetSheet.UsedRange;
 
-
-
                     int index = 0;
-
-
 
                     for (int rows = 2; rows <= closetTuples.Rows.Count; rows++)
                     {
@@ -91,8 +98,11 @@ namespace BusinessLogic
                             }
                             else
                             {
+                          
                                 int correctIndex;
-                                if (columns == 8)
+
+                                //Looks for apostrophes in the cells of the column
+                                if (columns == 1)
                                 {
 
                                     particulars[index] = what.ToString().Trim();
@@ -104,48 +114,39 @@ namespace BusinessLogic
 
                                         particulars[index] = particulars[index].ToString().Replace("'", "''");
                                         Console.WriteLine(particulars[index].ToString());
-                                        closetSheet.Cells[rows, 8] = particulars[index];
+                                        closetSheet.Cells[rows, 1] = particulars[index];
 
 
                                     }
-
                                     index++;
-
                                 }
-                                else if (columns == 9)
+                                //Looks for apostrophes in the cells of the column.
+                                else if (columns == 2)
                                 {
                                     particulars[index] = what.ToString().Trim();
-
                                     if (particulars[index].ToString().Contains("'"))
                                     {
-
-
                                         correctIndex = particulars[index].ToString().IndexOf("'");
 
                                         particulars[index] = particulars[index].ToString().Replace("'", "''");
                                         Console.WriteLine(particulars[index].ToString());
-                                        closetSheet.Cells[rows, 9] = particulars[index];
-
-
+                                        closetSheet.Cells[rows, 2] = particulars[index];
                                     }
-
-
                                     index++;
-
                                 }
-                                else if (columns == 10)
+                                else if (columns == 5)
                                 {
                                     particulars[index] = what.ToString().Trim();
                                     index++;
 
                                 }
-                                else if (columns == 11)
+                                else if (columns == 6)
                                 {
                                     particulars[index] = what.ToString().Trim();
                                     index++;
 
                                 }
-                                else if (columns == 12)
+                                else if (columns == 7)
                                 {
                                     particulars[index] = what.ToString().Trim();
 
@@ -158,14 +159,14 @@ namespace BusinessLogic
                             index = 0;
                         }
 
-
+                        //Converts times to appropriate format.
                         DateTime converter = new DateTime();
                         DateTime timeConv = new DateTime();
                         try
                         {
-                            converter = Convert.ToDateTime(closetSheet.Cells[rows, 3].Value.ToString() + " " + 2012);
-                            timeConv = Convert.ToDateTime(closetSheet.Cells[rows, 5].Value.ToString());
-
+                            converter = Convert.ToDateTime(closetSheet.Cells[rows, 3].Value.ToString());
+                            timeConv = Convert.ToDateTime(closetSheet.Cells[rows, 4].Value.ToString());
+                            /*
                             if (closetSheet.Cells[rows, 6].Value.ToString() == "PM")
                             {
 
@@ -180,7 +181,7 @@ namespace BusinessLogic
                                 }
 
 
-                            }
+                            }*/
                         }
                         catch (FormatException bleh)
                         {
@@ -194,11 +195,13 @@ namespace BusinessLogic
                         try
                         {
 
+                            //The query will finally begin to add the data from the Excel sheet to the database.
+                            yay.addCinderellaAndReferral(closetSheet.Cells[rows, 5].Value.ToString() + closetSheet.Cells[rows, 6].Value.ToString(), closetSheet.Cells[rows, 7].Value.ToString(), closetSheet.Cells[rows, 1].Value.ToString(), closetSheet.Cells[rows, 2].Value.ToString(), converter.ToString(), timeConv.ToString(), "");
 
-                            yay.addCinderellaAndReferral(closetSheet.Cells[rows, 11].Value.ToString() + closetSheet.Cells[rows, 12].Value.ToString(), closetSheet.Cells[rows, 10].Value.ToString(), closetSheet.Cells[rows, 8].Value.ToString(), closetSheet.Cells[rows, 9].Value.ToString(), converter.ToString(), timeConv.ToString(), "");
-
+                            //Part of the progress bar.
                             percentCounter++;
 
+                            //Part of the progress bar.
                             if (percentCounter == 4)
                             {
                                 CinderellaLauncher.AdminMenu.cinderellaProgess.Value += 1;
@@ -220,27 +223,15 @@ namespace BusinessLogic
                         }
 
                     }
-
-
-
-
-
-
-
-
+                    //Closes out of Excel
                     closetBook.Close();
                     intermediary.Quit();
                     Marshal.ReleaseComObject(intermediary);
                     Marshal.ReleaseComObject(closetBook);
                     Marshal.ReleaseComObject(closetSheet);
                     Marshal.ReleaseComObject(closetTuples);
-                    GC.Collect();
-                
-
+                    GC.Collect();              
             }
-
-
-
         }
 
         //readGodmothers
@@ -251,6 +242,7 @@ namespace BusinessLogic
         //postcondition: the godmother's have been correctly added to the db
         public void readGodmothers()
         {
+            //Creates a new query for to move the data into the database.
             SQL_Queries yayAgain = new SQL_Queries();
             //NOTE: for excel files row and column numbers start at 1 not zero.
 
@@ -258,7 +250,11 @@ namespace BusinessLogic
 
 
             string[] errors = { "No Good2" };
+
+            //Calls a new open file dialog to select Excel file to be read.
             OpenFileDialog fileToBeRead = new OpenFileDialog();
+
+            ////Opens a new instance of Excel.
             ExcelReader.Application intermediary2 = new ExcelReader.Application();
 
                object whatelement;
@@ -327,9 +323,6 @@ namespace BusinessLogic
 
                              if (closetSheet2.Cells[rows, 6].Value == null && closetSheet2.Cells[rows,5].Value == null)
                             {
-                               
-                                
-                                
                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(),"NULL", closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows,8].Value.ToString());
                                 continue;
                             }
@@ -348,8 +341,7 @@ namespace BusinessLogic
                                  continue;
                              }
                              else if (closetSheet2.Cells[rows, 8].Value == null)
-                             {
-                                 
+                             { 
                                  yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), "NULL");
                                  continue;
                              }
@@ -358,16 +350,16 @@ namespace BusinessLogic
                                  yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), "NULL", closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
                                  continue;
                              }
-                            else if (closetSheet2.Cells[rows, 5].Value == null)
-                            {
-                                yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
-                                continue;
-                            }
-                            else if (closetSheet2.Cells[rows, 5].Value != null)
-                            {
-                                yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString() + closetSheet2.Cells[rows, 5].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
-                                continue;
-                            }
+                             else if (closetSheet2.Cells[rows, 5].Value == null)
+                             {
+                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
+                                 continue;
+                             }
+                             else if (closetSheet2.Cells[rows, 5].Value != null)
+                             {
+                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString() + closetSheet2.Cells[rows, 5].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
+                                 continue;
+                             }
 
                         }
                         catch (RuntimeBinderException ohno)
