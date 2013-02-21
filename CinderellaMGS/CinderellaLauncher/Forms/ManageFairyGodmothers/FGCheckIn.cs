@@ -743,5 +743,11 @@ namespace CinderellaLauncher
                 }
             }
         }
+
+        private void fairyGodmotherCheckInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thread FGCheckInBarcode = new Thread(() => Application.Run(new FGCheckInBarcode()));
+            FGCheckInBarcode.Start();
+        }
     }
 }

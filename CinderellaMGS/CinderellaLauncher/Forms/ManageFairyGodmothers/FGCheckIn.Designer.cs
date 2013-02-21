@@ -88,6 +88,7 @@
             this.viewShiftLabel = new System.Windows.Forms.Label();
             this.BarcodeLabel = new System.Windows.Forms.Label();
             this.BarcodeTextBox = new System.Windows.Forms.TextBox();
+            this.fairyGodmotherCheckInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.fgDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -257,7 +258,8 @@
             // 
             this.undoCheckInToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.undoCheckInToolStripMenuItem2,
-            this.addFairyGodmotherToolStripMenuItem});
+            this.addFairyGodmotherToolStripMenuItem,
+            this.fairyGodmotherCheckInToolStripMenuItem});
             this.undoCheckInToolStripMenuItem1.Name = "undoCheckInToolStripMenuItem1";
             this.undoCheckInToolStripMenuItem1.Size = new System.Drawing.Size(137, 23);
             this.undoCheckInToolStripMenuItem1.Text = "Fairy Godmothers";
@@ -265,14 +267,14 @@
             // undoCheckInToolStripMenuItem2
             // 
             this.undoCheckInToolStripMenuItem2.Name = "undoCheckInToolStripMenuItem2";
-            this.undoCheckInToolStripMenuItem2.Size = new System.Drawing.Size(218, 24);
+            this.undoCheckInToolStripMenuItem2.Size = new System.Drawing.Size(246, 24);
             this.undoCheckInToolStripMenuItem2.Text = "Undo Check-In";
             this.undoCheckInToolStripMenuItem2.Click += new System.EventHandler(this.undoCheckInToolStripMenuItem2_Click);
             // 
             // addFairyGodmotherToolStripMenuItem
             // 
             this.addFairyGodmotherToolStripMenuItem.Name = "addFairyGodmotherToolStripMenuItem";
-            this.addFairyGodmotherToolStripMenuItem.Size = new System.Drawing.Size(218, 24);
+            this.addFairyGodmotherToolStripMenuItem.Size = new System.Drawing.Size(246, 24);
             this.addFairyGodmotherToolStripMenuItem.Text = "Add Fairy Godmother";
             this.addFairyGodmotherToolStripMenuItem.Click += new System.EventHandler(this.addFairyGodmotherToolStripMenuItem_Click);
             // 
@@ -736,8 +738,14 @@
             this.BarcodeTextBox.Name = "BarcodeTextBox";
             this.BarcodeTextBox.Size = new System.Drawing.Size(306, 20);
             this.BarcodeTextBox.TabIndex = 49;
-
             this.BarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarcodeTextBox_KeyPress);
+            // 
+            // fairyGodmotherCheckInToolStripMenuItem
+            // 
+            this.fairyGodmotherCheckInToolStripMenuItem.Name = "fairyGodmotherCheckInToolStripMenuItem";
+            this.fairyGodmotherCheckInToolStripMenuItem.Size = new System.Drawing.Size(246, 24);
+            this.fairyGodmotherCheckInToolStripMenuItem.Text = "Fairy Godmother Check In";
+            this.fairyGodmotherCheckInToolStripMenuItem.Click += new System.EventHandler(this.fairyGodmotherCheckInToolStripMenuItem_Click);
             // 
             // FGCheckIn
             // 
@@ -844,5 +852,6 @@
         private System.Windows.Forms.ToolStripMenuItem addFairyGodmotherToolStripMenuItem;
         private System.Windows.Forms.Label BarcodeLabel;
         private System.Windows.Forms.TextBox BarcodeTextBox;
+        private System.Windows.Forms.ToolStripMenuItem fairyGodmotherCheckInToolStripMenuItem;
     }
 }
