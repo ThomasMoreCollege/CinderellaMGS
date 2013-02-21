@@ -30,6 +30,7 @@ namespace CinderellaLauncher
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CinderellaCheckInBarcode));
             this.label1 = new System.Windows.Forms.Label();
             this.CinderellaCheckInBarcodeTextbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -61,6 +62,7 @@ namespace CinderellaLauncher
             this.ClientSize = new System.Drawing.Size(404, 239);
             this.Controls.Add(this.CinderellaCheckInBarcodeTextbox);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CinderellaCheckInBarcode";
             this.Text = "Cinderella Check In Barcode";
             this.Load += new System.EventHandler(this.CinderellaCheckInBarcode_Load);
