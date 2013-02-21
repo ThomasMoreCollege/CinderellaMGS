@@ -435,6 +435,12 @@ namespace CinderellaLauncher
             }
                 MessageBox.Show("File: C:\\CinderellaMGS\\cinderellamgs\\CinderellaMGS\\Documentation\\Help\\UserManual.pdf   Does Not Exist.");
         }
+
+        private void cinderellaCheckInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thread cinderellaCheckInBarcode = new Thread(() => Application.Run(new CinderellaCheckInBarcode()));
+            cinderellaCheckInBarcode.Start();
+        }
     }
 }
 // string selectCommand = "Select Cinderellas.id,Cinderellas.firstName AS 'First Name',Cinderellas.lastName AS 'Last Name',Cinderellas.apptDate AS 'Date',Cinderellas.apptTime AS 'Time',Cinderellas.phoneNumber AS 'Phone' from Cinderellas";

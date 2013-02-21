@@ -58,6 +58,7 @@
             this.searchLabel = new System.Windows.Forms.Label();
             this.changeAppointmentButton = new System.Windows.Forms.Button();
             this.refreshButtonCheckIn = new System.Windows.Forms.Button();
+            this.cinderellaCheckInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchDGV)).BeginInit();
@@ -68,7 +69,8 @@
             // 
             this.cinderellasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addCinderellaToolStripMenuItem,
-            this.undoCinderellaCheckInToolStripMenuItem});
+            this.undoCinderellaCheckInToolStripMenuItem,
+            this.cinderellaCheckInToolStripMenuItem});
             this.cinderellasToolStripMenuItem.Name = "cinderellasToolStripMenuItem";
             this.cinderellasToolStripMenuItem.Size = new System.Drawing.Size(92, 23);
             this.cinderellasToolStripMenuItem.Text = "Cinderellas";
@@ -388,6 +390,13 @@
             this.refreshButtonCheckIn.UseVisualStyleBackColor = false;
             this.refreshButtonCheckIn.Click += new System.EventHandler(this.refreshButtonCheckIn_Click);
             // 
+            // cinderellaCheckInToolStripMenuItem
+            // 
+            this.cinderellaCheckInToolStripMenuItem.Name = "cinderellaCheckInToolStripMenuItem";
+            this.cinderellaCheckInToolStripMenuItem.Size = new System.Drawing.Size(262, 24);
+            this.cinderellaCheckInToolStripMenuItem.Text = "Cinderella Check In";
+            this.cinderellaCheckInToolStripMenuItem.Click += new System.EventHandler(this.cinderellaCheckInToolStripMenuItem_Click);
+            // 
             // CheckIn
             // 
             this.AcceptButton = this.searchButton;
@@ -447,6 +456,7 @@
         private System.Windows.Forms.Button changeAppointmentButton;
         private System.Windows.Forms.Button refreshButtonCheckIn;
         private System.Windows.Forms.ToolStripMenuItem undoCinderellaCheckInToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cinderellaCheckInToolStripMenuItem;
 
         //   private System.Windows.Forms.DataGridViewTextBoxColumn apptDateTimeDataGridViewTextBoxColumn;
 
