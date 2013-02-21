@@ -31,20 +31,20 @@ namespace CinderellaLauncher
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CinderellaCheckInBarcode));
-            this.label1 = new System.Windows.Forms.Label();
+            this.CheckInTitleLbl = new System.Windows.Forms.Label();
             this.CinderellaCheckInBarcodeTextbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // label1
+            // CheckInTitleLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(64, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(271, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Check In Barcode Scanner";
+            this.CheckInTitleLbl.AutoSize = true;
+            this.CheckInTitleLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CheckInTitleLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.CheckInTitleLbl.Location = new System.Drawing.Point(64, 50);
+            this.CheckInTitleLbl.Name = "CheckInTitleLbl";
+            this.CheckInTitleLbl.Size = new System.Drawing.Size(271, 25);
+            this.CheckInTitleLbl.TabIndex = 0;
+            this.CheckInTitleLbl.Text = "Check In Barcode Scanner";
             // 
             // CinderellaCheckInBarcodeTextbox
             // 
@@ -61,7 +61,7 @@ namespace CinderellaLauncher
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(404, 239);
             this.Controls.Add(this.CinderellaCheckInBarcodeTextbox);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.CheckInTitleLbl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CinderellaCheckInBarcode";
             this.Text = "Cinderella Check In Barcode";
@@ -73,7 +73,7 @@ namespace CinderellaLauncher
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label CheckInTitleLbl;
         private System.Windows.Forms.TextBox CinderellaCheckInBarcodeTextbox;
     }
 }
