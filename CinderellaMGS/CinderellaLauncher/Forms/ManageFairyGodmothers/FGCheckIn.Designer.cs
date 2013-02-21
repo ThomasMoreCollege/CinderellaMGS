@@ -736,6 +736,8 @@
             this.BarcodeTextBox.Name = "BarcodeTextBox";
             this.BarcodeTextBox.Size = new System.Drawing.Size(306, 20);
             this.BarcodeTextBox.TabIndex = 49;
+            this.BarcodeTextBox.TextChanged += new System.EventHandler(this.BarcodeTextBox_TextChanged);
+            this.BarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarcodeTextBox_KeyPress);
             // 
             // FGCheckIn
             // 
@@ -776,7 +778,7 @@
             this.satPMTab.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.BarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(BarcodeTextBox_KeyPress);
+
         }
 
         #endregion

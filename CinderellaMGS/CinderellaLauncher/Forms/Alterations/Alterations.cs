@@ -257,6 +257,66 @@ namespace CinderellaLauncher
 
         }
 
+
+        private void BarcodeTextBoxAlterations_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (shoppingCinderellasDGV.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please select a Cinderella that is chopping to check in.");
+                return;
+            }
+            if (dressColorComboBox.SelectedItem == null || dressSizeComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please select both a dress size and color");
+                return;
+            }
+
+            string id = shoppingCinderellasDGV.SelectedRows[0].Cells[0].Value.ToString();
+
+            string dressColor = dressColorComboBox.SelectedItem.ToString();
+            int dressSize = Convert.ToInt32(dressSizeComboBox.SelectedItem);
+
+            query.checkOutUpdate(Convert.ToInt32(id), dressSize, dressColor);
+            query.addAlterations(id);
+            query.setCinderellaStatus(id, 6); // string id, int status
+            query.FGLeavesCinderella(Convert.ToInt32(id));
+
+
+            // Refresh the two datagrids
+            SqlCommand refreshCommandShop = new SqlCommand(query.statusList(4));
+            shoppingCinderellasDGVBindingSource.EndEdit();
+            shoppingCinderellasDGVDataTable.Clear();
+
+            shoppingCinderellasDGVDataAdapter.SelectCommand = refreshCommandShop;
+            shoppingCinderellasDGVDataAdapter.SelectCommand.Connection = connection;
+
+            shoppingCinderellasDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
+            shoppingCinderellasDGVDataAdapter.Fill(shoppingCinderellasDGVDataTable);
+
+            shoppingCinderellasDGV.Refresh();
+            shoppingCinderellasDGV.ClearSelection();
+            // shoppingCinderellasDGV.AutoResizeColumns();
+
+
+
+            SqlCommand refreshCommandAlt = new SqlCommand(query.CinderellasInAlteration());
+            alterationsCinderellasDGVBindingSource.EndEdit();
+            alterationsCinderellasDGVDataTable.Clear();
+
+            alterationsCinderellasDGVDataAdapter.SelectCommand = refreshCommandAlt;
+            alterationsCinderellasDGVDataAdapter.SelectCommand.Connection = connection;
+
+            alterationsCinderellasDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
+            alterationsCinderellasDGVDataAdapter.Fill(alterationsCinderellasDGVDataTable);
+
+            alterationsCinderellasDGV.Refresh();
+            alterationsCinderellasDGV.ClearSelection();
+            // alterationsCinderellasDGV.AutoResizeColumns();
+
+            dressSizeComboBox.ResetText();
+            dressColorComboBox.ResetText();
+        }
+
         private void checkinButton_Click(object sender, EventArgs e)
         {          
             if (shoppingCinderellasDGV.SelectedRows.Count != 1)

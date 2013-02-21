@@ -65,6 +65,8 @@
             this.shoppingCinderellasDGV = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.refreshButtonAlterations = new System.Windows.Forms.Button();
+            this.BarcodeTextBoxAlterations = new System.Windows.Forms.TextBox();
+            this.AlterationsScanLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.alterationsCinderellasDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppingCinderellasDGV)).BeginInit();
@@ -500,12 +502,30 @@
             this.refreshButtonAlterations.UseVisualStyleBackColor = false;
             this.refreshButtonAlterations.Click += new System.EventHandler(this.refreshButtonAlterations_Click);
             // 
+            // BarcodeTextBoxAlterations
+            // 
+            this.BarcodeTextBoxAlterations.Location = new System.Drawing.Point(241, 343);
+            this.BarcodeTextBoxAlterations.Name = "BarcodeTextBoxAlterations";
+            this.BarcodeTextBoxAlterations.Size = new System.Drawing.Size(100, 20);
+            this.BarcodeTextBoxAlterations.TabIndex = 37;
+            // 
+            // AlterationsScanLabel
+            // 
+            this.AlterationsScanLabel.AutoSize = true;
+            this.AlterationsScanLabel.Location = new System.Drawing.Point(176, 350);
+            this.AlterationsScanLabel.Name = "AlterationsScanLabel";
+            this.AlterationsScanLabel.Size = new System.Drawing.Size(32, 13);
+            this.AlterationsScanLabel.TabIndex = 38;
+            this.AlterationsScanLabel.Text = "Scan";
+            // 
             // Alterations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(978, 485);
+            this.Controls.Add(this.AlterationsScanLabel);
+            this.Controls.Add(this.BarcodeTextBoxAlterations);
             this.Controls.Add(this.refreshButtonAlterations);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dressColorComboBox);
@@ -580,5 +600,7 @@
         private System.Windows.Forms.DataGridView shoppingCinderellasDGV;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button refreshButtonAlterations;
+        private System.Windows.Forms.TextBox BarcodeTextBoxAlterations;
+        private System.Windows.Forms.Label AlterationsScanLabel;
     }
 }
