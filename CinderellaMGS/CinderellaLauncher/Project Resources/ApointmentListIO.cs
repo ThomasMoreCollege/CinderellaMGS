@@ -34,60 +34,87 @@ namespace BusinessLogic
         public void readCinderellas()
         {
             //Values for the progress bar.
-
-            //Creates a new query to move data into the database.
-
-            //Creates an array of strings for errors.
-
-            //Creates a new open file dialogue box called FileToBeRead.
-
-            //Opens a new instance of Excel.
+            int overallPercent = 0;
+            int percentCounter = 0;
 
             //Creates a new array of objects called particulars where the values for a row are stored for analysis.
+            object[] particulars = new object[4];
 
             //The following object Value_C will be defined later.
+            object Value_C;
+
+            //Creates a new query to move data into the database.
+            SQL_Queries Cinderella_Add = new SQL_Queries();
+
+            //Creates an array of strings for errors.
+            string[] errors = { "No Good" };
+
+            //Creates a new open file dialogue box called FileToBeRead.
+            OpenFileDialog fileToBeRead = new OpenFileDialog();
+
+            //Opens a new instance of Excel.
+            ExcelReader.Application intermediary = new ExcelReader.Application();
 
             //Additional filtering for FileToBeRead.
+            fileToBeRead.Filter = "Worksheets (*.xls;*.xlsx;*.xlsb;*.xlsm) | *.xls; *.xlsx; *.xlsb; *.xlsm";
+            fileToBeRead.Multiselect = false;
+            DialogResult selection = fileToBeRead.ShowDialog();
 
-            //Checks to make sure file exists.
+            //This loop checks that the selected file is an existing Excel file.
+            if (selection == DialogResult.OK)
+            {
 
-            //Checks to make sure that file selected is an Excel file.
+                //Checks to make sure file exists.
+                if (!(System.IO.File.Exists(fileToBeRead.FileName)))
+                {
+                    MessageBox.Show("Error: File Not Found.");
+                    return;
+                }
 
-            //closetBook will refer to the entire workbook selected to be read.
+                //Checks to make sure that file selected is an Excel file.
+                if (System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xls" || System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xlsx" || System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xlsb" || System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xlsm")
+                {
+                    MessageBox.Show("Error: Invalid file Type.");
+                    return;
+                }
 
-            //closetSheet will refer to the data sheet where the Cinderellas's infomation is stored.
+                //closetBook will refer to the entire workbook selected to be read.
 
-            //closetTuples refers to only the used range of cells in the Excel sheet.
+                //closetSheet will refer to the data sheet where the Cinderellas's infomation is stored.
 
-            //The integer index will refer to the number of a cell in a column.
+                //closetTuples refers to only the used range of cells in the Excel sheet.
 
-            //This loop begins reading values into the database.
+                //The integer index will refer to the number of a cell in a column.
 
-            //This loop begins to read values for each specific column.
+                //This loop begins reading values into the database.
 
-            //The object Value_C is now assigned to be the value of a certain cell in the closetSheet Excel sheet.
+                //This loop begins to read values for each specific column.
 
-            //The integer correctIndex is assigned to a cell with a special character that needs to be replaced.
+                //The object Value_C is now assigned to be the value of a certain cell in the closetSheet Excel sheet.
 
-            //Checks the first column for any cells with special characters and if it finds one, corrects it.
+                //The integer correctIndex is assigned to a cell with a special character that needs to be replaced.
 
-            //Checks the second column for any cells with special characters and if it finds one, corrects it.
+                //Checks the first column for any cells with special characters and if it finds one, corrects it.
 
-            //Formats the third column into DateTime format.
+                //Checks the second column for any cells with special characters and if it finds one, corrects it.
 
-            //Formats the fourth column into DateTime format.
+                //Formats the third column into DateTime format.
 
-            //Places the contents of fifth column in a string.
+                //Formats the fourth column into DateTime format.
 
-            //Places the contents of sixth column in a string.
+                //Places the contents of fifth column in a string.
 
-            //Places the contents of seventh column in a string.
+                //Places the contents of sixth column in a string.
 
-            //The query will finally begin to add the data from the Excel sheet to the database.
+                //Places the contents of seventh column in a string.
 
-            //Code for progress bar.
+                //The query will finally begin to add the data from the Excel sheet to the database.
 
-            //Closes out of Excel.
+                //Code for progress bar.
+
+                //Closes out of Excel.
+
+            }
 
         }
 
