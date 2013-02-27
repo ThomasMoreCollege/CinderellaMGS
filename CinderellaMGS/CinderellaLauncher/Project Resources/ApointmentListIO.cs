@@ -27,211 +27,68 @@ namespace BusinessLogic
         //Output: cinderella's have been added to the db
         //precondition: the cinderella excel file is in the proper format and the db is connectable and is in a working state
         //postcondition: the cinderella's have been correctly added to the db
+
+        //IMPORTANT NOTE: Excel rows and columns start at the value 1.
+
         [STAThread]
         public void readCinderellas()
         {
-            //For the progress bar implemented at lines 207 through 219.
-            int overallPercent = 0;
-            int percentCounter = 0;
+            //Values for the progress bar.
 
-            //Creates a new query for to move the data into the database.
-            SQL_Queries yay = new SQL_Queries();
-            //NOTE: for excel files row and column numbers start at 1 not zero.
+            //Creates a new query to move data into the database.
 
-            //creates excel object and gets the file ready to read
+            //Creates an array of strings for errors.
 
-            string[] errors = { "No Good" };
-
-            //Calls a new open file dialog to select Excel file to be read.
-            OpenFileDialog fileToBeRead = new OpenFileDialog();
+            //Creates a new open file dialogue box called FileToBeRead.
 
             //Opens a new instance of Excel.
-            ExcelReader.Application intermediary = new ExcelReader.Application();
 
-            //Prepares to accept a new object(in this case an Excel file.)
-            object[] particulars = new object[4];
-            object what;
+            //Creates a new array of objects called particulars where the values for a row are stored for analysis.
 
-            //Filters for only Excel Files.
-            fileToBeRead.Filter = "Worksheets (*.xls;*.xlsx;*.xlsb;*.xlsm) | *.xls; *.xlsx; *.xlsb; *.xlsm";
-            fileToBeRead.Multiselect = false;
-            DialogResult selection = fileToBeRead.ShowDialog();
+            //The following object Value_C will be defined later.
 
-            if (selection == DialogResult.OK)
-            {
-                if (!(System.IO.File.Exists(fileToBeRead.FileName)))
-                {
-                    MessageBox.Show("Error: File Not Found.");
-                    return;
-                }
-                //checks the extension
-                if (System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xls" ||System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xlsx" ||System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xlsb" ||System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xlsm")
-                {
-                    MessageBox.Show("Error: Invalid file Type.");
-                    return;
-                }
-                    //closetBook will refer to the entire workbook selected to be read
-                    ExcelReader.Workbook closetBook = intermediary.Workbooks.Open(fileToBeRead.FileName, Type.Missing, false, Type.Missing, Type.Missing, Type.Missing, true);
+            //Additional filtering for FileToBeRead.
 
-                    //closetSheet will refer to the data sheet where the Cinderellas's infomation is stored.
-                    ExcelReader.Worksheet closetSheet = closetBook.Worksheets.get_Item(1);
+            //Checks to make sure file exists.
 
-                    //closetTuples refers to only the used range of cells in the Excel sheet.
-                    ExcelReader.Range closetTuples = closetSheet.UsedRange;
+            //Checks to make sure that file selected is an Excel file.
 
-                    int index = 0;
+            //closetBook will refer to the entire workbook selected to be read.
 
-                    for (int rows = 2; rows <= closetTuples.Rows.Count; rows++)
-                    {
-                        for (int columns = 1; columns < closetTuples.Columns.Count; columns++)
-                        {
-                            if (columns == 4)
-                            {
+            //closetSheet will refer to the data sheet where the Cinderellas's infomation is stored.
 
-                            }
+            //closetTuples refers to only the used range of cells in the Excel sheet.
 
-                            what = closetSheet.Cells[rows, columns].Value;
+            //The integer index will refer to the number of a cell in a column.
 
-                            if (what == null)
-                            {
+            //This loop begins reading values into the database.
 
-                            }
-                            else
-                            {
-                          
-                                int correctIndex;
+            //This loop begins to read values for each specific column.
 
-                                //Looks for apostrophes in the cells of the column
-                                if (columns == 1)
-                                {
+            //The object Value_C is now assigned to be the value of a certain cell in the closetSheet Excel sheet.
 
-                                    particulars[index] = what.ToString().Trim();
-                                    if (particulars[index].ToString().Contains("'"))
-                                    {
+            //The integer correctIndex is assigned to a cell with a special character that needs to be replaced.
 
+            //Checks the first column for any cells with special characters and if it finds one, corrects it.
 
-                                        correctIndex = particulars[index].ToString().IndexOf("'");
+            //Checks the second column for any cells with special characters and if it finds one, corrects it.
 
-                                        particulars[index] = particulars[index].ToString().Replace("'", "''");
-                                        Console.WriteLine(particulars[index].ToString());
-                                        closetSheet.Cells[rows, 1] = particulars[index];
+            //Formats the third column into DateTime format.
 
+            //Formats the fourth column into DateTime format.
 
-                                    }
-                                    index++;
-                                }
-                                //Looks for apostrophes in the cells of the column.
-                                else if (columns == 2)
-                                {
-                                    particulars[index] = what.ToString().Trim();
-                                    if (particulars[index].ToString().Contains("'"))
-                                    {
-                                        correctIndex = particulars[index].ToString().IndexOf("'");
+            //Places the contents of fifth column in a string.
 
-                                        particulars[index] = particulars[index].ToString().Replace("'", "''");
-                                        Console.WriteLine(particulars[index].ToString());
-                                        closetSheet.Cells[rows, 2] = particulars[index];
-                                    }
-                                    index++;
-                                }
-                                else if (columns == 5)
-                                {
-                                    particulars[index] = what.ToString().Trim();
-                                    index++;
+            //Places the contents of sixth column in a string.
 
-                                }
-                                else if (columns == 6)
-                                {
-                                    particulars[index] = what.ToString().Trim();
-                                    index++;
+            //Places the contents of seventh column in a string.
 
-                                }
-                                else if (columns == 7)
-                                {
-                                    particulars[index] = what.ToString().Trim();
+            //The query will finally begin to add the data from the Excel sheet to the database.
 
-                                }
+            //Code for progress bar.
 
+            //Closes out of Excel.
 
-
-
-                            }
-                            index = 0;
-                        }
-
-                        //Converts times to appropriate format.
-                        DateTime converter = new DateTime();
-                        DateTime timeConv = new DateTime();
-                        try
-                        {
-                            converter = Convert.ToDateTime(closetSheet.Cells[rows, 3].Value.ToString());
-                            timeConv = Convert.ToDateTime(closetSheet.Cells[rows, 4].Value.ToString());
-                            /*
-                            if (closetSheet.Cells[rows, 6].Value.ToString() == "PM")
-                            {
-
-                                if (timeConv.ToShortTimeString() == "12:00 PM" || timeConv.ToShortTimeString() == "12:30 PM")
-                                {
-
-                                }
-                                else
-                                {
-
-                                    timeConv = timeConv.AddHours(12);
-                                }
-
-
-                            }*/
-                        }
-                        catch (FormatException bleh)
-                        {
-
-                            continue;
-                        }
-                        catch (RuntimeBinderException meh)
-                        {
-                            continue;
-                        }
-                        try
-                        {
-
-                            //The query will finally begin to add the data from the Excel sheet to the database.
-                            yay.addCinderellaAndReferral(closetSheet.Cells[rows, 5].Value.ToString() + closetSheet.Cells[rows, 6].Value.ToString(), closetSheet.Cells[rows, 7].Value.ToString(), closetSheet.Cells[rows, 1].Value.ToString(), closetSheet.Cells[rows, 2].Value.ToString(), converter.ToString(), timeConv.ToString(), "");
-
-                            //Part of the progress bar.
-                            percentCounter++;
-
-                            //Part of the progress bar.
-                            if (percentCounter == 4)
-                            {
-                                CinderellaLauncher.AdminMenu.cinderellaProgess.Value += 1;
-                                overallPercent = (int)(((double)CinderellaLauncher.AdminMenu.cinderellaProgess.Value / (double)CinderellaLauncher.AdminMenu.cinderellaProgess.Maximum) * 100);
-                                CinderellaLauncher.AdminMenu.cinderellaProgess.Refresh();
-                                CinderellaLauncher.AdminMenu.cinderellaProgess.CreateGraphics().DrawString(overallPercent.ToString() + "% Complete", new Font("System", (float)9.25, FontStyle.Regular), System.Drawing.Brushes.Black, new System.Drawing.PointF(CinderellaLauncher.AdminMenu.cinderellaProgess.Width / 2 - 10, CinderellaLauncher.AdminMenu.cinderellaProgess.Height / 2 - 7));
-                                percentCounter = 0;
-
-                            }
-                            else
-                            {
-
-                            }
-
-                        }
-                        catch (Exception e)
-                        {
-                            continue;
-                        }
-
-                    }
-                    //Closes out of Excel
-                    closetBook.Close();
-                    intermediary.Quit();
-                    Marshal.ReleaseComObject(intermediary);
-                    Marshal.ReleaseComObject(closetBook);
-                    Marshal.ReleaseComObject(closetSheet);
-                    Marshal.ReleaseComObject(closetTuples);
-                    GC.Collect();              
-            }
         }
 
         //readGodmothers
@@ -257,11 +114,11 @@ namespace BusinessLogic
             ////Opens a new instance of Excel.
             ExcelReader.Application intermediary2 = new ExcelReader.Application();
 
-               object whatelement;
-               object shiftElement;
-               int shiftID = 0;
-               int roleID = 0;
-               fileToBeRead.Filter = "Worksheets (*.xls;*.xlsx;*.xlsb;*.xlsm) | *.xls; *.xlsx; *.xlsb; *.xlsm";
+            object whatelement;
+            object shiftElement;
+            int shiftID = 0;
+            int roleID = 0;
+            fileToBeRead.Filter = "Worksheets (*.xls;*.xlsx;*.xlsb;*.xlsm) | *.xls; *.xlsx; *.xlsb; *.xlsm";
             fileToBeRead.Multiselect = false;
             DialogResult selection = fileToBeRead.ShowDialog();
 
@@ -278,177 +135,177 @@ namespace BusinessLogic
                     MessageBox.Show("Error: Invalid file Type.");
                     return;
                 }
-                    ExcelReader.Workbook closetBook2 = intermediary2.Workbooks.Open(fileToBeRead.FileName, Type.Missing, false, Type.Missing, Type.Missing, Type.Missing, true);
+                ExcelReader.Workbook closetBook2 = intermediary2.Workbooks.Open(fileToBeRead.FileName, Type.Missing, false, Type.Missing, Type.Missing, Type.Missing, true);
 
 
-                    ExcelReader.Worksheet closetSheet2 = closetBook2.Worksheets.get_Item(3);
-                    ExcelReader.Range closetTuples2 = closetSheet2.UsedRange;
+                ExcelReader.Worksheet closetSheet2 = closetBook2.Worksheets.get_Item(3);
+                ExcelReader.Range closetTuples2 = closetSheet2.UsedRange;
 
-                    for (int rows = 5; rows <= closetTuples2.Rows.Count; rows++)
+                for (int rows = 5; rows <= closetTuples2.Rows.Count; rows++)
+                {
+                    for (int columns = 1; columns < 11; columns++)
                     {
-                        for (int columns = 1; columns < 11; columns++)
+                        whatelement = closetSheet2.Cells[rows, columns].Value;
+
+                        if (whatelement == null)
                         {
-                            whatelement = closetSheet2.Cells[rows, columns].Value;
-
-                            if (whatelement == null)
-                            {
-                                continue;
-                            }
-                                if (whatelement.ToString().Trim().Contains('(') && whatelement.ToString().Trim().Contains(')') && whatelement.ToString().Trim().Contains('-'))
-                                {
-                                    //corrections
-                                    whatelement = whatelement.ToString().Trim().Replace("(", "");
-                                    whatelement = whatelement.ToString().Trim().Replace(")", "");
-                                    whatelement = whatelement.ToString().Trim().Replace("-", "");
-                                    whatelement = whatelement.ToString().Trim().Replace(" ", "");
-
-                                    closetSheet2.Cells[rows, 9] = whatelement.ToString().Trim();
-                                }
-                               
-                                if (whatelement.ToString().Trim().Contains("'"))
-                                {
-                                   
-
-
-                                        whatelement = whatelement.ToString().Trim().Replace("'", "''");
-                                        closetSheet2.Cells[rows, 3] = whatelement.ToString().Trim();
-                                        Console.WriteLine(closetSheet2.Cells[rows, 3].Value.ToString());
-                                       
-                                    
-                                }
-                            }
-                    
-                        try
-                        {
-
-                             if (closetSheet2.Cells[rows, 6].Value == null && closetSheet2.Cells[rows,5].Value == null)
-                            {
-                                yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(),"NULL", closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows,8].Value.ToString());
-                                continue;
-                            }
-                             else if (closetSheet2.Cells[rows, 5].Value == null && closetSheet2.Cells[rows, 10].Value == null)
-                             {
-                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), "NULL", closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
-                             }
-                             else if (closetSheet2.Cells[rows, 5].Value == null && closetSheet2.Cells[rows, 8].Value == null)
-                             {
-                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), "NULL");
-                                 continue;
-                             }
-                             else if (closetSheet2.Cells[rows, 9].Value == null && closetSheet2.Cells[rows, 5].Value == null)
-                             {
-                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), "NULL", closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
-                                 continue;
-                             }
-                             else if (closetSheet2.Cells[rows, 8].Value == null)
-                             { 
-                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), "NULL");
-                                 continue;
-                             }
-                             else if (closetSheet2.Cells[rows, 9].Value == null)
-                             {
-                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), "NULL", closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
-                                 continue;
-                             }
-                             else if (closetSheet2.Cells[rows, 5].Value == null)
-                             {
-                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
-                                 continue;
-                             }
-                             else if (closetSheet2.Cells[rows, 5].Value != null)
-                             {
-                                 yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString() + closetSheet2.Cells[rows, 5].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
-                                 continue;
-                             }
-
+                            continue;
                         }
-                        catch (RuntimeBinderException ohno)
+                        if (whatelement.ToString().Trim().Contains('(') && whatelement.ToString().Trim().Contains(')') && whatelement.ToString().Trim().Contains('-'))
                         {
-                           // continue;
+                            //corrections
+                            whatelement = whatelement.ToString().Trim().Replace("(", "");
+                            whatelement = whatelement.ToString().Trim().Replace(")", "");
+                            whatelement = whatelement.ToString().Trim().Replace("-", "");
+                            whatelement = whatelement.ToString().Trim().Replace(" ", "");
+
+                            closetSheet2.Cells[rows, 9] = whatelement.ToString().Trim();
+                        }
+
+                        if (whatelement.ToString().Trim().Contains("'"))
+                        {
+
+
+
+                            whatelement = whatelement.ToString().Trim().Replace("'", "''");
+                            closetSheet2.Cells[rows, 3] = whatelement.ToString().Trim();
+                            Console.WriteLine(closetSheet2.Cells[rows, 3].Value.ToString());
+
+
                         }
                     }
-                    
-                   
 
-                    for (int rightSideRows = 5; rightSideRows < closetTuples2.Rows.Count; rightSideRows++)
+                    try
                     {
-                        for (int columnSides = 2; columnSides < 20; columnSides++)
+
+                        if (closetSheet2.Cells[rows, 6].Value == null && closetSheet2.Cells[rows, 5].Value == null)
                         {
-                            //First element will be fairyGodmotherID, then the rest is just sorting
-                            //out the Role and Shift information!
-                            if(columnSides > 3 && columnSides < 12) //was 12!
-                            {
-                                continue;
-                            }
-                           
-                            //If a godmother's role changes when a time slot changes, that must be
-                            //stored
-                            shiftElement = closetSheet2.Cells[rightSideRows, columnSides].Value;
+                            yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), "NULL", closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
+                            continue;
+                        }
+                        else if (closetSheet2.Cells[rows, 5].Value == null && closetSheet2.Cells[rows, 10].Value == null)
+                        {
+                            yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), "NULL", closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
+                        }
+                        else if (closetSheet2.Cells[rows, 5].Value == null && closetSheet2.Cells[rows, 8].Value == null)
+                        {
+                            yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), "NULL");
+                            continue;
+                        }
+                        else if (closetSheet2.Cells[rows, 9].Value == null && closetSheet2.Cells[rows, 5].Value == null)
+                        {
+                            yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), "NULL", closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
+                            continue;
+                        }
+                        else if (closetSheet2.Cells[rows, 8].Value == null)
+                        {
+                            yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), "NULL");
+                            continue;
+                        }
+                        else if (closetSheet2.Cells[rows, 9].Value == null)
+                        {
+                            yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), "NULL", closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
+                            continue;
+                        }
+                        else if (closetSheet2.Cells[rows, 5].Value == null)
+                        {
+                            yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
+                            continue;
+                        }
+                        else if (closetSheet2.Cells[rows, 5].Value != null)
+                        {
+                            yayAgain.NewGodMother(closetSheet2.Cells[rows, 2].Value.ToString(), closetSheet2.Cells[rows, 3].Value.ToString(), closetSheet2.Cells[rows, 4].Value.ToString() + closetSheet2.Cells[rows, 5].Value.ToString(), closetSheet2.Cells[rows, 6].Value.ToString(), closetSheet2.Cells[rows, 10].Value.ToString(), closetSheet2.Cells[rows, 9].Value.ToString(), closetSheet2.Cells[rows, 7].Value.ToString(), closetSheet2.Cells[rows, 8].Value.ToString());
+                            continue;
+                        }
 
-                            if (shiftElement == null)
+                    }
+                    catch (RuntimeBinderException ohno)
+                    {
+                        // continue;
+                    }
+                }
+
+
+
+                for (int rightSideRows = 5; rightSideRows < closetTuples2.Rows.Count; rightSideRows++)
+                {
+                    for (int columnSides = 2; columnSides < 20; columnSides++)
+                    {
+                        //First element will be fairyGodmotherID, then the rest is just sorting
+                        //out the Role and Shift information!
+                        if (columnSides > 3 && columnSides < 12) //was 12!
+                        {
+                            continue;
+                        }
+
+                        //If a godmother's role changes when a time slot changes, that must be
+                        //stored
+                        shiftElement = closetSheet2.Cells[rightSideRows, columnSides].Value;
+
+                        if (shiftElement == null)
+                        {
+                            continue;
+                        }
+
+                        if (shiftElement.ToString().Trim() == "X")
+                        {
+                            if (roleID > 0 && shiftID > 0)
                             {
-                                continue;
+                                // continue;
+                            }
+                            switch (columnSides)
+                            {
+                                //Friday, PM time slot, Personal Shopper
+                                case 12: roleID = 4; shiftID = 1;
+                                    yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
+                                    break;
+                                //Friday, PM time slot, Volunteer
+                                case 13: roleID = 6; shiftID = 1;
+                                    yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
+                                    break;
+                                //Friday, PM time slot, Alterator 
+                                case 14: roleID = 5; shiftID = 1;
+                                    yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
+                                    break;
+                                //Saturday, AM time slot, Personal Shopper
+                                case 15: roleID = 4; shiftID = 2;
+                                    yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
+                                    break;
+                                //Saturday, AM time slot, Volunteer
+                                case 16: roleID = 6; shiftID = 2;
+                                    yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
+                                    break;
+                                //Saturday, AM time slot, Alterator
+                                case 17: roleID = 5; shiftID = 2;
+                                    yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
+                                    break;
+                                //Saturday, PM time slot, Personal Shopper
+                                case 18: roleID = 4; shiftID = 3;
+                                    yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
+                                    break;
+                                //Saturday, PM time slot, Volunteer
+                                case 19: roleID = 6; shiftID = 3;
+                                    yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
+                                    break;
+                                //Saturday, PM time slot, Alterator
+                                case 20: roleID = 5; shiftID = 3;
+                                    yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
+                                    break;
+                                default:
+                                    break;
                             }
 
-                            if (shiftElement.ToString().Trim() == "X")
-                            {
-                                if (roleID > 0 && shiftID > 0)
-                                {
-                                   // continue;
-                                }
-                                switch (columnSides)
-                                {
-                                    //Friday, PM time slot, Personal Shopper
-                                    case 12: roleID = 4; shiftID = 1;
-                                        yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                        break;
-                                    //Friday, PM time slot, Volunteer
-                                    case 13: roleID = 6; shiftID = 1;
-                                        yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                        break;
-                                    //Friday, PM time slot, Alterator 
-                                    case 14: roleID = 5; shiftID = 1;
-                                        yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                        break;
-                                    //Saturday, AM time slot, Personal Shopper
-                                    case 15: roleID = 4; shiftID = 2;
-                                        yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                        break;
-                                    //Saturday, AM time slot, Volunteer
-                                    case 16: roleID = 6; shiftID = 2;
-                                        yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                        break;
-                                    //Saturday, AM time slot, Alterator
-                                    case 17: roleID = 5; shiftID = 2;
-                                        yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                        break;
-                                    //Saturday, PM time slot, Personal Shopper
-                                    case 18: roleID = 4; shiftID = 3;
-                                        yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                        break;
-                                    //Saturday, PM time slot, Volunteer
-                                    case 19: roleID = 6; shiftID = 3;
-                                        yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                        break;
-                                    //Saturday, PM time slot, Alterator
-                                    case 20: roleID = 5; shiftID = 3;
-                                        yayAgain.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                        break;
-                                    default:
-                                        break;
-                                }
-                               
-                            }
                         }
                     }
-                    closetBook2.Close();
-                    intermediary2.Quit();
-                    Marshal.ReleaseComObject(intermediary2);
-                    Marshal.ReleaseComObject(closetBook2);
-                    Marshal.ReleaseComObject(closetSheet2);
-                    Marshal.ReleaseComObject(closetTuples2);
-                    GC.Collect();
-                
+                }
+                closetBook2.Close();
+                intermediary2.Quit();
+                Marshal.ReleaseComObject(intermediary2);
+                Marshal.ReleaseComObject(closetBook2);
+                Marshal.ReleaseComObject(closetSheet2);
+                Marshal.ReleaseComObject(closetTuples2);
+                GC.Collect();
+
 
             }
         }
