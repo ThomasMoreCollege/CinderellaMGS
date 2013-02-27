@@ -79,40 +79,105 @@ namespace BusinessLogic
                 }
 
                 //closetBook will refer to the entire workbook selected to be read.
+                ExcelReader.Workbook closetBook = intermediary.Workbooks.Open(fileToBeRead.FileName, Type.Missing, false, Type.Missing, Type.Missing, Type.Missing, true);
 
                 //closetSheet will refer to the data sheet where the Cinderellas's infomation is stored.
+                ExcelReader.Worksheet closetSheet = closetBook.Worksheets.get_Item(1);
 
                 //closetTuples refers to only the used range of cells in the Excel sheet.
+                ExcelReader.Range closetTuples = closetSheet.UsedRange;
 
-                //The integer index will refer to the number of a cell in a column.
+                //The integer index will refer to the number of a cell in a column that is currently being processd.
+                int index = 0;
 
                 //This loop begins reading values into the database.
+                for (int rows = 2; rows <= closetTuples.Rows.Count; rows++)
+                {
 
-                //This loop begins to read values for each specific column.
+                    //This loop begins to read values for each specific column.
+                    for (int columns = 1; columns < closetTuples.Columns.Count; columns++)
+                    {
 
-                //The object Value_C is now assigned to be the value of a certain cell in the closetSheet Excel sheet.
+                        //The object Value_C is now assigned to be the value of a certain cell in the closetSheet Excel sheet.
+                        Value_C = closetSheet.Cells[rows, columns].Value;
 
-                //The integer correctIndex is assigned to a cell with a special character that needs to be replaced.
+                        //The integer correctIndex is assigned to a cell with a special character that needs to be replaced.
+                        int correctIndex;
 
-                //Checks the first column for any cells with special characters and if it finds one, corrects it.
+                        //Checks the first column for any cells with special characters and if it finds one, corrects it.
+                        if (columns == 1)
+                        {
 
-                //Checks the second column for any cells with special characters and if it finds one, corrects it.
+                            particulars[index] = Value_C.ToString().Trim();
+                            if (particulars[index].ToString().Contains("'"))
+                            {
 
-                //Formats the third column into DateTime format.
 
-                //Formats the fourth column into DateTime format.
+                                correctIndex = particulars[index].ToString().IndexOf("'");
 
-                //Places the contents of fifth column in a string.
+                                particulars[index] = particulars[index].ToString().Replace("'", "''");
+                                Console.WriteLine(particulars[index].ToString());
+                                closetSheet.Cells[rows, 1] = particulars[index];
 
-                //Places the contents of sixth column in a string.
 
-                //Places the contents of seventh column in a string.
+                            }
+                            index++;
+                        }
 
-                //The query will finally begin to add the data from the Excel sheet to the database.
+                        //Checks the second column for any cells with special characters and if it finds one, corrects it.
+                        else if (columns == 2)
+                        {
+                            particulars[index] = Value_C.ToString().Trim();
+                            if (particulars[index].ToString().Contains("'"))
+                            {
+                                correctIndex = particulars[index].ToString().IndexOf("'");
 
-                //Code for progress bar.
+                                particulars[index] = particulars[index].ToString().Replace("'", "''");
+                                Console.WriteLine(particulars[index].ToString());
+                                closetSheet.Cells[rows, 2] = particulars[index];
+                            }
+                            index++;
+                        }
 
-                //Closes out of Excel.
+                        //Formats the third column into DateTime format.
+
+                        //Formats the fourth column into DateTime format.
+
+                        //Places the contents of fifth column in a string.
+                        else if (columns == 5)
+                        {
+                            particulars[index] = Value_C.ToString().Trim();
+                            index++;
+
+                        }
+
+                        //Places the contents of sixth column in a string.
+                        else if (columns == 6)
+                        {
+                            particulars[index] = Value_C.ToString().Trim();
+                            index++;
+
+                        }
+
+                        //Places the contents of seventh column in a string.
+                        else if (columns == 7)
+                        {
+                            particulars[index] = Value_C.ToString().Trim();
+
+                        }
+
+
+                    }
+                    index = 0;
+
+                    //The query will finally begin to add the data from the Excel sheet to the database.
+                    Cinderella_Add.addCinderellaAndReferral(closetSheet.Cells[rows, 5].Value.ToString() + closetSheet.Cells[rows, 6].Value.ToString(), closetSheet.Cells[rows, 7].Value.ToString(), closetSheet.Cells[rows, 1].Value.ToString(), closetSheet.Cells[rows, 2].Value.ToString(), converter.ToString(), timeConv.ToString(), "");
+
+                    //Code for progress bar.
+
+                    //Closes out of Excel.
+
+                }
 
             }
 
