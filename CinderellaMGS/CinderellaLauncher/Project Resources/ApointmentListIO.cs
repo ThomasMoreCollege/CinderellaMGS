@@ -139,9 +139,21 @@ namespace BusinessLogic
                             index++;
                         }
 
-                        //Formats the third column into DateTime format.
+                        //Places the contents of third column in a string.
+                        else if (columns == 3)
+                        {
+                            particulars[index] = Value_C.ToString().Trim();
+                            index++;
 
-                        //Formats the fourth column into DateTime format.
+                        }
+
+                        //Places the contents of fourth column in a string.
+                        else if (columns == 4)
+                        {
+                            particulars[index] = Value_C.ToString().Trim();
+                            index++;
+
+                        }
 
                         //Places the contents of fifth column in a string.
                         else if (columns == 5)
@@ -151,33 +163,26 @@ namespace BusinessLogic
 
                         }
 
-                        //Places the contents of sixth column in a string.
+                        //Formats the sixth column into the Date and Time columns.
                         else if (columns == 6)
                         {
                             particulars[index] = Value_C.ToString().Trim();
-                            index++;
-
+                            string[] DateandTime = particulars[index].ToString().Trim().Split(' ');
+                            DateandTime[0] = closetSheet.Cells[rows, 6];
+                            DateandTime[1] = closetSheet.Cells[rows, 7];
                         }
-
-                        //Places the contents of seventh column in a string.
-                        else if (columns == 7)
-                        {
-                            particulars[index] = Value_C.ToString().Trim();
-
-                        }
-
 
                     }
                     index = 0;
 
                     //The query will finally begin to add the data from the Excel sheet to the database.
-                    Cinderella_Add.addCinderellaAndReferral(closetSheet.Cells[rows, 5].Value.ToString() + closetSheet.Cells[rows, 6].Value.ToString(), closetSheet.Cells[rows, 7].Value.ToString(), closetSheet.Cells[rows, 1].Value.ToString(), closetSheet.Cells[rows, 2].Value.ToString(), converter.ToString(), timeConv.ToString(), "");
+                    Cinderella_Add.addCinderellaAndReferral(closetSheet.Cells[rows, 3].Value.ToString() + closetSheet.Cells[rows, 4].Value.ToString(), closetSheet.Cells[rows, 5].Value.ToString(), closetSheet.Cells[rows, 1].Value.ToString(), closetSheet.Cells[rows, 2].Value.ToString(), closetSheet.Cells[rows, 6].Value.ToString(), closetSheet.Cells[rows, 7].Value.ToString(), "");
 
                     //Code for progress bar.
 
-                    //Closes out of Excel.
-
                 }
+
+                //Closes out of Excel.
 
             }
 
