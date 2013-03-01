@@ -38,7 +38,7 @@ namespace BusinessLogic
             int percentCounter = 0;
 
             //Creates a new array of objects called particulars where the values for a row are stored for analysis.
-            object[] particulars = new object[4];
+            object[] particulars = new object[7];
 
             //The following object Value_C will be defined later.
             object Value_C;
@@ -71,8 +71,34 @@ namespace BusinessLogic
                     return;
                 }
 
+                //Places the path of the file into a string.
+                string Name_of_File = fileToBeRead.FileName;
+
+                //Places the extension of a file into a string.
+                string Extension_of_File = Path.GetExtension(Name_of_File);
+
                 //Checks to make sure that file selected is an Excel file.
-                if (System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xls" || System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xlsx" || System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xlsb" || System.IO.Path.GetExtension(fileToBeRead.FileName) != ".xlsm")
+                if (Extension_of_File == ".xls")
+                {
+                    
+                }
+
+                else if (Extension_of_File == ".xlsb")
+                {
+                    
+                }
+
+                else if (Extension_of_File == ".xlsm")
+                {
+                   
+                }
+
+                else if (Extension_of_File == ".xlsx")
+                {
+                   
+                }
+
+                else
                 {
                     MessageBox.Show("Error: Invalid file Type.");
                     return;
@@ -167,9 +193,22 @@ namespace BusinessLogic
                         else if (columns == 6)
                         {
                             particulars[index] = Value_C.ToString().Trim();
+
+                            //The Value for particulars[index] is then split into two strings at the ' '.
+                            //These two strings are then placed into an array of strings called DateandTime
                             string[] DateandTime = particulars[index].ToString().Trim().Split(' ');
-                            DateandTime[0] = closetSheet.Cells[rows, 6];
-                            DateandTime[1] = closetSheet.Cells[rows, 7];
+
+                            //The string DateandTime[0], which contains the appointment date, is now placed in the correct spots.
+                            particulars[index] = DateandTime[0];
+                            Console.WriteLine(particulars[index].ToString());
+                            closetSheet.Cells[rows, 6] = particulars[index];
+                            index++;
+
+                            //The string DateandTime[1], which contains the appointment time, is now placed in the correct spots.
+                            particulars[index] = DateandTime[1].ToString();
+                            Console.WriteLine(particulars[index].ToString());
+                            closetSheet.Cells[rows, 7] = particulars[index];
+                            index++;
                         }
 
                     }
