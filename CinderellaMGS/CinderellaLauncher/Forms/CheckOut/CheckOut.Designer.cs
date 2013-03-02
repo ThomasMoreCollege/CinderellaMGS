@@ -80,6 +80,9 @@
             this.dressesDoneDGV = new System.Windows.Forms.DataGridView();
             this.CheckOutBarcodeLabel = new System.Windows.Forms.Label();
             this.CheckOutBarcodeTextBox = new System.Windows.Forms.TextBox();
+            this.QSearchBarLabel = new System.Windows.Forms.Label();
+            this.QSearchTextBox = new System.Windows.Forms.TextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.searchDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -104,7 +107,6 @@
             // 
             // searchDGV
             // 
-            this.searchDGV.AllowUserToAddRows = false;
             this.searchDGV.AllowUserToDeleteRows = false;
             this.searchDGV.AllowUserToResizeRows = false;
             this.searchDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
@@ -118,7 +120,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.searchDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.searchDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.searchDGV.Location = new System.Drawing.Point(345, 368);
+            this.searchDGV.Location = new System.Drawing.Point(365, 368);
             this.searchDGV.MultiSelect = false;
             this.searchDGV.Name = "searchDGV";
             this.searchDGV.ReadOnly = true;
@@ -138,7 +140,7 @@
             this.searchDGV.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.PaleVioletRed;
             this.searchDGV.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.searchDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.searchDGV.Size = new System.Drawing.Size(544, 128);
+            this.searchDGV.Size = new System.Drawing.Size(527, 128);
             this.searchDGV.TabIndex = 16;
             this.searchDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.searchGridView_CellClick);
             // 
@@ -149,7 +151,7 @@
             this.searchButton.FlatAppearance.BorderSize = 2;
             this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(234, 465);
+            this.searchButton.Location = new System.Drawing.Point(248, 465);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(99, 31);
             this.searchButton.TabIndex = 15;
@@ -160,7 +162,7 @@
             // firstNameBox
             // 
             this.firstNameBox.BackColor = System.Drawing.Color.Snow;
-            this.firstNameBox.Location = new System.Drawing.Point(128, 394);
+            this.firstNameBox.Location = new System.Drawing.Point(111, 355);
             this.firstNameBox.Name = "firstNameBox";
             this.firstNameBox.Size = new System.Drawing.Size(205, 20);
             this.firstNameBox.TabIndex = 13;
@@ -168,7 +170,7 @@
             // lastNameBox
             // 
             this.lastNameBox.BackColor = System.Drawing.Color.Snow;
-            this.lastNameBox.Location = new System.Drawing.Point(128, 368);
+            this.lastNameBox.Location = new System.Drawing.Point(111, 327);
             this.lastNameBox.Name = "lastNameBox";
             this.lastNameBox.Size = new System.Drawing.Size(205, 20);
             this.lastNameBox.TabIndex = 12;
@@ -177,7 +179,7 @@
             // 
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameLabel.Location = new System.Drawing.Point(24, 366);
+            this.lastNameLabel.Location = new System.Drawing.Point(11, 327);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(94, 20);
             this.lastNameLabel.TabIndex = 11;
@@ -187,7 +189,7 @@
             // 
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameLabel.Location = new System.Drawing.Point(24, 392);
+            this.firstNameLabel.Location = new System.Drawing.Point(11, 354);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(94, 20);
             this.firstNameLabel.TabIndex = 10;
@@ -197,7 +199,7 @@
             // 
             this.searchLabel.AutoSize = true;
             this.searchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchLabel.Location = new System.Drawing.Point(24, 337);
+            this.searchLabel.Location = new System.Drawing.Point(19, 298);
             this.searchLabel.Name = "searchLabel";
             this.searchLabel.Size = new System.Drawing.Size(66, 20);
             this.searchLabel.TabIndex = 9;
@@ -464,7 +466,7 @@
             // 
             this.organizationLabel.AutoSize = true;
             this.organizationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.organizationLabel.Location = new System.Drawing.Point(24, 417);
+            this.organizationLabel.Location = new System.Drawing.Point(2, 381);
             this.organizationLabel.Name = "organizationLabel";
             this.organizationLabel.Size = new System.Drawing.Size(103, 20);
             this.organizationLabel.TabIndex = 44;
@@ -473,10 +475,11 @@
             // organizationTextBox
             // 
             this.organizationTextBox.BackColor = System.Drawing.Color.Snow;
-            this.organizationTextBox.Location = new System.Drawing.Point(128, 420);
+            this.organizationTextBox.Location = new System.Drawing.Point(111, 382);
             this.organizationTextBox.Name = "organizationTextBox";
             this.organizationTextBox.Size = new System.Drawing.Size(205, 20);
             this.organizationTextBox.TabIndex = 45;
+            this.organizationTextBox.TextChanged += new System.EventHandler(this.organizationTextBox_TextChanged);
             // 
             // otherCheckBox
             // 
@@ -497,7 +500,7 @@
             this.resetButton.FlatAppearance.BorderSize = 2;
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetButton.Location = new System.Drawing.Point(128, 465);
+            this.resetButton.Location = new System.Drawing.Point(266, 507);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(81, 31);
             this.resetButton.TabIndex = 49;
@@ -575,7 +578,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CinderellaLauncher.Properties.Resources.TMCshield;
-            this.pictureBox1.Location = new System.Drawing.Point(23, 446);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 500);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(56, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -689,7 +692,7 @@
             // CheckOutBarcodeLabel
             // 
             this.CheckOutBarcodeLabel.AutoSize = true;
-            this.CheckOutBarcodeLabel.Location = new System.Drawing.Point(345, 521);
+            this.CheckOutBarcodeLabel.Location = new System.Drawing.Point(402, 521);
             this.CheckOutBarcodeLabel.Name = "CheckOutBarcodeLabel";
             this.CheckOutBarcodeLabel.Size = new System.Drawing.Size(32, 13);
             this.CheckOutBarcodeLabel.TabIndex = 56;
@@ -697,11 +700,42 @@
             // 
             // CheckOutBarcodeTextBox
             // 
-            this.CheckOutBarcodeTextBox.Location = new System.Drawing.Point(399, 518);
+            this.CheckOutBarcodeTextBox.Location = new System.Drawing.Point(439, 518);
             this.CheckOutBarcodeTextBox.Name = "CheckOutBarcodeTextBox";
             this.CheckOutBarcodeTextBox.Size = new System.Drawing.Size(306, 20);
             this.CheckOutBarcodeTextBox.TabIndex = 55;
-            this.CheckOutBarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckOutBarcodeTextBox_KeyPress);
+            this.CheckOutBarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckOutBarcodeTextBox_KeyPress);
+            // 
+            // QSearchBarLabel
+            // 
+            this.QSearchBarLabel.AutoSize = true;
+            this.QSearchBarLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QSearchBarLabel.Location = new System.Drawing.Point(2, 413);
+            this.QSearchBarLabel.Name = "QSearchBarLabel";
+            this.QSearchBarLabel.Size = new System.Drawing.Size(121, 20);
+            this.QSearchBarLabel.TabIndex = 57;
+            this.QSearchBarLabel.Text = "Quick Search:";
+            this.QSearchBarLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // QSearchTextBox
+            // 
+            this.QSearchTextBox.BackColor = System.Drawing.Color.Snow;
+            this.QSearchTextBox.Location = new System.Drawing.Point(120, 413);
+            this.QSearchTextBox.Name = "QSearchTextBox";
+            this.QSearchTextBox.Size = new System.Drawing.Size(233, 20);
+            this.QSearchTextBox.TabIndex = 58;
+            this.QSearchTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.richTextBox1.Enabled = false;
+            this.richTextBox1.Location = new System.Drawing.Point(6, 439);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(222, 47);
+            this.richTextBox1.TabIndex = 59;
+            this.richTextBox1.Text = "";
             // 
             // CheckOut
             // 
@@ -709,6 +743,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(906, 556);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.QSearchTextBox);
+            this.Controls.Add(this.QSearchBarLabel);
             this.Controls.Add(this.CheckOutBarcodeLabel);
             this.Controls.Add(this.CheckOutBarcodeTextBox);
             this.Controls.Add(this.panel1);
@@ -812,5 +849,8 @@
         private System.Windows.Forms.DataGridView dressesDoneDGV;
         private System.Windows.Forms.Label CheckOutBarcodeLabel;
         private System.Windows.Forms.TextBox CheckOutBarcodeTextBox;
+        private System.Windows.Forms.Label QSearchBarLabel;
+        private System.Windows.Forms.TextBox QSearchTextBox;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

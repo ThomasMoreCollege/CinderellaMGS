@@ -55,7 +55,7 @@ namespace CinderellaLauncher
         public CheckOut()
         {
             InitializeComponent();
-
+          
             this.KeyPreview = true;
             this.KeyUp += new KeyEventHandler(search_KeyUp);
 
@@ -74,6 +74,7 @@ namespace CinderellaLauncher
         private void CheckOut_Load(object sender, System.EventArgs e)
         {
             // See CheckIn for explanation
+          richTextBox1.Rtf = @"{\rtfl\ansi \b NOTE:\b0. Use the Quick Search to search for a specific Cinderella by typing in any Fairy Godmother ID.}"; 
             Thread update = new Thread(() => updateDUI());
             update.Start();
             // dressesDoneDGV.AutoResizeColumns();
@@ -89,6 +90,7 @@ namespace CinderellaLauncher
                     {
                         searchDGV.DataSource = searchDGVBindingSource;
                     }));
+                searchDGVDataTable.Columns.Add("Status");
                 searchDGVDataAdapter = new SqlDataAdapter(query.checkOutList(), connection);
                 searchDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 searchDGVDataAdapter.Fill(searchDGVDataTable);
@@ -116,6 +118,7 @@ namespace CinderellaLauncher
 
                 // Thread.Sleep(5000);
                 // }
+                //searchDGVDataTable.Columns.Add("Status");
             }
             catch (Exception f)
             {
@@ -318,19 +321,84 @@ namespace CinderellaLauncher
         }
         private void searchButton_Click(object sender, EventArgs e)
         {
-            SqlCommand searchCommand = new SqlCommand(query.CheckOutSearch(firstNameBox.Text, lastNameBox.Text, organizationTextBox.Text));
-            searchDGVBindingSource.EndEdit();
-            searchDGVDataTable.Clear();
 
-            searchDGVDataAdapter.SelectCommand = searchCommand;
-            searchDGVDataAdapter.SelectCommand.Connection = connection;
+            if (QSearchTextBox.Text.Length > 0)
+            {
 
-            searchDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
-            searchDGVDataAdapter.Fill(searchDGVDataTable);
+                string neck = "";
+                string ring = "";
+                string bracelet = "";
+                string headpiece = "";
+                string earrings = "";
 
-            searchDGV.Refresh();
-            searchDGV.ClearSelection();
-            //  searchDGV.AutoResizeColumns();
+                dressSizeComboBox.Text = (query.CindyDressSize(Convert.ToInt32(QSearchTextBox.Text))).ToString();
+                shoeSizeComboBox.Text = (query.CindyShoeSize(Convert.ToInt32(QSearchTextBox.Text)));
+                dressColorComboBox.Text = (query.CindyDressColor(Convert.ToInt32(QSearchTextBox.Text))).ToString();
+                shoeColorComboBox.Text = (query.CindyShoeColor(Convert.ToInt32(QSearchTextBox.Text))).ToString();
+                neck = (query.CindyNecklace(Convert.ToInt32(QSearchTextBox.Text))).ToString();
+                ring = (query.CindyRing(Convert.ToInt32(QSearchTextBox.Text))).ToString();
+                bracelet = (query.CindyBracelet(Convert.ToInt32(QSearchTextBox.Text))).ToString();
+                headpiece = (query.CindyHeadpiece(Convert.ToInt32(QSearchTextBox.Text))).ToString();
+                earrings = (query.CindyEarrings(Convert.ToInt32(QSearchTextBox.Text))).ToString();
+
+
+                if (neck.Equals("True"))
+                {
+                    necklaceCheckBox.Checked = true;
+                }
+                else
+                {
+                    necklaceCheckBox.Checked = false;
+                }
+                if (ring.Equals("True"))
+                {
+                    ringsCheckBox.Checked = true;
+                }
+                else
+                {
+                    ringsCheckBox.Checked = false;
+                }
+                if (bracelet.Equals("True"))
+                {
+                    braceletCheckBox.Checked = true;
+                }
+                else
+                {
+                    braceletCheckBox.Checked = false;
+                }
+                if (headpiece.Equals("True"))
+                {
+                    headPieceCheckBox.Checked = true;
+                }
+                else
+                {
+                    headPieceCheckBox.Checked = false;
+                }
+                if (earrings.Equals("True"))
+                {
+                    earringsCheckBox.Checked = true;
+                }
+                else
+                {
+                    earringsCheckBox.Checked = false;
+                }
+            }
+            else
+            {
+                SqlCommand searchCommand = new SqlCommand(query.CheckOutSearch(firstNameBox.Text, lastNameBox.Text, organizationTextBox.Text));
+                searchDGVBindingSource.EndEdit();
+                searchDGVDataTable.Clear();
+
+                searchDGVDataAdapter.SelectCommand = searchCommand;
+                searchDGVDataAdapter.SelectCommand.Connection = connection;
+
+                searchDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                searchDGVDataAdapter.Fill(searchDGVDataTable);
+
+                searchDGV.Refresh();
+                searchDGV.ClearSelection();
+                //  searchDGV.AutoResizeColumns();
+            }
         }
 
         private void resetButton_Click(object sender, EventArgs e)
@@ -597,6 +665,21 @@ namespace CinderellaLauncher
                     //MessageBox.Show("Please Select the Size and Color of the Dress and of the Shoes");
                 }
             }
+
+        private void organizationTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         }
     }
 

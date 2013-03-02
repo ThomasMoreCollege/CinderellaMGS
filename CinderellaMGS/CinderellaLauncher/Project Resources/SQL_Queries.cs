@@ -206,7 +206,7 @@ namespace CinderellaLauncher
             return database.getDataSet(sql, "tableName");
         }
                
-        
+        //Information from here is also used in the CheckOut.cs Quick Search Bar.
         *//// <summary>
         /// This method houses all of the basic "Select" statements.
         /// </summary>
@@ -296,6 +296,7 @@ namespace CinderellaLauncher
         
 
         
+
 
       
 
@@ -433,8 +434,87 @@ namespace CinderellaLauncher
             string query = "select roleID FROM ShiftWorkers WHERE fairyGodmotherID = " + fgID + " AND shiftID = " + shiftID;
             return database.ReturnFirstCellInt(query);
         }
+        //String used for the Quick search Bar. SHOULD Search for Fairy Godmothers and Cinderellas by any means neccesary. 
+        public string FGQuickSearch(int fgID)
+        {
 
-        
+            //used for when a Fairy Godmother is used a a search parameter to locate a particular Cinderella. 
+            string query = "SELECT Cinderellas.firstName, Cinderella.lastName, Cinderellas.id, Referrals.organization, Cinderellas.currentStatus FROM Cinderellas WHERE id = "+fgID;
+            return query;
+        }
+
+        public string CindyShoeSize(int fgID)
+        {
+            
+            int ourCindy = getCindyIDFomFG(fgID);
+            string query = "SELECT Package.shoeSize FROM Package, Cinderellas WHERE Cinderellas.fairyGodmotherID = "+fgID+" AND Package.cinderellaID = "+ourCindy;
+            return database.ReturnFirstCellString(query);
+        }
+
+
+        public int CindyDressSize(int fgID)
+        {
+            int ourCindy = getCindyIDFomFG(fgID);
+            string query = "SELECT Package.dressSize FROM Package, Cinderellas WHERE Cinderellas.fairyGodmotherID = "+fgID+" AND Package.cinderellaID = "+ourCindy;
+            return database.ReturnFirstCellInt(query);
+        }
+
+        public string CindyDressColor(int fgID)
+        {
+            int ourCindy = getCindyIDFomFG(fgID);
+            string query = "SELECT Package.dressColor FROM Package,Cinderellas WHERE Cinderellas.fairyGodmotherID = "+fgID+" AND Package.cinderellaID = "+ourCindy;
+            return database.ReturnFirstCellString(query);
+        }
+
+        public string CindyShoeColor(int fgID)
+        {
+            int ourCindy = getCindyIDFomFG(fgID);
+            string query = "SELECT Package.shoeColor FROM Package,Cinderellas WHERE Cinderellas.fairyGodmotherID = " + fgID + " AND Package.cinderellaID = " + ourCindy;
+            return database.ReturnFirstCellString(query);
+        }
+
+        public int getCindyIDFomFG(int idFG)
+        {
+            string query = "SELECT Cinderellas.id FROM Cinderellas WHERE Cinderellas.fairyGodmotherID = "+idFG;
+
+            return database.ReturnFirstCellInt(query);
+        }
+
+        public string CindyNecklace(int fgID)
+        {
+            int ourCindy = getCindyIDFomFG(fgID);
+            string query = "SELECT Package.Necklace FROM Package,Cinderellas WHERE Cinderellas.fairyGodmotherID = " + fgID + " AND Package.cinderellaID = " + ourCindy;
+            return database.ReturnFirstCellString(query);
+        }
+
+        public string CindyRing(int fgID)
+        {
+            int ourCindy = getCindyIDFomFG(fgID);
+            string query = "SELECT Package.Ring FROM Package,Cinderellas WHERE Cinderellas.fairyGodmotherID = " + fgID + " AND Package.cinderellaID = " + ourCindy;
+            return database.ReturnFirstCellString(query);
+        }
+        public string CindyBracelet(int fgID)
+        {
+            int ourCindy = getCindyIDFomFG(fgID);
+            string query = "SELECT Package.Bracelet FROM Package,Cinderellas WHERE Cinderellas.fairyGodmotherID = " + fgID + " AND Package.cinderellaID = " + ourCindy;
+            return database.ReturnFirstCellString(query);
+        }
+
+        public string CindyHeadpiece(int fgID)
+        {
+            int ourCindy = getCindyIDFomFG(fgID);
+            string query = "SELECT Package.Headpiece FROM Package,Cinderellas WHERE Cinderellas.fairyGodmotherID = " + fgID + " AND Package.cinderellaID = " + ourCindy;
+            return database.ReturnFirstCellString(query);
+        }
+
+        public string CindyEarrings(int fgID)
+        {
+            int ourCindy = getCindyIDFomFG(fgID);
+            string query = "SELECT Package.Earrings FROM Package,Cinderellas WHERE Cinderellas.fairyGodmotherID = " + fgID + " AND Package.cinderellaID = " + ourCindy;
+            return database.ReturnFirstCellString(query);
+        }
+
+       
 
         
 
@@ -688,7 +768,7 @@ namespace CinderellaLauncher
         /// <returns>List of Cinderellas ready for checkout, first name, last name, referrals</returns>
         public string checkOutList(int count)
         {
-            string query = "Select TOP " + count + " Cinderellas.id,Cinderellas.firstName AS 'First Name',Cinderellas.lastName AS 'Last Name', Referrals.organization AS 'Organization' " +
+            string query = "Select TOP " + count + "Cinderellas.id,Cinderellas.firstName AS 'First Name',Cinderellas.lastName AS 'Last Name', Referrals.organization AS 'Organization' " +
                         "FROM Cinderellas INNER JOIN CinderellaStatus ON Cinderellas.currentStatus = CinderellaStatus.statusID INNER JOIN Referrals ON Referrals.id = Cinderellas.referralID " +
                         "WHERE CinderellaStatus.statusName = 'Shopping' OR CinderellaStatus.statusName = 'Alterations'" +
                         "ORDER BY Cinderellas.apptDate, Cinderellas.apptTime ";
@@ -697,7 +777,7 @@ namespace CinderellaLauncher
         }
         public string checkOutList()
         {
-            string query = "Select Cinderellas.id,Cinderellas.firstName AS 'First Name',Cinderellas.lastName AS 'Last Name', Referrals.organization AS 'Organization' " +
+            string query = "Select Cinderellas.currentStatus AS 'Status',Cinderellas.id,Cinderellas.firstName AS 'First Name',Cinderellas.lastName AS 'Last Name', Referrals.organization AS 'Organization' " +
                         "FROM Cinderellas INNER JOIN CinderellaStatus ON Cinderellas.currentStatus = CinderellaStatus.statusID INNER JOIN Referrals ON Referrals.id = Cinderellas.referralID " +
                         "WHERE CinderellaStatus.statusName = 'Shopping' OR CinderellaStatus.statusName = 'Alterations'" +
                         "ORDER BY Cinderellas.apptDate, Cinderellas.apptTime ";
