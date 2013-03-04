@@ -2069,10 +2069,6 @@ namespace CinderellaLauncher
             
             sqlConnection.Close();
             return returnValue.ToString();
-            
-
-          
-            
         }
 
 

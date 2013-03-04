@@ -36,9 +36,25 @@ namespace CinderellaLauncher
             id = CinderellaCheckInBarcodeTextbox.Text;
             query.setCinderellaStatus(id, 2);
 
-            
-        }
+            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            sqlConnection.Open();
+            SqlCommand Test = new SqlCommand();
 
+            Test.CommandText = "SELECT Cinderellas.firstName, Cinderellas.lastName From Cinderellas WHERE Cinderellas.id = " + id; ;
+            Test.CommandType = CommandType.Text;
+            Test.Connection = sqlConnection;
+
+            SqlDataReader Read;
+            Read = Test.ExecuteReader();
+
+            
+            while (Read.Read())
+                {
+                    DisplayCindi.Text = "You have Checked In: " + Read["firstName"].ToString() + " " + Read["lastName"];
+                }
+            sqlConnection.Close();
+            CinderellaCheckInBarcodeTextbox.Clear();
+        }
 
         private void CinderellaCheckInBarcodeTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -103,6 +119,12 @@ namespace CinderellaLauncher
 
 
         }
+
+        private void CinderellaCheckInBarcodeTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

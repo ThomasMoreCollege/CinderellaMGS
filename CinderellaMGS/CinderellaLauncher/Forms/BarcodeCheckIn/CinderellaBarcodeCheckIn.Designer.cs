@@ -33,6 +33,7 @@ namespace CinderellaLauncher
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CinderellaCheckInBarcode));
             this.CheckInTitleLbl = new System.Windows.Forms.Label();
             this.CinderellaCheckInBarcodeTextbox = new System.Windows.Forms.TextBox();
+            this.DisplayCindi = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CheckInTitleLbl
@@ -52,7 +53,16 @@ namespace CinderellaLauncher
             this.CinderellaCheckInBarcodeTextbox.Name = "CinderellaCheckInBarcodeTextbox";
             this.CinderellaCheckInBarcodeTextbox.Size = new System.Drawing.Size(380, 20);
             this.CinderellaCheckInBarcodeTextbox.TabIndex = 1;
+            this.CinderellaCheckInBarcodeTextbox.TextChanged += new System.EventHandler(this.CinderellaCheckInBarcodeTextbox_TextChanged);
             this.CinderellaCheckInBarcodeTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CinderellaCheckInBarcodeTextbox_KeyPress);
+            // 
+            // DisplayCindi
+            // 
+            this.DisplayCindi.AutoSize = true;
+            this.DisplayCindi.Location = new System.Drawing.Point(160, 113);
+            this.DisplayCindi.Name = "DisplayCindi";
+            this.DisplayCindi.Size = new System.Drawing.Size(0, 13);
+            this.DisplayCindi.TabIndex = 2;
             // 
             // CinderellaCheckInBarcode
             // 
@@ -60,6 +70,7 @@ namespace CinderellaLauncher
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(404, 239);
+            this.Controls.Add(this.DisplayCindi);
             this.Controls.Add(this.CinderellaCheckInBarcodeTextbox);
             this.Controls.Add(this.CheckInTitleLbl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -75,5 +86,6 @@ namespace CinderellaLauncher
 
         private System.Windows.Forms.Label CheckInTitleLbl;
         private System.Windows.Forms.TextBox CinderellaCheckInBarcodeTextbox;
+        private System.Windows.Forms.Label DisplayCindi;
     }
 }
