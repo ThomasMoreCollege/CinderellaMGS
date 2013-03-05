@@ -11,6 +11,9 @@ using System.Threading;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Diagnostics;
+using System.Timers;
+using UITimer = System.Windows.Forms.Timer;
+
 
 namespace CinderellaLauncher
 {
@@ -29,6 +32,9 @@ namespace CinderellaLauncher
 
         private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString);
         SQL_Queries query = new SQL_Queries();
+
+
+
 
 
         private void finishCheckIn(string id)
@@ -61,9 +67,19 @@ namespace CinderellaLauncher
             if (e.KeyChar == (char)13)
             {
                 {
-                    string id = CinderellaCheckInBarcodeTextbox.Text;
-                    //string currentTime = searchDGV.SelectedRows[0].Cells[4].Value.ToString();
+                   
+                    
+                    UITimer timer1 = new UITimer();
 
+                    timer1.Interval = 2500;
+
+                    timer1.Enabled = true;
+
+                    timer1.Tick += new System.EventHandler(OnTimerEvent);
+
+
+
+                    string id = CinderellaCheckInBarcodeTextbox.Text;
 
                     string currentTime = query.getTime(Convert.ToInt32(id));
 
@@ -117,6 +133,14 @@ namespace CinderellaLauncher
                 }
             }
 
+
+        }
+
+
+        private void OnTimerEvent(object sender, EventArgs e)
+        {
+
+            DisplayCindi.Text = "";
 
         }
 
