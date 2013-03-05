@@ -67,11 +67,11 @@ namespace CinderellaLauncher
             if (e.KeyChar == (char)13)
             {
                 {
-                   
+                    this.BackColor = System.Drawing.Color.Green;
                     
                     UITimer timer1 = new UITimer();
 
-                    timer1.Interval = 2500;
+                    timer1.Interval = 4000;
 
                     timer1.Enabled = true;
 
@@ -100,7 +100,7 @@ namespace CinderellaLauncher
                         if (offBy >= 1)
                         {
                             // Ask if user wants to checkin as is, change the appt time, or wait.
-                            MessageBox.Show("Person is one or more hours late");
+                            timeLbl.Text="Person is one or more hours late";
                         }
 
                         finishCheckIn(id);
@@ -118,7 +118,7 @@ namespace CinderellaLauncher
                         if (offBy >= 1)
                         {
                             // Ask if user wants to checkin as is, change the appt time, or wait.
-                            MessageBox.Show("Person is one or more hours early");
+                           timeLbl.Text="Person is one or more hours early";
                         }
 
                         finishCheckIn(id);
@@ -141,6 +141,8 @@ namespace CinderellaLauncher
         {
 
             DisplayCindi.Text = "";
+            timeLbl.Text = "";
+            this.BackColor = System.Drawing.Color.LavenderBlush;
 
         }
 

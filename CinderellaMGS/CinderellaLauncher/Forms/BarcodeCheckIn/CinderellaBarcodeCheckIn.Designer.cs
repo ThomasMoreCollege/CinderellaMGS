@@ -34,6 +34,7 @@ namespace CinderellaLauncher
             this.CheckInTitleLbl = new System.Windows.Forms.Label();
             this.CinderellaCheckInBarcodeTextbox = new System.Windows.Forms.TextBox();
             this.DisplayCindi = new System.Windows.Forms.Label();
+            this.timeLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CheckInTitleLbl
@@ -60,10 +61,20 @@ namespace CinderellaLauncher
             // 
             this.DisplayCindi.AutoSize = true;
             this.DisplayCindi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayCindi.ForeColor = System.Drawing.Color.FloralWhite;
             this.DisplayCindi.Location = new System.Drawing.Point(108, 113);
             this.DisplayCindi.Name = "DisplayCindi";
             this.DisplayCindi.Size = new System.Drawing.Size(0, 13);
             this.DisplayCindi.TabIndex = 2;
+            // 
+            // timeLbl
+            // 
+            this.timeLbl.AutoSize = true;
+            this.timeLbl.ForeColor = System.Drawing.Color.FloralWhite;
+            this.timeLbl.Location = new System.Drawing.Point(111, 150);
+            this.timeLbl.Name = "timeLbl";
+            this.timeLbl.Size = new System.Drawing.Size(0, 13);
+            this.timeLbl.TabIndex = 3;
             // 
             // CinderellaCheckInBarcode
             // 
@@ -71,6 +82,7 @@ namespace CinderellaLauncher
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(404, 239);
+            this.Controls.Add(this.timeLbl);
             this.Controls.Add(this.DisplayCindi);
             this.Controls.Add(this.CinderellaCheckInBarcodeTextbox);
             this.Controls.Add(this.CheckInTitleLbl);
@@ -88,5 +100,6 @@ namespace CinderellaLauncher
         private System.Windows.Forms.Label CheckInTitleLbl;
         private System.Windows.Forms.TextBox CinderellaCheckInBarcodeTextbox;
         private System.Windows.Forms.Label DisplayCindi;
+        private System.Windows.Forms.Label timeLbl;
     }
 }
