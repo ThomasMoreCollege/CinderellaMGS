@@ -48,8 +48,11 @@ namespace IDAutomation_FontEncoder
 		//This is the font object that is passed between the print method and the print
 		//event handler
 		private Font lclFont;
+        private Font lclFont2;
+        
 		//This is the text that will be printed from the printing event handler
 		private string TextToPrint;
+        private string TextToPrint2;
 
 		public clsBarCode()
 		{
@@ -2763,12 +2766,14 @@ namespace IDAutomation_FontEncoder
 		//the font to print, the encoded string, and the size of the font.  The string should 
 		//be encoded by using one of the bar code functions included in this class.  Ensure 
 		//that the font is installed on the computer before attempting to call this function.
-		public void PrintBarCode(string TextFont, string EncodedText, float TextFontSize)
+		public void PrintBarCode(string TextFont, string EncodedText, float TextFontSize, string TextFont2, string EncodedText2, float TextFontSize2)
 		{
 			//Update the class variables
 			lclFont = new Font(TextFont,TextFontSize);
 			TextToPrint = EncodedText;
-			
+
+            lclFont2 = new Font(TextFont2, TextFontSize2);
+            TextToPrint2 = EncodedText2;
 			//create the document object that will be printed.
 			PrintDocument PrintDoc = new PrintDocument();
 			
@@ -2788,22 +2793,37 @@ namespace IDAutomation_FontEncoder
 		private void PrintDocHandler(object sender, PrintPageEventArgs ev)
 		{
 			//Vertical postion on page of bar code
-			float yPos = 100;
+			float yPos = 60;
 			//Hotizontal position on the page of the bar code
-			float xPos = 100;
+			float xPos = 125;
+            //Vertical postion on page of bar code
+            float yPos2 = 60;
+            //Hotizontal position on the page of the bar code
+            float xPos2 = 10;
 			//Set the left margin of the page
 			float leftMargin = ev.MarginBounds.Left;
 			//set the top margin of the page.
 			float topMargin = ev.MarginBounds.Top;
-			
+            ev.Graphics.DrawString(TextToPrint, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+            ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
 			//set the y pos to include the height of the text
-			yPos = yPos + lclFont.GetHeight(ev.Graphics);
-
+            //yPos = yPos + lclFont.GetHeight(ev.Graphics);
+            //yPos2 = yPos2 + lclFont2.GetHeight(ev.Graphics);
 			//set the x pos to include the left margin of the page
-			xPos = xPos + leftMargin;
+			//xPos = xPos + leftMargin;
+            //xPos2 = xPos2 + leftMargin;
 
 			//send the string to the printer
-			ev.Graphics.DrawString(TextToPrint, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+            int count = 2;
+            while (count != 0)
+            {
+                xPos += 300;
+                xPos2 += 300;
+
+                ev.Graphics.DrawString(TextToPrint, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+                ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+                count--;
+            }
 		}
 	}//End Class
 }//End Name Space

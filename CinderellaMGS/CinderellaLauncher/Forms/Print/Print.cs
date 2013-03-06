@@ -14,6 +14,7 @@ namespace CinderellaLauncher.Forms
 {
     public partial class Print : Form
     {
+        SQL_Queries query = new SQL_Queries();
         clsBarCode PrintLabel = new clsBarCode();
         public Print()
         {
@@ -27,8 +28,9 @@ namespace CinderellaLauncher.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string barcode = "*" + PrintBox.Text + "*";
-            PrintLabel.PrintBarCode("IDAutomationHC39M", barcode, 12);
+           string q= query.PrintCinderellaName(PrintBox.Text) + "  ";
+             string barcode = "*"+ PrintBox.Text +"*";
+             PrintLabel.PrintBarCode("IDAutomationHC39M", barcode, 9, "Times New Roman", q, 12);
 
         }
     }
