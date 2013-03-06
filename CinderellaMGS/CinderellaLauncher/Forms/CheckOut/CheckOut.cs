@@ -321,7 +321,6 @@ namespace CinderellaLauncher
         }
         private void searchButton_Click(object sender, EventArgs e)
         {
-
             if (QSearchTextBox.Text.Length > 0)
             {
 
@@ -677,6 +676,11 @@ namespace CinderellaLauncher
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

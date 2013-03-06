@@ -67,6 +67,8 @@
             this.refreshButtonAlterations = new System.Windows.Forms.Button();
             this.BarcodeTextBoxAlterations = new System.Windows.Forms.TextBox();
             this.AlterationsScanLabel = new System.Windows.Forms.Label();
+            this.SearchBox = new System.Windows.Forms.TextBox();
+            this.Search = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.alterationsCinderellasDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppingCinderellasDGV)).BeginInit();
@@ -519,12 +521,31 @@
             this.AlterationsScanLabel.TabIndex = 38;
             this.AlterationsScanLabel.Text = "Scan";
             // 
+            // SearchBox
+            // 
+            this.SearchBox.Location = new System.Drawing.Point(26, 41);
+            this.SearchBox.Name = "SearchBox";
+            this.SearchBox.Size = new System.Drawing.Size(100, 20);
+            this.SearchBox.TabIndex = 39;
+            // 
+            // Search
+            // 
+            this.Search.Location = new System.Drawing.Point(153, 41);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(75, 23);
+            this.Search.TabIndex = 40;
+            this.Search.Text = "Search";
+            this.Search.UseVisualStyleBackColor = true;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
+            // 
             // Alterations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(978, 523);
+            this.Controls.Add(this.Search);
+            this.Controls.Add(this.SearchBox);
             this.Controls.Add(this.AlterationsScanLabel);
             this.Controls.Add(this.BarcodeTextBoxAlterations);
             this.Controls.Add(this.refreshButtonAlterations);
@@ -603,5 +624,7 @@
         private System.Windows.Forms.Button refreshButtonAlterations;
         private System.Windows.Forms.TextBox BarcodeTextBoxAlterations;
         private System.Windows.Forms.Label AlterationsScanLabel;
+        private System.Windows.Forms.TextBox SearchBox;
+        private System.Windows.Forms.Button Search;
     }
 }

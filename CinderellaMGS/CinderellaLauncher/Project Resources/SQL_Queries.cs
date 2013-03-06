@@ -2112,6 +2112,125 @@ namespace CinderellaLauncher
                             "WHERE FairyGodmothers.id IN (SELECT fairyGodmotherID FROM ShiftWorkers WHERE ShiftWorkers.roleID = 5)";
             return query;
         }
+
+
+            /*query += ") AND (Referrals.organization LIKE '" + cinOrganization + "%' ";
+            if (cinOrganization == "" || cinOrganization == " ")
+            {
+                query += "OR Referrals.organization IS NULL";
+            }
+            query += ") AND (PersonalShoppers.firstName LIKE '" + FGFirstName + "%' ";
+            if (FGFirstName == "" || FGFirstName == " ")
+            {
+                query += "OR PersonalShoppers.firstName IS NULL";
+            }
+            query += ") AND (PersonalShoppers.lastName LIKE '" + FGLastName + "%' ";
+            if (FGLastName == "" || FGLastName == " ")
+            {
+                query += "OR PersonalShoppers.lastName IS NULL";
+            }
+            query += ") ";              //Handling textboxes is done.
+
+            ////////////////////////////////     Need a break in all this confusing code            
+            ////////////////////////////////
+            int i = 0;
+
+            if (dressColor.Length != 0)              //Handles the dress color(s)
+            {
+                query += " AND Package.dressColor IN (";
+
+                string dresscolors = "";
+                foreach (string color in dressColor)
+                {
+                    i++;
+                    if (i == 1)
+                        dresscolors += "'" + color + "'";        //Don't add the comma if its the first element.
+                    else
+                    {
+                        dresscolors += ", '" + color + "'";
+                    }
+                }
+                query += dresscolors + ") ";
+            }
+
+            i = 0;
+            if (hasShoes)
+            {
+                if (shoeColor.Length != 0)          //Handles the shoe color(s)
+                {
+                    query += " AND Package.shoeColor IN (";
+                    string shoecolors = "";
+                    foreach (string color in shoeColor)
+                    {
+                        i++;
+                        if (i == 1)
+                            shoecolors += "'" + color + "'";        //Don't add the comma if its the first element.
+                        else
+                        {
+                            shoecolors += ", '" + color + "'";
+                        }
+                    }
+                    query += shoecolors + ") ";
+                }
+                query += " AND ((Package.shoeSize >= " + minShoeSize + " AND Package.shoeSize <= " + maxShoeSize + ") OR Package.shoeSize IS NULL) "; //handles shoe size
+            }
+            else
+            {
+                query += " AND Package.shoeColor IS NULL AND Package.shoeSize IS NULL";
+            }
+            ////////////////////////////    Another needed break
+            ////////////////////////////
+
+            query += " AND ((Package.dressSize >= " + minDressSize + " AND Package.dressSize <= " + maxDressSize + ") OR Package.dressSize IS NULL) ";          //Handles the range of dress size. If looking for a specific value, make max and min the same value.
+            if (SeamstressID > 0 && hadAlterations != 0)
+                query += " AND Alterators.id = " + SeamstressID;
+
+            if (hadAlterations == 1)
+                query += " AND Cinderellas.id IN (SELECT cinderellaID FROM Alteration) ";
+            if (hadAlterations == 0)
+                query += " AND Cinderellas.id NOT IN (SELECT cinderellaID FROM Alteration) ";
+
+            if (ring == 0 || ring == 1)                 //0 = False, 1 = True, Anything else = Unknown
+                query += " AND Package.Ring = " + ring;
+            if (necklace == 0 || necklace == 1)
+                query += " AND Package.Necklace = " + necklace;
+            if (bracelet == 0 || bracelet == 1)
+                query += " AND Package.Bracelet = " + bracelet;
+            if (headpiece == 0 || headpiece == 1)
+                query += " AND Package.Headpiece = " + headpiece;
+            if (earring == 0 || earring == 1)
+                query += " AND Package.Earrings = " + earring;
+            */
+
+        internal string MasterSearchBox(string item)
+        {
+
+            string query = "SELECT Cinderellas.id, Cinderellas.firstName AS 'First Name', Cinderellas.lastName AS 'Last Name', CinderellaStatus.statusName AS 'Status', FairyGodmothers.firstName AS 'Personal Shopper First Name', FairyGodmothers.lastName AS 'Personal Shopper Last Name' " +
+                            "FROM Cinderellas INNER JOIN CinderellaStatus ON Cinderellas.currentStatus = CinderellaStatus.statusID INNER JOIN FairyGodmothers ON Cinderellas.fairyGodmotherID = FairyGodmothers.id " +
+                           "WHERE (Cinderellas.firstName LIKE '" + item + "%' ";
+            if (item == "" || item == " ")      //Start handling textboxes
+            {
+                query += "OR Cinderellas.firstName IS NULL";
+            }
+            query += ") OR (Cinderellas.lastName LIKE '" + item + "%' ";
+
+            if (item == "" || item == " ")
+            {
+                query += "OR Cinderellas.lastName IS NULL";
+            }
+            query += ") OR (FairyGodmothers.firstName LIKE '" + item + "%' ";
+            if (item == "" || item == " ")
+            {
+                query += "OR FairyGodmothers.firstName IS NULL";
+            }
+            query += ") OR (FairyGodmothers.lastName LIKE '" + item + "%' ";
+            if (item == "" || item == " ")
+            {
+                query += "OR FairyGodmothers.lastName IS NULL";
+            }
+            query += ") ";
+            return query;
+        }
     }
 }
 

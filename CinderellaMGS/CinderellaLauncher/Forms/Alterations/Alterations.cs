@@ -470,5 +470,18 @@ namespace CinderellaLauncher
             }
             MessageBox.Show("File: C:\\CinderellaMGS\\cinderellamgs\\CinderellaMGS\\Documentation\\Help\\UserManual.pdf   Does Not Exist.");
         }
+
+        private void Search_Click(object sender, EventArgs e)
+        {
+            
+            string q = query.MasterSearchBox(SearchBox.Text);
+            shoppingCinderellasDGVDataTable = new DataTable();
+            shoppingCinderellasDGV.DataSource = shoppingCinderellasDGVBindingSource;
+            shoppingCinderellasDGVDataAdapter = new SqlDataAdapter(q, connection);
+            shoppingCinderellasDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
+            shoppingCinderellasDGVDataAdapter.Fill(shoppingCinderellasDGVDataTable);
+            shoppingCinderellasDGVBindingSource.DataSource = shoppingCinderellasDGVDataTable;
+            shoppingCinderellasDGV.ClearSelection();
+        }
     }
 }
