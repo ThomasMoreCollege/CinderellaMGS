@@ -2052,6 +2052,32 @@ namespace CinderellaLauncher
 
 
 
+        public string getCinderellaStatus(int id)
+        {
+            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlCommand Test = new SqlCommand();
+            Object returnValue;
+
+            Test.CommandText = "SELECT Cinderellas.currentStatus FROM Cinderellas WHERE Cinderellas.id = " + id;
+                              
+                              
+            Test.CommandType = CommandType.Text;
+            Test.Connection = sqlConnection;
+
+            sqlConnection.Open();
+
+            returnValue = Test.ExecuteScalar();
+
+            sqlConnection.Close();
+            return returnValue.ToString();
+
+
+            
+          
+        
+        }
+
+
         public string getTime(int id)
         {
 
@@ -2059,7 +2085,7 @@ namespace CinderellaLauncher
             SqlCommand Test = new SqlCommand();
             Object returnValue;
 
-            Test.CommandText = "SELECT Cinderellas.apptTime From Cinderellas WHERE Cinderellas.id = " + id;;
+            Test.CommandText = "SELECT Cinderellas.apptTime From Cinderellas WHERE Cinderellas.id = " + id;
             Test.CommandType = CommandType.Text;
             Test.Connection = sqlConnection;
 

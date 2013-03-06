@@ -66,74 +66,90 @@ namespace CinderellaLauncher
         {
             if (e.KeyChar == (char)13)
             {
-                {
-                    this.BackColor = System.Drawing.Color.Green;
-                    
-                    UITimer timer1 = new UITimer();
+                { UITimer timer1 = new UITimer();
 
-                    timer1.Interval = 4000;
+                        timer1.Interval = 5000;
 
-                    timer1.Enabled = true;
+                        timer1.Enabled = true;
 
-                    timer1.Tick += new System.EventHandler(OnTimerEvent);
+                        timer1.Tick += new System.EventHandler(OnTimerEvent);
+                    int id = Convert.ToInt16(CinderellaCheckInBarcodeTextbox.Text);
 
-
-
-                    string id = CinderellaCheckInBarcodeTextbox.Text;
-
-                    string currentTime = query.getTime(Convert.ToInt32(id));
-
-
-                    DateTime now = DateTime.Now;
-                    DateTime cT = Convert.ToDateTime(currentTime);
-                    int foo = DateTime.Compare(now, cT);
-
-                    // This person is late for their appointment
-                    if (foo > 0)
+                    string status = query.getCinderellaStatus(id);
+                    if (Convert.ToInt16(status) == 1)
                     {
 
-                        long diff = now.Ticks - cT.Ticks;
-                        TimeSpan span = TimeSpan.FromTicks(diff);
 
-                        int offBy = span.Hours;
+                        this.BackColor = System.Drawing.Color.Green;
 
-                        if (offBy >= 1)
+
+                        string currentTime = query.getTime(id);
+
+
+
+                        DateTime now = DateTime.Now;
+                        DateTime cT = Convert.ToDateTime(currentTime);
+                        int foo = DateTime.Compare(now, cT);
+
+                        // This person is late for their appointment
+                        if (foo > 0)
                         {
-                            // Ask if user wants to checkin as is, change the appt time, or wait.
-                            timeLbl.Text="Person is one or more hours late";
+
+                            long diff = now.Ticks - cT.Ticks;
+                            TimeSpan span = TimeSpan.FromTicks(diff);
+
+                            int offBy = span.Hours;
+
+                            if (offBy >= 1)
+                            {
+                                // Ask if user wants to checkin as is, change the appt time, or wait.
+                                timeLbl.Text = "Person is one or more hours late";
+                            }
+
+                            finishCheckIn(Convert.ToString(id));
+
+
+                        }
+                        // This person is early for their appointment
+                        else if (foo < 0)
+                        {
+
+                            long diff = cT.Ticks - now.Ticks;
+                            TimeSpan span = TimeSpan.FromTicks(diff);
+                            int offBy = span.Hours;
+
+                            if (offBy >= 1)
+                            {
+                                // Ask if user wants to checkin as is, change the appt time, or wait.
+                                timeLbl.Text = "Person is one or more hours early";
+                            }
+
+                            finishCheckIn(Convert.ToString(id));
+                        }
+                        // This person is EXACTLY on time. This will probably not happen.
+                        else
+                        {
+                            finishCheckIn(Convert.ToString(id));
+
                         }
 
-                        finishCheckIn(id);
-
-
                     }
-                    // This person is early for their appointment
-                    else if (foo < 0)
-                    {
 
-                        long diff = cT.Ticks - now.Ticks;
-                        TimeSpan span = TimeSpan.FromTicks(diff);
-                        int offBy = span.Hours;
-
-                        if (offBy >= 1)
-                        {
-                            // Ask if user wants to checkin as is, change the appt time, or wait.
-                           timeLbl.Text="Person is one or more hours early";
-                        }
-
-                        finishCheckIn(id);
-                    }
-                    // This person is EXACTLY on time. This will probably not happen.
                     else
                     {
-                        finishCheckIn(id);
+
+                        this.BackColor = System.Drawing.Color.Red;
+                        timeLbl.Text = "Cinderella is already checked in";
+
+
+
 
                     }
 
                 }
+
+
             }
-
-
         }
 
 
