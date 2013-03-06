@@ -330,6 +330,5 @@ namespace CinderellaLauncher
             Thread aboutThread = new Thread(() => Application.Run(new About()));
             aboutThread.Start();
         }
-
     }
 }

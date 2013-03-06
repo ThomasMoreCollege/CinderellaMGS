@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Threading;
 using System.Diagnostics;
+using CinderellaLauncher.Forms;
 
 // Statuses: Shopping = 4, Alterations = 6
 
@@ -482,6 +483,12 @@ namespace CinderellaLauncher
             shoppingCinderellasDGVDataAdapter.Fill(shoppingCinderellasDGVDataTable);
             shoppingCinderellasDGVBindingSource.DataSource = shoppingCinderellasDGVDataTable;
             shoppingCinderellasDGV.ClearSelection();
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thread Printer = new Thread(() => Application.Run(new CinderellaLauncher.Forms.Print()));
+            Printer.Start();
         }
     }
 }
