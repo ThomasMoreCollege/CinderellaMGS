@@ -107,6 +107,16 @@
     <Compile Include="Forms\FGBarcodeCheckIn\FGBarcodeCheckIn.Designer.cs">
       <DependentUpon>FGBarcodeCheckIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Print\IDAutomation.cs" />
+    <Compile Include="Forms\Print\PCPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Print\Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Print\Print.Designer.cs">
+      <DependentUpon>Print.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Main_Menu\Administration\AdminMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -359,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ManageFairyGodmothers\UndoCheckIn.resx">
       <DependentUpon>UndoCheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Print\Print.resx">
+      <DependentUpon>Print.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ShoppingMgt\ShoppingMgt.resx">
       <DependentUpon>ShoppingMgt.cs</DependentUpon>
