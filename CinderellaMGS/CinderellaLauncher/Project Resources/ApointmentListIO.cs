@@ -550,12 +550,9 @@ namespace BusinessLogic
                                 Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
                             }
 
-                            index++;
-
                         }
 
                     }
-                    index = 0;
 
                     //Code for progress bar.
 
