@@ -22,6 +22,7 @@ namespace IDAutomation_FontEncoder
 	/// </summary>
 	public class clsBarCode
 	{
+        CinderellaLauncher.SQL_Queries query = new CinderellaLauncher.SQL_Queries();
 		//Constants for this class
 		private const int ASCII_START128_A = 203;		//Start character for Code128 Char Set A
 		private const int ASCII_START128_B = 204;		//Start character for Code128 Char Set B
@@ -44,7 +45,7 @@ namespace IDAutomation_FontEncoder
 			EncodingB = 2,
 			EncodingC = 3
 		};
-		
+        
 		//This is the font object that is passed between the print method and the print
 		//event handler
 		private Font lclFont;
@@ -53,7 +54,7 @@ namespace IDAutomation_FontEncoder
 		//This is the text that will be printed from the printing event handler
 		private string TextToPrint;
         private string TextToPrint2;
-
+        private string TextToPrint3;
 		public clsBarCode()
 		{
 
@@ -2780,7 +2781,7 @@ namespace IDAutomation_FontEncoder
 			//Call the print page method of the Print Document.  This assigns the event handler
 			//that is used for printing operations of this bar code
 			PrintDoc.PrintPage += new PrintPageEventHandler(this.PrintDocHandler);
-
+            
 			//now print the bar code.  Control will go to the event handler for any additional 
 			//instructions for the printer, such as printing additional lines and
 			//the location of the bar code on the page.
@@ -2804,8 +2805,20 @@ namespace IDAutomation_FontEncoder
 			float leftMargin = ev.MarginBounds.Left;
 			//set the top margin of the page.
 			float topMargin = ev.MarginBounds.Top;
-            ev.Graphics.DrawString(TextToPrint, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+            TextToPrint2 = query.PrintCinderellaName(TextToPrint) + "            ";
+            TextToPrint3 = "*" + TextToPrint + "*";
+            ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
             ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+            int count2 = 2;
+            while (count2 != 0)
+            {
+                xPos += 280;
+                xPos2 += 280;
+
+                ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+                ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+                count2--;
+            }
 			//set the y pos to include the height of the text
             //yPos = yPos + lclFont.GetHeight(ev.Graphics);
             //yPos2 = yPos2 + lclFont2.GetHeight(ev.Graphics);
@@ -2815,15 +2828,56 @@ namespace IDAutomation_FontEncoder
 
 			//send the string to the printer
             int count = 2;
-            while (count != 0)
+            int count1 = 9;
+            int count3 = Convert.ToInt32(query.count());
+            count3 =count3-1;
+           // if (ev.HasMorePages == true)
+           // {
+            while (count3 != 0)
             {
-                xPos += 300;
-                xPos2 += 300;
+                
+                    //Vertical postion on page of bar code
+                    yPos = 60;
+                    //Hotizontal position on the page of the bar code
+                    xPos = 125;
+                    //Vertical postion on page of bar code
+                    yPos2 = 60;
+                    //Hotizontal position on the page of the bar code
+                    xPos2 = 10;
 
-                ev.Graphics.DrawString(TextToPrint, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
-                ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
-                count--;
-            }
-		}
+
+                    while (count1 != 0)
+                    {
+                        string x = TextToPrint.ToString();
+                        int Text = Convert.ToInt32(x);
+                        Text++;
+                        TextToPrint = Convert.ToString(Text);
+                        yPos += 100;
+                        yPos2 += 100;
+                        xPos = 125;
+                        xPos2 = 10;
+                        TextToPrint2 = query.PrintCinderellaName(TextToPrint) + "             ";
+
+                        TextToPrint3 = "*" + TextToPrint + "*";
+                        ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+                        ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+
+
+                        while (count != 0)
+                        {
+                            xPos += 280;
+                            xPos2 += 280;
+
+                            ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+                            ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+
+                            count--;
+                        }// end horizontal
+                        --count3;
+                        count1--;
+                    }// end vertical
+               // }
+            }// end total
+        }
 	}//End Class
 }//End Name Space

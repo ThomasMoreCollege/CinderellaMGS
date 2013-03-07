@@ -2234,7 +2234,6 @@ namespace CinderellaLauncher
 
         public string PrintCinderellaName(string ID)
         {
-
             SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
             SqlCommand Test = new SqlCommand();
             Object returnValue;
@@ -2249,6 +2248,25 @@ namespace CinderellaLauncher
 
             sqlConnection.Close();
             return returnValue.ToString();
+        }
+
+        public string count()
+        {
+
+            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlCommand Test = new SqlCommand();
+            Object returnValue1;
+
+            Test.CommandText = "SELECT COUNT(id) FROM Cinderellas";
+            Test.CommandType = CommandType.Text;
+            Test.Connection = sqlConnection;
+
+            sqlConnection.Open();
+
+            returnValue1 = Test.ExecuteScalar();
+
+            sqlConnection.Close();
+            return returnValue1.ToString();
         }
     }
 }

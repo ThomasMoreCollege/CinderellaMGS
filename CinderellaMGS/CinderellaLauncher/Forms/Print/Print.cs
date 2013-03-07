@@ -28,10 +28,9 @@ namespace CinderellaLauncher.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-           string q= query.PrintCinderellaName(PrintBox.Text) + "  ";
-             string barcode = "*"+ PrintBox.Text +"*";
-             PrintLabel.PrintBarCode("IDAutomationHC39M", barcode, 9, "Times New Roman", q, 12);
-
+            string q = query.PrintCinderellaName(PrintBox.Text) + "     ";
+             string barcode = PrintBox.Text;
+             PrintLabel.PrintBarCode("IDAutomationHC39M", barcode, 9, "Times New Roman", q, 9);
         }
     }
 }
