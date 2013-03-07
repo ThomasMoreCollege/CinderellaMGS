@@ -253,7 +253,7 @@ namespace BusinessLogic
 
             //Creates a new array of objects called particulars_Shift where the values for a row are stored for analysis.
             //This object is specifically for the use of analysing the Fairy Godmother Roles.
-            object[] particulars_Shift = new object[3];
+            object[] particulars_Shift = new object[4];
 
             //An integer that represents a shift.
             int shiftID = 0;
@@ -338,11 +338,12 @@ namespace BusinessLogic
                 int index = 0;
 
                 //This loop begins reading values into the database.
-                for (int rows = 2; rows <= closetTuples_G.Rows.Count; rows++)
+                for (int rows = 2; rows < closetTuples_G.Rows.Count; rows++)
                 {
 
                     //This loop begins to read values for each specific column.
-                    for (int columns = 1; columns < closetTuples_G.Columns.Count; columns++)
+                    //It stops at column 8 due to columns 9 through 11 being shift related.
+                    for (int columns = 1; columns <= 8; columns++)
                     {
 
                         //The object Value_C is now assigned to be the value of a certain cell in the closetSheet Excel sheet.
@@ -354,20 +355,16 @@ namespace BusinessLogic
                         //Checks the first column for any cells with special characters and if it finds one, corrects it.
                         if (columns == 1)
                         {
-
                             particulars_G[index] = Value_G.ToString().Trim();
                             if (particulars_G[index].ToString().Contains("'"))
                             {
-
-
                                 correctIndex = particulars_G[index].ToString().IndexOf("'");
 
                                 particulars_G[index] = particulars_G[index].ToString().Replace("'", "''");
                                 Console.WriteLine(particulars_G[index].ToString());
                                 closetSheet_G.Cells[rows, 1] = particulars_G[index];
-
-
                             }
+
                             index++;
                         }
 
@@ -446,77 +443,121 @@ namespace BusinessLogic
 
 
 
-                /*for (int rightSideRows = 5; rightSideRows < closetTuples2.Rows.Count; rightSideRows++)
+                //This loop begins reading values into the database for the Fairy Godmother shifts.
+                for (int rows = 2; rows <= closetTuples_G.Rows.Count; rows++)
                 {
-                    for (int columnSides = 2; columnSides < 20; columnSides++)
+
+                    //This loop begins to read values for each of the three shift columns.
+                    //It begins at column 9 because the Shift information begins at column 9.
+                    for (int columns = 9; columns < closetTuples_G.Columns.Count; columns++)
                     {
-                        //First element will be fairyGodmotherID, then the rest is just sorting
-                        //out the Role and Shift information!
-                        if (columnSides > 3 && columnSides < 12) //was 12!
-                        {
-                            continue;
-                        }
 
-                        //If a godmother's role changes when a time slot changes, that must be
-                        //stored
-                        shiftElement = closetSheet2.Cells[rightSideRows, columnSides].Value;
+                        //The object Value_G is now assigned to be the value of a certain cell in the closetSheet Excel sheet.
+                        Value_G = closetSheet_G.Cells[rows, columns].Value;
 
-                        if (shiftElement == null)
-                        {
-                            continue;
-                        }
+                        //The integer correctIndex is assigned to a cell with a special character that needs to be replaced.
+                        //int correctIndex;
 
-                        if (shiftElement.ToString().Trim() == "X")
+                        //Places the contents of column 9 (the shift and role IDs) into the particulars_Shift object.
+                        if (columns == 9)
                         {
-                            if (roleID > 0 && shiftID > 0)
+                            shiftID = 1;
+                            particulars_Shift[index] = Value_G.ToString().Trim();
+
+                            if (particulars_Shift[index] == "Not Volunteering" || particulars_Shift[index] == "NULL" || particulars_Shift[index] == "" || particulars_Shift[index] == null)
                             {
-                                // continue;
+                                continue;
                             }
-                            switch (columnSides)
+
+                            else if (particulars_Shift[index] == "Personal Shopper")
                             {
-                                //Friday, PM time slot, Personal Shopper
-                                case 12: roleID = 4; shiftID = 1;
-                                    Godmother_Add.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                    break;
-                                //Friday, PM time slot, Volunteer
-                                case 13: roleID = 6; shiftID = 1;
-                                    Godmother_Add.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                    break;
-                                //Friday, PM time slot, Alterator 
-                                case 14: roleID = 5; shiftID = 1;
-                                    Godmother_Add.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                    break;
-                                //Saturday, AM time slot, Personal Shopper
-                                case 15: roleID = 4; shiftID = 2;
-                                    Godmother_Add.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                    break;
-                                //Saturday, AM time slot, Volunteer
-                                case 16: roleID = 6; shiftID = 2;
-                                    Godmother_Add.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                    break;
-                                //Saturday, AM time slot, Alterator
-                                case 17: roleID = 5; shiftID = 2;
-                                    Godmother_Add.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                    break;
-                                //Saturday, PM time slot, Personal Shopper
-                                case 18: roleID = 4; shiftID = 3;
-                                    Godmother_Add.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                    break;
-                                //Saturday, PM time slot, Volunteer
-                                case 19: roleID = 6; shiftID = 3;
-                                    Godmother_Add.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                    break;
-                                //Saturday, PM time slot, Alterator
-                                case 20: roleID = 5; shiftID = 3;
-                                    Godmother_Add.newFGShiftWorker(closetSheet2.Cells[rightSideRows, 2].Value.ToString(), closetSheet2.Cells[rightSideRows, 3].Value.ToString(), shiftID, roleID);
-                                    break;
-                                default:
-                                    break;
+                                roleID = 4;
+                                Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
+                            }
+
+                            else if (particulars_Shift[index] == "Alterations")
+                            {
+                                roleID = 5;
+                                Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
+                            }
+
+                            else
+                            {
+                                roleID = 6;
+                                Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
                             }
 
                         }
+
+                        //Places the contents of column 10 (the shift and role IDs) into the particulars_Shift object.
+                        else if (columns == 10)
+                        {
+                            shiftID = 2;
+                            particulars_Shift[index] = Value_G.ToString().Trim();
+
+                            if (particulars_Shift[index] == "Not Volunteering" || particulars_Shift[index] == "NULL" || particulars_Shift[index] == "" || particulars_Shift[index] == null)
+                            {
+                                continue;
+                            }
+
+                            else if (particulars_Shift[index] == "Personal Shopper")
+                            {
+                                roleID = 4;
+                                Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
+                            }
+
+                            else if (particulars_Shift[index] == "Alterations")
+                            {
+                                roleID = 5;
+                                Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
+                            }
+
+                            else
+                            {
+                                roleID = 6;
+                                Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
+                            }
+
+                        }
+
+                        //Places the contents of column 9 (the shift and role IDs) into the particulars_Shift object.
+                        else if (columns == 11)
+                        {
+                            shiftID = 3;
+                            particulars_Shift[index] = Value_G.ToString().Trim();
+
+                            if (particulars_Shift[index] == "Not Volunteering" || particulars_Shift[index] == "NULL" || particulars_Shift[index] == "" || particulars_Shift[index] == null)
+                            {
+                                continue;
+                            }
+
+                            else if (particulars_Shift[index] == "Personal Shopper")
+                            {
+                                roleID = 4;
+                                Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
+                            }
+
+                            else if (particulars_Shift[index] == "Alterations")
+                            {
+                                roleID = 5;
+                                Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
+                            }
+
+                            else
+                            {
+                                roleID = 6;
+                                Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
+                            }
+
+                        }
+
                     }
-                }*/
+                    index = 0;
+
+                    //Code for progress bar.
+
+                }
+
                 closetBook_G.Close();
                 intermediary_G.Quit();
                 Marshal.ReleaseComObject(intermediary_G);
