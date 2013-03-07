@@ -253,7 +253,7 @@ namespace BusinessLogic
 
             //Creates a new array of objects called particulars_Shift where the values for a row are stored for analysis.
             //This object is specifically for the use of analysing the Fairy Godmother Roles.
-            object[] particulars_Shift = new object[4];
+            object particulars_Shift = new object;
 
             //An integer that represents a shift.
             int shiftID = 0;
@@ -357,6 +357,7 @@ namespace BusinessLogic
                         {
                             particulars_G[index] = Value_G.ToString().Trim();
                             if (particulars_G[index].ToString().Contains("'"))
+
                             {
                                 correctIndex = particulars_G[index].ToString().IndexOf("'");
 
@@ -462,20 +463,20 @@ namespace BusinessLogic
                         if (columns == 9)
                         {
                             shiftID = 1;
-                            particulars_Shift[index] = Value_G.ToString().Trim();
+                            particulars_Shift = Value_G.ToString().Trim();
 
-                            if (particulars_Shift[index] == "Not Volunteering" || particulars_Shift[index] == "NULL" || particulars_Shift[index] == "" || particulars_Shift[index] == null)
+                            if (particulars_Shift == "Not Volunteering" || particulars_Shift == "NULL" || particulars_Shift == "" || particulars_Shift == null)
                             {
                                 continue;
                             }
 
-                            else if (particulars_Shift[index] == "Personal Shopper")
+                            else if (particulars_Shift == "Personal Shopper")
                             {
                                 roleID = 4;
                                 Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
                             }
 
-                            else if (particulars_Shift[index] == "Alterations")
+                            else if (particulars_Shift == "Alterations")
                             {
                                 roleID = 5;
                                 Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
@@ -493,20 +494,20 @@ namespace BusinessLogic
                         else if (columns == 10)
                         {
                             shiftID = 2;
-                            particulars_Shift[index] = Value_G.ToString().Trim();
+                            particulars_Shift = Value_G.ToString().Trim();
 
-                            if (particulars_Shift[index] == "Not Volunteering" || particulars_Shift[index] == "NULL" || particulars_Shift[index] == "" || particulars_Shift[index] == null)
+                            if (particulars_Shift == "Not Volunteering" || particulars_Shift == "NULL" || particulars_Shift == "" || particulars_Shift == null)
                             {
                                 continue;
                             }
 
-                            else if (particulars_Shift[index] == "Personal Shopper")
+                            else if (particulars_Shift == "Personal Shopper")
                             {
                                 roleID = 4;
                                 Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
                             }
 
-                            else if (particulars_Shift[index] == "Alterations")
+                            else if (particulars_Shift == "Alterations")
                             {
                                 roleID = 5;
                                 Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
@@ -524,20 +525,20 @@ namespace BusinessLogic
                         else if (columns == 11)
                         {
                             shiftID = 3;
-                            particulars_Shift[index] = Value_G.ToString().Trim();
+                            particulars_Shift = Value_G.ToString().Trim();
 
-                            if (particulars_Shift[index] == "Not Volunteering" || particulars_Shift[index] == "NULL" || particulars_Shift[index] == "" || particulars_Shift[index] == null)
+                            if (particulars_Shift == "Not Volunteering" || particulars_Shift == "NULL" || particulars_Shift == "" || particulars_Shift == null)
                             {
                                 continue;
                             }
 
-                            else if (particulars_Shift[index] == "Personal Shopper")
+                            else if (particulars_Shift == "Personal Shopper")
                             {
                                 roleID = 4;
                                 Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
                             }
 
-                            else if (particulars_Shift[index] == "Alterations")
+                            else if (particulars_Shift == "Alterations")
                             {
                                 roleID = 5;
                                 Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
@@ -548,6 +549,8 @@ namespace BusinessLogic
                                 roleID = 6;
                                 Godmother_Add.newFGShiftWorker(closetSheet_G.Cells[rows, 1].Value.ToString(), closetSheet_G.Cells[rows, 2].Value.ToString(), shiftID, roleID);
                             }
+
+                            index++;
 
                         }
 
