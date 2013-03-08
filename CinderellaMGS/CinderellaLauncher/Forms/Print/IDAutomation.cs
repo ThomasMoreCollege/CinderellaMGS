@@ -2781,7 +2781,6 @@ namespace IDAutomation_FontEncoder
 			//Call the print page method of the Print Document.  This assigns the event handler
 			//that is used for printing operations of this bar code
 			PrintDoc.PrintPage += new PrintPageEventHandler(this.PrintDocHandler);
-            
 			//now print the bar code.  Control will go to the event handler for any additional 
 			//instructions for the printer, such as printing additional lines and
 			//the location of the bar code on the page.
@@ -2833,8 +2832,9 @@ namespace IDAutomation_FontEncoder
             count3 =count3-1;
            // if (ev.HasMorePages == true)
            // {
-            while (count3 != 0)
-            {
+            
+            //while (count3 != 0)
+            //{
                 
                     //Vertical postion on page of bar code
                     yPos = 60;
@@ -2848,6 +2848,11 @@ namespace IDAutomation_FontEncoder
 
                     while (count1 != 0)
                     {
+                        if (count3 == 0)
+                            ev.HasMorePages = false;
+                        else
+                            ev.HasMorePages = true;
+
                         string x = TextToPrint.ToString();
                         int Text = Convert.ToInt32(x);
                         Text++;
@@ -2862,7 +2867,7 @@ namespace IDAutomation_FontEncoder
                         ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
                         ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
 
-
+                        count = 2;
                         while (count != 0)
                         {
                             xPos += 280;
@@ -2873,11 +2878,15 @@ namespace IDAutomation_FontEncoder
 
                             count--;
                         }// end horizontal
+
+                        
+                        --count1;
                         --count3;
-                        count1--;
+                        
                     }// end vertical
-               // }
-            }// end total
+                
+                
+            //}// end total 
         }
 	}//End Class
 }//End Name Space

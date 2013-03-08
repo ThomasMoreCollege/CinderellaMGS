@@ -253,7 +253,7 @@ namespace BusinessLogic
 
             //Creates a new array of objects called particulars_Shift where the values for a row are stored for analysis.
             //This object is specifically for the use of analysing the Fairy Godmother Roles.
-            object particulars_Shift = new object;
+            object particulars_Shift = new object();
 
             //An integer that represents a shift.
             int shiftID = 0;
