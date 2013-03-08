@@ -2268,6 +2268,23 @@ namespace CinderellaLauncher
             sqlConnection.Close();
             return returnValue1.ToString();
         }
+        public string MaxID()
+        {
+            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlCommand Test = new SqlCommand();
+            Object returnValue1;
+
+            Test.CommandText = "Select MAX(id) From CinderellaMGS2012.dbo.Cinderellas";
+            Test.CommandType = CommandType.Text;
+            Test.Connection = sqlConnection;
+
+            sqlConnection.Open();
+
+            returnValue1 = Test.ExecuteScalar();
+
+            sqlConnection.Close();
+            return returnValue1.ToString();
+        }
     }
 }
 

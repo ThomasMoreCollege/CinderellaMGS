@@ -55,6 +55,11 @@ namespace IDAutomation_FontEncoder
 		private string TextToPrint;
         private string TextToPrint2;
         private string TextToPrint3;
+        string x = "";
+        int Text = 0;
+        int max = 0;
+            
+
 		public clsBarCode()
 		{
 
@@ -2830,6 +2835,7 @@ namespace IDAutomation_FontEncoder
             int count1 = 9;
             int count3 = Convert.ToInt32(query.count());
             count3 =count3-1;
+            max = Convert.ToInt32(query.MaxID());
            // if (ev.HasMorePages == true)
            // {
             
@@ -2849,13 +2855,18 @@ namespace IDAutomation_FontEncoder
                     while (count1 != 0)
                     {
                         if (count3 == 0)
+                        {
                             ev.HasMorePages = false;
+                            
+                        }
                         else
                             ev.HasMorePages = true;
 
-                        string x = TextToPrint.ToString();
-                        int Text = Convert.ToInt32(x);
-                        Text++;
+                        x = TextToPrint.ToString();
+                        Text = Convert.ToInt32(x);
+                        ++Text;
+                        
+                        
                         TextToPrint = Convert.ToString(Text);
                         yPos += 100;
                         yPos2 += 100;
@@ -2882,9 +2893,17 @@ namespace IDAutomation_FontEncoder
                         
                         --count1;
                         --count3;
-                        
+                        if (Text == max)
+                        {
+                            ev.HasMorePages = false;
+                            count3 = 0;
+                            count1 = 0;
+                        }
                     }// end vertical
-                
+                     x = TextToPrint.ToString();
+                    Text = Convert.ToInt32(x);
+                    ++Text;
+                    TextToPrint = Convert.ToString(Text);
                 
             //}// end total 
         }
