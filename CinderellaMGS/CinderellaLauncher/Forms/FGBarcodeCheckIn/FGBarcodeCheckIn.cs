@@ -21,5 +21,16 @@ namespace CinderellaLauncher
 
         }
 
+        private void BarcodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                int id = Convert.ToInt16(BarcodeTextBox.Text);
+
+
+
+            }
+
+        }
     }
 }
