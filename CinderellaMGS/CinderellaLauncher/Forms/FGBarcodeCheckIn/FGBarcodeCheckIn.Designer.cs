@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
+            this.timeLbl = new System.Windows.Forms.Label();
+            this.DisplayCindi = new System.Windows.Forms.Label();
             this.BarcodeTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -43,14 +45,29 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Check In Barcode Scanner";
             // 
+            // timeLbl
+            // 
+            this.timeLbl.AutoSize = true;
+            this.timeLbl.Location = new System.Drawing.Point(123, 139);
+            this.timeLbl.Name = "timeLbl";
+            this.timeLbl.Size = new System.Drawing.Size(0, 13);
+            this.timeLbl.TabIndex = 5;
+            // 
+            // DisplayCindi
+            // 
+            this.DisplayCindi.AutoSize = true;
+            this.DisplayCindi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayCindi.Location = new System.Drawing.Point(121, 102);
+            this.DisplayCindi.Name = "DisplayCindi";
+            this.DisplayCindi.Size = new System.Drawing.Size(0, 13);
+            this.DisplayCindi.TabIndex = 4;
+            // 
             // BarcodeTextBox
             // 
-            this.BarcodeTextBox.Location = new System.Drawing.Point(79, 205);
-            this.BarcodeTextBox.MaximumSize = new System.Drawing.Size(0, 100);
+            this.BarcodeTextBox.Location = new System.Drawing.Point(142, 195);
             this.BarcodeTextBox.Name = "BarcodeTextBox";
-            this.BarcodeTextBox.Size = new System.Drawing.Size(180, 20);
+            this.BarcodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.BarcodeTextBox.TabIndex = 1;
-            this.BarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarcodeTextBox_KeyPress);
             // 
             // FGCheckInBarcode
             // 
@@ -59,6 +76,8 @@
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(404, 239);
             this.Controls.Add(this.BarcodeTextBox);
+            this.Controls.Add(this.timeLbl);
+            this.Controls.Add(this.DisplayCindi);
             this.Controls.Add(this.label1);
             this.Name = "FGCheckInBarcode";
             this.Text = "Fairy Godmother Check In Barcode";
@@ -71,6 +90,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label timeLbl;
+        private System.Windows.Forms.Label DisplayCindi;
         private System.Windows.Forms.TextBox BarcodeTextBox;
     }
 }
