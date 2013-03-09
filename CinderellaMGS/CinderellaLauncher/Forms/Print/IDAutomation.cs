@@ -52,13 +52,13 @@ namespace IDAutomation_FontEncoder
         private Font lclFont2;
         
 		//This is the text that will be printed from the printing event handler
-		private string TextToPrint;
+		private string[] TextToPrint;
         private string TextToPrint2;
         private string TextToPrint3;
         string x = "";
         int Text = 0;
         int max = 0;
-            
+        int count4 = 0;  
 
 		public clsBarCode()
 		{
@@ -2772,7 +2772,7 @@ namespace IDAutomation_FontEncoder
 		//the font to print, the encoded string, and the size of the font.  The string should 
 		//be encoded by using one of the bar code functions included in this class.  Ensure 
 		//that the font is installed on the computer before attempting to call this function.
-		public void PrintBarCode(string TextFont, string EncodedText, float TextFontSize, string TextFont2, string EncodedText2, float TextFontSize2)
+		public void PrintBarCode(string TextFont, string[] EncodedText, float TextFontSize, string TextFont2, string EncodedText2, float TextFontSize2)
 		{
 			//Update the class variables
 			lclFont = new Font(TextFont,TextFontSize);
@@ -2797,6 +2797,7 @@ namespace IDAutomation_FontEncoder
 		//This is the event handler for printing bar codes
 		private void PrintDocHandler(object sender, PrintPageEventArgs ev)
 		{
+            
 			//Vertical postion on page of bar code
 			float yPos = 60;
 			//Hotizontal position on the page of the bar code
@@ -2809,8 +2810,8 @@ namespace IDAutomation_FontEncoder
 			float leftMargin = ev.MarginBounds.Left;
 			//set the top margin of the page.
 			float topMargin = ev.MarginBounds.Top;
-            TextToPrint2 = query.PrintCinderellaName(TextToPrint) + "            ";
-            TextToPrint3 = "*" + TextToPrint + "*";
+            TextToPrint2 = query.PrintCinderellaName(TextToPrint[count4]) + "            ";
+            TextToPrint3 = "*" + TextToPrint[count4] + "*";
             ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
             ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
             int count2 = 2;
@@ -2831,10 +2832,12 @@ namespace IDAutomation_FontEncoder
             //xPos2 = xPos2 + leftMargin;
 
 			//send the string to the printer
+
             int count = 2;
             int count1 = 9;
-            int count3 = Convert.ToInt32(query.count());
-            count3 =count3-1;
+            int count5 = Convert.ToInt32(query.count());
+            count5 = count5 - 1;
+            int count3 =count5-1;
             max = Convert.ToInt32(query.MaxID());
            // if (ev.HasMorePages == true)
            // {
@@ -2862,19 +2865,19 @@ namespace IDAutomation_FontEncoder
                         else
                             ev.HasMorePages = true;
 
-                        x = TextToPrint.ToString();
-                        Text = Convert.ToInt32(x);
+                       // x = TextToPrint.ToString();
+                       // Text = Convert.ToInt32(x);
                         ++Text;
+                        ++count4;
                         
                         
-                        TextToPrint = Convert.ToString(Text);
                         yPos += 100;
                         yPos2 += 100;
                         xPos = 125;
                         xPos2 = 10;
-                        TextToPrint2 = query.PrintCinderellaName(TextToPrint) + "             ";
+                        TextToPrint2 = query.PrintCinderellaName(TextToPrint[count4]) + "             ";
 
-                        TextToPrint3 = "*" + TextToPrint + "*";
+                        TextToPrint3 = "*" + TextToPrint[count4] + "*";
                         ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
                         ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
 
@@ -2893,18 +2896,19 @@ namespace IDAutomation_FontEncoder
                         
                         --count1;
                         --count3;
-                        if (Text == max)
+                        if (count4==count5)
                         {
                             ev.HasMorePages = false;
                             count3 = 0;
                             count1 = 0;
                         }
                     }// end vertical
-                     x = TextToPrint.ToString();
-                    Text = Convert.ToInt32(x);
+                     //x = TextToPrint.ToString();
+                    //Text = Convert.ToInt32(x);
                     ++Text;
-                    TextToPrint = Convert.ToString(Text);
-                
+                    ++count4;
+                    
+            //[count4]
             //}// end total 
         }
 	}//End Class
