@@ -2356,6 +2356,36 @@ namespace CinderellaLauncher
             return query;
 
         }
+
+        internal string MasterCheckOutSearchBox(string item)
+        {
+
+            string query = "SELECT Cinderellas.id, Cinderellas.firstName AS 'First Name', Cinderellas.lastName AS 'Last Name', CinderellaStatus.statusName AS 'Status', FairyGodmothers.firstName AS 'Personal Shopper First Name', FairyGodmothers.lastName AS 'Personal Shopper Last Name' " +
+                            "FROM Cinderellas INNER JOIN CinderellaStatus ON Cinderellas.currentStatus = CinderellaStatus.statusID INNER JOIN FairyGodmothers ON Cinderellas.fairyGodmotherID = FairyGodmothers.id " +
+                           "WHERE (Cinderellas.firstName LIKE '" + item + "%' ";
+            if (item == "" || item == " ")      //Start handling textboxes
+            {
+                query += "OR Cinderellas.firstName IS NULL";
+            }
+            query += ") OR (Cinderellas.lastName LIKE '" + item + "%' ";
+
+            if (item == "" || item == " ")
+            {
+                query += "OR Cinderellas.lastName IS NULL";
+            }
+            query += ") OR (FairyGodmothers.firstName LIKE '" + item + "%' ";
+            if (item == "" || item == " ")
+            {
+                query += "OR FairyGodmothers.firstName IS NULL";
+            }
+            query += ") OR (FairyGodmothers.lastName LIKE '" + item + "%' ";
+            if (item == "" || item == " ")
+            {
+                query += "OR FairyGodmothers.lastName IS NULL";
+            }
+            query += ") ";
+            return query;
+        }
     }
 }
 

@@ -32,6 +32,7 @@ namespace CinderellaLauncher
     public partial class MainMenu : Form
     {
         List<Thread> FormThreads = new List<Thread>();//keeps track of form threads for latter termination
+        CheckIn Rows = null;
         public MainMenu()
         {
             InitializeComponent();

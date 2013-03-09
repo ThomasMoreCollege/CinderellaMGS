@@ -143,6 +143,7 @@
             this.searchDGV.Size = new System.Drawing.Size(527, 128);
             this.searchDGV.TabIndex = 16;
             this.searchDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.searchGridView_CellClick);
+            this.searchDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.searchDGV_CellContentClick);
             // 
             // searchButton
             // 
@@ -151,7 +152,7 @@
             this.searchButton.FlatAppearance.BorderSize = 2;
             this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(248, 465);
+            this.searchButton.Location = new System.Drawing.Point(248, 470);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(99, 31);
             this.searchButton.TabIndex = 15;

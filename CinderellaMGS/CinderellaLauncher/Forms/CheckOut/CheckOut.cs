@@ -321,7 +321,15 @@ namespace CinderellaLauncher
         }
         private void searchButton_Click(object sender, EventArgs e)
         {
-            if (QSearchTextBox.Text.Length > 0)
+            string q = query.MasterCheckOutSearchBox(QSearchTextBox.Text);
+            searchDGVDataTable = new DataTable();
+             searchDGV.DataSource = searchDGVBindingSource;
+            searchDGVDataAdapter = new SqlDataAdapter(q, connection);
+            searchDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
+            searchDGVDataAdapter.Fill(searchDGVDataTable);
+            searchDGVBindingSource.DataSource = searchDGVDataTable;
+            searchDGV.ClearSelection();
+            /*if (QSearchTextBox.Text.Length > 0)
             {
 
                 string neck = "";
@@ -397,7 +405,7 @@ namespace CinderellaLauncher
                 searchDGV.Refresh();
                 searchDGV.ClearSelection();
                 //  searchDGV.AutoResizeColumns();
-            }
+            }*/
         }
 
         private void resetButton_Click(object sender, EventArgs e)
@@ -681,6 +689,11 @@ namespace CinderellaLauncher
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

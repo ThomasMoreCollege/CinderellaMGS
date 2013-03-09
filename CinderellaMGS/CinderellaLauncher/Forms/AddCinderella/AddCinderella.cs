@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Threading;
 using System.Drawing.Printing;
+using CinderellaLauncher;
 
 namespace CinderellaLauncher
 {
@@ -46,10 +47,23 @@ namespace CinderellaLauncher
         private string lastName = "";
         private string notes = "";
 
+        //Printing
         string barcode;
         string q;
         private Font lclFont;
         private Font lclFont2;
+        int RowCount = CheckIn.countRows();
+        //Vertical postion on page of bar code
+        float yPos = 60;
+        //Hotizontal position on the page of the bar code
+        float xPos = 125;
+        //Vertical postion on page of bar code
+        float yPos2 = 60;
+        //Hotizontal position on the page of the bar code
+        float xPos2 = 10;
+        //Set the left margin of the page
+        
+
 
         //This is the text that will be printed from the printing event handler
         private string TextToPrint;
@@ -208,33 +222,39 @@ namespace CinderellaLauncher
         //This is the event handler for printing bar codes
         private void PrintDocHandler(object sender, PrintPageEventArgs ev)
         {
-
-            //Vertical postion on page of bar code
-            float yPos = 60;
-            //Hotizontal position on the page of the bar code
-            float xPos = 125;
-            //Vertical postion on page of bar code
-            float yPos2 = 60;
-            //Hotizontal position on the page of the bar code
-            float xPos2 = 10;
-            //Set the left margin of the page
             float leftMargin = ev.MarginBounds.Left;
             //set the top margin of the page.
             float topMargin = ev.MarginBounds.Top;
-            TextToPrint2 = query.PrintCinderellaName(TextToPrint) + "            ";
-            TextToPrint3 = "*" + TextToPrint + "*";
-            ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
-            ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
-            int count2 = 2;
-            while (count2 != 0)
-            {
-                xPos += 280;
-                xPos2 += 280;
+               if (RowCount == 1)
+               {
+                   //Vertical postion on page of bar code
+                   yPos = 60;
+                   //Hotizontal position on the page of the bar code
+                   xPos = 125;
+                   //Vertical postion on page of bar code
+                   yPos2 = 60;
+                   //Hotizontal position on the page of the bar code
+                   xPos2 = 10;
 
-                ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
-                ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
-                count2--;
-            }
+               TextToPrint2 = query.PrintCinderellaName(TextToPrint) + "            ";
+               TextToPrint3 = "*" + TextToPrint + "*";
+               ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+               ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+               int count2 = 2;
+               while (count2 != 0)
+               {
+                   xPos += 280;
+                   xPos2 += 280;
+
+                   ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+                   ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+                   count2--;
+               }
+               ++RowCount;
+               }
+
+           else
+           {
             //set the y pos to include the height of the text
             //yPos = yPos + lclFont.GetHeight(ev.Graphics);
             //yPos2 = yPos2 + lclFont2.GetHeight(ev.Graphics);
@@ -244,55 +264,17 @@ namespace CinderellaLauncher
 
             //send the string to the printer
 
-            /*int count = 2;
-            int count1 = 9;
-            int count5 = Convert.ToInt32(query.count());
-            count5 = count5 - 1;
-            int count3 = count5 - 1;
-            max = Convert.ToInt32(query.MaxID());
-            // if (ev.HasMorePages == true)
-            // {
-
-            //while (count3 != 0)
-            //{
-
-            //Vertical postion on page of bar code
-            yPos = 60;
-            //Hotizontal position on the page of the bar code
-            xPos = 125;
-            //Vertical postion on page of bar code
-            yPos2 = 60;
-            //Hotizontal position on the page of the bar code
-            xPos2 = 10;
-
-
-            while (count1 != 0)
-            {
-                if (count3 == 0)
-                {
-                    ev.HasMorePages = false;
-
-                }
-                else
-                    ev.HasMorePages = true;
-
-                // x = TextToPrint.ToString();
-                // Text = Convert.ToInt32(x);
-                ++Text;
-                ++count4;
-
-
                 yPos += 100;
                 yPos2 += 100;
                 xPos = 125;
                 xPos2 = 10;
-                TextToPrint2 = query.PrintCinderellaName(TextToPrint[count4]) + "             ";
+                TextToPrint2 = query.PrintCinderellaName(TextToPrint) + "             ";
 
-                TextToPrint3 = "*" + TextToPrint[count4] + "*";
+                TextToPrint3 = "*" + TextToPrint + "*";
                 ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
                 ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
 
-                count = 2;
+                int count = 2;
                 while (count != 0)
                 {
                     xPos += 280;
@@ -304,23 +286,8 @@ namespace CinderellaLauncher
                     count--;
                 }// end horizontal
 
-
-                --count1;
-                --count3;
-                if (count4 == count5)
-                {
-                    ev.HasMorePages = false;
-                    count3 = 0;
-                    count1 = 0;
-                }
-            }// end vertical
-            //x = TextToPrint.ToString();
-            //Text = Convert.ToInt32(x);
-            ++Text;
-            ++count4;
-
-            //[count4]
-            //}// end total */
+                ++RowCount;
+           }// end vertical
         }
 
     }

@@ -16,6 +16,7 @@ using System.Diagnostics;
 
 namespace CinderellaLauncher
 {
+   
     /*CheckIn.cs
      * 
      * -The user is able to check-in cinderella's and can search for their name by using
@@ -40,6 +41,7 @@ namespace CinderellaLauncher
      */
     public partial class CheckIn : Form
     {
+        
         List<Thread> FormThreads = new List<Thread>();//keeps track of form threads for latter termination
         
         static SQL_Queries query = new SQL_Queries();
@@ -51,7 +53,7 @@ namespace CinderellaLauncher
         private SqlDataAdapter searchDGVDataAdapter;  
         private SqlCommand updateCommand;
        
-       
+       public static int rows=0;
 
         public CheckIn()
         {
@@ -84,9 +86,6 @@ namespace CinderellaLauncher
           
             getData.Start();
            // searchDGV_CellContentClick(searchDGV, new DataGridViewCellEventArgs(0, 0));
-           
-           
-            
 
         }
 
@@ -178,7 +177,8 @@ namespace CinderellaLauncher
                 }
 
                 finishCheckIn(id);
-              
+
+                
 
             }
             // This person is early for their appointment
@@ -218,8 +218,10 @@ namespace CinderellaLauncher
 
         private void addCinderellaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            addRows();
             Thread addCinderella = new Thread(() => Application.Run(new AddCinderella()));
             addCinderella.Start();
+            
             //AddCinderella add = new AddCinderella();
             //add.ShowDialog();
         }
@@ -327,12 +329,19 @@ namespace CinderellaLauncher
            
 
         }
-       
-     
 
+        public static void addRows()
+        {
+            if (rows == 10)
+                rows = 1;
+            else
+            ++rows;
+        }
 
-
-        
+        public static int countRows()
+        {
+            return rows;
+        }
 
         private void resetButton_Click(object sender, EventArgs e)
         {
