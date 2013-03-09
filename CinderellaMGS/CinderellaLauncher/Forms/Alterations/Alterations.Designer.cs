@@ -70,7 +70,10 @@
             this.AlterationsScanLabel = new System.Windows.Forms.Label();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.Search = new System.Windows.Forms.Button();
+
             this.fGPrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
+
             ((System.ComponentModel.ISupportInitialize)(this.alterationsCinderellasDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppingCinderellasDGV)).BeginInit();
@@ -237,14 +240,18 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+
             this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
+
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
@@ -521,6 +528,7 @@
             this.BarcodeTextBoxAlterations.Name = "BarcodeTextBoxAlterations";
             this.BarcodeTextBoxAlterations.Size = new System.Drawing.Size(185, 20);
             this.BarcodeTextBoxAlterations.TabIndex = 37;
+            this.BarcodeTextBoxAlterations.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarcodeTextBoxAlterations_KeyPress);
             // 
             // AlterationsScanLabel
             // 
@@ -541,11 +549,17 @@
             // 
             // Search
             // 
-            this.Search.Location = new System.Drawing.Point(153, 41);
+            this.Search.BackColor = System.Drawing.Color.Snow;
+            this.Search.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
+            this.Search.FlatAppearance.BorderSize = 2;
+            this.Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Search.Location = new System.Drawing.Point(163, 41);
             this.Search.Name = "Search";
-            this.Search.Size = new System.Drawing.Size(75, 23);
-            this.Search.TabIndex = 40;
+            this.Search.Size = new System.Drawing.Size(90, 32);
+            this.Search.TabIndex = 41;
             this.Search.Text = "Search";
+
             this.Search.UseVisualStyleBackColor = true;
             this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
@@ -555,6 +569,9 @@
             this.fGPrintToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.fGPrintToolStripMenuItem.Text = "FG Print";
             this.fGPrintToolStripMenuItem.Click += new System.EventHandler(this.fGPrintToolStripMenuItem_Click);
+
+            this.Search.UseVisualStyleBackColor = false;
+
             // 
             // Alterations
             // 
@@ -643,8 +660,10 @@
         private System.Windows.Forms.TextBox BarcodeTextBoxAlterations;
         private System.Windows.Forms.Label AlterationsScanLabel;
         private System.Windows.Forms.TextBox SearchBox;
-        private System.Windows.Forms.Button Search;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
+
         private System.Windows.Forms.ToolStripMenuItem fGPrintToolStripMenuItem;
+        private System.Windows.Forms.Button Search;
+
     }
 }

@@ -41,18 +41,18 @@ namespace CinderellaLauncher
      * -Postcondition:
      *      -The Cinderella's status is changed in the database
      *      
-     */ 
+     */
     public partial class Alterations : Form
     {
         bool isResized = false;
 
         static SQL_Queries query = new SQL_Queries();
         private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString);
-        
+
         private BindingSource shoppingCinderellasDGVBindingSource = new BindingSource();
         private DataTable shoppingCinderellasDGVDataTable;
         private SqlDataAdapter shoppingCinderellasDGVDataAdapter;
- 
+
 
         private BindingSource alterationsCinderellasDGVBindingSource = new BindingSource();
         private DataTable alterationsCinderellasDGVDataTable;
@@ -78,9 +78,9 @@ namespace CinderellaLauncher
 
         public Alterations()
         {
-            
+
             InitializeComponent();
-            
+
             this.KeyPreview = true;
             this.KeyUp += new KeyEventHandler(search_KeyUp);
 
@@ -93,7 +93,7 @@ namespace CinderellaLauncher
                 refreshButtonAlterations.PerformClick();
             }
         }
-       
+
 
 
         private void Alterations_Load(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace CinderellaLauncher
                 shoppingCinderellasDGVDataAdapter.Fill(shoppingCinderellasDGVDataTable);
                 shoppingCinderellasDGVBindingSource.DataSource = shoppingCinderellasDGVDataTable;
                 shoppingCinderellasDGV.ClearSelection();
-       
+
                 alterationsCinderellasDGVDataTable = new DataTable();
                 alterationsCinderellasDGV.DataSource = alterationsCinderellasDGVBindingSource;
                 alterationsCinderellasDGVDataAdapter = new SqlDataAdapter(query.CinderellasInAlteration(), connection);
@@ -127,7 +127,7 @@ namespace CinderellaLauncher
                 alteratorsDataTable.Columns.Add("FullName", typeof(string), "firstName + ' ' + lastName");
                 alteratorsDropDownList.DisplayMember = "FullName";
                 alteratorsDropDownList.ValueMember = "id";
-               
+
             }
             catch (Exception f)
             {
@@ -156,7 +156,7 @@ namespace CinderellaLauncher
             }
             catch (Exception t)
             {
-              // Thread.CurrentThread.Abort();
+                // Thread.CurrentThread.Abort();
             }
         }
 
@@ -238,7 +238,7 @@ namespace CinderellaLauncher
 
                 alterationsCinderellasDGV.Refresh();
                 alterationsCinderellasDGV.ClearSelection();
-               // alterationsCinderellasDGV.AutoResizeColumns();
+                // alterationsCinderellasDGV.AutoResizeColumns();
             }
 
             catch (Exception error)
@@ -260,6 +260,73 @@ namespace CinderellaLauncher
 
 
         private void BarcodeTextBoxAlterations_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+
+                //might have to rewrite how people are added to alteration through the scanner.. 
+
+                /*   if (shoppingCinderellasDGV.SelectedRows.Count != 1)
+                   {
+                       MessageBox.Show("Please select a Cinderella that is shopping to check in.");
+                       return;
+                   }*/
+                if (dressColorComboBox.SelectedItem == null || dressSizeComboBox.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select both a dress size and color");
+                    return;
+                }
+
+                string id = BarcodeTextBoxAlterations.Text;
+
+
+                string dressColor = dressColorComboBox.SelectedItem.ToString();
+                int dressSize = Convert.ToInt32(dressSizeComboBox.SelectedItem);
+
+                query.checkOutUpdate(Convert.ToInt32(id), dressSize, dressColor);
+                query.addAlterations(id);
+                query.setCinderellaStatus(id, 6); // string id, int status
+                query.FGLeavesCinderella(Convert.ToInt32(id));
+
+
+                // Refresh the two datagrids
+                SqlCommand refreshCommandShop = new SqlCommand(query.statusList(4));
+                shoppingCinderellasDGVBindingSource.EndEdit();
+                shoppingCinderellasDGVDataTable.Clear();
+
+                shoppingCinderellasDGVDataAdapter.SelectCommand = refreshCommandShop;
+                shoppingCinderellasDGVDataAdapter.SelectCommand.Connection = connection;
+
+                shoppingCinderellasDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                shoppingCinderellasDGVDataAdapter.Fill(shoppingCinderellasDGVDataTable);
+
+                shoppingCinderellasDGV.Refresh();
+                shoppingCinderellasDGV.ClearSelection();
+                // shoppingCinderellasDGV.AutoResizeColumns();
+
+
+
+                SqlCommand refreshCommandAlt = new SqlCommand(query.CinderellasInAlteration());
+                alterationsCinderellasDGVBindingSource.EndEdit();
+                alterationsCinderellasDGVDataTable.Clear();
+
+                alterationsCinderellasDGVDataAdapter.SelectCommand = refreshCommandAlt;
+                alterationsCinderellasDGVDataAdapter.SelectCommand.Connection = connection;
+
+                alterationsCinderellasDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                alterationsCinderellasDGVDataAdapter.Fill(alterationsCinderellasDGVDataTable);
+
+                alterationsCinderellasDGV.Refresh();
+                alterationsCinderellasDGV.ClearSelection();
+                // alterationsCinderellasDGV.AutoResizeColumns();
+
+                dressSizeComboBox.ResetText();
+                dressColorComboBox.ResetText();
+                BarcodeTextBoxAlterations.Text = "";
+            }
+        }
+
+        private void checkinButton_Click(object sender, EventArgs e)
         {
             if (shoppingCinderellasDGV.SelectedRows.Count != 1)
             {
@@ -313,65 +380,6 @@ namespace CinderellaLauncher
             alterationsCinderellasDGV.Refresh();
             alterationsCinderellasDGV.ClearSelection();
             // alterationsCinderellasDGV.AutoResizeColumns();
-
-            dressSizeComboBox.ResetText();
-            dressColorComboBox.ResetText();
-        }
-
-        private void checkinButton_Click(object sender, EventArgs e)
-        {          
-            if (shoppingCinderellasDGV.SelectedRows.Count != 1)
-            {
-                MessageBox.Show("Please select a Cinderella that is chopping to check in.");
-                return;
-            }
-            if (dressColorComboBox.SelectedItem == null || dressSizeComboBox.SelectedItem == null)
-            {
-                MessageBox.Show("Please select both a dress size and color");
-                return;
-            }
-
-            string id = shoppingCinderellasDGV.SelectedRows[0].Cells[0].Value.ToString();
-
-            string dressColor = dressColorComboBox.SelectedItem.ToString();
-            int dressSize = Convert.ToInt32(dressSizeComboBox.SelectedItem);
-
-            query.checkOutUpdate(Convert.ToInt32(id), dressSize, dressColor);
-            query.addAlterations(id);
-            query.setCinderellaStatus(id,6); // string id, int status
-            query.FGLeavesCinderella(Convert.ToInt32(id));
-
-
-            // Refresh the two datagrids
-            SqlCommand refreshCommandShop = new SqlCommand(query.statusList(4));
-            shoppingCinderellasDGVBindingSource.EndEdit();
-            shoppingCinderellasDGVDataTable.Clear();
-
-            shoppingCinderellasDGVDataAdapter.SelectCommand = refreshCommandShop;
-            shoppingCinderellasDGVDataAdapter.SelectCommand.Connection = connection;
-
-            shoppingCinderellasDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
-            shoppingCinderellasDGVDataAdapter.Fill(shoppingCinderellasDGVDataTable);
-
-            shoppingCinderellasDGV.Refresh();
-            shoppingCinderellasDGV.ClearSelection();
-           // shoppingCinderellasDGV.AutoResizeColumns();
-
-
-          
-            SqlCommand refreshCommandAlt = new SqlCommand(query.CinderellasInAlteration());
-            alterationsCinderellasDGVBindingSource.EndEdit();
-            alterationsCinderellasDGVDataTable.Clear();
-
-            alterationsCinderellasDGVDataAdapter.SelectCommand = refreshCommandAlt;
-            alterationsCinderellasDGVDataAdapter.SelectCommand.Connection = connection;
-
-            alterationsCinderellasDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
-            alterationsCinderellasDGVDataAdapter.Fill(alterationsCinderellasDGVDataTable);
-
-            alterationsCinderellasDGV.Refresh();
-            alterationsCinderellasDGV.ClearSelection();
-           // alterationsCinderellasDGV.AutoResizeColumns();
 
             dressSizeComboBox.ResetText();
             dressColorComboBox.ResetText();
@@ -454,7 +462,7 @@ namespace CinderellaLauncher
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Thread aboutThread = new Thread(() => Application.Run(new About()));
-           aboutThread.Start();
+            aboutThread.Start();
         }
 
         private void userManualToolStripMenuItem_Click(object sender, EventArgs e)
@@ -474,7 +482,7 @@ namespace CinderellaLauncher
 
         private void Search_Click(object sender, EventArgs e)
         {
-            
+
             string q = query.MasterSearchBox(SearchBox.Text);
             shoppingCinderellasDGVDataTable = new DataTable();
             shoppingCinderellasDGV.DataSource = shoppingCinderellasDGVBindingSource;
