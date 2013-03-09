@@ -107,6 +107,13 @@
     <Compile Include="Forms\FGBarcodeCheckIn\FGBarcodeCheckIn.Designer.cs">
       <DependentUpon>FGBarcodeCheckIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FGPrint\IDAutomationFG.cs" />
+    <Compile Include="Forms\FGPrint\FGPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FGPrint\FGPrint.Designer.cs">
+      <DependentUpon>FGPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Print\IDAutomation.cs" />
     <Compile Include="Forms\Print\PCPrint.cs">
       <SubType>Component</SubType>
@@ -315,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FGBarcodeCheckIn\FGBarcodeCheckIn.resx">
       <DependentUpon>FGBarcodeCheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FGPrint\FGPrint.resx">
+      <DependentUpon>FGPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main_Menu\Administration\AdminMenu.resx">
       <DependentUpon>AdminMenu.cs</DependentUpon>

@@ -490,5 +490,11 @@ namespace CinderellaLauncher
             Thread Printer = new Thread(() => Application.Run(new CinderellaLauncher.Forms.Print()));
             Printer.Start();
         }
+
+        private void fGPrintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thread FGPrinter = new Thread(() => Application.Run(new CinderellaLauncher.Forms.FGPrint()));
+            FGPrinter.Start();
+        }
     }
 }

@@ -47,127 +47,127 @@ namespace CinderellaLauncher
         /// <summary>
         /// Resets all godmothers back to a status of pending.
         /// </summary>
- /*       public void endShift()//Sets all godmothers to a pending status
-        {
-            string sql = "INSERT INTO [FairyGodmotherTimestamp]([fairyGodmotherID], [timestamp], [status]) Select CONVERT(VARCHAR(50),FairyGodmotherTimestamp.fairyGodmotherID) , GetDate(), 'Pending' 
-                          From FairyGodmotherTimestamp, (Select ID, lastname + ', ' + firstname AS Name FROM FairyGodmother) n, (Select fairyGodmotherID, max(timestamp) as TimeStamp FROM FairyGodmotherTimestamp Group BY fairyGodmotherID) a 
-                          Where a.fairyGodmotherID= FairyGodmotherTimestamp.fairyGodmotherID and a.timestamp= FairyGodmotherTimestamp.timestamp and n.ID= fairyGodmotherTimestamp.fairyGodmotherID and FairyGodmotherTimestamp.status <> 'Pending' Order By transID";
-            database.ExecuteQuery(sql);
-        }
-        /// <summary>
-        /// Method is used to determine if a shift can be started or ended. If a shift is started it can be ended but not started again.
-        /// 
-        /// EXAMPLE USAGE:
-        /// if (sqlQuery.getShiftStartEnd(true)) \\shiftend
-        ///    {
-        ///        randomizeStartToolStripMenuItem1.Enabled = true;
-        ///    }
-        ///   else
-        ///    {
-        ///        randomizeStartToolStripMenuItem1.Enabled = false;
-        ///    }
-        ///    
-        /// if (sqlQuery.getShiftStartEnd(false))//aka shiftEnd
-        ///    {
-        ///        endShiftToolStripMenuItem.Enabled = true;
-        ///    }
-        ///    else
-        ///    {
-        ///           endShiftToolStripMenuItem.Enabled = false;
-        ///    }
-        ///
-        ///   if (sqlQuery.getShiftStartEnd(true) && sqlQuery.getShiftStartEnd(false))
-        ///    {
-        ///        //This is an initial launch of the program and both fields are blank
-        ///        randomizeStartToolStripMenuItem1.Enabled = true;
-        ///        endShiftToolStripMenuItem.Enabled = false;
-        ///    }
-        /// 
-        /// </summary>
-        /// <param name="shiftStart">True-shift start : False-shift end</param>
-        /// <returns>True if button should be enabled and False if button should be disabled.</returns>
-        public bool getShiftStartEnd(bool shiftStart)
-        {
-            string sql = "";
-            if (shiftStart)
-            {
-                sql = "Select [PropertyValue] From [ConfigSettings] WHERE [appProperty]='shiftStart'";
-            }
-            else
-            {
-                sql = "Select [PropertyValue] From [ConfigSettings] WHERE [appProperty]='shiftEnd'";
-            }
+        /*       public void endShift()//Sets all godmothers to a pending status
+               {
+                   string sql = "INSERT INTO [FairyGodmotherTimestamp]([fairyGodmotherID], [timestamp], [status]) Select CONVERT(VARCHAR(50),FairyGodmotherTimestamp.fairyGodmotherID) , GetDate(), 'Pending' 
+                                 From FairyGodmotherTimestamp, (Select ID, lastname + ', ' + firstname AS Name FROM FairyGodmother) n, (Select fairyGodmotherID, max(timestamp) as TimeStamp FROM FairyGodmotherTimestamp Group BY fairyGodmotherID) a 
+                                 Where a.fairyGodmotherID= FairyGodmotherTimestamp.fairyGodmotherID and a.timestamp= FairyGodmotherTimestamp.timestamp and n.ID= fairyGodmotherTimestamp.fairyGodmotherID and FairyGodmotherTimestamp.status <> 'Pending' Order By transID";
+                   database.ExecuteQuery(sql);
+               }
+               /// <summary>
+               /// Method is used to determine if a shift can be started or ended. If a shift is started it can be ended but not started again.
+               /// 
+               /// EXAMPLE USAGE:
+               /// if (sqlQuery.getShiftStartEnd(true)) \\shiftend
+               ///    {
+               ///        randomizeStartToolStripMenuItem1.Enabled = true;
+               ///    }
+               ///   else
+               ///    {
+               ///        randomizeStartToolStripMenuItem1.Enabled = false;
+               ///    }
+               ///    
+               /// if (sqlQuery.getShiftStartEnd(false))//aka shiftEnd
+               ///    {
+               ///        endShiftToolStripMenuItem.Enabled = true;
+               ///    }
+               ///    else
+               ///    {
+               ///           endShiftToolStripMenuItem.Enabled = false;
+               ///    }
+               ///
+               ///   if (sqlQuery.getShiftStartEnd(true) && sqlQuery.getShiftStartEnd(false))
+               ///    {
+               ///        //This is an initial launch of the program and both fields are blank
+               ///        randomizeStartToolStripMenuItem1.Enabled = true;
+               ///        endShiftToolStripMenuItem.Enabled = false;
+               ///    }
+               /// 
+               /// </summary>
+               /// <param name="shiftStart">True-shift start : False-shift end</param>
+               /// <returns>True if button should be enabled and False if button should be disabled.</returns>
+               public bool getShiftStartEnd(bool shiftStart)
+               {
+                   string sql = "";
+                   if (shiftStart)
+                   {
+                       sql = "Select [PropertyValue] From [ConfigSettings] WHERE [appProperty]='shiftStart'";
+                   }
+                   else
+                   {
+                       sql = "Select [PropertyValue] From [ConfigSettings] WHERE [appProperty]='shiftEnd'";
+                   }
 
-            DataSet ds = database.getDataSet(sql, "tableName");
-            string propertyValue = ds.Tables["tableName"].Rows[0]["propertyValue"].ToString();
+                   DataSet ds = database.getDataSet(sql, "tableName");
+                   string propertyValue = ds.Tables["tableName"].Rows[0]["propertyValue"].ToString();
 
-            if (propertyValue == "" || propertyValue == null)
-            {//If true then option can be selected
-                return true;
-            }
-            else//The option cannot be selected
-            {
-                return false;
-            }
-        }
-        /// <summary>
-        /// Updates the time of either a shift start or shift end in the ConfigSettings table.
-        /// </summary>
-        /// <param name="shiftStart">True-set the shift start time :: False-Set the shift end time.</param>
-        /// <param name="clear">True-Clear the value :: False-Set the value with the current datetime</param>
-        public void setShiftStartEnd(bool shiftStart, bool clear)
-        {
-            if (shiftStart)
-            {
-                if (clear)
-                {
-                    database.ExecuteQuery("UPDATE [CinderellaMGS].[dbo].[ConfigSettings] SET [PropertyValue]='' WHERE [appProperty]='shiftStart'");
-                }
+                   if (propertyValue == "" || propertyValue == null)
+                   {//If true then option can be selected
+                       return true;
+                   }
+                   else//The option cannot be selected
+                   {
+                       return false;
+                   }
+               }
+               /// <summary>
+               /// Updates the time of either a shift start or shift end in the ConfigSettings table.
+               /// </summary>
+               /// <param name="shiftStart">True-set the shift start time :: False-Set the shift end time.</param>
+               /// <param name="clear">True-Clear the value :: False-Set the value with the current datetime</param>
+               public void setShiftStartEnd(bool shiftStart, bool clear)
+               {
+                   if (shiftStart)
+                   {
+                       if (clear)
+                       {
+                           database.ExecuteQuery("UPDATE [CinderellaMGS].[dbo].[ConfigSettings] SET [PropertyValue]='' WHERE [appProperty]='shiftStart'");
+                       }
 
-                else
-                {
-                    database.ExecuteQuery("UPDATE [CinderellaMGS].[dbo].[ConfigSettings] SET [PropertyValue]=CONVERT(VARCHAR, getDate(), 109) WHERE [appProperty]='shiftStart'");
-                }
-            }
-            else//shiftEnd
-            {
-                if (clear)
-                {
-                    database.ExecuteQuery("UPDATE [CinderellaMGS].[dbo].[ConfigSettings] SET [PropertyValue]='' WHERE [appProperty]='shiftEnd'");
-                }
+                       else
+                       {
+                           database.ExecuteQuery("UPDATE [CinderellaMGS].[dbo].[ConfigSettings] SET [PropertyValue]=CONVERT(VARCHAR, getDate(), 109) WHERE [appProperty]='shiftStart'");
+                       }
+                   }
+                   else//shiftEnd
+                   {
+                       if (clear)
+                       {
+                           database.ExecuteQuery("UPDATE [CinderellaMGS].[dbo].[ConfigSettings] SET [PropertyValue]='' WHERE [appProperty]='shiftEnd'");
+                       }
 
-                else
-                {
-                    database.ExecuteQuery("UPDATE [CinderellaMGS].[dbo].[ConfigSettings] SET [PropertyValue]=CONVERT(VARCHAR, getDate(), 109) WHERE [appProperty]='shiftEnd'");
-                }
-            }
+                       else
+                       {
+                           database.ExecuteQuery("UPDATE [CinderellaMGS].[dbo].[ConfigSettings] SET [PropertyValue]=CONVERT(VARCHAR, getDate(), 109) WHERE [appProperty]='shiftEnd'");
+                       }
+                   }
 
-        }
-        /// <summary>
-        /// Method will retrieve settings from the database in the ConfigSettings table.
-        /// </summary>
-        /// <param name="appProperty">the appProperty key of the setting you are retreiving from the database</param>
-        /// <returns>string of either the propertyValue if defined or the defaultPropertyValue if propertyvalue is no defined in database.</returns>
-        public string getGlobalizedSettings(string appProperty)
-        {
-            string sql = "Select appProperty, propertyValue, defaultPropertyValue From ConfigSettings Where appProperty = '" + appProperty + "'";
+               }
+               /// <summary>
+               /// Method will retrieve settings from the database in the ConfigSettings table.
+               /// </summary>
+               /// <param name="appProperty">the appProperty key of the setting you are retreiving from the database</param>
+               /// <returns>string of either the propertyValue if defined or the defaultPropertyValue if propertyvalue is no defined in database.</returns>
+               public string getGlobalizedSettings(string appProperty)
+               {
+                   string sql = "Select appProperty, propertyValue, defaultPropertyValue From ConfigSettings Where appProperty = '" + appProperty + "'";
 
-            DataSet ds = database.getDataSet(sql, "tableName");
-            string propertyValue = ds.Tables["tableName"].Rows[0]["propertyValue"].ToString();
-            string defaultPropertyValue = ds.Tables["tableName"].Rows[0]["defaultPropertyValue"].ToString();
+                   DataSet ds = database.getDataSet(sql, "tableName");
+                   string propertyValue = ds.Tables["tableName"].Rows[0]["propertyValue"].ToString();
+                   string defaultPropertyValue = ds.Tables["tableName"].Rows[0]["defaultPropertyValue"].ToString();
 
-            if (propertyValue != null)
-            {
-                return propertyValue;
-            }
-            else
-            {
-                return defaultPropertyValue;
-            }
+                   if (propertyValue != null)
+                   {
+                       return propertyValue;
+                   }
+                   else
+                   {
+                       return defaultPropertyValue;
+                   }
 
-        }
-        */
-        
+               }
+               */
+
         /// <summary>
         /// 
         /// </summary>
@@ -179,9 +179,9 @@ namespace CinderellaLauncher
             DataTable dt = ds.Tables["tableName"];
             return dt.Rows[0][0].ToString();
         }
-        
 
-        
+
+
         /// <summary>
         /// Retrieves a dataset of those who are currently shopping.
         /// </summary>
@@ -207,7 +207,8 @@ namespace CinderellaLauncher
         }
                
         //Information from here is also used in the CheckOut.cs Quick Search Bar.
-        *//// <summary>
+        */
+        /// <summary>
         /// This method houses all of the basic "Select" statements.
         /// </summary>
         /// <param name="keyword">Keyword identifying the select statment in the switch.</param>
@@ -272,7 +273,7 @@ namespace CinderellaLauncher
             //Do not touch the code below this!
             return database.getDataSet(query, "tableName");
         }
-       
+
         public DataSet cinderellaCheckIn()
         {
             string query = "";
@@ -293,14 +294,14 @@ namespace CinderellaLauncher
             return query;
         }
 
-        
-
-        
 
 
-      
 
-        
+
+
+
+
+
 
         /*public string checkOutList()
         {
@@ -312,27 +313,27 @@ namespace CinderellaLauncher
             return query;
         }*/
 
-        
-        
+
+
         // <-----------MIKE-ADDED QUERIES
         // Testin' some stuffs. Feel free to re-write, delete, whatever.
 
 
-        
+
         //gets the cinderella that is matched to the passed god mother
-        
+
         //sets a cinderella to be unpaired
         public void clearCinderellaFairyGodmotherID(int id)
         {
             string query = "UPDATE Cinderellas SET fairyGodmotherID = NULL WHERE id = " + id.ToString();
             database.ExecuteQuery(query);
         }
-        
-        
 
-        
 
-       
+
+
+
+
 
         public string getDressInfo(string id)
         {
@@ -343,9 +344,9 @@ namespace CinderellaLauncher
         }
 
 
-        
 
-       
+
+
 
 
         // END MIKE ADDED QUERIES -------------------->
@@ -378,21 +379,21 @@ namespace CinderellaLauncher
                        }
              * query += " ORDER BY lastName,firstName";
            */
-            return query;               
+            return query;
         }
 
-       
 
-        
-        
 
-        
+
+
+
+
 
         public string showFairyGodmothers(int shift, int status)
         {
             string query = "SELECT FairyGodmothers.firstName AS 'First Name', FairyGodmothers.lastName AS 'Last Name' " +
                            "FROM FairyGodmothers, Shifts, FairyGodmotherTimestamp " +
-                           "WHERE FairyGodmothers.id = FairyGodmotherTimestamp.fairyGodmotherID AND Shifts.shiftID = " + shift + " AND FairyGodmotherTimestamp.statusID = "+status;
+                           "WHERE FairyGodmothers.id = FairyGodmotherTimestamp.fairyGodmotherID AND Shifts.shiftID = " + shift + " AND FairyGodmotherTimestamp.statusID = " + status;
             return query;
         }
 
@@ -439,15 +440,15 @@ namespace CinderellaLauncher
         {
 
             //used for when a Fairy Godmother is used a a search parameter to locate a particular Cinderella. 
-            string query = "SELECT Cinderellas.firstName, Cinderella.lastName, Cinderellas.id, Referrals.organization, Cinderellas.currentStatus FROM Cinderellas WHERE id = "+fgID;
+            string query = "SELECT Cinderellas.firstName, Cinderella.lastName, Cinderellas.id, Referrals.organization, Cinderellas.currentStatus FROM Cinderellas WHERE id = " + fgID;
             return query;
         }
 
         public string CindyShoeSize(int fgID)
         {
-            
+
             int ourCindy = getCindyIDFomFG(fgID);
-            string query = "SELECT Package.shoeSize FROM Package, Cinderellas WHERE Cinderellas.fairyGodmotherID = "+fgID+" AND Package.cinderellaID = "+ourCindy;
+            string query = "SELECT Package.shoeSize FROM Package, Cinderellas WHERE Cinderellas.fairyGodmotherID = " + fgID + " AND Package.cinderellaID = " + ourCindy;
             return database.ReturnFirstCellString(query);
         }
 
@@ -455,14 +456,14 @@ namespace CinderellaLauncher
         public int CindyDressSize(int fgID)
         {
             int ourCindy = getCindyIDFomFG(fgID);
-            string query = "SELECT Package.dressSize FROM Package, Cinderellas WHERE Cinderellas.fairyGodmotherID = "+fgID+" AND Package.cinderellaID = "+ourCindy;
+            string query = "SELECT Package.dressSize FROM Package, Cinderellas WHERE Cinderellas.fairyGodmotherID = " + fgID + " AND Package.cinderellaID = " + ourCindy;
             return database.ReturnFirstCellInt(query);
         }
 
         public string CindyDressColor(int fgID)
         {
             int ourCindy = getCindyIDFomFG(fgID);
-            string query = "SELECT Package.dressColor FROM Package,Cinderellas WHERE Cinderellas.fairyGodmotherID = "+fgID+" AND Package.cinderellaID = "+ourCindy;
+            string query = "SELECT Package.dressColor FROM Package,Cinderellas WHERE Cinderellas.fairyGodmotherID = " + fgID + " AND Package.cinderellaID = " + ourCindy;
             return database.ReturnFirstCellString(query);
         }
 
@@ -475,7 +476,7 @@ namespace CinderellaLauncher
 
         public int getCindyIDFomFG(int idFG)
         {
-            string query = "SELECT Cinderellas.id FROM Cinderellas WHERE Cinderellas.fairyGodmotherID = "+idFG;
+            string query = "SELECT Cinderellas.id FROM Cinderellas WHERE Cinderellas.fairyGodmotherID = " + idFG;
 
             return database.ReturnFirstCellInt(query);
         }
@@ -514,15 +515,15 @@ namespace CinderellaLauncher
             return database.ReturnFirstCellString(query);
         }
 
-       
-
-        
-
-        
 
 
 
-        
+
+
+
+
+
+
 
         public void setSettingValue(string settingName, string settingValue)
         {
@@ -548,7 +549,7 @@ namespace CinderellaLauncher
 
         public string getSetting(string settingName)
         {
-            string query = "SELECT propertyValue FROM ConfigSettings WHERE appProperty = " + settingName;            
+            string query = "SELECT propertyValue FROM ConfigSettings WHERE appProperty = " + settingName;
             string setting = database.ReturnFirstCellString(query);
             if (setting == null || setting == "")
             {
@@ -558,7 +559,7 @@ namespace CinderellaLauncher
 
             return setting;
         }
-        
+
 
         public void EndShift()
         {
@@ -572,15 +573,15 @@ namespace CinderellaLauncher
             return query;
         }
 
-        
 
-        
+
+
 
         public string CinderellaHistory(int cinID)
         {
-            string query = "SELECT Cinderellas.firstName AS 'First Name', Cinderellas.lastName AS 'Last Name', CinderellaTimestamp.timestamp, CinderellaStatus.statusName "+
-                           "FROM Cinderellas INNER JOIN CinderellaTimestamp ON Cinderellas.id = CinderellaTimestamp.cinderellaID INNER JOIN CinderellaStatus ON CinderellaStatus.statusID = CinderellaTimestamp.statusID "+
-                           "WHERE Cinderellas.id = "+cinID;
+            string query = "SELECT Cinderellas.firstName AS 'First Name', Cinderellas.lastName AS 'Last Name', CinderellaTimestamp.timestamp, CinderellaStatus.statusName " +
+                           "FROM Cinderellas INNER JOIN CinderellaTimestamp ON Cinderellas.id = CinderellaTimestamp.cinderellaID INNER JOIN CinderellaStatus ON CinderellaStatus.statusID = CinderellaTimestamp.statusID " +
+                           "WHERE Cinderellas.id = " + cinID;
             return query;
         }
 
@@ -598,10 +599,10 @@ namespace CinderellaLauncher
         //////////////////////////////////////////////////////////
         /* START OF STATISTICS QUERIES */
         //////////////////////////////////////////////////////////
-       /// <summary>
-       /// USed to find the number of cinderellas that have been helped by a certain FG
-       /// </summary>
-       /// <returns>Query with FG's first name, last name, and number of cinderella's helped</returns>
+        /// <summary>
+        /// USed to find the number of cinderellas that have been helped by a certain FG
+        /// </summary>
+        /// <returns>Query with FG's first name, last name, and number of cinderella's helped</returns>
         public string NumberOfCinderellasHelpedByFG()
         {
             string query = "SELECT FairyGodmothers.firstName, FairyGodmothers.lastName, A.[# of Cinderellas Helped] FROM FairyGodmothers INNER JOIN (SELECT Cinderellas.fairyGodmotherID, COUNT(Cinderellas.fairyGodmotherID) AS '# of Cinderellas Helped' FROM Cinderellas GROUP BY Cinderellas.fairyGodmotherID) AS A ON a.fairyGodmotherID = FairyGodmothers.id ORDER BY A.[# of Cinderellas Helped] DESC";
@@ -682,7 +683,7 @@ namespace CinderellaLauncher
                             "FROM Cinderellas INNER JOIN " +
                                 "FairyGodmothers ON Cinderellas.fairyGodmotherID = FairyGodmothers.id INNER JOIN " +
                                 "ShiftWorkers ON FairyGodmothers.id = ShiftWorkers.fairyGodmotherID " +
-                            "WHERE ShiftWorkers.shiftID = " + shift +" AND ShiftWorkers.roleID = " + role;
+                            "WHERE ShiftWorkers.shiftID = " + shift + " AND ShiftWorkers.roleID = " + role;
             return database.ReturnFirstCellInt(query);
         }
         //////////////////////////////////////////////////////////
@@ -925,11 +926,11 @@ namespace CinderellaLauncher
             query += " ORDER BY Cinderellas.apptDate, Cinderellas.apptTime, Cinderellas.lastName, Cinderellas.firstName";
             return query;
         }
-       /// <summary>
-       /// Used when a Cinderella's checkout information is saved, but she is not set as 'Checked Out'
-       /// </summary>
-       /// <param name="id">Cinderella's ID#</param>
-       /// <returns>Query for displaying a Cinderella's Dress Color</returns>
+        /// <summary>
+        /// Used when a Cinderella's checkout information is saved, but she is not set as 'Checked Out'
+        /// </summary>
+        /// <param name="id">Cinderella's ID#</param>
+        /// <returns>Query for displaying a Cinderella's Dress Color</returns>
         public string dressColor(int id)
         {
             string query = "SELECT Package.dressColor FROM Package WHERE Package.cinderellaID = " + id;
@@ -937,11 +938,11 @@ namespace CinderellaLauncher
             return color;
         }
 
-       /// <summary>
-       /// Used when a Cinderella's checkout information is saved, but she is not set as 'Checked Out'
-       /// </summary>
-       /// <param name="id">Cinderella's ID#</param>
-       /// <returns>Query for displaying a Cinderella's Dress Size</returns>
+        /// <summary>
+        /// Used when a Cinderella's checkout information is saved, but she is not set as 'Checked Out'
+        /// </summary>
+        /// <param name="id">Cinderella's ID#</param>
+        /// <returns>Query for displaying a Cinderella's Dress Size</returns>
         public int dressSize(int id)
         {
             string query = "SELECT Package.dressSize FROM Package WHERE Package.cinderellaID = " + id;
@@ -1316,7 +1317,7 @@ namespace CinderellaLauncher
 
             return query;
         }
-        
+
         /// <summary>
         /// Used to find FG's with a certain role
         /// </summary>
@@ -2059,8 +2060,8 @@ namespace CinderellaLauncher
             Object returnValue;
 
             Test.CommandText = "SELECT Cinderellas.currentStatus FROM Cinderellas WHERE Cinderellas.id = " + id;
-                              
-                              
+
+
             Test.CommandType = CommandType.Text;
             Test.Connection = sqlConnection;
 
@@ -2072,9 +2073,9 @@ namespace CinderellaLauncher
             return returnValue.ToString();
 
 
-            
-          
-        
+
+
+
         }
 
 
@@ -2092,7 +2093,7 @@ namespace CinderellaLauncher
             sqlConnection.Open();
 
             returnValue = Test.ExecuteScalar();
-            
+
             sqlConnection.Close();
             return returnValue.ToString();
         }
@@ -2114,93 +2115,93 @@ namespace CinderellaLauncher
         }
 
 
-            /*query += ") AND (Referrals.organization LIKE '" + cinOrganization + "%' ";
-            if (cinOrganization == "" || cinOrganization == " ")
-            {
-                query += "OR Referrals.organization IS NULL";
-            }
-            query += ") AND (PersonalShoppers.firstName LIKE '" + FGFirstName + "%' ";
-            if (FGFirstName == "" || FGFirstName == " ")
-            {
-                query += "OR PersonalShoppers.firstName IS NULL";
-            }
-            query += ") AND (PersonalShoppers.lastName LIKE '" + FGLastName + "%' ";
-            if (FGLastName == "" || FGLastName == " ")
-            {
-                query += "OR PersonalShoppers.lastName IS NULL";
-            }
-            query += ") ";              //Handling textboxes is done.
+        /*query += ") AND (Referrals.organization LIKE '" + cinOrganization + "%' ";
+        if (cinOrganization == "" || cinOrganization == " ")
+        {
+            query += "OR Referrals.organization IS NULL";
+        }
+        query += ") AND (PersonalShoppers.firstName LIKE '" + FGFirstName + "%' ";
+        if (FGFirstName == "" || FGFirstName == " ")
+        {
+            query += "OR PersonalShoppers.firstName IS NULL";
+        }
+        query += ") AND (PersonalShoppers.lastName LIKE '" + FGLastName + "%' ";
+        if (FGLastName == "" || FGLastName == " ")
+        {
+            query += "OR PersonalShoppers.lastName IS NULL";
+        }
+        query += ") ";              //Handling textboxes is done.
 
-            ////////////////////////////////     Need a break in all this confusing code            
-            ////////////////////////////////
-            int i = 0;
+        ////////////////////////////////     Need a break in all this confusing code            
+        ////////////////////////////////
+        int i = 0;
 
-            if (dressColor.Length != 0)              //Handles the dress color(s)
+        if (dressColor.Length != 0)              //Handles the dress color(s)
+        {
+            query += " AND Package.dressColor IN (";
+
+            string dresscolors = "";
+            foreach (string color in dressColor)
             {
-                query += " AND Package.dressColor IN (";
+                i++;
+                if (i == 1)
+                    dresscolors += "'" + color + "'";        //Don't add the comma if its the first element.
+                else
+                {
+                    dresscolors += ", '" + color + "'";
+                }
+            }
+            query += dresscolors + ") ";
+        }
 
-                string dresscolors = "";
-                foreach (string color in dressColor)
+        i = 0;
+        if (hasShoes)
+        {
+            if (shoeColor.Length != 0)          //Handles the shoe color(s)
+            {
+                query += " AND Package.shoeColor IN (";
+                string shoecolors = "";
+                foreach (string color in shoeColor)
                 {
                     i++;
                     if (i == 1)
-                        dresscolors += "'" + color + "'";        //Don't add the comma if its the first element.
+                        shoecolors += "'" + color + "'";        //Don't add the comma if its the first element.
                     else
                     {
-                        dresscolors += ", '" + color + "'";
+                        shoecolors += ", '" + color + "'";
                     }
                 }
-                query += dresscolors + ") ";
+                query += shoecolors + ") ";
             }
+            query += " AND ((Package.shoeSize >= " + minShoeSize + " AND Package.shoeSize <= " + maxShoeSize + ") OR Package.shoeSize IS NULL) "; //handles shoe size
+        }
+        else
+        {
+            query += " AND Package.shoeColor IS NULL AND Package.shoeSize IS NULL";
+        }
+        ////////////////////////////    Another needed break
+        ////////////////////////////
 
-            i = 0;
-            if (hasShoes)
-            {
-                if (shoeColor.Length != 0)          //Handles the shoe color(s)
-                {
-                    query += " AND Package.shoeColor IN (";
-                    string shoecolors = "";
-                    foreach (string color in shoeColor)
-                    {
-                        i++;
-                        if (i == 1)
-                            shoecolors += "'" + color + "'";        //Don't add the comma if its the first element.
-                        else
-                        {
-                            shoecolors += ", '" + color + "'";
-                        }
-                    }
-                    query += shoecolors + ") ";
-                }
-                query += " AND ((Package.shoeSize >= " + minShoeSize + " AND Package.shoeSize <= " + maxShoeSize + ") OR Package.shoeSize IS NULL) "; //handles shoe size
-            }
-            else
-            {
-                query += " AND Package.shoeColor IS NULL AND Package.shoeSize IS NULL";
-            }
-            ////////////////////////////    Another needed break
-            ////////////////////////////
+        query += " AND ((Package.dressSize >= " + minDressSize + " AND Package.dressSize <= " + maxDressSize + ") OR Package.dressSize IS NULL) ";          //Handles the range of dress size. If looking for a specific value, make max and min the same value.
+        if (SeamstressID > 0 && hadAlterations != 0)
+            query += " AND Alterators.id = " + SeamstressID;
 
-            query += " AND ((Package.dressSize >= " + minDressSize + " AND Package.dressSize <= " + maxDressSize + ") OR Package.dressSize IS NULL) ";          //Handles the range of dress size. If looking for a specific value, make max and min the same value.
-            if (SeamstressID > 0 && hadAlterations != 0)
-                query += " AND Alterators.id = " + SeamstressID;
+        if (hadAlterations == 1)
+            query += " AND Cinderellas.id IN (SELECT cinderellaID FROM Alteration) ";
+        if (hadAlterations == 0)
+            query += " AND Cinderellas.id NOT IN (SELECT cinderellaID FROM Alteration) ";
 
-            if (hadAlterations == 1)
-                query += " AND Cinderellas.id IN (SELECT cinderellaID FROM Alteration) ";
-            if (hadAlterations == 0)
-                query += " AND Cinderellas.id NOT IN (SELECT cinderellaID FROM Alteration) ";
-
-            if (ring == 0 || ring == 1)                 //0 = False, 1 = True, Anything else = Unknown
-                query += " AND Package.Ring = " + ring;
-            if (necklace == 0 || necklace == 1)
-                query += " AND Package.Necklace = " + necklace;
-            if (bracelet == 0 || bracelet == 1)
-                query += " AND Package.Bracelet = " + bracelet;
-            if (headpiece == 0 || headpiece == 1)
-                query += " AND Package.Headpiece = " + headpiece;
-            if (earring == 0 || earring == 1)
-                query += " AND Package.Earrings = " + earring;
-            */
+        if (ring == 0 || ring == 1)                 //0 = False, 1 = True, Anything else = Unknown
+            query += " AND Package.Ring = " + ring;
+        if (necklace == 0 || necklace == 1)
+            query += " AND Package.Necklace = " + necklace;
+        if (bracelet == 0 || bracelet == 1)
+            query += " AND Package.Bracelet = " + bracelet;
+        if (headpiece == 0 || headpiece == 1)
+            query += " AND Package.Headpiece = " + headpiece;
+        if (earring == 0 || earring == 1)
+            query += " AND Package.Earrings = " + earring;
+        */
 
         internal string MasterSearchBox(string item)
         {
@@ -2289,7 +2290,7 @@ namespace CinderellaLauncher
         public string PrintIDGrid()
         {
             string query = "Select id From CinderellaMGS2012.dbo.Cinderellas Order By CinderellaMGS2012.dbo.cinderellas.lastName";
-            
+
             return query;
         }
 
@@ -2300,7 +2301,7 @@ namespace CinderellaLauncher
             SqlCommand Test = new SqlCommand();
             Object returnValue;
 
-            Test.CommandText = "SELECT Cinderellas.firstName + ' ' +Cinderellas.lastName FROM FairyGodmothers WHERE id = " + ID;
+            Test.CommandText = "SELECT FairyGodmothers.firstName + ' ' +FairyGodmothers.lastName FROM FairyGodmothers WHERE id = " + ID;
             Test.CommandType = CommandType.Text;
             Test.Connection = sqlConnection;
 
@@ -2350,9 +2351,10 @@ namespace CinderellaLauncher
 
         public string PrintFGIDGrid()
         {
-            string query = "Select id From CinderellaMGS2012.dbo.FairyGodmothers Order By CinderellaMGS2012.dbo.cinderellas.lastName";
+            string query = "Select id From CinderellaMGS2012.dbo.FairyGodmothers Order By CinderellaMGS2012.dbo.FairyGodmothers.lastName";
 
             return query;
+
         }
     }
 }

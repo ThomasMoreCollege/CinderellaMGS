@@ -14,26 +14,25 @@ using System.Threading;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Diagnostics;
-
+using IDAutomation_FontEncoder2;
 namespace CinderellaLauncher.Forms
 {
-    public partial class Print : Form
+    public partial class FGPrint : Form
     {
-        private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString);
+                private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString);
         
         SQL_Queries query = new SQL_Queries();
-        clsBarCode PrintLabel = new clsBarCode();
         private DataTable PG;
         private BindingSource PGBindingSource = new BindingSource();
-
+        FGclsBarCode PrintFGLabel = new FGclsBarCode();
         private SqlCommand updateCommand;
         private SqlDataAdapter PrintGridAdapter;
-        public Print()
+        public FGPrint()
         {
             InitializeComponent();
         }
 
-        private void Print_Load(object sender, EventArgs e)
+        private void FGPrint_Load(object sender, EventArgs e)
         {
             //PrintGrid.DataBindings = query.PrintIDGrid();
 
@@ -47,7 +46,7 @@ namespace CinderellaLauncher.Forms
             }));
 
             // Give the dataAdapter a select query and connection string
-            PrintGridAdapter = new SqlDataAdapter(query.PrintIDGrid(), connection);
+            PrintGridAdapter = new SqlDataAdapter(query.PrintFGIDGrid(), connection);
 
 
             // Not sure yet ...
@@ -68,9 +67,10 @@ namespace CinderellaLauncher.Forms
 
         }
 
+        
         private void button1_Click(object sender, EventArgs e)
         {
-                int i = Convert.ToInt32(query.count());
+                int i = Convert.ToInt32(query.FGcount());
 
                 string[] barcode;
                 barcode = new string[i];
@@ -79,7 +79,7 @@ namespace CinderellaLauncher.Forms
 
                 while (i != 0)
                 {
-                    if (p == Convert.ToInt32(query.count()))
+                    if (p == Convert.ToInt32(query.FGcount()))
                     {
                         i = 0;
                     }
@@ -94,10 +94,11 @@ namespace CinderellaLauncher.Forms
 
                 }
 
-                string q = query.PrintCinderellaName(barcode[0]) + "     ";
+                string q = query.PrintFGName(barcode[0]) + "     ";
                 //string q1 = query.PrintCinderellaName(PrintBox.Text) + "     ";
                 //string barcode1 = PrintBox.Text;
-                PrintLabel.PrintBarCode("IDAutomationHC39M", barcode, 9, "Times New Roman", q, 9);
-            }
+                 PrintFGLabel.PrintBarCode("IDAutomationHC39M", barcode, 9, "Times New Roman", q, 9);
+
         }
     }
+}

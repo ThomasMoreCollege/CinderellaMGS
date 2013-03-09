@@ -45,6 +45,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chatNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +70,7 @@
             this.AlterationsScanLabel = new System.Windows.Forms.Label();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.Search = new System.Windows.Forms.Button();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fGPrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.alterationsCinderellasDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppingCinderellasDGV)).BeginInit();
@@ -227,7 +228,8 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem,
-            this.printToolStripMenuItem});
+            this.printToolStripMenuItem,
+            this.fGPrintToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(43, 23);
             this.fileToolStripMenuItem.Text = "File";
@@ -238,6 +240,13 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.printToolStripMenuItem.Text = "Print";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // chatToolStripMenuItem
             // 
@@ -250,7 +259,7 @@
             // chatNowToolStripMenuItem
             // 
             this.chatNowToolStripMenuItem.Name = "chatNowToolStripMenuItem";
-            this.chatNowToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.chatNowToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
             this.chatNowToolStripMenuItem.Text = "Chat Now";
             this.chatNowToolStripMenuItem.Click += new System.EventHandler(this.chatNowToolStripMenuItem_Click);
             // 
@@ -540,12 +549,12 @@
             this.Search.UseVisualStyleBackColor = true;
             this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
-            // printToolStripMenuItem
+            // fGPrintToolStripMenuItem
             // 
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
-            this.printToolStripMenuItem.Text = "Print";
-            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+            this.fGPrintToolStripMenuItem.Name = "fGPrintToolStripMenuItem";
+            this.fGPrintToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.fGPrintToolStripMenuItem.Text = "FG Print";
+            this.fGPrintToolStripMenuItem.Click += new System.EventHandler(this.fGPrintToolStripMenuItem_Click);
             // 
             // Alterations
             // 
@@ -636,5 +645,6 @@
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.Button Search;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fGPrintToolStripMenuItem;
     }
 }
