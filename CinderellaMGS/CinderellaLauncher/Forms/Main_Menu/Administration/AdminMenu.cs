@@ -8,7 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
- 
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Drawing.Printing;
+using IDAutomation_FontEncoder;
+
 namespace CinderellaLauncher
 {
     /*
@@ -31,8 +35,18 @@ namespace CinderellaLauncher
      *
      */
    
+
+
     public partial class AdminMenu : Form
     {
+        SQL_Queries query = new SQL_Queries();
+        clsBarCode PrintLabel = new clsBarCode();
+        private DataTable PG;
+        private BindingSource PGBindingSource = new BindingSource();
+
+        private SqlCommand updateCommand;
+        private SqlDataAdapter PrintGridAdapter;
+
        
         List<Thread> FormThreads = new List<Thread>();//keeps track of form threads for latter termination
  
@@ -215,6 +229,18 @@ namespace CinderellaLauncher
         private void startChatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("C:\\Users\\tlcomb71\\Documents\\GitHub\\CinderellaMGS\\CinderellaMGS\\Chat_Server\\obj\\x86\\Debug\\Chat_Server.exe");
+        }
+
+        private void allCinderellasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thread P = new Thread(() => Application.Run(new CinderellaLauncher.Forms.Print()));
+           P.Start();
+        }
+
+        private void allFairyGodmothersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thread FG = new Thread(() => Application.Run(new CinderellaLauncher.Forms.FGPrint()));
+            FG.Start();
         }
     }
 }

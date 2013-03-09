@@ -174,7 +174,7 @@ namespace CinderellaLauncher
         /// <returns></returns>
         public string getMaxCinderellaID()
         {
-            DataSet ds = sqlSelect("getlastCinderellaID");
+            DataSet ds = sqlSelect(" ");
 
             DataTable dt = ds.Tables["tableName"];
             return dt.Rows[0][0].ToString();

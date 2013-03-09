@@ -35,6 +35,9 @@
             this.chatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chatNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allCinderellasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allFairyGodmothersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importCinderella = new System.Windows.Forms.Button();
             this.importGodMothers = new System.Windows.Forms.Button();
             this.databaseMgtButton = new System.Windows.Forms.Button();
@@ -65,7 +68,8 @@
             this.menuStrip1.BackColor = System.Drawing.Color.AliceBlue;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.chatToolStripMenuItem});
+            this.chatToolStripMenuItem,
+            this.printToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(551, 24);
@@ -99,16 +103,39 @@
             // chatNowToolStripMenuItem
             // 
             this.chatNowToolStripMenuItem.Name = "chatNowToolStripMenuItem";
-            this.chatNowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.chatNowToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.chatNowToolStripMenuItem.Text = "Chat Now";
             this.chatNowToolStripMenuItem.Click += new System.EventHandler(this.chatNowToolStripMenuItem_Click);
             // 
             // startChatToolStripMenuItem
             // 
             this.startChatToolStripMenuItem.Name = "startChatToolStripMenuItem";
-            this.startChatToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startChatToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.startChatToolStripMenuItem.Text = "Start Chat";
             this.startChatToolStripMenuItem.Click += new System.EventHandler(this.startChatToolStripMenuItem_Click);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.allCinderellasToolStripMenuItem,
+            this.allFairyGodmothersToolStripMenuItem});
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.printToolStripMenuItem.Text = "Print";
+            // 
+            // allCinderellasToolStripMenuItem
+            // 
+            this.allCinderellasToolStripMenuItem.Name = "allCinderellasToolStripMenuItem";
+            this.allCinderellasToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.allCinderellasToolStripMenuItem.Text = "All Cinderellas";
+            this.allCinderellasToolStripMenuItem.Click += new System.EventHandler(this.allCinderellasToolStripMenuItem_Click);
+            // 
+            // allFairyGodmothersToolStripMenuItem
+            // 
+            this.allFairyGodmothersToolStripMenuItem.Name = "allFairyGodmothersToolStripMenuItem";
+            this.allFairyGodmothersToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.allFairyGodmothersToolStripMenuItem.Text = "All Fairy Godmothers";
+            this.allFairyGodmothersToolStripMenuItem.Click += new System.EventHandler(this.allFairyGodmothersToolStripMenuItem_Click);
             // 
             // importCinderella
             // 
@@ -257,5 +284,8 @@
         private System.Windows.Forms.Button pairingButton;
         private System.Windows.Forms.Button masterSearchButton;
         private System.Windows.Forms.ToolStripMenuItem startChatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allCinderellasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allFairyGodmothersToolStripMenuItem;
     }
 }
