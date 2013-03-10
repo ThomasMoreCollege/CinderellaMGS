@@ -76,6 +76,8 @@ namespace CinderellaLauncher
         // Used for shift/role determination 
         DataTable shiftInfo;
         SqlDataAdapter da;
+        public static int rows = 0;
+        public static int columns = 0;
 
         public FGCheckIn()
         {
@@ -657,10 +659,44 @@ namespace CinderellaLauncher
 
         private void addFairyGodmotherToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            addColumns();
+
             Thread addFairyGodmother = new Thread(() => Application.Run(new AddFairyGodmother()));
             addFairyGodmother.Start();
         }
+        
+        public static void addColumns()
+        {
+            if (columns == 3)
+            {
+                addRows();
+                columns = 1;
+            }
 
+
+            else
+            {
+                ++columns;
+                addRows();
+            }
+        }
+
+        public static int countColumns()
+        {
+            return columns;
+        }
+        public static void addRows()
+        {
+            if (rows == 10)
+                rows = 1;
+            else
+                ++rows;
+        }
+
+        public static int countRows()
+        {
+            return rows;
+        }
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Thread aboutThread = new Thread(() => Application.Run(new About()));

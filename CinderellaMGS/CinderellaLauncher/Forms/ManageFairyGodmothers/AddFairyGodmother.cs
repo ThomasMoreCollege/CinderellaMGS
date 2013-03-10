@@ -59,9 +59,18 @@ namespace CinderellaLauncher
         private string TextToPrint3;
         string x = "";
         //int Text = 0;
-        int max = 0;
+        int rows = 0;
+        int columns = 0;
         int count4 = 0;
 
+        //Vertical postion on page of bar code
+        float yPos = 60;
+        //Hotizontal position on the page of the bar code
+        float xPos = 125;
+        //Vertical postion on page of bar code
+        float yPos2 = 60;
+        //Hotizontal position on the page of the bar code
+        float xPos2 = 10;
 
         public AddFairyGodmother()
         {
@@ -161,23 +170,35 @@ namespace CinderellaLauncher
         //This is the event handler for printing bar codes
         private void PrintDocHandler(object sender, PrintPageEventArgs ev)
         {
-
-            //Vertical postion on page of bar code
-            float yPos = 60;
-            //Hotizontal position on the page of the bar code
-            float xPos = 125;
-            //Vertical postion on page of bar code
-            float yPos2 = 60;
-            //Hotizontal position on the page of the bar code
-            float xPos2 = 10;
+            rows = FGCheckIn.rows;
+            columns=FGCheckIn.columns;
+            
             //Set the left margin of the page
             float leftMargin = ev.MarginBounds.Left;
             //set the top margin of the page.
             float topMargin = ev.MarginBounds.Top;
-            //TextToPrint2 = query.PrintFGName(TextToPrint) + "            ";
-            TextToPrint3 = "*" + TextToPrint + "*";
-            ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
-            ev.Graphics.DrawString(TextToPrint, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+            TextToPrint2 = query.PrintFGName(TextToPrint) + "            ";
+            if (rows == 1 && columns == 1)
+            {
+                TextToPrint3 = "*" + TextToPrint + "*";
+                ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+                ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+                FGCheckIn.addColumns();
+            }
+
+            else
+                {
+                    TextToPrint2 = query.PrintFGName(TextToPrint) + "            ";
+                    TextToPrint3 = "*" + TextToPrint + "*";
+                    xPos += 280;
+                    xPos2 += 280;
+
+                    ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+                    ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+                    FGCheckIn.addColumns();
+                }
+            }
+
             /*int count2 = 2;
             while (count2 != 0)
             {
@@ -292,4 +313,3 @@ namespace CinderellaLauncher
             //}// end total 
         }
     }
-}
