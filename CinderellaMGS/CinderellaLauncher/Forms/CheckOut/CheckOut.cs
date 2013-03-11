@@ -410,8 +410,7 @@ namespace CinderellaLauncher
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            firstNameBox.Text = "";
-            lastNameBox.Text = "";
+           
             organizationTextBox.Text = "";
 
             SqlCommand searchCommand = new SqlCommand(query.CheckOutSearch("", "", ""));

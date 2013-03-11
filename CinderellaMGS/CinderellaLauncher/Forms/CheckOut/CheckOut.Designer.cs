@@ -36,10 +36,6 @@
             this.checkOutButton = new System.Windows.Forms.Button();
             this.searchDGV = new System.Windows.Forms.DataGridView();
             this.searchButton = new System.Windows.Forms.Button();
-            this.firstNameBox = new System.Windows.Forms.TextBox();
-            this.lastNameBox = new System.Windows.Forms.TextBox();
-            this.lastNameLabel = new System.Windows.Forms.Label();
-            this.firstNameLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
             this.notesLabel = new System.Windows.Forms.Label();
             this.notesTextBox = new System.Windows.Forms.TextBox();
@@ -160,47 +156,11 @@
             this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // firstNameBox
-            // 
-            this.firstNameBox.BackColor = System.Drawing.Color.Snow;
-            this.firstNameBox.Location = new System.Drawing.Point(111, 355);
-            this.firstNameBox.Name = "firstNameBox";
-            this.firstNameBox.Size = new System.Drawing.Size(205, 20);
-            this.firstNameBox.TabIndex = 13;
-            // 
-            // lastNameBox
-            // 
-            this.lastNameBox.BackColor = System.Drawing.Color.Snow;
-            this.lastNameBox.Location = new System.Drawing.Point(111, 327);
-            this.lastNameBox.Name = "lastNameBox";
-            this.lastNameBox.Size = new System.Drawing.Size(205, 20);
-            this.lastNameBox.TabIndex = 12;
-            // 
-            // lastNameLabel
-            // 
-            this.lastNameLabel.AutoSize = true;
-            this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameLabel.Location = new System.Drawing.Point(11, 327);
-            this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(94, 20);
-            this.lastNameLabel.TabIndex = 11;
-            this.lastNameLabel.Text = "Last Name: ";
-            // 
-            // firstNameLabel
-            // 
-            this.firstNameLabel.AutoSize = true;
-            this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameLabel.Location = new System.Drawing.Point(11, 354);
-            this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(94, 20);
-            this.firstNameLabel.TabIndex = 10;
-            this.firstNameLabel.Text = "First Name: ";
-            // 
             // searchLabel
             // 
             this.searchLabel.AutoSize = true;
             this.searchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchLabel.Location = new System.Drawing.Point(19, 298);
+            this.searchLabel.Location = new System.Drawing.Point(8, 361);
             this.searchLabel.Name = "searchLabel";
             this.searchLabel.Size = new System.Drawing.Size(66, 20);
             this.searchLabel.TabIndex = 9;
@@ -779,10 +739,6 @@
             this.Controls.Add(this.checkOutButton);
             this.Controls.Add(this.searchDGV);
             this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.firstNameBox);
-            this.Controls.Add(this.lastNameBox);
-            this.Controls.Add(this.lastNameLabel);
-            this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -807,10 +763,6 @@
         private System.Windows.Forms.Button checkOutButton;
         private System.Windows.Forms.DataGridView searchDGV;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox firstNameBox;
-        private System.Windows.Forms.TextBox lastNameBox;
-        private System.Windows.Forms.Label lastNameLabel;
-        private System.Windows.Forms.Label firstNameLabel;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.Label notesLabel;
         private System.Windows.Forms.TextBox notesTextBox;

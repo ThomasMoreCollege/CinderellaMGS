@@ -140,7 +140,7 @@ namespace CinderellaLauncher
 
                         this.BackColor = System.Drawing.Color.Red;
                         timeLbl.Text = "Cinderella is already checked in";
-
+                        CinderellaCheckInBarcodeTextbox.Text = "";
 
 
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FGCheckInBarcode));
             this.label1 = new System.Windows.Forms.Label();
             this.timeLbl = new System.Windows.Forms.Label();
             this.DisplayCindi = new System.Windows.Forms.Label();
@@ -79,6 +80,7 @@
             this.Controls.Add(this.timeLbl);
             this.Controls.Add(this.DisplayCindi);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FGCheckInBarcode";
             this.Text = "Fairy Godmother Check In Barcode";
             this.Load += new System.EventHandler(this.FGCheckInBarcode_Load);
