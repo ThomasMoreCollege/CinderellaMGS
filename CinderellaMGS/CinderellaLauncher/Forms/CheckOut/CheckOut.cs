@@ -12,6 +12,8 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Configuration;
 
+
+
 namespace CinderellaLauncher
 {
     /*CheckOut.cs
@@ -586,6 +588,9 @@ namespace CinderellaLauncher
                 }
               //  try
                 {
+                    
+
+
                     int id = Convert.ToInt32(CheckOutBarcodeTextBox.Text);
                     CheckOutBarcodeTextBox.Text = "";
 
@@ -656,6 +661,7 @@ namespace CinderellaLauncher
                     notesTextBox.ResetText();
                     otherCheckBox.Checked = false;
                     otherTextBox.ResetText();
+                    CheckOutBarcodeTextBox.ResetText();
 
                     cinderellaNameLabel.ResetText();
 
@@ -671,6 +677,7 @@ namespace CinderellaLauncher
                     //MessageBox.Show("Please Select the Size and Color of the Dress and of the Shoes");
                 }
             }
+
 
         private void organizationTextBox_TextChanged(object sender, EventArgs e)
         {
