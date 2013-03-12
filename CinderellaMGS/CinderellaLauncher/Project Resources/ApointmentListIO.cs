@@ -116,12 +116,16 @@ namespace BusinessLogic
                 //The integer index will refer to the number of a cell in a column that is currently being processd.
                 int index = 0;
 
+                //The following variables Date and Time will represent the Date and Time of an Appointment.
+                DateTime Appointment_Date = new DateTime();
+                DateTime Appointment_Time = new DateTime();
+
                 //This loop begins reading values into the database.
                 for (int rows = 2; rows <= closetTuples_C.Rows.Count; rows++)
                 {
 
                     //This loop begins to read values for each specific column.
-                    for (int columns = 1; columns < closetTuples_C.Columns.Count; columns++)
+                    for (int columns = 1; columns <= closetTuples_C.Columns.Count; columns++)
                     {
 
                         //The object Value_C is now assigned to be the value of a certain cell in the closetSheet Excel sheet.
@@ -137,15 +141,11 @@ namespace BusinessLogic
                             particulars_C[index] = Value_C.ToString().Trim();
                             if (particulars_C[index].ToString().Contains("'"))
                             {
-
-
                                 correctIndex = particulars_C[index].ToString().IndexOf("'");
 
                                 particulars_C[index] = particulars_C[index].ToString().Replace("'", "''");
                                 Console.WriteLine(particulars_C[index].ToString());
                                 closetSheet_C.Cells[rows, 1] = particulars_C[index];
-
-
                             }
                             index++;
                         }
@@ -165,28 +165,49 @@ namespace BusinessLogic
                             index++;
                         }
 
-                        //Places the contents of third column in a string.
+                        //Checks the third column for any cells with special characters and if it finds one, corrects it.
                         else if (columns == 3)
                         {
                             particulars_C[index] = Value_C.ToString().Trim();
-                            index++;
+                            if (particulars_C[index].ToString().Contains("'"))
+                            {
+                                correctIndex = particulars_C[index].ToString().IndexOf("'");
 
+                                particulars_C[index] = particulars_C[index].ToString().Replace("'", "''");
+                                Console.WriteLine(particulars_C[index].ToString());
+                                closetSheet_C.Cells[rows, 3] = particulars_C[index];
+                            }
+                            index++;
                         }
 
-                        //Places the contents of fourth column in a string.
+                        //Checks the fourth column for any cells with special characters and if it finds one, corrects it.
                         else if (columns == 4)
                         {
                             particulars_C[index] = Value_C.ToString().Trim();
-                            index++;
+                            if (particulars_C[index].ToString().Contains("'"))
+                            {
+                                correctIndex = particulars_C[index].ToString().IndexOf("'");
 
+                                particulars_C[index] = particulars_C[index].ToString().Replace("'", "''");
+                                Console.WriteLine(particulars_C[index].ToString());
+                                closetSheet_C.Cells[rows, 4] = particulars_C[index];
+                            }
+                            index++;
                         }
 
-                        //Places the contents of fifth column in a string.
+                        //Checks the fifth column for any cells with special characters and if it finds one, corrects it.
                         else if (columns == 5)
                         {
                             particulars_C[index] = Value_C.ToString().Trim();
-                            index++;
+                            if (particulars_C[index].ToString().Contains("'"))
+                            {
+                                correctIndex = particulars_C[index].ToString().IndexOf("'");
 
+                                particulars_C[index] = particulars_C[index].ToString().Replace("'", "''");
+                                Console.WriteLine(particulars_C[index].ToString());
+                                closetSheet_C.Cells[rows, 5] = particulars_C[index];
+                            }
+                            index++;
                         }
 
                         //Formats the sixth column into the Date and Time columns.
@@ -199,23 +220,27 @@ namespace BusinessLogic
                             string[] DateandTime = particulars_C[index].ToString().Trim().Split(' ');
 
                             //The string DateandTime[0], which contains the appointment date, is now placed in the correct spots.
-                            particulars_C[index] = DateandTime[0];
-                            Console.WriteLine(particulars_C[index].ToString());
+                            Appointment_Date = Convert.ToDateTime(DateandTime[0]);
+
+                            //Potentially Obsolete Code
+                            /*Console.WriteLine(particulars_C[index].ToString());
                             closetSheet_C.Cells[rows, 6] = particulars_C[index];
-                            index++;
+                            index++;*/
 
                             //The string DateandTime[1], which contains the appointment time, is now placed in the correct spots.
-                            particulars_C[index] = DateandTime[1].ToString();
-                            Console.WriteLine(particulars_C[index].ToString());
+                            Appointment_Time = Convert.ToDateTime(DateandTime[1]);
+
+                            //Potentially Obsolete Code
+                            /*Console.WriteLine(particulars_C[index].ToString());
                             closetSheet_C.Cells[rows, 7] = particulars_C[index];
-                            index++;
+                            index++;*/
                         }
 
                     }
                     index = 0;
 
                     //The query will finally begin to add the data from the Excel sheet to the database.
-                    Cinderella_Add.addCinderellaAndReferral(closetSheet_C.Cells[rows, 3].Value.ToString() + closetSheet_C.Cells[rows, 4].Value.ToString(), closetSheet_C.Cells[rows, 5].Value.ToString(), closetSheet_C.Cells[rows, 1].Value.ToString(), closetSheet_C.Cells[rows, 2].Value.ToString(), closetSheet_C.Cells[rows, 6].Value.ToString(), closetSheet_C.Cells[rows, 7].Value.ToString(), "");
+                    Cinderella_Add.addCinderellaAndReferral(closetSheet_C.Cells[rows, 3].Value.ToString() + closetSheet_C.Cells[rows, 4].Value.ToString(), closetSheet_C.Cells[rows, 5].Value.ToString(), closetSheet_C.Cells[rows, 1].Value.ToString(), closetSheet_C.Cells[rows, 2].Value.ToString(), Appointment_Date.ToString(), Appointment_Time.ToString(), "");
 
                     //Code for progress bar.
 
@@ -387,14 +412,32 @@ namespace BusinessLogic
                         //Places the contents of third column in a string.
                         else if (columns == 3)
                         {
+                            if (Value_G == null)
+                            {
+
+                            }
+                            else
                             particulars_G[index] = Value_G.ToString().Trim();
                             index++;
-
                         }
 
                         //Places the contents of fourth column in a string.
                         else if (columns == 4)
                         {
+                            if (Value_G == null)
+                            {
+                                Value_G = "NULL";
+                                Console.WriteLine(Value_G.ToString());
+                                closetSheet_G.Cells[rows, 4] = Value_G;
+                            }
+
+                            if (Value_G.ToString().Trim().Contains('(') || Value_G.ToString().Trim().Contains(')') || Value_G.ToString().Trim().Contains('-') || Value_G.ToString().Trim().Contains(' '))
+                            {
+                                Value_G = "NULL";
+                                Console.WriteLine(Value_G.ToString());
+                                closetSheet_G.Cells[rows, 4] = Value_G;
+                            }
+
                             particulars_G[index] = Value_G.ToString().Trim();
                             index++;
 
@@ -403,6 +446,13 @@ namespace BusinessLogic
                         //Places the contents of fifth column in a string.
                         else if (columns == 5)
                         {
+                            if (Value_G == null)
+                            {
+                                Value_G = "NULL";
+                                Console.WriteLine(Value_G.ToString());
+                                closetSheet_G.Cells[rows, 5] = Value_G;
+                            }
+
                             particulars_G[index] = Value_G.ToString().Trim();
                             index++;
 
@@ -411,6 +461,13 @@ namespace BusinessLogic
                         //Places the contents of sixth column in a string.
                         else if (columns == 6)
                         {
+                            if (Value_G == null)
+                            {
+                                Value_G = "NULL";
+                                Console.WriteLine(Value_G.ToString());
+                                closetSheet_G.Cells[rows, 6] = Value_G;
+                            }
+
                             particulars_G[index] = Value_G.ToString().Trim();
                             index++;
 
@@ -419,6 +476,13 @@ namespace BusinessLogic
                         //Places the contents of seventh column in a string.
                         else if (columns == 7)
                         {
+                            if (Value_G == null)
+                            {
+                                Value_G = "NULL";
+                                Console.WriteLine(Value_G.ToString());
+                                closetSheet_G.Cells[rows, 7] = Value_G;
+                            }
+
                             particulars_G[index] = Value_G.ToString().Trim();
                             index++;
 
@@ -427,11 +491,30 @@ namespace BusinessLogic
                         //Places the contents of eigth column in a string.
                         else if (columns == 8)
                         {
+                            if (Value_G == null)
+                            {
+                                Value_G = "NULL";
+                                Console.WriteLine(Value_G.ToString());
+                                closetSheet_G.Cells[rows, 8] = Value_G;
+                            }
+
                             particulars_G[index] = Value_G.ToString().Trim();
+
+                            string Value_to_Check = particulars_G[index].ToString();
+
+                            string Value_to_Compare = "0";
+
+                            if (Value_to_Check == Value_to_Compare)
+                            {
+                                Value_to_Check = "NULL";
+                                particulars_G[index] = Value_to_Check;
+                                Console.WriteLine(particulars_G[index].ToString());
+                                closetSheet_G.Cells[rows, 8] = particulars_G[index];
+                            }
+
                             index++;
 
                         }
-
                     }
                     index = 0;
 

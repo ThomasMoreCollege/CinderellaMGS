@@ -1214,9 +1214,13 @@ namespace CinderellaLauncher
         /// <returns>Godmothers ID Number</returns>
         public string NewGodMother(string fname, string lname, string address, string city, string emailAddress, string phoneNumber, string state, string zip)
         {
-            if (zip == null || zip == "")
+            if (address == null || address == "" || address == "NULL")
+                address = "NULL";
+            if (state == null || state == "" || state == "NULL")
+                state = "NU";
+            if (zip == null || zip == "" || zip == "NULL")
                 zip = "NULL";
-            if (phoneNumber == null || phoneNumber == "")
+            if (phoneNumber == null || phoneNumber == "" || phoneNumber == "NULL")
                 phoneNumber = "NULL";
             if (city == null || city == "" || city == "NULL")
                 city = "NULL";
