@@ -32,8 +32,9 @@ namespace CinderellaLauncher
         }
 
 
- private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString);
+   private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString);
         SQL_Queries query = new SQL_Queries();
+
 
 
 
@@ -45,10 +46,43 @@ namespace CinderellaLauncher
                 string id = BarcodeTextBox.Text;
 
 
+                /*DateTime today = DateTime.Now;
+                DateTime t1 = new DateTime (2013, 3, 15, 12, 0, 0);
+                DateTime t2 = new DateTime(2013, 3, 16, 12, 0, 0);
+                DateTime t3 = new DateTime(2013, 3, 16, 18, 0, 0);
+                //MessageBox.Show (Convert.ToString(today.Date));
+                //MessageBox.Show(Convert.ToString(today.TimeOfDay));
+                */
 
 
-                query.setFGStatus(id, 4);
 
+
+                
+                {
+                    /*
+
+                    if (today.Date < t2)
+                    {
+                        query.setFGStatusScan(id, 4, 1);
+
+                    }
+
+                    else if (today.Date >= t2 && today.Date < t3)
+                    {
+                        query.setFGStatusScan(id, 4, 2);
+                    }
+
+
+                    else if (today.Date >= t3)
+                    {
+                        query.setFGStatusScan(id, 4, 3);
+                    }*/
+
+
+                    query.setFGStatus(id, 4);
+
+                }
+               
             }
 
         }

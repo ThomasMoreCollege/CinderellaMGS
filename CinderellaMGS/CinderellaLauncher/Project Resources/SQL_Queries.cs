@@ -1257,6 +1257,18 @@ namespace CinderellaLauncher
         /// </summary>
         /// <param name="ID"></param>
         /// <param name="status"></param>
+
+
+        public void setFGStatusScan(string ID, int status, int shift)
+        {
+            string query = "";
+            //Set status of godmother
+            query = "UPDATE ShiftWorkers SET statusID = " + status + " Where fairyGodmotherID = " + ID + " AND shiftID = " + shift;
+
+
+            database.ExecuteQuery(query);
+        }
+        
         public void setFGStatus(string ID, int status)
         {
             string query = "";
@@ -1427,6 +1439,16 @@ namespace CinderellaLauncher
             return query;
 
         }
+
+
+        public string getFGStatus(string fgID)
+        {
+            string query = "Select currentStatus From FairyGodmothers Where id = " + fgID;
+
+            return query;
+        }
+
+
         /// <summary>
         /// USed to search the FG list
         /// </summary>
