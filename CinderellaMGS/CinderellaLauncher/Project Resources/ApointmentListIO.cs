@@ -117,11 +117,12 @@ namespace BusinessLogic
                 int index = 0;
 
                 //The following variables Date and Time will represent the Date and Time of an Appointment.
-                DateTime Appointment_Date = new DateTime();
-                DateTime Appointment_Time = new DateTime();
+                DateTime Appointment_DateTime = new DateTime();
+                string TestD;
+                string TestT;
 
                 //This loop begins reading values into the database.
-                for (int rows = 2; rows <= closetTuples_C.Rows.Count; rows++)
+                for (int rows = 2; rows <= 406; rows++)
                 {
 
                     //This loop begins to read values for each specific column.
@@ -214,21 +215,28 @@ namespace BusinessLogic
                         else if (columns == 6)
                         {
                             particulars_C[index] = Value_C.ToString().Trim();
+                            Appointment_DateTime = Convert.ToDateTime(Value_C);
 
+                            TestD = Appointment_DateTime.Date.ToString();
+                            TestT = Appointment_DateTime.TimeOfDay.ToString();
+
+                            //Potentially Obsolete Code
                             //The Value for particulars[index] is then split into two strings at the ' '.
                             //These two strings are then placed into an array of strings called DateandTime
-                            string[] DateandTime = particulars_C[index].ToString().Trim().Split(' ');
+                            //string[] DateandTime = particulars_C[index].ToString().Trim().Split(' ');
 
+                            //Potentially Obsolete Code
                             //The string DateandTime[0], which contains the appointment date, is now placed in the correct spots.
-                            Appointment_Date = Convert.ToDateTime(DateandTime[0]);
+                            //Appointment_DateTime = Convert.ToDateTime(Value_C);
 
                             //Potentially Obsolete Code
                             /*Console.WriteLine(particulars_C[index].ToString());
                             closetSheet_C.Cells[rows, 6] = particulars_C[index];
                             index++;*/
 
+                            //Potentially Obsolete Code
                             //The string DateandTime[1], which contains the appointment time, is now placed in the correct spots.
-                            Appointment_Time = Convert.ToDateTime(DateandTime[1]);
+                            //Appointment_Time = Convert.ToDateTime(DateandTime[1]);
 
                             //Potentially Obsolete Code
                             /*Console.WriteLine(particulars_C[index].ToString());
@@ -238,9 +246,11 @@ namespace BusinessLogic
 
                     }
                     index = 0;
+                    TestD = Appointment_DateTime.Date.ToString();
+                    TestT = Appointment_DateTime.TimeOfDay.ToString();
 
                     //The query will finally begin to add the data from the Excel sheet to the database.
-                    Cinderella_Add.addCinderellaAndReferral(closetSheet_C.Cells[rows, 3].Value.ToString() + closetSheet_C.Cells[rows, 4].Value.ToString(), closetSheet_C.Cells[rows, 5].Value.ToString(), closetSheet_C.Cells[rows, 1].Value.ToString(), closetSheet_C.Cells[rows, 2].Value.ToString(), Appointment_Date.ToString(), Appointment_Time.ToString(), "");
+                    Cinderella_Add.addCinderellaAndReferral(closetSheet_C.Cells[rows, 3].Value.ToString() + closetSheet_C.Cells[rows, 4].Value.ToString(), closetSheet_C.Cells[rows, 5].Value.ToString(), closetSheet_C.Cells[rows, 1].Value.ToString(), closetSheet_C.Cells[rows, 2].Value.ToString(), TestD, TestT, "");
 
                     //Code for progress bar.
 
