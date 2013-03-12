@@ -2810,7 +2810,7 @@ namespace IDAutomation_FontEncoder
 			float leftMargin = ev.MarginBounds.Left;
 			//set the top margin of the page.
 			float topMargin = ev.MarginBounds.Top;
-            TextToPrint2 = query.PrintCinderellaName(TextToPrint[count4]) + "            ";
+            TextToPrint2 = query.PrintFirstCinderellaName(TextToPrint[count4]) + "\n" + query.PrintLastCinderellaName(TextToPrint[count4]) + "            ";
             TextToPrint3 = "*" + TextToPrint[count4] + "*";
             ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
             ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
@@ -2875,7 +2875,7 @@ namespace IDAutomation_FontEncoder
                         yPos2 += 100;
                         xPos = 125;
                         xPos2 = 10;
-                        TextToPrint2 = query.PrintCinderellaName(TextToPrint[count4]) + "             ";
+                        TextToPrint2 = query.PrintFirstCinderellaName(TextToPrint[count4])+"\n" + query.PrintLastCinderellaName(TextToPrint[count4]) + "            ";
 
                         TextToPrint3 = "*" + TextToPrint[count4] + "*";
                         ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());

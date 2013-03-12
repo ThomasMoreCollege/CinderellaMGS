@@ -2810,7 +2810,7 @@ namespace IDAutomation_FontEncoder2
             float leftMargin = ev.MarginBounds.Left;
             //set the top margin of the page.
             float topMargin = ev.MarginBounds.Top;
-            TextToPrint2 = query.PrintFGName(TextToPrint[count4]) + "            ";
+            TextToPrint2 = query.PrintFirstFGName(TextToPrint[count4]) + "\n" + query.PrintLastFGName(TextToPrint[count4]) + "            ";
             TextToPrint3 = "*" + TextToPrint[count4] + "*";
             ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
             ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
@@ -2818,7 +2818,7 @@ namespace IDAutomation_FontEncoder2
             while (count2 != 0)
             {
                 ++count4;
-                TextToPrint2 = query.PrintFGName(TextToPrint[count4]) + "            ";
+                TextToPrint2 = query.PrintFirstFGName(TextToPrint[count4]) + "\n" + query.PrintLastFGName(TextToPrint[count4]) + "            ";
                 TextToPrint3 = "*" + TextToPrint[count4] + "*";
                 xPos += 280;
                 xPos2 += 280;
@@ -2879,7 +2879,7 @@ namespace IDAutomation_FontEncoder2
                 yPos2 += 100;
                 xPos = 125;
                 xPos2 = 10;
-                TextToPrint2 = query.PrintFGName(TextToPrint[count4]) + "             ";
+                TextToPrint2 = query.PrintFirstFGName(TextToPrint[count4]) + "\n" + query.PrintLastFGName(TextToPrint[count4]) + "            ";
 
                 TextToPrint3 = "*" + TextToPrint[count4] + "*";
                 ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
@@ -2897,16 +2897,26 @@ namespace IDAutomation_FontEncoder2
                 while (count != 0)
                 {
                     ++count4;
-                    TextToPrint2 = query.PrintFGName(TextToPrint[count4]) + "             ";
+                    if (count4 >= count5)
+                    {
+                        ev.HasMorePages = false;
+                        count3 = 0;
+                        count1 = 0;
+                        count = 0;
+                    }
+                    else
+                    {
+                        TextToPrint2 = query.PrintFirstFGName(TextToPrint[count4]) + "\n" + query.PrintLastFGName(TextToPrint[count4]) + "            ";
 
-                    TextToPrint3 = "*" + TextToPrint[count4] + "*";
-                    xPos += 280;
-                    xPos2 += 280;
+                        TextToPrint3 = "*" + TextToPrint[count4] + "*";
+                        xPos += 280;
+                        xPos2 += 280;
 
-                    ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
-                    ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+                        ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+                        ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
 
-                    count--;
+                        count--;
+                    }
                 }// end horizontal
 
 

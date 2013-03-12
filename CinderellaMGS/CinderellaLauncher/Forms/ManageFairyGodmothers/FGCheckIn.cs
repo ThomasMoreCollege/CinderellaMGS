@@ -76,8 +76,10 @@ namespace CinderellaLauncher
         // Used for shift/role determination 
         DataTable shiftInfo;
         SqlDataAdapter da;
-        public static int rows = 0;
+        public static int rows = 1;
         public static int columns = 0;
+        public static float yPos = 60;
+        public static float yPos2 = 60;
 
         public FGCheckIn()
         {
@@ -677,7 +679,6 @@ namespace CinderellaLauncher
             else
             {
                 ++columns;
-                addRows();
             }
         }
 
@@ -784,6 +785,11 @@ namespace CinderellaLauncher
         {
             Thread FGCheckInBarcode = new Thread(() => Application.Run(new FGCheckInBarcode()));
             FGCheckInBarcode.Start();
+        }
+
+        public static float nextYposition()
+        {
+            return yPos;
         }
     }
 }

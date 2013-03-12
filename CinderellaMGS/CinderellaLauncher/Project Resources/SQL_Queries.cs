@@ -2251,6 +2251,42 @@ namespace CinderellaLauncher
             return returnValue.ToString();
         }
 
+        public string PrintFirstCinderellaName(string ID)
+        {
+            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlCommand Test = new SqlCommand();
+            Object returnValue;
+
+            Test.CommandText = "SELECT Cinderellas.firstName FROM Cinderellas WHERE id = " + ID;
+            Test.CommandType = CommandType.Text;
+            Test.Connection = sqlConnection;
+
+            sqlConnection.Open();
+
+            returnValue = Test.ExecuteScalar();
+
+            sqlConnection.Close();
+            return returnValue.ToString();
+        }
+
+        public string PrintLastCinderellaName(string ID)
+        {
+            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlCommand Test = new SqlCommand();
+            Object returnValue;
+
+            Test.CommandText = "SELECT Cinderellas.lastName FROM Cinderellas WHERE id = " + ID;
+            Test.CommandType = CommandType.Text;
+            Test.Connection = sqlConnection;
+
+            sqlConnection.Open();
+
+            returnValue = Test.ExecuteScalar();
+
+            sqlConnection.Close();
+            return returnValue.ToString();
+        }
+
         public string count()
         {
 
@@ -2385,6 +2421,42 @@ namespace CinderellaLauncher
             }
             query += ") ";
             return query;
+        }
+
+        public string PrintFirstFGName(string ID)
+        {
+            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlCommand Test = new SqlCommand();
+            Object returnValue;
+
+            Test.CommandText = "SELECT FairyGodmothers.firstName FROM FairyGodmothers WHERE id = " + ID;
+            Test.CommandType = CommandType.Text;
+            Test.Connection = sqlConnection;
+
+            sqlConnection.Open();
+
+            returnValue = Test.ExecuteScalar();
+
+            sqlConnection.Close();
+            return returnValue.ToString();
+        }
+
+        public string PrintLastFGName(string ID)
+        {
+            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlCommand Test = new SqlCommand();
+            Object returnValue;
+
+            Test.CommandText = "SELECT FairyGodmothers.lastName FROM FairyGodmothers WHERE id = " + ID;
+            Test.CommandType = CommandType.Text;
+            Test.Connection = sqlConnection;
+
+            sqlConnection.Open();
+
+            returnValue = Test.ExecuteScalar();
+
+            sqlConnection.Close();
+            return returnValue.ToString();
         }
     }
 }

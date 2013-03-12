@@ -97,7 +97,7 @@ namespace CinderellaLauncher.Forms
                 string q = query.PrintCinderellaName(barcode[0]) + "     ";
                 //string q1 = query.PrintCinderellaName(PrintBox.Text) + "     ";
                 //string barcode1 = PrintBox.Text;
-                PrintLabel.PrintBarCode("IDAutomationHC39M", barcode, 9, "Times New Roman", q, 9);
+                PrintLabel.PrintBarCode("IDAutomationHC39M", barcode, 9, "Times New Roman", q, 11);
             }
         }
     }

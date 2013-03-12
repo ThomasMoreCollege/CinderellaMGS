@@ -139,10 +139,10 @@ namespace CinderellaLauncher
             emailTextBox.Clear(); 
 
 
-            string name = firstName + " " + lastName +"     ";
+            string name = firstName + "\n" + lastName +"     ";
             string barcode = query.FGMaxID();
 
-            PrintBarCode("IDAutomationHC39M", barcode, 9, "Times New Roman", name, 9);
+            PrintBarCode("IDAutomationHC39M", barcode, 9, "Times New Roman", name, 11);
         }
 
         public void PrintBarCode(string TextFont, string EncodedText, float TextFontSize, string TextFont2, string EncodedText2, float TextFontSize2)
@@ -177,26 +177,50 @@ namespace CinderellaLauncher
             float leftMargin = ev.MarginBounds.Left;
             //set the top margin of the page.
             float topMargin = ev.MarginBounds.Top;
-            TextToPrint2 = query.PrintFGName(TextToPrint) + "            ";
+            TextToPrint2 = query.PrintFirstFGName(TextToPrint)+ "\n"+query.PrintLastFGName(TextToPrint) + "            ";
             if (rows == 1 && columns == 1)
             {
+                //Vertical postion on page of bar code
+                float yPos = 60;
+                //Hotizontal position on the page of the bar code
+                float xPos = 125;
+                //Vertical postion on page of bar code
+                float yPos2 = 60;
+                //Hotizontal position on the page of the bar code
+                float xPos2 = 10;
+
                 TextToPrint3 = "*" + TextToPrint + "*";
                 ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
                 ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
                 FGCheckIn.addColumns();
             }
 
-            else
-                {
-                    TextToPrint2 = query.PrintFGName(TextToPrint) + "            ";
-                    TextToPrint3 = "*" + TextToPrint + "*";
-                    xPos += 280;
-                    xPos2 += 280;
+            else if (rows > 1 && columns ==1)
+            {
+                TextToPrint2 = query.PrintFirstFGName(TextToPrint) + "\n" + query.PrintLastFGName(TextToPrint) + "            ";
+                TextToPrint3 = "*" + TextToPrint + "*";
+                yPos += (FGCheckIn.rows -1)*100;
+                yPos2 += (FGCheckIn.rows - 1) * 100;
+                xPos =125;
+                xPos2 =60;
 
-                    ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
-                    ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
-                    FGCheckIn.addColumns();
-                }
+                ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+                ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+                FGCheckIn.addColumns();
+            }
+
+            else
+            {
+                TextToPrint2 = query.PrintFirstFGName(TextToPrint) + "\n" + query.PrintLastFGName(TextToPrint) + "            ";
+                TextToPrint3 = "*" + TextToPrint + "*";
+                xPos += 280;
+                xPos2 += 280;
+
+                ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
+                ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
+                FGCheckIn.addColumns();
+
+            }
             }
 
             /*int count2 = 2;

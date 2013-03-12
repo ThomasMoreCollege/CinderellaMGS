@@ -166,9 +166,9 @@ namespace CinderellaLauncher
             {
                 MessageBox.Show("An Error has occurred, please check your input." + System.Environment.NewLine + error.ToString());
             }
-            string name = firstName + " " + lastName + "     ";
+            string name = firstName + "\n" + lastName + "     ";
             barcode = query.MaxID();
-            PrintBarCode("IDAutomationHC39M", barcode, 9, "Times New Roman", name, 9);
+            PrintBarCode("IDAutomationHC39M", barcode, 9, "Times New Roman", name, 11);
 
         }
 
@@ -236,7 +236,7 @@ namespace CinderellaLauncher
                    //Hotizontal position on the page of the bar code
                    xPos2 = 10;
 
-               TextToPrint2 = query.PrintCinderellaName(TextToPrint) + "            ";
+                   TextToPrint2 = query.PrintFirstCinderellaName(TextToPrint) + "\n" + query.PrintLastCinderellaName(TextToPrint) + "            ";
                TextToPrint3 = "*" + TextToPrint + "*";
                ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
                ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
@@ -268,7 +268,7 @@ namespace CinderellaLauncher
                 yPos2 += 100;
                 xPos = 125;
                 xPos2 = 10;
-                TextToPrint2 = query.PrintCinderellaName(TextToPrint) + "             ";
+                TextToPrint2 = query.PrintFirstCinderellaName(TextToPrint) + "\n" + query.PrintLastCinderellaName(TextToPrint) + "            ";
 
                 TextToPrint3 = "*" + TextToPrint + "*";
                 ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
