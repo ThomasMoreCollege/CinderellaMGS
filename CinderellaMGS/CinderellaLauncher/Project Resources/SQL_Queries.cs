@@ -794,7 +794,7 @@ namespace CinderellaLauncher
             string query = "SELECT Cinderellas.id, Cinderellas.firstName AS 'First Name', Cinderellas.lastName AS 'Last Name', Package.dressColor AS 'Dress Color', Package.dressSize AS 'Dress Size'" +
                            "FROM Cinderellas INNER JOIN Alteration ON Cinderellas.id = Alteration.cinderellaID INNER JOIN " +
                            "Package ON Cinderellas.id = Package.cinderellaID " +
-                           "WHERE Alteration.endAlterationTime IS NOT NULL AND Cinderellas.currentStatus = 6 AND Alteration.DressRetrieved = 0 " +
+                           "WHERE Alteration.endAlterationTime IS NOT NULL AND Cinderellas.currentStatus = 6 AND Alteration.DressRetrieve = 0 " +
                            "ORDER BY Alteration.endAlterationTime ASC";
             return query;
         }
@@ -1993,7 +1993,7 @@ namespace CinderellaLauncher
         public void addAlterations(string cindID)
         {
 
-            string query = "INSERT INTO Alteration (cinderellaID,startAlterationTime, straps,darts,fixZipper,generalMending,generalTakeIn,bust,hem) VALUES (" + cindID + ",GETDATE(),0,0,0,0,0,0,0)";
+            string query = "INSERT INTO Alteration (cinderellaID,startAlterationTime, straps,darts,fixZipper,generalMending,generalTakeIn,bust,hem,DressRetrieve) VALUES (" + cindID + ",GETDATE(),0,0,0,0,0,0,0,1)";
 
             database.ExecuteQuery(query);
 
@@ -2071,7 +2071,7 @@ namespace CinderellaLauncher
         /// <param name="cinID">Cinderella's ID#</param>
         public void RetrievedDress(int cinID)
         {
-            string query = "UPDATE Alteration SET DressRetrieved = 1 WHERE cinderellaID = " + cinID;
+            string query = "UPDATE Alteration SET DressRetrieve = 1 WHERE cinderellaID = " + cinID;
             database.ExecuteQuery(query);
         }
 
