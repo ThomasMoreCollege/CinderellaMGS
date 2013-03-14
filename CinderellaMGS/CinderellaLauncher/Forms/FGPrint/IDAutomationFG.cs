@@ -2797,7 +2797,11 @@ namespace IDAutomation_FontEncoder2
         //This is the event handler for printing bar codes
         private void PrintDocHandler(object sender, PrintPageEventArgs ev)
         {
-
+            int count5 = Convert.ToInt32(query.FGcount());
+            int count3 = count5 - 1;
+            count5 = count5 - 1;
+            int count = 2;
+            int count1 = 9;
             //Vertical postion on page of bar code
             float yPos = 60;
             //Hotizontal position on the page of the bar code
@@ -2815,6 +2819,16 @@ namespace IDAutomation_FontEncoder2
             ev.Graphics.DrawString(TextToPrint3, lclFont, Brushes.Black, xPos, yPos, new StringFormat());
             ev.Graphics.DrawString(TextToPrint2, lclFont2, Brushes.Black, xPos2, yPos2, new StringFormat());
             int count2 = 2;
+
+            if (count4 >= count5)
+            {
+                ev.HasMorePages = false;
+                count2 = 0;
+                count3 = 0;
+                count1 = 0;
+                //count1 = 0;
+            }
+
             while (count2 != 0)
             {
                 ++count4;
@@ -2836,11 +2850,10 @@ namespace IDAutomation_FontEncoder2
 
             //send the string to the printer
 
-            int count = 2;
-            int count1 = 9;
-            int count5 = Convert.ToInt32(query.FGcount());
-            count5 = count5 - 1;
-            int count3 = count5 - 1;
+
+
+
+
             max = Convert.ToInt32(query.FGMaxID());
             // if (ev.HasMorePages == true)
             // {

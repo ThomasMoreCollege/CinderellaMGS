@@ -29,6 +29,7 @@ namespace CinderellaLauncher
     ///-----------------------------------------------------------------
     public class SQL_Queries
     {
+        string Connection = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
         private DatabaseIO database;
         public SQL_Queries()//Default Constructor
         {
@@ -1272,7 +1273,7 @@ namespace CinderellaLauncher
 
             database.ExecuteQuery(query);
         }
-        
+
         public void setFGStatus(string ID, int status)
         {
             string query = "";
@@ -1448,7 +1449,7 @@ namespace CinderellaLauncher
         public string getFGStatus(string fgID)
         {
 
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue;
 
@@ -1466,7 +1467,7 @@ namespace CinderellaLauncher
 
 
 
-            
+
         }
 
 
@@ -2098,7 +2099,7 @@ namespace CinderellaLauncher
 
         public string getCinderellaStatus(int id)
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue;
 
@@ -2125,7 +2126,7 @@ namespace CinderellaLauncher
         public string getTime(int id)
         {
 
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue;
 
@@ -2278,7 +2279,7 @@ namespace CinderellaLauncher
 
         public string PrintCinderellaName(string ID)
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue;
 
@@ -2296,7 +2297,7 @@ namespace CinderellaLauncher
 
         public string PrintFirstCinderellaName(string ID)
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue;
 
@@ -2314,7 +2315,7 @@ namespace CinderellaLauncher
 
         public string PrintLastCinderellaName(string ID)
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue;
 
@@ -2333,7 +2334,7 @@ namespace CinderellaLauncher
         public string count()
         {
 
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue1;
 
@@ -2350,11 +2351,11 @@ namespace CinderellaLauncher
         }
         public string MaxID()
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue1;
 
-            Test.CommandText = "Select MAX(id) From CinderellaMGS2012.dbo.Cinderellas";
+            Test.CommandText = "Select MAX(id) From Cinderellas";
             Test.CommandType = CommandType.Text;
             Test.Connection = sqlConnection;
 
@@ -2368,7 +2369,7 @@ namespace CinderellaLauncher
 
         public string PrintIDGrid()
         {
-            string query = "Select id From CinderellaMGS2012.dbo.Cinderellas Order By CinderellaMGS2012.dbo.cinderellas.lastName";
+            string query = "Select id From Cinderellas Order By Cinderellas.lastName";
 
             return query;
         }
@@ -2376,7 +2377,7 @@ namespace CinderellaLauncher
 
         public string PrintFGName(string ID)
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue;
 
@@ -2395,11 +2396,11 @@ namespace CinderellaLauncher
         public string FGcount()
         {
 
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue1;
 
-            Test.CommandText = "SELECT COUNT(id) FROM FairyGodmothers";
+            Test.CommandText = "SELECT COUNT(id) From FairyGodmothers INNER JOIN ShiftWorkers ON  FairyGodmothers.id = ShiftWorkers.fairyGodmotherID Where ShiftWorkers.roleID = '4'";
             Test.CommandType = CommandType.Text;
             Test.Connection = sqlConnection;
 
@@ -2412,11 +2413,11 @@ namespace CinderellaLauncher
         }
         public string FGMaxID()
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue1;
 
-            Test.CommandText = "Select MAX(id) From CinderellaMGS2012.dbo.FairyGodmothers";
+            Test.CommandText = "Select MAX(id) From FairyGodmothers";
             Test.CommandType = CommandType.Text;
             Test.Connection = sqlConnection;
 
@@ -2430,7 +2431,7 @@ namespace CinderellaLauncher
 
         public string PrintFGIDGrid()
         {
-            string query = "Select id From CinderellaMGS2012.dbo.FairyGodmothers Order By CinderellaMGS2012.dbo.FairyGodmothers.lastName";
+            string query = "Select id From FairyGodmothers INNER JOIN ShiftWorkers ON  FairyGodmothers.id = ShiftWorkers.fairyGodmotherID Where ShiftWorkers.roleID = '4' Order By FairyGodmothers.lastName";
 
             return query;
 
@@ -2468,7 +2469,7 @@ namespace CinderellaLauncher
 
         public string PrintFirstFGName(string ID)
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue;
 
@@ -2486,7 +2487,7 @@ namespace CinderellaLauncher
 
         public string PrintLastFGName(string ID)
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             SqlCommand Test = new SqlCommand();
             Object returnValue;
 
