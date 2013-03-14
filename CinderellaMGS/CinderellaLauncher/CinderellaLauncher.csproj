@@ -270,6 +270,7 @@
     <Content Include="Documentation\Database\Triggers\newFGTrigger.sql" />
     <Content Include="Documentation\Database\Triggers\UpdateStatusTrigger.sql" />
     <Content Include="Resources\App_Icon.ico" />
+    <None Include="Resources\Failure1.png" />
     <Content Include="Resources\Icons\add1-64.png" />
     <Content Include="Resources\Icons\add2-64.png" />
     <Content Include="Resources\Icons\addressbook64.png" />
@@ -308,6 +309,7 @@
     <Content Include="Resources\left-arrow.gif" />
     <Content Include="Resources\logoSmall.jpg" />
     <Content Include="Resources\right-arrow.gif" />
+    <None Include="Resources\Success1.png" />
     <Content Include="Resources\TMCshield.png" />
   </ItemGroup>
   <ItemGroup>

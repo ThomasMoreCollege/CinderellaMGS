@@ -42,7 +42,7 @@ namespace CinderellaLauncher
             this.CheckInTitleLbl.AutoSize = true;
             this.CheckInTitleLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CheckInTitleLbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CheckInTitleLbl.Location = new System.Drawing.Point(64, 50);
+            this.CheckInTitleLbl.Location = new System.Drawing.Point(538, 9);
             this.CheckInTitleLbl.Name = "CheckInTitleLbl";
             this.CheckInTitleLbl.Size = new System.Drawing.Size(271, 25);
             this.CheckInTitleLbl.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace CinderellaLauncher
             // 
             // CinderellaCheckInBarcodeTextbox
             // 
-            this.CinderellaCheckInBarcodeTextbox.Location = new System.Drawing.Point(12, 207);
+            this.CinderellaCheckInBarcodeTextbox.Location = new System.Drawing.Point(478, 391);
             this.CinderellaCheckInBarcodeTextbox.Name = "CinderellaCheckInBarcodeTextbox";
             this.CinderellaCheckInBarcodeTextbox.Size = new System.Drawing.Size(380, 20);
             this.CinderellaCheckInBarcodeTextbox.TabIndex = 1;
@@ -61,7 +61,7 @@ namespace CinderellaLauncher
             // 
             this.DisplayCindi.AutoSize = true;
             this.DisplayCindi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DisplayCindi.Location = new System.Drawing.Point(108, 113);
+            this.DisplayCindi.Location = new System.Drawing.Point(473, 168);
             this.DisplayCindi.Name = "DisplayCindi";
             this.DisplayCindi.Size = new System.Drawing.Size(0, 13);
             this.DisplayCindi.TabIndex = 2;
@@ -69,7 +69,7 @@ namespace CinderellaLauncher
             // timeLbl
             // 
             this.timeLbl.AutoSize = true;
-            this.timeLbl.Location = new System.Drawing.Point(110, 150);
+            this.timeLbl.Location = new System.Drawing.Point(475, 205);
             this.timeLbl.Name = "timeLbl";
             this.timeLbl.Size = new System.Drawing.Size(0, 13);
             this.timeLbl.TabIndex = 3;
@@ -79,7 +79,7 @@ namespace CinderellaLauncher
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(404, 239);
+            this.ClientSize = new System.Drawing.Size(1413, 633);
             this.Controls.Add(this.timeLbl);
             this.Controls.Add(this.DisplayCindi);
             this.Controls.Add(this.CinderellaCheckInBarcodeTextbox);

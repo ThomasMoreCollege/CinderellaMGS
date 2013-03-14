@@ -76,11 +76,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(404, 239);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(386, 364);
             this.Controls.Add(this.BarcodeTextBox);
             this.Controls.Add(this.timeLbl);
             this.Controls.Add(this.DisplayCindi);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FGCheckInBarcode";
             this.Text = "Fairy Godmother Check In Barcode";

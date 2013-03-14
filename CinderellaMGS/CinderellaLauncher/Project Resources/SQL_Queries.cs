@@ -1447,9 +1447,26 @@ namespace CinderellaLauncher
 
         public string getFGStatus(string fgID)
         {
-            string query = "Select currentStatus From FairyGodmothers Where id = " + fgID;
 
-            return query;
+            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlCommand Test = new SqlCommand();
+            Object returnValue;
+
+            Test.CommandText = "Select currentStatus From FairyGodmothers Where id = " + fgID;
+            Test.CommandType = CommandType.Text;
+            Test.Connection = sqlConnection;
+
+            sqlConnection.Open();
+
+            returnValue = Test.ExecuteScalar();
+
+            sqlConnection.Close();
+            return returnValue.ToString();
+
+
+
+
+            
         }
 
 
