@@ -208,7 +208,7 @@ namespace CinderellaLauncher
         {
             Thread pair = new Thread(() => Application.Run(new MatchMaking()));
             pair.Start();
-            Process.Start("C:\\Users\\kumuhl00\\Documents\\GitHub\\CinderellaMGS\\CinderellaMGS\\MatchMakingDB\\bin\\Debug\\MatchMakingDB");
+            Process.Start("C:\\GitHub\\CinderellaMGS\\CinderellaMGS\\MatchMakingDB\\bin\\Debug\\MatchMakingDB");
         }
 
         private void matchmakingButton_Click(object sender, EventArgs e)
