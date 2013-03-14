@@ -52,8 +52,8 @@ namespace CinderellaLauncher
                 DateTime t3 = new DateTime(2013, 3, 16, 18, 0, 0);
                 //MessageBox.Show (Convert.ToString(today.Date));
                 //MessageBox.Show(Convert.ToString(today.TimeOfDay));
- int FGStatus= Convert.ToInt32(query.getFGStatus(id));
- UITimer timer1 = new UITimer();
+                int FGStatus= Convert.ToInt32(query.getFGStatus(id));
+                 UITimer timer1 = new UITimer();
 
                     timer1.Interval = 5000;
 
@@ -74,7 +74,7 @@ namespace CinderellaLauncher
                         
                       
 
-                            if (today.Date < t2)
+                          /*  if (today.Date < t2)
                             {
 
                              int role = query.ShiftWorkerRole(Convert.ToInt32(id), 1);
@@ -130,20 +130,20 @@ namespace CinderellaLauncher
                                 else if (role == 5) { DisplayCindi.Text = "Role: Alterator"; }
 
                                 else if (role == 6) { DisplayCindi.Text = "Role: Volunteer"; }
-                            }
+                            }*/
 
 
 
                        
                         }
-
+                             else
+                            {
+                              this.BackgroundImage = Properties.Resources.Failure;
+                              DisplayCindi.Text = "You are already Checked In";
+                            }
                     }
 
-                    else
-                    {
-                        this.BackgroundImage = Properties.Resources.Failure;
-                        DisplayCindi.Text = "You are already Checked In";
-                    }
+                   
 
             }
         
@@ -152,6 +152,7 @@ namespace CinderellaLauncher
 
             DisplayCindi.Text = "";
             timeLbl.Text = "";
+            BarcodeTextBox.Text = "";
             this.BackgroundImage = null;
 
         }
