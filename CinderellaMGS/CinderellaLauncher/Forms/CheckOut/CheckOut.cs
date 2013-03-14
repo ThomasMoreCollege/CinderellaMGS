@@ -167,7 +167,7 @@ namespace CinderellaLauncher
                     bool customNecklace = false;
                     bool customheadPiece = false;
 
-                    string ID = searchDGV.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    string ID = searchDGV.Rows[e.RowIndex].Cells[1].Value.ToString();
 
                     // On cell click, change the name in the label.
                     cinderellaNameLabel.Text = searchDGV.Rows[e.RowIndex].Cells[1].Value.ToString() + " " + searchDGV.Rows[e.RowIndex].Cells[2].Value.ToString();
