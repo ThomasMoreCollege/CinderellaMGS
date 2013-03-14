@@ -250,7 +250,7 @@ namespace BusinessLogic
                     TestT = Appointment_DateTime.TimeOfDay.ToString();
 
                     //The query will finally begin to add the data from the Excel sheet to the database.
-                    Cinderella_Add.addCinderellaAndReferral(closetSheet_C.Cells[rows, 3].Value.ToString() + closetSheet_C.Cells[rows, 4].Value.ToString(), closetSheet_C.Cells[rows, 5].Value.ToString(), closetSheet_C.Cells[rows, 1].Value.ToString(), closetSheet_C.Cells[rows, 2].Value.ToString(), TestD, TestT, "");
+                    Cinderella_Add.addCinderellaAndReferral(closetSheet_C.Cells[rows, 3].Value.ToString() + " " + closetSheet_C.Cells[rows, 4].Value.ToString(), closetSheet_C.Cells[rows, 5].Value.ToString(), closetSheet_C.Cells[rows, 1].Value.ToString(), closetSheet_C.Cells[rows, 2].Value.ToString(), TestD, TestT, "");
 
                     //Code for progress bar.
 
