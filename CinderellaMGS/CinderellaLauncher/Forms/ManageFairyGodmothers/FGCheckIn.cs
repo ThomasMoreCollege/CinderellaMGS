@@ -252,13 +252,126 @@ namespace CinderellaLauncher
             {
                // MessageBox.Show("FriPMRID: " + friPMRoleID + " - SatAMRID: " + satAMRoleID + " - SatPMRID " + satPMRoleID);
                // MessageBox.Show(worksFriPM.ToString() + worksSatAM.ToString() + worksSatPM.ToString());
+                
+               
+                  string id = fgDGV.SelectedRows[0].Cells[0].Value.ToString();
+               
+
+                DateTime today = DateTime.Now;
+                DateTime t1 = new DateTime(2013, 3, 15, 12, 0, 0);
+                DateTime t2 = new DateTime(2013, 3, 16, 12, 0, 0);
+                DateTime t3 = new DateTime(2013, 3, 16, 18, 0, 0);
+
+                if (today.Date < t2)
+                {
+
+                    int role = query.ShiftWorkerRole(Convert.ToInt32(id), 1);
+                    tabControl1.SelectedIndex = 0;
+                    if (role == 3)
+                    {
+                        friPMRoleID = Convert.ToString(role);
+                        friPMCheckInOutButton.Checked = true;
+                    }
+                    else if (role == 4)
+                    {
+                        friPMRoleID = Convert.ToString(role);
+                        friPMPSButton.Checked = true;
+                    }
+
+                    else if (role == 5)
+                    {
+                        friPMRoleID = Convert.ToString(role);
+                        friPMAlterationsButton.Checked = true;
+                    }
+
+                    else if (role == 6)
+                    {
+                        friPMRoleID = Convert.ToString(role);
+                        friPMVolunteerButton.Checked = true;
+                    }
+
+
+                }
+
+                
+                
+                
+                else if (today.Date >= t2 && today.Date < t3)
+                {
+
+                    int role = query.ShiftWorkerRole(Convert.ToInt32(id), 2);
+                    tabControl1.SelectedIndex = 1;
+                    if (role == 3)
+                    {
+                        satAMRoleID = Convert.ToString(role);
+                        satAMCheckInOutButton.Checked = true;
+                    }
+                    else if (role == 4)
+                    {
+                        satAMRoleID = Convert.ToString(role);
+                        satAMPSButton.Checked = true;
+                    }
+
+                    else if (role == 5)
+                    {
+                        satAMRoleID = Convert.ToString(role);
+                        satAMAlterationsButton.Checked = true;
+                    }
+
+                    else if (role == 6)
+                    {
+                        satAMRoleID = Convert.ToString(role);
+                        satAMVolunteerButton.Checked = true;
+                    }
+
+                }
+
+                    else if (today.Date >= t3)
+                    {
+                        
+                    int role = query.ShiftWorkerRole(Convert.ToInt32(id), 2);
+                    tabControl1.SelectedIndex = 2;
+                    if (role == 3)
+                    {
+                        satPMRoleID = Convert.ToString(role);
+                        satPMCheckInOutButton.Checked = true;
+                    }
+                    else if (role == 4)
+                    {
+                        satPMRoleID = Convert.ToString(role);
+                        satPMPSButton.Checked = true;
+                    }
+
+                    else if (role == 5)
+                    {
+                        satPMRoleID = Convert.ToString(role);
+                        satPMAlterationsButton.Checked = true;
+                    }
+
+                    else if (role == 6)
+                    {
+                        satPMRoleID = Convert.ToString(role);
+                        satPMVolunteerButton.Checked = true;
+                    }
+
+
+
+                    
+
+
+
+
+                }
+
+                
                 if(Convert.ToInt32(friPMRoleID) > 0 || Convert.ToInt32(satAMRoleID) > 0 || Convert.ToInt32(satPMRoleID) > 0)
                 {
 
                     // Get ID of the fairygodmother in the currently selected row of gridview
-                    string id = fgDGV.SelectedRows[0].Cells[0].Value.ToString();
-
-
+                  
+                       
+                    
+                    
 
                     if (worksFriPM)
                     {
