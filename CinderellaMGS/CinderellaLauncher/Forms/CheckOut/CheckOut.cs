@@ -92,12 +92,12 @@ namespace CinderellaLauncher
                     {
                         searchDGV.DataSource = searchDGVBindingSource;
                     }));
-                
+                searchDGVDataTable.Columns.Add("Status");
                 searchDGVDataAdapter = new SqlDataAdapter(query.checkOutList(), connection);
                 
                 searchDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 searchDGVDataAdapter.Fill(searchDGVDataTable);
-                searchDGVDataTable.Columns.Add("Status");
+                
                 searchDGV.Invoke(new Action(delegate()
                     {
                         searchDGVBindingSource.DataSource = searchDGVDataTable;

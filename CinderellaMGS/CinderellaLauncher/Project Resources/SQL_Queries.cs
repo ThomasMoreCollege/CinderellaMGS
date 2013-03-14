@@ -2032,7 +2032,7 @@ namespace CinderellaLauncher
         {
 
             //string query = "INSERT INTO Alteration VALUES (" + cindID + ",'" + time + "','" + time + "','" + notes + "'," + straps + "," + darts + "," + zipper + "," + mending + "," + takeIn + "," + bust + "," + hem + "," + fgID + ")";
-            string query = "UPDATE Alteration SET endAlterationTime= GETDATE(), notes= '" + notes + "', straps = " + straps + ", darts= " + darts + ", fixZipper= " + zipper + ", generalMending = " + mending + ", generalTakeIn = " + takeIn + ", bust= " + bust + ", hem= " + hem + ", fairyGodmotherID= " + fgID + " WHERE cinderellaID = " + cindID;
+            string query = "UPDATE Alteration SET endAlterationTime= GETDATE(), notes= '" + notes + "', straps = " + straps + ", darts= " + darts + ", fixZipper= " + zipper + ", generalMending = " + mending + ", generalTakeIn = " + takeIn + ", bust= " + bust + ", hem= " + hem + ", fairyGodmotherID= " + fgID + "DressRetrieve = 0 WHERE cinderellaID = " + cindID;
 
             database.ExecuteQuery(query);
 
