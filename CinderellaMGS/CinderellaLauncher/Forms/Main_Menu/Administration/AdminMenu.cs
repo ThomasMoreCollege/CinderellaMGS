@@ -228,7 +228,7 @@ namespace CinderellaLauncher
 
         private void startChatToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("C:\\Users\\tlcomb71\\Documents\\GitHub\\CinderellaMGS\\CinderellaMGS\\Chat_Server\\obj\\x86\\Debug\\Chat_Server.exe");
+            Process.Start("C:\\Chat_Server\\obj\\x86\\Debug\\Chat_Server.exe");
         }
 
         private void allCinderellasToolStripMenuItem_Click(object sender, EventArgs e)
