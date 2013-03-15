@@ -237,7 +237,7 @@ namespace CinderellaLauncher
             }
             try
             {
-                int id = Convert.ToInt32(searchDGV.SelectedRows[0].Cells[0].Value.ToString());
+                int id = Convert.ToInt32(searchDGV.SelectedRows[0].Cells[1].Value.ToString());
 
                 int dressSize = Convert.ToInt32(dressSizeComboBox.Text);
                 string dressColor = dressColorComboBox.Text;
