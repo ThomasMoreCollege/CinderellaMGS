@@ -108,7 +108,6 @@
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(100, 20);
             this.txtIP.TabIndex = 2;
-            this.txtIP.Text = "127.0.0.1";
             // 
             // chatNameLabel
             // 
@@ -172,7 +171,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClientApp";
             this.Text = "Client App";
-
             this.Resize += new System.EventHandler(this.ClientApp_Resize);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

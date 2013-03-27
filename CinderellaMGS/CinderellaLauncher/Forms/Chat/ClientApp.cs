@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using CinderellaLauncher;
-
 //Add the following using statement that will correspond to networking
 using System.Net;
 using System.Net.Sockets;
@@ -181,6 +180,7 @@ namespace CinderellaLauncher
             try
             {
                 //parse IP address from the text box into an IP address object
+                txtIP.Text = GetServerIP();
                 ipAddress = IPAddress.Parse(txtIP.Text);
 
                 //start new TCP connection to the server
@@ -233,7 +233,7 @@ namespace CinderellaLauncher
                 {
                     Thread.CurrentThread.Abort();
                     MessageBox.Show(Thread.CurrentThread.ToString());
-                    ClientApp.ActiveForm.Close(); 
+                    ClientApp.ActiveForm.Close();
                 }
                 catch (InvalidOperationException except)
                 {
@@ -381,14 +381,39 @@ namespace CinderellaLauncher
         //this focus on the chat name text box once the chat is launched.
         private void ClientApp_Load(object sender, EventArgs e)
         {
+            txtIP.Text = GetServerIP();
             txtChatName.Focus();
+            
         }
 
         //This will close the connection on form close
         //check and make sure this is getting called on form close or if we have to edit ClientApp.Designer.cs to add it in.
 
+        public string GetServerIP()
+        {
+            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            IPEndPoint ipep = new IPEndPoint(IPAddress.Any, 1986);
+            s.Bind(ipep);
+            EndPoint ep = (EndPoint)ipep;
+            //IPAddress ip = IPAddress.Parse("224.5.6.7");
+            //s.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.AddMembership, new MulticastOption(ip,                         IPAddress.Any));
+            byte[] b = new byte[1024];
+            int recv = s.ReceiveFrom(b, ref ep);
+            //s.Receive(b);
+            string str = System.Text.Encoding.ASCII.GetString(b, 0, recv);
+            s.Close();
+            return str;
+
         }
 
+        private void txtIP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
-  
+
+}
+
 

@@ -27,15 +27,17 @@ namespace Chat_Server
     public partial class ChatServerWindow : Form
     {
         private delegate void UpdateStatusCallback(string strMessage);
+        IPAddress[] addr;
 
         private bool isListening = false;
-               
+        Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
         // Parse the server's IP address out of the TextBox
-        IPAddress ipAddr; 
-        
+        IPAddress ipAddr;
+
         // Create a new instance of the ChatServer object
         ChatServer mainServer;
-        
+
         public ChatServerWindow()
         {
             InitializeComponent();
@@ -79,7 +81,7 @@ namespace Chat_Server
 
                     // Hook the StatusChanged event handler to mainServer_StatusChanged
                     ChatServer.StatusChanged += new StatusChangedEventHandler(mainServer_StatusChanged);
-                    
+
                     // Start listening for connections
                     mainServer.StartListening();
 
@@ -90,7 +92,7 @@ namespace Chat_Server
                     listenButton.Text = "Stop Listening";                       //changes once the button is clicked
                 }
 
-                else if(listenButton.Text == "Stop Listening")                  //vice versa
+                else if (listenButton.Text == "Stop Listening")                  //vice versa
                 {
                     txtIp.Enabled = false;
                     txtLog.Enabled = false;
@@ -111,8 +113,10 @@ namespace Chat_Server
             }
             catch (Exception error)
             {
-                
+
             }
+
+            MulticastIP();
         }
 
         public void mainServer_StatusChanged(object sender, StatusChangedEventArgs e)
@@ -133,15 +137,43 @@ namespace Chat_Server
 
             IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(strHostName);
 
-            IPAddress[] addr = ipEntry.AddressList;
+            addr = ipEntry.AddressList;
 
             return addr[addr.Length - 1].ToString();
 
         }
 
+        public IPAddress ConvertIP()
+        {
+            IPAddress ip = IPAddress.Parse(GetIP());
+
+            return ip;
+        }
+
         private void ChatServerWindow_Load(object sender, EventArgs e)
         {
             txtIp.Text = GetIP();
+            MulticastIP();
+        }
+
+        private void MulticastIP()
+        {
+            IPAddress ip = IPAddress.Parse(GetIP());
+            //s.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.AddMembership,
+               // new MulticastOption(ip));
+            s.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, 1);
+            IPEndPoint ipep = new IPEndPoint(IPAddress.Broadcast, 1986);
+
+            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+            byte[] b = encoding.GetBytes(GetIP());
+            s.SendTo(b, ipep);
+
+
+        }
+
+        private void txtLog_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Chat_Server
             // The thread calls the AcceptClient() method
             thrSender.Start();
         }
- 
+
         private void CloseConnection()
         {
             // Close the currently open objects
@@ -45,16 +45,16 @@ namespace Chat_Server
             srReceiver.Close();
             swSender.Close();
         }
- 
+
         // Occures when a new client is accepted
         private void AcceptClient()
         {
             srReceiver = new System.IO.StreamReader(tcpClient.GetStream());
             swSender = new System.IO.StreamWriter(tcpClient.GetStream());
- 
+
             // Read the account information from the client
             currUser = srReceiver.ReadLine();
- 
+
             // We got a response from the client
             if (currUser != "")
             {
@@ -80,7 +80,7 @@ namespace Chat_Server
                     // 1 means connected successfully
                     swSender.WriteLine("1");
                     swSender.Flush();
- 
+
                     // Add the user to the hash tables and start listening for messages from him
                     ChatServer.AddUser(tcpClient, currUser);
                 }
@@ -90,7 +90,7 @@ namespace Chat_Server
                 CloseConnection();
                 return;
             }
- 
+
             try
             {
                 // Keep waiting for a message from the user
@@ -115,5 +115,5 @@ namespace Chat_Server
             }
         }
     }
-    
+
 }
