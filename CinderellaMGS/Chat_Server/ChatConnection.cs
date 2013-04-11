@@ -13,7 +13,7 @@ namespace Chat_Server
     /// <summary>
     /// This controls the chat connection, when users are attempting to chat on the form. It also ensures that
     /// the connections is running properly.
-    /// Precondition: Connection is running property
+    /// Precondition: The connection is running properly.
     /// Postcondition: None.
     /// </summary>
     class ChatConnection                    // class declaration for ChatConnection
@@ -28,45 +28,46 @@ namespace Chat_Server
 
         public ChatConnection(TcpClient tcpCon)
         {
-            tcpClient = tcpCon;
-            // The thread that accepts the client and awaits messages
-            thrSender = new Thread(AcceptClient);
-            // The thread calls the AcceptClient() method
-            thrSender.Start();
+            tcpClient = tcpCon; // This thread accepts the client and waits for messages. 
+
+            thrSender = new Thread(AcceptClient); // This thread calls the AcceptClient() method.
+
+            thrSender.Start(); // When this thread starts, it will begin sending information to the client. 
         }
 
-        private void CloseConnection()
+        private void CloseConnection() //Closes the Connection Objects below. 
         {
-            // Close the currently open objects
-            tcpClient.Close();
-            srReceiver.Close();
-            swSender.Close();
+            
+            tcpClient.Close();      //Closes tcpClient.
+            srReceiver.Close();     //Closes srReceiver.
+            swSender.Close();       //Closes swSender. 
         }
 
-        // Occures when a new client is accepted
-        private void AcceptClient()
+        
+        private void AcceptClient()   //The "private void AQcceptClient() occurs when a new client is accepted. 
         {
-            srReceiver = new System.IO.StreamReader(tcpClient.GetStream());
-            swSender = new System.IO.StreamWriter(tcpClient.GetStream());
+            srReceiver = new System.IO.StreamReader(tcpClient.GetStream());     //Gets and reads the network stream for tcpClient.
+            swSender = new System.IO.StreamWriter(tcpClient.GetStream());       //Gets and writes the network stream for tcpClient.    
 
-            // Read the account information from the client
-            currUser = srReceiver.ReadLine();
 
-            // We got a response from the client
-            if (currUser != "")
+            currUser = srReceiver.ReadLine();           //This reads the account information from the client. 
+
+            
+            if (currUser != "") //This line states that we have gotten a response from the client. 
             {
-                // Store the user name in the hash table
-                if (ChatServer.htUsers.Contains(currUser) == true)
+
+                //This stores a user name in the hash table.
+                if (ChatServer.htUsers.Contains(currUser) == true) 
                 {
-                    // 0 means not connected
-                    swSender.WriteLine("0|This username already exists.");
-                    swSender.Flush();
-                    CloseConnection();
+                    // '0' indicates that we are not connected to Chat. 
+                    swSender.WriteLine("0|This username already exists."); //Message that is thrown to the user if a particular username already exists. 
+                    swSender.Flush(); //Flushes the above information as long as that username does not already exist. 
+                    CloseConnection();  //Closes the current connection. 
                     return;
                 }
                 else if (currUser == "Administrator")
                 {
-                    // 0 means not connected
+                    // '0' indicates that we are not connected to Chat. 
                     swSender.WriteLine("0|This username is reserved.");
                     swSender.Flush();
                     CloseConnection();
@@ -74,40 +75,40 @@ namespace Chat_Server
                 }
                 else
                 {
-                    // 1 means connected successfully
-                    swSender.WriteLine("1");
-                    swSender.Flush();
+                    // '1' indicates that we have been successfully connected to Chat. 
+                    swSender.WriteLine("1"); //Writes the line that states we have been successfully connected to Chat. 
+                    swSender.Flush(); //Flushes the above information. 
 
-                    // Add the user to the hash tables and start listening for messages from him
-                    ChatServer.AddUser(tcpClient, currUser);
+                  
+                    ChatServer.AddUser(tcpClient, currUser);  // Adds the user to the hash tables and begins listening for messages from that user.     
                 }
             }
             else
             {
-                CloseConnection();
+                CloseConnection(); //Closes the connection. 
                 return;
             }
 
             try
             {
-                // Keep waiting for a message from the user
-                while ((strResponse = srReceiver.ReadLine()) != "")
+               
+                while ((strResponse = srReceiver.ReadLine()) != "")  // Continues waiting for messages from the user. 
                 {
-                    // If it's invalid, remove the user
-                    if (strResponse == null)
+
+                    if (strResponse == null) // If the strResponse is invalid, remove the user.
                     {
-                        ChatServer.RemoveUser(tcpClient);
+                        ChatServer.RemoveUser(tcpClient); //This line tells the Chat Server to remove the user from the tcpClient. 
                     }
-                    else
+                    else // Otherwise send the message to all of the other current users.
                     {
-                        // Otherwise send the message to all the other users
-                        ChatServer.SendMessage(currUser, strResponse);
+                        
+                        ChatServer.SendMessage(currUser, strResponse); //Sends the message to all of the other current users. 
                     }
                 }
             }
             catch
             {
-                // If anything went wrong with this user, disconnect him
+                // If any errors of any kind occurred with this user, disconnect him/her from the tcpClient. 
                 ChatServer.RemoveUser(tcpClient);
             }
         }
