@@ -11,23 +11,20 @@ using System.Threading;
 namespace Chat_Server
 {
     /// <summary>
-    /// This controls the chat connection, when users are
-    /// attempting to chat on the form. It also insures that
-    /// the connections is running propertly
-    /// 
+    /// This controls the chat connection, when users are attempting to chat on the form. It also ensures that
+    /// the connections is running properly.
     /// Precondition: Connection is running property
-    /// 
     /// Postcondition: None.
     /// </summary>
-    class ChatConnection
+    class ChatConnection                    // class declaration for ChatConnection
     {
-        TcpClient tcpClient;
-        // The thread that will send information to the client
-        private Thread thrSender;
-        private StreamReader srReceiver;
-        private StreamWriter swSender;
-        private string currUser;
-        private string strResponse;
+        TcpClient tcpClient; // Provides client connections for TCP network services. This is the thread that is used to connect the client/user to the Chat Server.
+        
+        private Thread thrSender;            //This is the thread that will send information to the client/user. 
+        private StreamReader srReceiver;     //This is the thread that listens for attempted connections to the Chat Server.
+        private StreamWriter swSender;       //This takes the network stream as a constructor parameter and let's users know whether or not they have been successfully connected to the server. 
+        private string currUser;             //Shows the Current User/Users that are connected to the Chat Server.
+        private string strResponse;          //Parses the responses and splits the parts into headers and body.
 
         public ChatConnection(TcpClient tcpCon)
         {

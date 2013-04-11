@@ -73,15 +73,14 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
             this.printToolStripMenuItem.Text = "Print";
-            //this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -97,7 +96,6 @@
             this.documentationToolStripMenuItem.Name = "documentationToolStripMenuItem";
             this.documentationToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
             this.documentationToolStripMenuItem.Text = "Documentation";
-            //this.documentationToolStripMenuItem.Click += new System.EventHandler(this.documentationToolStripMenuItem_Click);
             // 
             // aboutCinderellaMGSToolStripMenuItem
             // 
@@ -233,7 +231,7 @@
             this.adminButton.FlatAppearance.BorderSize = 2;
             this.adminButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.adminButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminButton.Location = new System.Drawing.Point(12, 291);
+            this.adminButton.Location = new System.Drawing.Point(137, 293);
             this.adminButton.Name = "adminButton";
             this.adminButton.Size = new System.Drawing.Size(163, 57);
             this.adminButton.TabIndex = 11;
