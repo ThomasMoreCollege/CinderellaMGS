@@ -30,141 +30,142 @@ namespace CinderellaLauncher
 
        
         //declaration of the CinderellaClass
-        //constructor for the cinderella class
-        //Input: ID, first and lastname, appointment datetime, timestamp, email, and phone
-        //Output: generated cinderella class object
-        //precondition: information is correct and valid
-        //postcondition: object is generated correctly
+        //constructor for the CinderellaClass
+        //Input: ID, First Name, Last Name, Appointment Date/Time, Timestamp, E-Mail, Phone #(string format is used for Phone #).
+        //Output: a generated cinderella class object
+        //Pre-condition: The information must be correct and must be valid.
+        //Post-condition: The object is generated correctly. 
         public CinderellaClass(int ID, string firstName, string lastName, DateTime appointment, DateTime timeStamp, string email, string phone)
         {
             //set information
-            cinderellaID = ID;
-            cinderellaFirst = firstName;
-            cinderellaLast = lastName;
-            appDate = appointment;
-            appTime = timeStamp;
-            cinderellaEmail = email;
-            cinderellaPhone = phone;
-            RequestedGodMother = 0;
-            SpecialNeeds = false;
+            cinderellaID = ID;                          //cinderella ID
+            cinderellaFirst = firstName;               //First Name
+            cinderellaLast = lastName;                //Last Name
+            appDate = appointment;                   //Appointment
+            appTime = timeStamp;                    //Timestamp
+            cinderellaEmail = email;               //E-Mail
+            cinderellaPhone = phone;              //Phone #
+            RequestedGodMother = 0;              //Requested Godmother Status. '1' = Requested. '0' = Not Requested.
+            SpecialNeeds = false;               //indicates whether or not the Cinderella is categorized as a Special Needs individual. 
         }
 
         //CinderellaClass
-        //default constructor
-        //Input: none
-        //Output: blank object generated
-        //precondition: none
-        //postcondition object generated succesfully
+        //This is the default constructor.
+        //Input: None.
+        //Output: A blank object is generated.
+        //Pre-condition: None.
+        //Post-condition: An object is generated succesfully.
+        
         public CinderellaClass()
         {
 
         }
 
         //CinderellaClass
-        //constructor for the cinderella class
+        //This is the constructor for the CinderellaClass.
         //Input: ID, first and lastname, and appointment datetime
-        //Output: generated cinderella class object
-        //precondition: information is correct and valid
-        //postcondition: object is generated correctly
+        //Output: A CinderellaClass object is generated. 
+        //Pre-condition: information is correct and valid
+        //Post-condition: A CinderellaClass object is generated correctly and successfully.
         public CinderellaClass(string firstName, string lastName, int id, DateTime apptTime)
         {
-            cinderellaID = id;
-            cinderellaFirst = firstName;
-            cinderellaLast = lastName;
-            appTime = apptTime;
-            RequestedGodMother = 0;
-            SpecialNeeds = false;
+            cinderellaID = id;                   //Cinderella ID
+            cinderellaFirst = firstName;        //First Name
+            cinderellaLast = lastName;         //Last Name
+            appTime = apptTime;               //Appointment Time
+            RequestedGodMother = 0;          //Requested Godmother Status. '1' = Requested. '0' = Not Requested.
+            SpecialNeeds = false;           //indicates whether or not the Cinderella is categorized as a Special Needs individual.
         }
 
         //setCinderellaFirstName
-        //sets the name of the cinderella
-        //Input: the first name of the cinderella
-        //Output: firstname is updated
-        //precondition: the name is correct and valid
-        //postcondition: the name has been set correctly
+        //Sets the name of a cinderella.
+        //Input: The First Name of a cinderella.
+        //Output: 'firstname' is updated successfully.
+        //Pre-condition: The name must be correct and valid.
+        //Post-condition: The name is valid has been set correctly.
         public void setCinderellaFirstName(string Name)
         {
             cinderellaFirst = Name;
         }
 
         //getCinderellaID
-        //returns the id of the cinderella
-        //Input: none
-        //Output: returns the id
-        //precondition: the cinderella has an ID
-        //postcondition: the id is returned succesfully
+        //returns the ID of a cinderella.
+        //Input: None.
+        //Output: Returns the ID of a cinderella.
+        //Pre-condition: The cinderella has an ID.
+        //Post-condition: The ID is returned succesfully.
         public int getCinderellaID()
         {
-            return cinderellaID;                  //return the primary key
+            return cinderellaID;                  //This returns the primary key = cinderellaID.
         }
 
         //getFirstName
-        //returns the first name of the cinderella
-        //Input: none
-        //Output: returns the first name
-        //precondition: the cinderella has an first name
-        //postcondition: the first name is returned succesfully
-        public string getFirstName()
+        //Returns the first name of a cinderella.
+        //Input: None.
+        //Output: Returns the First Name of a cinderella.
+        //Pre-condition: the cinderella has a First Name.
+        //Post-condition: the First Name is returned succesfully.
+        public string getFirstName()                //gets the first name of a cinderalla. 
         { 
-            return cinderellaFirst;              //return the first name
+            return cinderellaFirst;              //return the First Name. 
         }
 
         //getLastName
         //returns the last name of the cinderella
         //Input: None
-        //Output: returns the last name
-        //precondition: the cinderella has a last name
-        //postcondition: the last anme is returned correctly
-        public string getLastName()
+        //Output: Returns the last name of a cinderella.
+        //Pre-condition: the cinderella has a Last Name.
+        //Post-condition: the last name is returned correctly.
+        public string getLastName()                 //gets the Last Name of a cinderella.
         {  
-            return cinderellaLast;               //return the last name
+            return cinderellaLast;               //return the Last Name.
         }
 
         //getCinderellaDate
-        //returns the appointment date
-        //Input: none
-        //Output: returns the appointment date
-        //precondition: the cinderella has an appointment date
-        //postcondition: the appointment date is returned succesfully
-        public DateTime getCinderellaDate()
+        //Returns the appointment date of a cinderella.
+        //Input: None. 
+        //Output: Returns the appointment date of a cinderella.
+        //Pre-condition: the cinderella has an appointment date.
+        //Post-condition: the appointment date of the cinderella is returned succesfully.
+        public DateTime getCinderellaDate()     //gets the appointment date of the cinderella.
         {           
-            return appDate;                      //return the appointment date
+            return appDate;                      //returns the appointment date of the cinderella. 
         }
 
         //getCinderellaTime
-        //returns the appointment time
-        //Input: none
-        //Output: returns the appointment time
-        //precondition: the cinderella has an appointment time
-        //postcondition: the appointment time is returned succesfully
-        public DateTime getCinderellaTime()
+        //Returns the appointment time of the cinderella. 
+        //Input: None.
+        //Output: Returns the appointment time of the cinderella.
+        //precondition: The cinderella has an appointment time.
+        //postcondition: The appointment time of the cinderella is returned succesfully.
+        public DateTime getCinderellaTime()         //gets the appointment time of the cinderella. 
         {             
-            return appTime;                      //return the appointment time
+            return appTime;                      //returns the appointment time of the cinderella. 
         }
 
         //getCinderellaEmail
-        //returns the email of the cinderella
-        //Input: none
-        //Output: returns the email
-        //precondition: the cinderella has an email
-        //postcondition: the email is returned succesfully
+        //Returns the E-Mail of the cinderella.
+        //Input: None.
+        //Output: Returns the E-Mail of the cinderella.
+        //Pre-condition: The cinderella has an email.
+        //Post-condition: The email is returned succesfully.
         public string getCinderellaEmail()
         {
-            return cinderellaEmail;              //return cinderella email
+            return cinderellaEmail;              //returns the cinderella's E-Mail.
         }
 
         //getCinderellaPhone
-        //retuns the cinderella's phone number
-        //Input: none
-        //Output: returns the phone number
-        //precondition: the cinderella has a phone number
-        //postcondition: the phone number is returned succesfully
-        public string getCinderellaPhone()
+        //Returns the cinderella's phone number.
+        //Input: None. 
+        //Output: Returns the phone number of the cinderella.
+        //precondition: The cinderella has a phone number.
+        //postcondition: The phone number is returned succesfully.
+        public string getCinderellaPhone()          //gets the Cinderella'a phone #.
         {
-            return cinderellaPhone;              //return cinderella phone
+            return cinderellaPhone;              //returns the cinderella's phone #.
         }
 
-        public void add()
+        public void add()                       //adds the Cinderella with her information. 
         {
 
         }
