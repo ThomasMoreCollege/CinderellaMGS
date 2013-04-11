@@ -15,21 +15,21 @@ namespace CinderellaLauncher
 
         /*These variables(right below) are declare to be assigned to*/
 
-        private int cinderellaID;           //the cinderella ID is set as a primary key to determine the cinderellas
-        private string cinderellaFirst;     //cinderella first name
-        private string cinderellaLast;      //cinderella last name
-        public DateTime appDate;           //cinderella appointment date
-        public DateTime appTime;           //cinderella appointment time
-        private string cinderellaEmail;     //cinderella email address
-        private string cinderellaPhone;     //cinderella phone number
-        public int RequestedGodMother;      //the ID of the requested Fairy Godmother  a value of 0 means non requested
-        public bool SpecialNeeds;         //wther or not the Cinderella is special needs
-        public double diffFromappTime;         //holds the difference in minutes from when they checked in to when the appointment is 
+        private int cinderellaID;                  //the cinderella ID is set as a Primary Key(PK) to determine the Cinderellas.
+        private string cinderellaFirst;           //cinderella First Name
+        private string cinderellaLast;           //cinderella Last Name
+        public DateTime appDate;                //cinderella Appointment Date
+        public DateTime appTime;               //cinderella Appointment Time
+        private string cinderellaEmail;       //cinderella E-mail Address
+        private string cinderellaPhone;      //cinderella Phone Number
+        public int RequestedGodMother;      //the ID of the requested Fairy Godmother. A value of '0' indicates that, that Fairy Godmother was not requested. 
+        public bool SpecialNeeds;          //because this is a boolean, it asks whether or not the Cinderella is to be categorized as Special Needs in the format of True/False (bool). 
+        public double diffFromappTime;    //holds the difference - in minutes - from when either Fairy Godmothers OR Cinderellas checked in to when their appointment is. 
 
-       // public Class_Definitions.Package Package; //Accesses the Package that is associated with this Cinderella
+       // public Class_Definitions.Package Package; //Accesses the Package that is associated with this Cinderella (OLD CODE----------------KEPT AS REFERENCE AND POSSIBLY BACK UP/WORKAROUND MATERIAL.
 
        
-        //CinderellaClass
+        //declaration of the CinderellaClass
         //constructor for the cinderella class
         //Input: ID, first and lastname, appointment datetime, timestamp, email, and phone
         //Output: generated cinderella class object

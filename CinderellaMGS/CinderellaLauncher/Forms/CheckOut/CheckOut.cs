@@ -75,11 +75,10 @@ namespace CinderellaLauncher
         }
         private void CheckOut_Load(object sender, System.EventArgs e)
         {
-            // See CheckIn for explanation
-          richTextBox1.Rtf = @"{\rtfl\ansi \b NOTE:\b0. Use the Quick Search to search for a specific Cinderella by typing in any Fairy Godmother ID.}"; 
+            // See CheckIn for explanation        
             Thread update = new Thread(() => updateDUI());
             update.Start();
-            // dressesDoneDGV.AutoResizeColumns();
+           // dressesDoneDGV.AutoResizeColumns();
         }
         public void updateDUI()
         {
@@ -702,6 +701,11 @@ namespace CinderellaLauncher
         }
 
         private void searchDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void searchLabel_Click(object sender, EventArgs e)
         {
 
         }

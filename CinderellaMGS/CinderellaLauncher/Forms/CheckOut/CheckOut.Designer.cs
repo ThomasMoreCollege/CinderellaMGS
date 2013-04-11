@@ -78,7 +78,6 @@
             this.CheckOutBarcodeTextBox = new System.Windows.Forms.TextBox();
             this.QSearchBarLabel = new System.Windows.Forms.Label();
             this.QSearchTextBox = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.searchDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -116,7 +115,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.searchDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.searchDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.searchDGV.Location = new System.Drawing.Point(365, 368);
+            this.searchDGV.Location = new System.Drawing.Point(399, 361);
             this.searchDGV.MultiSelect = false;
             this.searchDGV.Name = "searchDGV";
             this.searchDGV.ReadOnly = true;
@@ -136,7 +135,7 @@
             this.searchDGV.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.PaleVioletRed;
             this.searchDGV.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.searchDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.searchDGV.Size = new System.Drawing.Size(527, 128);
+            this.searchDGV.Size = new System.Drawing.Size(495, 128);
             this.searchDGV.TabIndex = 16;
             this.searchDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.searchGridView_CellClick);
             this.searchDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.searchDGV_CellContentClick);
@@ -148,7 +147,7 @@
             this.searchButton.FlatAppearance.BorderSize = 2;
             this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(248, 470);
+            this.searchButton.Location = new System.Drawing.Point(160, 462);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(99, 31);
             this.searchButton.TabIndex = 15;
@@ -160,11 +159,12 @@
             // 
             this.searchLabel.AutoSize = true;
             this.searchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchLabel.Location = new System.Drawing.Point(8, 361);
+            this.searchLabel.Location = new System.Drawing.Point(2, 379);
             this.searchLabel.Name = "searchLabel";
             this.searchLabel.Size = new System.Drawing.Size(66, 20);
             this.searchLabel.TabIndex = 9;
             this.searchLabel.Text = "Search";
+            this.searchLabel.Click += new System.EventHandler(this.searchLabel_Click);
             // 
             // notesLabel
             // 
@@ -426,17 +426,17 @@
             // organizationLabel
             // 
             this.organizationLabel.AutoSize = true;
-            this.organizationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.organizationLabel.Location = new System.Drawing.Point(2, 381);
+            this.organizationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.organizationLabel.Location = new System.Drawing.Point(66, 379);
             this.organizationLabel.Name = "organizationLabel";
-            this.organizationLabel.Size = new System.Drawing.Size(103, 20);
+            this.organizationLabel.Size = new System.Drawing.Size(116, 20);
             this.organizationLabel.TabIndex = 44;
             this.organizationLabel.Text = "Organization:";
             // 
             // organizationTextBox
             // 
             this.organizationTextBox.BackColor = System.Drawing.Color.Snow;
-            this.organizationTextBox.Location = new System.Drawing.Point(111, 382);
+            this.organizationTextBox.Location = new System.Drawing.Point(188, 381);
             this.organizationTextBox.Name = "organizationTextBox";
             this.organizationTextBox.Size = new System.Drawing.Size(205, 20);
             this.organizationTextBox.TabIndex = 45;
@@ -461,7 +461,7 @@
             this.resetButton.FlatAppearance.BorderSize = 2;
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetButton.Location = new System.Drawing.Point(266, 507);
+            this.resetButton.Location = new System.Drawing.Point(290, 462);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(81, 31);
             this.resetButton.TabIndex = 49;
@@ -582,7 +582,7 @@
             this.panel1.Controls.Add(this.dressRetrievedButton);
             this.panel1.Controls.Add(this.dressesDoneLabel);
             this.panel1.Controls.Add(this.dressesDoneDGV);
-            this.panel1.Location = new System.Drawing.Point(515, 84);
+            this.panel1.Location = new System.Drawing.Point(520, 84);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(374, 257);
             this.panel1.TabIndex = 54;
@@ -628,7 +628,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dressesDoneDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dressesDoneDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dressesDoneDGV.Location = new System.Drawing.Point(14, 34);
+            this.dressesDoneDGV.Location = new System.Drawing.Point(15, 34);
             this.dressesDoneDGV.Name = "dressesDoneDGV";
             this.dressesDoneDGV.ReadOnly = true;
             this.dressesDoneDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -653,15 +653,16 @@
             // CheckOutBarcodeLabel
             // 
             this.CheckOutBarcodeLabel.AutoSize = true;
+            this.CheckOutBarcodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CheckOutBarcodeLabel.Location = new System.Drawing.Point(402, 521);
             this.CheckOutBarcodeLabel.Name = "CheckOutBarcodeLabel";
-            this.CheckOutBarcodeLabel.Size = new System.Drawing.Size(32, 13);
+            this.CheckOutBarcodeLabel.Size = new System.Drawing.Size(36, 13);
             this.CheckOutBarcodeLabel.TabIndex = 56;
             this.CheckOutBarcodeLabel.Text = "Scan";
             // 
             // CheckOutBarcodeTextBox
             // 
-            this.CheckOutBarcodeTextBox.Location = new System.Drawing.Point(439, 518);
+            this.CheckOutBarcodeTextBox.Location = new System.Drawing.Point(459, 518);
             this.CheckOutBarcodeTextBox.Name = "CheckOutBarcodeTextBox";
             this.CheckOutBarcodeTextBox.Size = new System.Drawing.Size(306, 20);
             this.CheckOutBarcodeTextBox.TabIndex = 55;
@@ -671,7 +672,7 @@
             // 
             this.QSearchBarLabel.AutoSize = true;
             this.QSearchBarLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QSearchBarLabel.Location = new System.Drawing.Point(2, 413);
+            this.QSearchBarLabel.Location = new System.Drawing.Point(2, 412);
             this.QSearchBarLabel.Name = "QSearchBarLabel";
             this.QSearchBarLabel.Size = new System.Drawing.Size(121, 20);
             this.QSearchBarLabel.TabIndex = 57;
@@ -681,23 +682,11 @@
             // QSearchTextBox
             // 
             this.QSearchTextBox.BackColor = System.Drawing.Color.Snow;
-            this.QSearchTextBox.Location = new System.Drawing.Point(120, 413);
+            this.QSearchTextBox.Location = new System.Drawing.Point(160, 414);
             this.QSearchTextBox.Name = "QSearchTextBox";
             this.QSearchTextBox.Size = new System.Drawing.Size(233, 20);
             this.QSearchTextBox.TabIndex = 58;
             this.QSearchTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.richTextBox1.Enabled = false;
-            this.richTextBox1.Location = new System.Drawing.Point(6, 439);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(222, 47);
-            this.richTextBox1.TabIndex = 59;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // CheckOut
             // 
@@ -705,7 +694,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(906, 556);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.QSearchTextBox);
             this.Controls.Add(this.QSearchBarLabel);
             this.Controls.Add(this.CheckOutBarcodeLabel);
@@ -805,6 +793,5 @@
         private System.Windows.Forms.TextBox CheckOutBarcodeTextBox;
         private System.Windows.Forms.Label QSearchBarLabel;
         private System.Windows.Forms.TextBox QSearchTextBox;
-        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
