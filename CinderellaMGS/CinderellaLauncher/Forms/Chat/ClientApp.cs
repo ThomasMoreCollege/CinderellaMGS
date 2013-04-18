@@ -180,7 +180,7 @@ namespace CinderellaLauncher
             try
             {
                 //parse IP address from the text box into an IP address object
-                txtIP.Text = GetServerIP();
+               // txtIP.Text = GetServerIP();
                 ipAddress = IPAddress.Parse(txtIP.Text);
 
                 //start new TCP connection to the server
@@ -381,7 +381,7 @@ namespace CinderellaLauncher
         //this focus on the chat name text box once the chat is launched.
         private void ClientApp_Load(object sender, EventArgs e)
         {
-            txtIP.Text = GetServerIP();
+            //txtIP.Text = GetServerIP();
             txtChatName.Focus();
             
         }

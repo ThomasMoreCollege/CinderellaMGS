@@ -98,8 +98,12 @@ namespace Chat_Server
                     txtLog.Enabled = false;
                     txtLog.AppendText("...No longer listening\n\n");            //signals that it is no longer connecting
                     listenButton.Text = "Start Listening";
+                    mainServer.StopListening();
+                    Thread.CurrentThread.Abort();
                     ChatServerWindow.ActiveForm.Dispose();                      //closes the form
-                    ChatServerWindow.ActiveForm.Close();                        //closes the form
+                    ChatServerWindow.ActiveForm.Close();
+                    
+                    this.Close();//closes the form
                 }
 
                 //else if (listenButton.Text == "Start Listening")                //basically repeats the process by reconnecting.
@@ -116,7 +120,7 @@ namespace Chat_Server
 
             }
 
-            MulticastIP();
+            //MulticastIP();
         }
 
         public void mainServer_StatusChanged(object sender, StatusChangedEventArgs e)
@@ -153,7 +157,7 @@ namespace Chat_Server
         private void ChatServerWindow_Load(object sender, EventArgs e)
         {
             txtIp.Text = GetIP();
-            MulticastIP();
+            //MulticastIP();
         }
 
         private void MulticastIP()
@@ -169,6 +173,17 @@ namespace Chat_Server
             s.SendTo(b, ipep);
 
 
+        }
+
+        private void ChatServerWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            ChatServerWindow.ActiveForm.Dispose();                      //closes the form
+            ChatServerWindow.ActiveForm.Close();
+            Thread.CurrentThread.Abort();
+            this.Close();
+            mainServer.StopListening();
+            //closes the form
         }
 
         private void txtLog_TextChanged(object sender, EventArgs e)

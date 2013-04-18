@@ -236,20 +236,21 @@ namespace Chat_Server
                 // Create a new instance of Connection
                 ChatConnection newConnection = new ChatConnection(tcpClient);
             }
+            
         }
 
         public void StopListening()
         {
+            ChatConnection newConn = new ChatConnection(tcpClient);
+            newConn.CloseConnection();
             ServRunning = false;
-
-            /* htUsers.Clear();
+            
+             htUsers.Clear();
              htConnections.Clear();
-
+             ServRunning = false;
              tcpClient.Close();
-             tlsClient.Stop();*/
-
-            thrListener.Abort();
-
+             tlsClient.Stop();
+             thrListener.Abort();
         }
 
     }

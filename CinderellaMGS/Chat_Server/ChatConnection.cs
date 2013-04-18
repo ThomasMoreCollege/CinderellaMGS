@@ -35,7 +35,7 @@ namespace Chat_Server
             thrSender.Start(); // When this thread starts, it will begin sending information to the client. 
         }
 
-        private void CloseConnection() //Closes the Connection Objects below. 
+        public void CloseConnection() //Closes the Connection Objects below. 
         {
             
             tcpClient.Close();      //Closes tcpClient.
