@@ -14,53 +14,53 @@ namespace CinderellaLauncher
         //include the connection string;
         string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
-        /*These variables(right below) are declare to be assigned to*/
+        /*These variables(right below) are declared and assigned to Fairy Godmothers.*/
 
-        private int fairyID;                    //the fairy ID is set as a primary key
-        private string fairyFirstName;          //first name
-        private string fairyLastName;           //last name
-        private string fairyRole;               //role
-        private DateTime fairyAppDate;          //appointment date
-        private DateTime fairyAppTime;          //appointment time
-        private string fairyShiftType;          //shift type
-        private string fairyEmail;              //email
-        private string fairyPhone;              //phone number
-        private string fairyCity;               //city
-        private string fairyState;              //state
-        public bool CanHandleSpecialNeeds;      //wether or not the Fairy God Mother is willing to deal with Special Needs.
+        private int fairyID;                                             //the fairy ID is set as a Primary Key(PK).
+        private string fairyFirstName;                                  //First Name of Fairy Godmother.
+        private string fairyLastName;                                  //Last Name of Fairy Godmother. 
+        private string fairyRole;                                     //Fairy Godmother role.
+        private DateTime fairyAppDate;                               //Fairy Godmother Appointment Date.
+        private DateTime fairyAppTime;                              //Fairy Godmother Appointment Time.
+        private string fairyShiftType;                             //Type of Shift for a Fairy Godmother.
+        private string fairyEmail;                                //Fairy Godmother E-Mail.     
+        private string fairyPhone;                               //Fairy Godmother Phone Number.
+        private string fairyCity;                               //Fairy Godmother City of Residence.
+        private string fairyState;                             //Fairy Godmother State of Residence. 
+        public bool CanHandleSpecialNeeds;                    //Indicates whether or not the Fairy Godmother is capable and willing to deal with Special Needs Cinderellas.
 
         /*Like the cinderellaID in the "CinderellaClass.cs" file, the fariyID too will have its
-         own primary key to determine the fairy godmothers and their respective roles. In this action,
-         the personal shoppers are assigned to pair up with the girls.  Their ID will determine who are the personal
-         shoppers, such as their names, roles, and their appointment date and time with the girls.*/
+         own Primary Key(PK) to determine the Fairy Godmothers' and their respective roles. In this action,
+         the personal shoppers are assigned to pair up with the cinderellas.  Their IDs will determine who the personal
+         shoppers are, such as their names, roles, and their appointment date and time with the cinderellas.*/
 
         //FairyGodmother
-        //constructor for the fairy godmother
-        //Input: ID, first and last name, role, appointment date and time, shift, email, phone number, city, and state
-        //Output: class object generated succesfully
-        //precondition: all inputs are correct and valid
-        //postcondition: object gennerated correctly
+        //constructor for the Fairy Godmother. 
+        //Input: ID, First Name, Last Name, role, appointment date, appointment time, shift, E-Mail, Phone Number, city, and state. 
+        //Output: a class object is generated succesfully.
+        //Pre-condition: all inputs are correct and valid.
+        //Post-condition: an object is generated correctly.
         public FairyGodmother(int ID, string fname, string lname, string role, DateTime fairyDate, DateTime fairyTime, string shift, string email, string phoneNumber, string city, string state)
         {
-            fairyID = ID;
-            fairyFirstName = fname;
-            fairyLastName = lname;
-            fairyRole = role;
-            fairyAppDate = fairyDate;
-            fairyAppTime = fairyTime;
-            fairyShiftType = shift;
-            fairyEmail = email;
-            fairyPhone = phoneNumber;
-            fairyCity = city;
-            fairyState = state;
+            fairyID = ID;                                   //Fairy Godmother ID.
+            fairyFirstName = fname;                        //Fairy Godmother First Name.
+            fairyLastName = lname;                        //Fairy Godmother Last Name.
+            fairyRole = role;                            //Role of the Fairy Godmother.
+            fairyAppDate = fairyDate;                   //Fairy Godmother Appointment Date.
+            fairyAppTime = fairyTime;                  //Fairy Gdmother Appointment Time. 
+            fairyShiftType = shift;                   //Type of shift that a Fairy Godmother will maintain. 
+            fairyEmail = email;                      //Fairy Godmother E-Mail. 
+            fairyPhone = phoneNumber;               //Fairy Godmother Phone Number. 
+            fairyCity = city;                      //Fairy Godmother City of Residence. 
+            fairyState = state;                   //Fairy Godmother State of Residence.
         }
 
         //FairyGodmother
         //default constructor
-        //Input: none
-        //Output: blank class object generated
-        //precondition: none
-        //postcondition: object corrected succesfully
+        //Input: None.
+        //Output: a blank class object is generated.
+        //precondition: None.
+        //postcondition:a class object corrected succesfully. 
         public FairyGodmother()
         {
 
