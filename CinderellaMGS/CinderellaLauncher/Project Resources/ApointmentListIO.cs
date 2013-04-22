@@ -22,11 +22,11 @@ namespace BusinessLogic
     public class ApointmentListIO
     {
         //readCinderellas
-        //reads the excel file containing the cinderella information into the db
-        //Input: the excel file containg the cinderella information
-        //Output: cinderella's have been added to the db
-        //precondition: the cinderella excel file is in the proper format and the db is connectable and is in a working state
-        //postcondition: the cinderella's have been correctly added to the db
+        //reads the excel file containing the cinderella information into the database.
+        //Input: the excel file containg the cinderella information.
+        //Output: cinderellas' have been added to the database.
+        //precondition: the cinderella excel file is in the proper format, the database can be connected to, and is in a working state.
+        //postcondition: the cinderellas' have been correctly and successfully added to the database.
 
         //IMPORTANT NOTE: Excel rows and columns start at the value 1.
 

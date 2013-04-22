@@ -220,20 +220,23 @@ namespace CinderellaLauncher
             switch (keyword)
             {
 
-                //select all godmother ids and names
+                // select all godmother ids and names
                 case "getGodmothers":
                     query = "SELECT ID,lastname + ', ' + firstname AS Name FROM FairyGodmothers";
                     break;
-                //select all cinderella ids and names
+                // select all cinderella ids and names
                 case "getCinderellas":
                     query = "SELECT ID,lastname + ', ' + firstname AS Name From Cinderellas";
                     break;
+                // select random list of Godmothers
                 case "getRandomGodmotherList":
                     query = "SELECT FairyGodmotherTimestamp.fairyGodmotherID From FairyGodmotherTimestamp, (Select ID, lastname + ', ' + firstname AS Name FROM FairyGodmothers) n, (Select fairyGodmotherID, max(timestamp) as TimeStamp FROM FairyGodmotherTimestamp Group BY fairyGodmotherID) a Where a.fairyGodmotherID= FairyGodmotherTimestamp.fairyGodmotherID and a.timestamp= FairyGodmotherTimestamp.timestamp and n.ID= fairyGodmotherTimestamp.fairyGodmotherID and FairyGodmotherTimestamp.statusid=1 Order By FairyGodmotherTimestamp.transID";
                     break;
+                // select all Fairy Godmothers who are waiting. (ID).
                 case "getWaitingFairyGodmothersID":
                     query = "SELECT FairyGodmotherTimestamp.fairyGodmotherID, n.name FROM FairyGodmotherTimestamp, (SELECT ID, lastname + ', ' + firstname AS NAME FROM FairyGodmothers) n, (SELECT fairyGodmotherID, MAX(TIMESTAMP) AS TIMESTAMP FROM FairyGodmotherTimestamp GROUP BY fairyGodmotherID) a WHERE a.fairyGodmotherID= FairyGodmotherTimestamp.fairyGodmotherID AND a.timestamp= FairyGodmotherTimestamp.timestamp AND n.ID= FairyGodmotherTimestamp.fairyGodmotherID AND FairyGodmotherTimestamp.statusid=1";
                     break;
+                // select all Cinderellas' who are waiting. (ID). 
                 case "getWaitingCinderellasID":
                     query = "SELECT CinderellaTimestamp.cinderellaID, n.name FROM CinderellaTimestamp, (SELECT ID, lastname + ', ' + firstname AS NAME FROM Cinderellas) n, (SELECT cinderellaID, MAX(TIMESTAMP) AS TIMESTAMP FROM CinderellaTimestamp GROUP BY cinderellaID) a WHERE a.cinderellaID= cinderellaTimestamp.cinderellaID AND a.timestamp= cinderellaTimestamp.timestamp AND n.ID= cinderellaTimestamp.cinderellaID AND cinderellaTimestamp.statusid=2";
                     break;
@@ -250,28 +253,32 @@ namespace CinderellaLauncher
                      //string where = "Where shiftDate > CAST(DateAdd(day, -1, getdate()) AS DATE";
                      //query += where;
                     break; */
+                // select very last Fairy Godmother ID.
                 case "getlastGodMotherID":
                     query = "SELECT MAX(id) FROM FairyGodmothers";
                     break;
+                // selects all details of a Cinderella. 
                 case "getCinderellaDetails":
                     query = "SELECT Cinderellas.firstName, Cinderellas.lastName, CinderellaTimestamp.statusID, Package.dressSize, Package.dressColor, Package.shoeSize, Package.shoeColor, Package.whenAvailable, Package.jewelry, Package.checkoutNotes FROM Cinderellas, Package, FairyGodmothers, CinderellaTimestamp WHERE	Cinderellas.ID = Package.cinderellaID AND  Cinderellas.ID = CinderellaTimestamp.cinderellaID AND FairyGodmothers.ID = Cinderellas.fairyGodmotherID AND (CinderellaTimestamp.statusID = 4 OR CinderellaTimestamp.statusID = 5 OR CinderellaTimestamp.statusID = 7 OR CinderellaTimestamp.statusID = 6)";
                     break;
+                //selects all details of a Fairy Godmother.
                 case "getFairyGodmotherDetails":
                     query = "SELECT FairyGodmothers.firstName, FairyGodmothers.lastName FROM Cinderellas, FairyGodmothers, CinderellaTimestamp WHERE Cinderellas.ID = CinderellaTimestamp.cinderellaID AND FairyGodmothers.ID = Cinderellas.fairyGodmotherID AND CinderellaTimestamp.statusid = 4";
                     break;
+                // exports the above data. 
                 case "exportData":
                     query = "SELECT * From Package";
                     break;
-                //gets the maxID from the Cinderella Table
+                //gets the maxID from the Cinderella Table.
                 case "getlastCinderellaID":
                     query = "SELECT MAX(ID) AS ID FROM CinderellaMGS.dbo.Cinderella";
-
                     break;
+                //select the current date. 
                 case "getDate":
                     query = "SELECT GetDate() as 'Current Date'";
                     break;
             }
-            //Do not touch the code below this!
+            //DO NOT TOUCH THE CODE BELOW THIS! [Returns a dataset from the database table.] 
             return database.getDataSet(query, "tableName");
         }
 
@@ -284,7 +291,7 @@ namespace CinderellaLauncher
 
             return database.getDataSet(query, "tableName");
         }
-        public string fairyGodmotherCheckIn()
+        public string fairyGodmotherCheckIn() //SELECT FairyGodmother id, firstname, lastname, e-mail, phonenumber, City, state, ZIP, and address.
         {
             string query = "";
 
@@ -390,7 +397,7 @@ namespace CinderellaLauncher
 
 
 
-        public string showFairyGodmothers(int shift, int status)
+        public string showFairyGodmothers(int shift, int status) //shows the current status and shift(s) of a Fairy Godmother. 
         {
             string query = "SELECT FairyGodmothers.firstName AS 'First Name', FairyGodmothers.lastName AS 'Last Name' " +
                            "FROM FairyGodmothers, Shifts, FairyGodmotherTimestamp " +
