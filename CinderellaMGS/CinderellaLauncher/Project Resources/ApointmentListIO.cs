@@ -118,11 +118,13 @@ namespace BusinessLogic
 
                 //The following variables Date and Time will represent the Date and Time of an Appointment.
                 DateTime Appointment_DateTime = new DateTime();
-                string TestD;
-                string TestT;
+                string ApptD;
+                string ApptT;
+
+                int NumRows = closetTuples_C.Rows.Count;
 
                 //This loop begins reading values into the database.
-                for (int rows = 2; rows <= 406; rows++)
+                for (int rows = 2; rows <= closetTuples_C.Rows.Count; rows++)
                 {
 
                     //This loop begins to read values for each specific column.
@@ -217,8 +219,8 @@ namespace BusinessLogic
                             particulars_C[index] = Value_C.ToString().Trim();
                             Appointment_DateTime = Convert.ToDateTime(Value_C);
 
-                            TestD = Appointment_DateTime.Date.ToString();
-                            TestT = Appointment_DateTime.TimeOfDay.ToString();
+                            ApptD = Appointment_DateTime.Date.ToString();
+                            ApptT = Appointment_DateTime.TimeOfDay.ToString();
 
                             //Potentially Obsolete Code
                             //The Value for particulars[index] is then split into two strings at the ' '.
@@ -246,11 +248,11 @@ namespace BusinessLogic
 
                     }
                     index = 0;
-                    TestD = Appointment_DateTime.Date.ToString();
-                    TestT = Appointment_DateTime.TimeOfDay.ToString();
+                    ApptD = Appointment_DateTime.Date.ToString();
+                    ApptT = Appointment_DateTime.TimeOfDay.ToString();
 
                     //The query will finally begin to add the data from the Excel sheet to the database.
-                    Cinderella_Add.addCinderellaAndReferral(closetSheet_C.Cells[rows, 3].Value.ToString() + " " + closetSheet_C.Cells[rows, 4].Value.ToString(), closetSheet_C.Cells[rows, 5].Value.ToString(), closetSheet_C.Cells[rows, 1].Value.ToString(), closetSheet_C.Cells[rows, 2].Value.ToString(), TestD, TestT, "");
+                    Cinderella_Add.addCinderellaAndReferral(closetSheet_C.Cells[rows, 3].Value.ToString() + " " + closetSheet_C.Cells[rows, 4].Value.ToString(), closetSheet_C.Cells[rows, 5].Value.ToString(), closetSheet_C.Cells[rows, 1].Value.ToString(), closetSheet_C.Cells[rows, 2].Value.ToString(), ApptD, ApptT, "");
 
                     //Code for progress bar.
 
@@ -372,7 +374,7 @@ namespace BusinessLogic
                 int index = 0;
 
                 //This loop begins reading values into the database.
-                for (int rows = 2; rows <= 272; rows++)
+                for (int rows = 2; rows <= closetTuples_G.Rows.Count; rows++)
                 {
 
                     //This loop begins to read values for each specific column.
@@ -537,7 +539,7 @@ namespace BusinessLogic
 
 
                 //This loop begins reading values into the database for the Fairy Godmother shifts.
-                for (int rows = 2; rows <= 272; rows++)
+                for (int rows = 2; rows <= closetTuples_G.Rows.Count; rows++)
                 {
 
                     //This loop begins to read values for each of the three shift columns.
