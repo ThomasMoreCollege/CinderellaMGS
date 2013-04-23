@@ -99,21 +99,21 @@ namespace CinderellaLauncher
         //Input: the ID of the godmother and a list that contains the god mother
         //Output: the index of the godmother or -1 if not found
         //preconsitions: the list cotains only godmothers
-        //postconditions: either the index of the god motehr is returned or -1 signifying none found is returned
+        //postconditions: either the index of the god mother is returned or -1 signifying none found is returned
         public int FindGodMotherByID(int ID, ref List<FairyGodmother> GodMotherQueue)//this ID will have been retreived from the request form
         {
             SQL_Queries debugging = new SQL_Queries();
             int index = 0;
             foreach (FairyGodmother GodMother in GodMotherQueue)
             {
-                if (GodMother.getFairyID() == ID)
+                if (GodMother.getFairyID() == ID) //Gets the Fairy Godmother ID.
                 {
-                    //god mother found
+                    //returns index if a Fairy Godmother is found. [A fairy Godmother was found.]
                     return index;
                 }
                 index += 1;
             }
-            return -1;//something went wrong
+            return -1;//If this line occurs then something has gone wrong. [No Fairy Godmother was found.] 
         }
     }
 }

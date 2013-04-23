@@ -19,22 +19,22 @@ namespace CinderellaLauncher
         //creates an object to access the db queries
         SQL_Queries sql = new SQL_Queries();
         //main
-        //Purpose: to handle the db interactions and the loops that occur for amtchmaking
-        //input: None, except for DB interactions
-        //Output: updates sent back to the DB
-        //preconditions: this program is not being made anywhere and the DB is functional
-        //postconditions: the db has been left in a consistent state, all matches have been updated to the DB, and matchmaking is no longer running
+        //Purpose: to handle the database interactions and the loops that occur for matchmaking.
+        //input: Only the database interactions. 
+        //Output: Updates are sent back to the database.
+        //preconditions: this program is not being made anywhere and the database is functional.
+        //postconditions: the database has been left in a consistent state, all matches have been updated to the database, and matchmaking is no longer running.
         static void Main()
         {
 
             try
             {
-                //create two lists to keep track of cinderellas and godmothers who have been matched
+                //creates two lists to keep track of cinderellas and godmothers who have been matched.
                 List<int> oldCinderellas = new List<int>();
                 List<int> oldGodMothers = new List<int>();
                 while (true)
                 {
-                    //creates lists to hold the cinderellas/godmothers pulled down from the db
+                    //creates lists to hold the cinderellas/godmothers pulled down from the database.
                     //theese will be "deleted" at the start of each loop
                     List<CinderellaClass> Cinderella = new List<CinderellaClass>();
                     List<FairyGodmother> GodMother = new List<FairyGodmother>();
@@ -60,7 +60,7 @@ namespace CinderellaLauncher
 
 
 
-                    //gets the difference between checkin and appointment time
+                    //gets the difference between check-in and appointment time
                     foreach (CinderellaClass cinder in UnsortCinderella)
                     {
                         cinder.diffFromappTime = match.EarlyLateTime(cinder.appTime);
@@ -87,7 +87,7 @@ namespace CinderellaLauncher
                         MatchedGodMotherID.Add(PersonalShopper.getFairyID());
                     }
                     if ((MatchedCinderellaID.Count > 0) && (MatchedGodMotherID.Count > 0))
-                    {//update the matches to the DB
+                    {//update the matches to the database.
                         SQL_Queries queries = new SQL_Queries();
                         //loops through all the matches nd make the appropiate DB action
                         for (int i = 0; i < MatchedCinderellaID.Count; i++)
@@ -122,7 +122,7 @@ namespace CinderellaLauncher
             }
             catch (Exception e)
             {
-                //this will hopefully get around random crashes
+                //a last hope in order to possibly work around random crashes. 
                 Thread bug = new Thread(() => Main());
                 bug.Start();
             }
@@ -133,7 +133,7 @@ namespace CinderellaLauncher
         //Input: the appointment time
         //Output: return the number of minutes
         //precondition: the appointment time and the system time are correct and valid
-        //postcondition: the difference between the arrival and appoitnment time is calculated and returned correctly
+        //postcondition: the difference between the arrival and appointment time is calculated and returned correctly
         public double EarlyLateTime(DateTime appointmentTime)
         {
             DateTime currentTime = Convert.ToDateTime("1/1/0001" + " " + System.DateTime.Now.Hour.ToString() + ":" + System.DateTime.Now.Minute.ToString() + ":" + System.DateTime.Now.Second.ToString());
@@ -270,7 +270,7 @@ namespace CinderellaLauncher
 
 
         //GetCinderellas
-        //Fills a list with the cindererllas from the DB
+        //Fills a list with the cindererllas from the database.
         //Input: the list of cindererllas that have been through matchmaking before, a list to fill with cindererllas, and the amount to get
         //Output: updated list of cindererllas pulled down from the db
         //precondition: all inputs are valid, and the database is functioning correctly and the data in it has no errors
