@@ -465,76 +465,76 @@ namespace CinderellaLauncher
             updateDUI();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) //Exit Tool Strip Menu Item
         {
             this.Close();
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e) //Save Button to Save Cinderella Check Out Information 
         {
             int id = Convert.ToInt32(searchDGV.SelectedRows[0].Cells[0].Value.ToString());
 
-            int dressSize = 0;
-            if (dressSizeComboBox.SelectedItem != null)
+            int dressSize = 0;                                                              //Dress Size 
+            if (dressSizeComboBox.SelectedItem != null)                                    //Dress Size Selected 
                 dressSize = Convert.ToInt32(dressSizeComboBox.SelectedItem);
 
-            string dressColor = "";
-            if (dressColorComboBox.SelectedItem != null)
+            string dressColor = "";                                                     //Dress Color 
+            if (dressColorComboBox.SelectedItem != null)                               //Dress Color Selected 
                 dressColor = dressColorComboBox.SelectedItem.ToString();
 
-            double shoeSize = 0.0;
-            if (shoeSizeComboBox.SelectedItem != null)
+            double shoeSize = 0.0;                                                   //Shoe Size 
+            if (shoeSizeComboBox.SelectedItem != null)                              //Shoe Size Selected 
                 shoeSize = Convert.ToDouble(shoeSizeComboBox.SelectedItem.ToString());
 
-            string shoeColor = "";
-            if (shoeColorComboBox.SelectedItem != null)
+            string shoeColor = "";                                              //Shoe Color 
+            if (shoeColorComboBox.SelectedItem != null)                        //Shoe Color Selected 
                 shoeColor = shoeColorComboBox.SelectedItem.ToString();
 
-            bool necklace = necklaceCheckBox.Checked;
-            bool bracelet = braceletCheckBox.Checked;
-            bool earrings = earringsCheckBox.Checked;
-            bool ring = ringsCheckBox.Checked;
-            bool headPiece = headPieceCheckBox.Checked;
+            bool necklace = necklaceCheckBox.Checked;                       //Is the NecklaceCheckBox checked? 
+            bool bracelet = braceletCheckBox.Checked;                       //Is the BraceletCheckBox checked?
+            bool earrings = earringsCheckBox.Checked;                       //Is the EarringsCheckBox checked? 
+            bool ring = ringsCheckBox.Checked;                              //Is the RingsCheckBox checked?
+            bool headPiece = headPieceCheckBox.Checked;                     //Is the HeadPieceCheckBox checked? 
 
-            string notes = notesTextBox.Text;
+            string notes = notesTextBox.Text;                               //Allows notes to be written in the notesTextBox as strings. 
 
-            if (notes.Count() > 50)
+            if (notes.Count() > 50)                                         //If the # of string characters is greater than 50, return the message box below------------------------------------>
             {
-                MessageBox.Show("Notes must be fewer than 50 characters");
+                MessageBox.Show("Notes must be fewer than 50 characters");  //Tells the user that notes created must be 50 characters or less. 
                 return;
             }
 
-            string other = "";
+            string other = "";              
 
-            if (otherCheckBox.Checked)
+            if (otherCheckBox.Checked)          //If other textboxes are checked, return their text. 
                 other = otherTextBox.Text;
 
 
-            if (other.Count() > 25)
+            if (other.Count() > 25)             //If other textboxes contain more than 25 characters, return the message below------------------------------------------------------------> 
             {
-                MessageBox.Show("Other must be fewer than 25 characters");
+                MessageBox.Show("Other must be fewer than 25 characters");  //Other text boxes must have 25 characters or less. 
                 return;
             }
 
 
-            query.checkOutUpdate(id, dressSize, dressColor, shoeSize, shoeColor, notes, necklace, ring, bracelet, headPiece, earrings, other);
-            query.FGLeavesCinderella(id);
-            MessageBox.Show(cinderellaNameLabel.Text + "'s " + "package has been saved.");
+            query.checkOutUpdate(id, dressSize, dressColor, shoeSize, shoeColor, notes, necklace, ring, bracelet, headPiece, earrings, other); //Update all of the choices that a Cinderella has made. 
+            query.FGLeavesCinderella(id);                                                                                                     //States that a Fairy Godmother has left their Cinderella. 
+            MessageBox.Show(cinderellaNameLabel.Text + "'s " + "package has been saved.");                                                   //The Cinderella and her package have been saved. 
 
-            dressSizeComboBox.ResetText();
-            dressColorComboBox.ResetText();
-            shoeSizeComboBox.ResetText();
-            shoeColorComboBox.ResetText();
-            necklaceCheckBox.Checked = false;
-            braceletCheckBox.Checked = false;
-            earringsCheckBox.Checked = false;
-            ringsCheckBox.Checked = false;
-            headPieceCheckBox.Checked = false;
-            notesTextBox.ResetText();
-            otherCheckBox.Checked = false;
-            otherTextBox.ResetText();
+            dressSizeComboBox.ResetText();                              //Resets the the size in the dressSize ComboBox.  
+            dressColorComboBox.ResetText();                            //Resets the color in the dressColor ComboBox.    
+            shoeSizeComboBox.ResetText();                             //Resets the shoe size in the shoeSize ComboBox.      
+            shoeColorComboBox.ResetText();                           //Resets the shoe color in the shoeColor ComboBox.
+            necklaceCheckBox.Checked = false;                       //States that the necklaceCheckBox has NOT been checked. 
+            braceletCheckBox.Checked = false;                      //States that the braceletCheckBox has NOT been checked. 
+            earringsCheckBox.Checked = false;                     //States that the earringsCheckBox has NOT been checked. 
+            ringsCheckBox.Checked = false;                       //States that the ringsCheckBox has NOT been checked. 
+            headPieceCheckBox.Checked = false;                  //States that the headPieceCheckBox has NOT been checked. 
+            notesTextBox.ResetText();                          //Resets the text that is inside the notesTextBox. 
+            otherCheckBox.Checked = false;                    //States that the otherCheckBox has NOT been checked. 
+            otherTextBox.ResetText();                        //Resets the text that is inside the otherTextBox. 
 
-            cinderellaNameLabel.ResetText();
+            cinderellaNameLabel.ResetText();                //Resets the name of the Cinderella. 
         }
 
         private void dressRetrievedButton_Click(object sender, EventArgs e)
