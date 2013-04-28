@@ -17,6 +17,8 @@ using System.Configuration;
 namespace CinderellaLauncher
 {
     /*CheckOut.cs
+     * gethub versiom
+     * 
      * 
      * -Checks the selected Cinderella out with her dress, jewelry, shoe, and any other information that are recorded
      * -Displays Cinderella's whose dresses are finished being altered and are ready to be delivered to the Cinderella
@@ -57,7 +59,7 @@ namespace CinderellaLauncher
         public CheckOut()
         {
             InitializeComponent();
-          
+
             this.KeyPreview = true;
             this.KeyUp += new KeyEventHandler(search_KeyUp);
 
@@ -75,10 +77,11 @@ namespace CinderellaLauncher
         }
         private void CheckOut_Load(object sender, System.EventArgs e)
         {
-            // See CheckIn for explanation        
+            // See CheckIn for explanation
+           // richTextBox1.Rtf = @"{\rtfl\ansi \b NOTE:\b0. Use the Quick Search to search for a specific Cinderella by typing in any Fairy Godmother ID.}";
             Thread update = new Thread(() => updateDUI());
             update.Start();
-           // dressesDoneDGV.AutoResizeColumns();
+            // dressesDoneDGV.AutoResizeColumns();
         }
         public void updateDUI()
         {
@@ -88,36 +91,36 @@ namespace CinderellaLauncher
                 //  {
                 searchDGVDataTable = new DataTable();
                 searchDGV.Invoke(new Action(delegate()
-                    {
-                        searchDGV.DataSource = searchDGVBindingSource;
-                    }));
-                searchDGVDataTable.Columns.Add("Status");
+                {
+                    searchDGV.DataSource = searchDGVBindingSource;
+                }));
+                //searchDGVDataTable.Columns.Add("Status");
                 searchDGVDataAdapter = new SqlDataAdapter(query.checkOutList(), connection);
-                
+
                 searchDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 searchDGVDataAdapter.Fill(searchDGVDataTable);
-                
+
                 searchDGV.Invoke(new Action(delegate()
-                    {
-                        searchDGVBindingSource.DataSource = searchDGVDataTable;
-                        searchDGV.ClearSelection();
-                    }));
+                {
+                    searchDGVBindingSource.DataSource = searchDGVDataTable;
+                    searchDGV.ClearSelection();
+                }));
 
                 //  searchDGV.AutoResizeColumns();
 
                 dressesDoneDGVDataTable = new DataTable();
                 dressesDoneDGV.Invoke(new Action(delegate()
-                    {
-                        dressesDoneDGV.DataSource = dressesDoneDGVBindingSource;
-                    }));
+                {
+                    dressesDoneDGV.DataSource = dressesDoneDGVBindingSource;
+                }));
                 dressesDoneDGVDataAdapter = new SqlDataAdapter(query.dressesDone(), connection);
                 dressesDoneDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 dressesDoneDGVDataAdapter.Fill(dressesDoneDGVDataTable);
                 dressesDoneDGV.Invoke(new Action(delegate()
-                    {
-                        dressesDoneDGVBindingSource.DataSource = dressesDoneDGVDataTable;
-                        dressesDoneDGV.ClearSelection();
-                    }));
+                {
+                    dressesDoneDGVBindingSource.DataSource = dressesDoneDGVDataTable;
+                    dressesDoneDGV.ClearSelection();
+                }));
 
                 // Thread.Sleep(5000);
                 // }
@@ -166,10 +169,10 @@ namespace CinderellaLauncher
                     bool customNecklace = false;
                     bool customheadPiece = false;
 
-                    string ID = searchDGV.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    string ID = searchDGV.Rows[e.RowIndex].Cells[0].Value.ToString();
 
                     // On cell click, change the name in the label.
-                    cinderellaNameLabel.Text = searchDGV.Rows[e.RowIndex].Cells[1].Value.ToString() + " " + searchDGV.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    cinderellaNameLabel.Text = searchDGV.Rows[e.RowIndex].Cells[0].Value.ToString() + " " + searchDGV.Rows[e.RowIndex].Cells[1].Value.ToString();
 
                     //query.CinderellasInAlteration();
                     dressInfo = new DataTable();
@@ -236,7 +239,7 @@ namespace CinderellaLauncher
             }
             try
             {
-                int id = Convert.ToInt32(searchDGV.SelectedRows[0].Cells[1].Value.ToString());
+                int id = Convert.ToInt32(searchDGV.SelectedRows[0].Cells[0].Value.ToString());
 
                 int dressSize = Convert.ToInt32(dressSizeComboBox.Text);
                 string dressColor = dressColorComboBox.Text;
@@ -326,7 +329,7 @@ namespace CinderellaLauncher
         {
             string q = query.MasterCheckOutSearchBox(QSearchTextBox.Text);
             searchDGVDataTable = new DataTable();
-             searchDGV.DataSource = searchDGVBindingSource;
+            searchDGV.DataSource = searchDGVBindingSource;
             searchDGVDataAdapter = new SqlDataAdapter(q, connection);
             searchDGVDataTable.Locale = System.Globalization.CultureInfo.InvariantCulture;
             searchDGVDataAdapter.Fill(searchDGVDataTable);
@@ -413,7 +416,7 @@ namespace CinderellaLauncher
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-           
+
             organizationTextBox.Text = "";
 
             SqlCommand searchCommand = new SqlCommand(query.CheckOutSearch("", "", ""));
@@ -465,76 +468,76 @@ namespace CinderellaLauncher
             updateDUI();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e) //Exit Tool Strip Menu Item
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void saveButton_Click(object sender, EventArgs e) //Save Button to Save Cinderella Check Out Information 
+        private void saveButton_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(searchDGV.SelectedRows[0].Cells[0].Value.ToString());
+            int id = Convert.ToInt32(searchDGV.SelectedRows[0].Cells[1].Value.ToString());
 
-            int dressSize = 0;                                                              //Dress Size 
-            if (dressSizeComboBox.SelectedItem != null)                                    //Dress Size Selected 
+            int dressSize = 0;
+            if (dressSizeComboBox.SelectedItem != null)
                 dressSize = Convert.ToInt32(dressSizeComboBox.SelectedItem);
 
-            string dressColor = "";                                                     //Dress Color 
-            if (dressColorComboBox.SelectedItem != null)                               //Dress Color Selected 
+            string dressColor = "";
+            if (dressColorComboBox.SelectedItem != null)
                 dressColor = dressColorComboBox.SelectedItem.ToString();
 
-            double shoeSize = 0.0;                                                   //Shoe Size 
-            if (shoeSizeComboBox.SelectedItem != null)                              //Shoe Size Selected 
+            double shoeSize = 0.0;
+            if (shoeSizeComboBox.SelectedItem != null)
                 shoeSize = Convert.ToDouble(shoeSizeComboBox.SelectedItem.ToString());
 
-            string shoeColor = "";                                              //Shoe Color 
-            if (shoeColorComboBox.SelectedItem != null)                        //Shoe Color Selected 
+            string shoeColor = "";
+            if (shoeColorComboBox.SelectedItem != null)
                 shoeColor = shoeColorComboBox.SelectedItem.ToString();
 
-            bool necklace = necklaceCheckBox.Checked;                       //Is the NecklaceCheckBox checked? 
-            bool bracelet = braceletCheckBox.Checked;                       //Is the BraceletCheckBox checked?
-            bool earrings = earringsCheckBox.Checked;                       //Is the EarringsCheckBox checked? 
-            bool ring = ringsCheckBox.Checked;                              //Is the RingsCheckBox checked?
-            bool headPiece = headPieceCheckBox.Checked;                     //Is the HeadPieceCheckBox checked? 
+            bool necklace = necklaceCheckBox.Checked;
+            bool bracelet = braceletCheckBox.Checked;
+            bool earrings = earringsCheckBox.Checked;
+            bool ring = ringsCheckBox.Checked;
+            bool headPiece = headPieceCheckBox.Checked;
 
-            string notes = notesTextBox.Text;                               //Allows notes to be written in the notesTextBox as strings. 
+            string notes = notesTextBox.Text;
 
-            if (notes.Count() > 50)                                         //If the # of string characters is greater than 50, return the message box below------------------------------------>
+            if (notes.Count() > 50)
             {
-                MessageBox.Show("Notes must be fewer than 50 characters");  //Tells the user that notes created must be 50 characters or less. 
+                MessageBox.Show("Notes must be fewer than 50 characters");
                 return;
             }
 
-            string other = "";              
+            string other = "";
 
-            if (otherCheckBox.Checked)          //If other textboxes are checked, return their text. 
+            if (otherCheckBox.Checked)
                 other = otherTextBox.Text;
 
 
-            if (other.Count() > 25)             //If other textboxes contain more than 25 characters, return the message below------------------------------------------------------------> 
+            if (other.Count() > 25)
             {
-                MessageBox.Show("Other must be fewer than 25 characters");  //Other text boxes must have 25 characters or less. 
+                MessageBox.Show("Other must be fewer than 25 characters");
                 return;
             }
 
 
-            query.checkOutUpdate(id, dressSize, dressColor, shoeSize, shoeColor, notes, necklace, ring, bracelet, headPiece, earrings, other); //Update all of the choices that a Cinderella has made. 
-            query.FGLeavesCinderella(id);                                                                                                     //States that a Fairy Godmother has left their Cinderella. 
-            MessageBox.Show(cinderellaNameLabel.Text + "'s " + "package has been saved.");                                                   //The Cinderella and her package have been saved. 
+            query.checkOutUpdate(id, dressSize, dressColor, shoeSize, shoeColor, notes, necklace, ring, bracelet, headPiece, earrings, other);
+            query.FGLeavesCinderella(id);
+            MessageBox.Show(cinderellaNameLabel.Text + "'s " + "package has been saved.");
 
-            dressSizeComboBox.ResetText();                              //Resets the the size in the dressSize ComboBox.  
-            dressColorComboBox.ResetText();                            //Resets the color in the dressColor ComboBox.    
-            shoeSizeComboBox.ResetText();                             //Resets the shoe size in the shoeSize ComboBox.      
-            shoeColorComboBox.ResetText();                           //Resets the shoe color in the shoeColor ComboBox.
-            necklaceCheckBox.Checked = false;                       //States that the necklaceCheckBox has NOT been checked. 
-            braceletCheckBox.Checked = false;                      //States that the braceletCheckBox has NOT been checked. 
-            earringsCheckBox.Checked = false;                     //States that the earringsCheckBox has NOT been checked. 
-            ringsCheckBox.Checked = false;                       //States that the ringsCheckBox has NOT been checked. 
-            headPieceCheckBox.Checked = false;                  //States that the headPieceCheckBox has NOT been checked. 
-            notesTextBox.ResetText();                          //Resets the text that is inside the notesTextBox. 
-            otherCheckBox.Checked = false;                    //States that the otherCheckBox has NOT been checked. 
-            otherTextBox.ResetText();                        //Resets the text that is inside the otherTextBox. 
+            dressSizeComboBox.ResetText();
+            dressColorComboBox.ResetText();
+            shoeSizeComboBox.ResetText();
+            shoeColorComboBox.ResetText();
+            necklaceCheckBox.Checked = false;
+            braceletCheckBox.Checked = false;
+            earringsCheckBox.Checked = false;
+            ringsCheckBox.Checked = false;
+            headPieceCheckBox.Checked = false;
+            notesTextBox.ResetText();
+            otherCheckBox.Checked = false;
+            otherTextBox.ResetText();
 
-            cinderellaNameLabel.ResetText();                //Resets the name of the Cinderella. 
+            cinderellaNameLabel.ResetText();
         }
 
         private void dressRetrievedButton_Click(object sender, EventArgs e)
@@ -587,9 +590,9 @@ namespace CinderellaLauncher
                     MessageBox.Show("Please fill out all the dress and shoe information.");
                     return;
                 }
-              //  try
+                //  try
                 {
-                    
+
 
 
                     int id = Convert.ToInt32(CheckOutBarcodeTextBox.Text);
@@ -643,8 +646,8 @@ namespace CinderellaLauncher
                     query.checkOutUpdate(id, dressSize, dressColor, shoeSize, shoeColor, notes, necklace, ring, bracelet, headPiece, earrings, other);
                     query.setCinderellaStatus(id.ToString(), 7);
                     query.FGLeavesCinderella(id);
-                    
-                    
+
+
                     //Possibly use as a check
                     //commented out because it didn't work for the barcode reader
                     //query.RetrievedDress(id);
@@ -666,18 +669,20 @@ namespace CinderellaLauncher
 
                     cinderellaNameLabel.ResetText();
 
+
+
                     updateDUI();
                 }
                 //catch (ArgumentOutOfRangeException noSelection)
-               // {
-               //     MessageBox.Show("Please select a Cinderella");
-               // }
-              //  catch (NullReferenceException error)
+                // {
+                //     MessageBox.Show("Please select a Cinderella");
+                // }
+                //  catch (NullReferenceException error)
                 //{
-                  //  MessageBox.Show(error.ToString());
-                    //MessageBox.Show("Please Select the Size and Color of the Dress and of the Shoes");
-                }
+                //  MessageBox.Show(error.ToString());
+                //MessageBox.Show("Please Select the Size and Color of the Dress and of the Shoes");
             }
+        }
 
 
         private void organizationTextBox_TextChanged(object sender, EventArgs e)
@@ -704,11 +709,6 @@ namespace CinderellaLauncher
         {
 
         }
-
-        private void searchLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-        }
     }
+}
 

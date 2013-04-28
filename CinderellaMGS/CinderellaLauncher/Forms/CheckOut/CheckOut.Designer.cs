@@ -164,7 +164,7 @@
             this.searchLabel.Size = new System.Drawing.Size(66, 20);
             this.searchLabel.TabIndex = 9;
             this.searchLabel.Text = "Search";
-            this.searchLabel.Click += new System.EventHandler(this.searchLabel_Click);
+           // this.searchLabel.Click += new System.EventHandler(this.searchLabel_Click);
             // 
             // notesLabel
             // 
