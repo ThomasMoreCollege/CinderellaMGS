@@ -779,7 +779,7 @@ namespace CinderellaLauncher
         }
         public string checkOutList()
         {
-            string query = "Cinderellas.id,Cinderellas.firstName AS 'First Name',Cinderellas.lastName AS 'Last Name', Referrals.organization AS 'Organization' " +
+            string query = "Select Cinderellas.id,Cinderellas.firstName AS 'First Name',Cinderellas.lastName AS 'Last Name', Referrals.organization AS 'Organization' " +
                         "FROM Cinderellas INNER JOIN CinderellaStatus ON Cinderellas.currentStatus = CinderellaStatus.statusID INNER JOIN Referrals ON Referrals.id = Cinderellas.referralID " +
                         "WHERE CinderellaStatus.statusName = 'Shopping' OR CinderellaStatus.statusName = 'Alterations'" +
                         "ORDER BY Cinderellas.apptDate, Cinderellas.apptTime ";
