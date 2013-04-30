@@ -107,6 +107,8 @@
             this.submitButton.BackColor = System.Drawing.Color.Snow;
             this.submitButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.submitButton.FlatAppearance.BorderSize = 2;
+            this.submitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.submitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.submitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.Location = new System.Drawing.Point(266, 36);
@@ -131,6 +133,8 @@
             this.advancedButton.BackColor = System.Drawing.Color.Snow;
             this.advancedButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.advancedButton.FlatAppearance.BorderSize = 2;
+            this.advancedButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.advancedButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.advancedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.advancedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.advancedButton.Location = new System.Drawing.Point(12, 312);
@@ -262,7 +266,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::CinderellaLauncher.Properties.Resources.logoSmallTransparent;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(198, 186);
@@ -306,6 +310,8 @@
             this.cindCheckInButton.BackColor = System.Drawing.Color.Snow;
             this.cindCheckInButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.cindCheckInButton.FlatAppearance.BorderSize = 2;
+            this.cindCheckInButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.cindCheckInButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.cindCheckInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cindCheckInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cindCheckInButton.Location = new System.Drawing.Point(8, 15);
@@ -321,6 +327,8 @@
             this.shoppMgtButton.BackColor = System.Drawing.Color.Snow;
             this.shoppMgtButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.shoppMgtButton.FlatAppearance.BorderSize = 2;
+            this.shoppMgtButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.shoppMgtButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.shoppMgtButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.shoppMgtButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shoppMgtButton.Location = new System.Drawing.Point(224, 56);
@@ -336,6 +344,8 @@
             this.alterationsButton.BackColor = System.Drawing.Color.Snow;
             this.alterationsButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.alterationsButton.FlatAppearance.BorderSize = 2;
+            this.alterationsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.alterationsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.alterationsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.alterationsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alterationsButton.Location = new System.Drawing.Point(116, 97);
@@ -379,6 +389,8 @@
             this.fgCheckinButton.BackColor = System.Drawing.Color.Snow;
             this.fgCheckinButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.fgCheckinButton.FlatAppearance.BorderSize = 2;
+            this.fgCheckinButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.fgCheckinButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.fgCheckinButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fgCheckinButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fgCheckinButton.Location = new System.Drawing.Point(8, 56);
@@ -394,6 +406,8 @@
             this.cindCheckOutButton.BackColor = System.Drawing.Color.Snow;
             this.cindCheckOutButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.cindCheckOutButton.FlatAppearance.BorderSize = 2;
+            this.cindCheckOutButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.cindCheckOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.cindCheckOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cindCheckOutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cindCheckOutButton.Location = new System.Drawing.Point(224, 15);
