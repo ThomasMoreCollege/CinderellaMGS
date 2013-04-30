@@ -383,6 +383,8 @@
             this.refreshButtonViewCinderellas.BackColor = System.Drawing.Color.Snow;
             this.refreshButtonViewCinderellas.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.refreshButtonViewCinderellas.FlatAppearance.BorderSize = 2;
+            this.refreshButtonViewCinderellas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.refreshButtonViewCinderellas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.refreshButtonViewCinderellas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshButtonViewCinderellas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshButtonViewCinderellas.Location = new System.Drawing.Point(826, 30);
