@@ -53,13 +53,11 @@ namespace CinderellaLauncher
                 //MessageBox.Show (Convert.ToString(today.Date));
                 //MessageBox.Show(Convert.ToString(today.TimeOfDay));
                 int FGStatus= Convert.ToInt32(query.getFGStatus(id));
-                 UITimer timer1 = new UITimer();
-
-                    timer1.Interval = 5000;
-
-                    timer1.Enabled = true;
-
-                    timer1.Tick += new System.EventHandler(OnTimerEvent);
+                
+                
+                
+                
+ 
 
                     if (FGStatus == 1)
                     {
@@ -68,7 +66,8 @@ namespace CinderellaLauncher
 
 
 
-                        this.BackgroundImage = Properties.Resources.Success;
+                        Thread Success = new Thread(() => Application.Run(new CinderellaLauncher.Forms.BarcodeCheckIn.Success()));
+                        Success.Start();
 
 
                         
@@ -138,8 +137,8 @@ namespace CinderellaLauncher
                         }
                              else
                             {
-                              this.BackgroundImage = Properties.Resources.Failure;
-                              DisplayCindi.Text = "You are already Checked In";
+                                Thread Fail = new Thread(() => Application.Run(new CinderellaLauncher.Forms.BarcodeCheckIn.Fail()));
+                                Fail.Start();
                             }
                     }
 
