@@ -308,6 +308,7 @@
     <Content Include="Resources\Icons\users_64.png" />
     <Content Include="Resources\left-arrow.gif" />
     <Content Include="Resources\logoSmall.jpg" />
+    <None Include="Resources\logoSmallTransparent1.png" />
     <Content Include="Resources\right-arrow.gif" />
     <None Include="Resources\Success1.png" />
     <Content Include="Resources\TMCshield.png" />
