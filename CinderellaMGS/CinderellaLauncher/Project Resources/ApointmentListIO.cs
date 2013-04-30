@@ -11,6 +11,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Threading;
 using CinderellaLauncher;
+using CinderellaLauncher.Forms.Administration;
 using System.Configuration;
 using System.Runtime.InteropServices;
 using System.Windows.Media;
@@ -259,13 +260,21 @@ namespace BusinessLogic
                 }
 
                 //Closes out of Excel.
-                closetBook_C.Close();
+                closetBook_C.Close(false, Type.Missing, Type.Missing);
                 intermediary_C.Quit();
-                Marshal.ReleaseComObject(intermediary_C);
-                Marshal.ReleaseComObject(closetBook_C);
-                Marshal.ReleaseComObject(closetSheet_C);
-                Marshal.ReleaseComObject(closetTuples_C);
+                Marshal.FinalReleaseComObject(intermediary_C);
+                Marshal.FinalReleaseComObject(closetBook_C);
+                Marshal.FinalReleaseComObject(closetSheet_C);
+                Marshal.FinalReleaseComObject(closetTuples_C);
                 GC.Collect();
+
+                //Code for Pop up Window which tells when the import is completed.
+                Import_Wait popup = new Import_Wait();
+                DialogResult dialogresult = popup.ShowDialog();
+                if (dialogresult == DialogResult.OK)
+                {
+                    popup.Dispose();
+                }
             }
 
         }
@@ -676,15 +685,21 @@ namespace BusinessLogic
 
                 }
 
-                closetBook_G.Close();
+                closetBook_G.Close(false, Type.Missing, Type.Missing);
                 intermediary_G.Quit();
-                Marshal.ReleaseComObject(intermediary_G);
-                Marshal.ReleaseComObject(closetBook_G);
-                Marshal.ReleaseComObject(closetSheet_G);
-                Marshal.ReleaseComObject(closetTuples_G);
+                Marshal.FinalReleaseComObject(intermediary_G);
+                Marshal.FinalReleaseComObject(closetBook_G);
+                Marshal.FinalReleaseComObject(closetSheet_G);
+                Marshal.FinalReleaseComObject(closetTuples_G);
                 GC.Collect();
 
-
+                //Code for Pop up Window which tells when the import is completed.
+                Import_Wait popup = new Import_Wait();
+                DialogResult dialogresult = popup.ShowDialog();
+                if (dialogresult == DialogResult.OK)
+                {
+                    popup.Dispose();
+                }
             }
         }
     }
