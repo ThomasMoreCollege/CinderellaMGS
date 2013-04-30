@@ -46,6 +46,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fGPrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chatNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,10 +71,6 @@
             this.AlterationsScanLabel = new System.Windows.Forms.Label();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.Search = new System.Windows.Forms.Button();
-
-            this.fGPrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-
-
             ((System.ComponentModel.ISupportInitialize)(this.alterationsCinderellasDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppingCinderellasDGV)).BeginInit();
@@ -240,20 +237,23 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
-
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
-
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(131, 24);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+            // 
+            // fGPrintToolStripMenuItem
+            // 
+            this.fGPrintToolStripMenuItem.Name = "fGPrintToolStripMenuItem";
+            this.fGPrintToolStripMenuItem.Size = new System.Drawing.Size(131, 24);
+            this.fGPrintToolStripMenuItem.Text = "FG Print";
+            this.fGPrintToolStripMenuItem.Click += new System.EventHandler(this.fGPrintToolStripMenuItem_Click);
             // 
             // chatToolStripMenuItem
             // 
@@ -437,6 +437,8 @@
             this.checkinButton.BackColor = System.Drawing.Color.Snow;
             this.checkinButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.checkinButton.FlatAppearance.BorderSize = 2;
+            this.checkinButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.checkinButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.checkinButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkinButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkinButton.Location = new System.Drawing.Point(153, 422);
@@ -512,6 +514,8 @@
             this.refreshButtonAlterations.BackColor = System.Drawing.Color.Snow;
             this.refreshButtonAlterations.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.refreshButtonAlterations.FlatAppearance.BorderSize = 2;
+            this.refreshButtonAlterations.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.refreshButtonAlterations.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.refreshButtonAlterations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshButtonAlterations.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshButtonAlterations.Location = new System.Drawing.Point(850, 41);
@@ -552,6 +556,8 @@
             this.Search.BackColor = System.Drawing.Color.Snow;
             this.Search.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.Search.FlatAppearance.BorderSize = 2;
+            this.Search.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Search.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Search.Location = new System.Drawing.Point(163, 41);
@@ -559,19 +565,8 @@
             this.Search.Size = new System.Drawing.Size(90, 32);
             this.Search.TabIndex = 41;
             this.Search.Text = "Search";
-
-            this.Search.UseVisualStyleBackColor = true;
-            this.Search.Click += new System.EventHandler(this.Search_Click);
-            // 
-            // fGPrintToolStripMenuItem
-            // 
-            this.fGPrintToolStripMenuItem.Name = "fGPrintToolStripMenuItem";
-            this.fGPrintToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
-            this.fGPrintToolStripMenuItem.Text = "FG Print";
-            this.fGPrintToolStripMenuItem.Click += new System.EventHandler(this.fGPrintToolStripMenuItem_Click);
-
             this.Search.UseVisualStyleBackColor = false;
-
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // Alterations
             // 
