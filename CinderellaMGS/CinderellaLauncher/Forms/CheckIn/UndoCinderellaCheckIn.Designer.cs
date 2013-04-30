@@ -44,6 +44,8 @@
             this.refreshButton.BackColor = System.Drawing.Color.Snow;
             this.refreshButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.refreshButton.FlatAppearance.BorderSize = 2;
+            this.refreshButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.refreshButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshButton.Location = new System.Drawing.Point(415, 12);
@@ -59,6 +61,8 @@
             this.undoButton.BackColor = System.Drawing.Color.Snow;
             this.undoButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.undoButton.FlatAppearance.BorderSize = 2;
+            this.undoButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.undoButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.undoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.undoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.undoButton.Location = new System.Drawing.Point(214, 330);
