@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Threading;
 using System.Diagnostics;
-using UITimer = System.Windows.Forms.Timer;
+
 
 
 namespace CinderellaLauncher
@@ -262,13 +262,7 @@ namespace CinderellaLauncher
                 DateTime t1 = new DateTime(2013, 3, 15, 12, 0, 0);
                 DateTime t2 = new DateTime(2013, 3, 16, 12, 0, 0);
                 DateTime t3 = new DateTime(2013, 3, 16, 18, 0, 0);
-                UITimer timer1 = new UITimer();
-
-                timer1.Interval = 3000;
-
-                timer1.Enabled = true;
-
-                timer1.Tick += new System.EventHandler(OnTimerEvent);
+             
 
                 if (today.Date < t2)
                 {
@@ -902,33 +896,7 @@ namespace CinderellaLauncher
             }
         }
 
-        private void OnTimerEvent(object sender, EventArgs e)
-        {
-            worksFriPM = false;
-            friPMRoleID = "0";
-
-            friPMCheckInOutButton.Checked = false;
-            friPMPSButton.Checked = false;
-            friPMAlterationsButton.Checked = false;
-            friPMVolunteerButton.Checked = false;
-            
-            worksSatPM = false;
-            satPMRoleID = "0";
-
-            satPMCheckInOutButton.Checked = false;
-            satPMPSButton.Checked = false;
-            satPMAlterationsButton.Checked = false;
-            satPMVolunteerButton.Checked = false;
-
-            worksSatAM = false;
-            satAMRoleID = "0";
-
-            satAMCheckInOutButton.Checked = false;
-            satAMPSButton.Checked = false;
-            satAMAlterationsButton.Checked = false;
-            satAMVolunteerButton.Checked = false;
-        }
-
+     
         private void fairyGodmotherCheckInToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Thread FGCheckInBarcode = new Thread(() => Application.Run(new FGCheckInBarcode()));
