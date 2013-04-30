@@ -53,6 +53,8 @@
             this.addButton.BackColor = System.Drawing.Color.Snow;
             this.addButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.addButton.FlatAppearance.BorderSize = 2;
+            this.addButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.addButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addButton.Location = new System.Drawing.Point(218, 245);
