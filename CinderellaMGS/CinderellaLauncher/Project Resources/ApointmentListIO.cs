@@ -685,6 +685,7 @@ namespace BusinessLogic
 
                 }
 
+                //Code to close out
                 closetBook_G.Close(false, Type.Missing, Type.Missing);
                 intermediary_G.Quit();
                 Marshal.FinalReleaseComObject(intermediary_G);
