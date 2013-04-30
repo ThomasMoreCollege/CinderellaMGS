@@ -85,6 +85,8 @@
             this.connectButton.BackColor = System.Drawing.Color.Snow;
             this.connectButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.connectButton.FlatAppearance.BorderSize = 2;
+            this.connectButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.connectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.connectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.connectButton.Location = new System.Drawing.Point(12, 67);
             this.connectButton.Name = "connectButton";
@@ -141,6 +143,8 @@
             this.sendButton.BackColor = System.Drawing.Color.Snow;
             this.sendButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.sendButton.FlatAppearance.BorderSize = 2;
+            this.sendButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.sendButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.sendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sendButton.Location = new System.Drawing.Point(12, 31);
             this.sendButton.Name = "sendButton";
