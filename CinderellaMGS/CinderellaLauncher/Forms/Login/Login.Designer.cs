@@ -183,6 +183,8 @@
             this.connectButton.BackColor = System.Drawing.Color.Snow;
             this.connectButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.connectButton.FlatAppearance.BorderSize = 2;
+            this.connectButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.connectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.connectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.connectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.connectButton.Location = new System.Drawing.Point(421, 546);
