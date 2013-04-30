@@ -102,6 +102,8 @@
             this.submitButton.BackColor = System.Drawing.Color.Snow;
             this.submitButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.submitButton.FlatAppearance.BorderSize = 2;
+            this.submitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.submitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.submitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.Location = new System.Drawing.Point(849, 392);
