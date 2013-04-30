@@ -140,6 +140,8 @@
             this.runQueryButton.BackColor = System.Drawing.Color.DarkGray;
             this.runQueryButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.runQueryButton.FlatAppearance.BorderSize = 2;
+            this.runQueryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.runQueryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.runQueryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.runQueryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.runQueryButton.Location = new System.Drawing.Point(509, 76);
@@ -155,6 +157,8 @@
             this.clearButton.BackColor = System.Drawing.Color.DarkGray;
             this.clearButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.clearButton.FlatAppearance.BorderSize = 2;
+            this.clearButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.clearButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearButton.Location = new System.Drawing.Point(635, 84);
