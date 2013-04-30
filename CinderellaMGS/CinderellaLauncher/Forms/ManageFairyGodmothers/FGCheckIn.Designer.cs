@@ -46,6 +46,7 @@
             this.undoCheckInToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.undoCheckInToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.addFairyGodmotherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fairyGodmotherCheckInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.userManualToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,7 +89,6 @@
             this.viewShiftLabel = new System.Windows.Forms.Label();
             this.BarcodeLabel = new System.Windows.Forms.Label();
             this.BarcodeTextBox = new System.Windows.Forms.TextBox();
-            this.fairyGodmotherCheckInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.fgDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -151,6 +151,8 @@
             this.checkInButton.BackColor = System.Drawing.Color.Snow;
             this.checkInButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.checkInButton.FlatAppearance.BorderSize = 2;
+            this.checkInButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.checkInButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.checkInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkInButton.Location = new System.Drawing.Point(786, 637);
@@ -277,6 +279,13 @@
             this.addFairyGodmotherToolStripMenuItem.Size = new System.Drawing.Size(246, 24);
             this.addFairyGodmotherToolStripMenuItem.Text = "Add Fairy Godmother";
             this.addFairyGodmotherToolStripMenuItem.Click += new System.EventHandler(this.addFairyGodmotherToolStripMenuItem_Click);
+            // 
+            // fairyGodmotherCheckInToolStripMenuItem
+            // 
+            this.fairyGodmotherCheckInToolStripMenuItem.Name = "fairyGodmotherCheckInToolStripMenuItem";
+            this.fairyGodmotherCheckInToolStripMenuItem.Size = new System.Drawing.Size(246, 24);
+            this.fairyGodmotherCheckInToolStripMenuItem.Text = "Fairy Godmother Check In";
+            this.fairyGodmotherCheckInToolStripMenuItem.Click += new System.EventHandler(this.fairyGodmotherCheckInToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
@@ -412,6 +421,8 @@
             this.clearButton1.BackColor = System.Drawing.Color.Snow;
             this.clearButton1.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.clearButton1.FlatAppearance.BorderSize = 2;
+            this.clearButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.clearButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.clearButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearButton1.Location = new System.Drawing.Point(308, 64);
@@ -454,6 +465,8 @@
             this.clearButton2.BackColor = System.Drawing.Color.Snow;
             this.clearButton2.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.clearButton2.FlatAppearance.BorderSize = 2;
+            this.clearButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.clearButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.clearButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearButton2.Location = new System.Drawing.Point(308, 64);
@@ -548,6 +561,8 @@
             this.clearButton3.BackColor = System.Drawing.Color.Snow;
             this.clearButton3.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.clearButton3.FlatAppearance.BorderSize = 2;
+            this.clearButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.clearButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.clearButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearButton3.Location = new System.Drawing.Point(308, 64);
@@ -673,6 +688,8 @@
             this.searchButton.BackColor = System.Drawing.Color.Snow;
             this.searchButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.searchButton.FlatAppearance.BorderSize = 2;
+            this.searchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.searchButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchButton.Location = new System.Drawing.Point(485, 69);
@@ -688,6 +705,8 @@
             this.refreshButtonFGCheckIn.BackColor = System.Drawing.Color.Snow;
             this.refreshButtonFGCheckIn.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.refreshButtonFGCheckIn.FlatAppearance.BorderSize = 2;
+            this.refreshButtonFGCheckIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.refreshButtonFGCheckIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.refreshButtonFGCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshButtonFGCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshButtonFGCheckIn.Location = new System.Drawing.Point(791, 40);
@@ -739,13 +758,6 @@
             this.BarcodeTextBox.Size = new System.Drawing.Size(306, 20);
             this.BarcodeTextBox.TabIndex = 49;
             this.BarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarcodeTextBox_KeyPress);
-            // 
-            // fairyGodmotherCheckInToolStripMenuItem
-            // 
-            this.fairyGodmotherCheckInToolStripMenuItem.Name = "fairyGodmotherCheckInToolStripMenuItem";
-            this.fairyGodmotherCheckInToolStripMenuItem.Size = new System.Drawing.Size(246, 24);
-            this.fairyGodmotherCheckInToolStripMenuItem.Text = "Fairy Godmother Check In";
-            this.fairyGodmotherCheckInToolStripMenuItem.Click += new System.EventHandler(this.fairyGodmotherCheckInToolStripMenuItem_Click);
             // 
             // FGCheckIn
             // 
