@@ -116,6 +116,8 @@
             this.goShoppingButton.BackColor = System.Drawing.Color.Snow;
             this.goShoppingButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.goShoppingButton.FlatAppearance.BorderSize = 2;
+            this.goShoppingButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.goShoppingButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.goShoppingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.goShoppingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.goShoppingButton.Location = new System.Drawing.Point(574, 66);
@@ -244,6 +246,8 @@
             this.pairButton.BackColor = System.Drawing.Color.Snow;
             this.pairButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.pairButton.FlatAppearance.BorderSize = 3;
+            this.pairButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pairButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.pairButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pairButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pairButton.Location = new System.Drawing.Point(455, 632);
@@ -338,6 +342,8 @@
             this.button1.BackColor = System.Drawing.Color.Snow;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(876, 66);
             this.button1.Name = "button1";
