@@ -53,6 +53,8 @@
             this.statusControlButton.BackColor = System.Drawing.Color.DarkGray;
             this.statusControlButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.statusControlButton.FlatAppearance.BorderSize = 2;
+            this.statusControlButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.statusControlButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.statusControlButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.statusControlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusControlButton.Location = new System.Drawing.Point(51, 44);
@@ -142,6 +144,8 @@
             this.importCinderella.BackColor = System.Drawing.Color.DarkGray;
             this.importCinderella.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.importCinderella.FlatAppearance.BorderSize = 2;
+            this.importCinderella.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.importCinderella.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.importCinderella.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.importCinderella.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.importCinderella.Location = new System.Drawing.Point(328, 123);
@@ -157,6 +161,8 @@
             this.importGodMothers.BackColor = System.Drawing.Color.DarkGray;
             this.importGodMothers.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.importGodMothers.FlatAppearance.BorderSize = 2;
+            this.importGodMothers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.importGodMothers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.importGodMothers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.importGodMothers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.importGodMothers.Location = new System.Drawing.Point(328, 211);
@@ -172,6 +178,8 @@
             this.databaseMgtButton.BackColor = System.Drawing.Color.DarkGray;
             this.databaseMgtButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.databaseMgtButton.FlatAppearance.BorderSize = 2;
+            this.databaseMgtButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.databaseMgtButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.databaseMgtButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.databaseMgtButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.databaseMgtButton.Location = new System.Drawing.Point(51, 126);
@@ -187,6 +195,8 @@
             this.accessAllButton.BackColor = System.Drawing.Color.DarkGray;
             this.accessAllButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.accessAllButton.FlatAppearance.BorderSize = 2;
+            this.accessAllButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.accessAllButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.accessAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.accessAllButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.accessAllButton.Location = new System.Drawing.Point(326, 298);
@@ -202,6 +212,8 @@
             this.viewCinderellasButton.BackColor = System.Drawing.Color.DarkGray;
             this.viewCinderellasButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.viewCinderellasButton.FlatAppearance.BorderSize = 2;
+            this.viewCinderellasButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.viewCinderellasButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.viewCinderellasButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewCinderellasButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewCinderellasButton.Location = new System.Drawing.Point(326, 44);
@@ -217,6 +229,8 @@
             this.pairingButton.BackColor = System.Drawing.Color.DarkGray;
             this.pairingButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.pairingButton.FlatAppearance.BorderSize = 2;
+            this.pairingButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pairingButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.pairingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pairingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pairingButton.Location = new System.Drawing.Point(51, 211);
@@ -232,6 +246,8 @@
             this.masterSearchButton.BackColor = System.Drawing.Color.DarkGray;
             this.masterSearchButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.masterSearchButton.FlatAppearance.BorderSize = 2;
+            this.masterSearchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.masterSearchButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.masterSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.masterSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.masterSearchButton.Location = new System.Drawing.Point(51, 298);
