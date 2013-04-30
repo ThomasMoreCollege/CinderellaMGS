@@ -74,6 +74,13 @@ namespace CinderellaLauncher.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Background_Final {
+            get {
+                object obj = ResourceManager.GetObject("Background Final", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Background_Final_Version {
             get {
                 object obj = ResourceManager.GetObject("Background Final Version", resourceCulture);
