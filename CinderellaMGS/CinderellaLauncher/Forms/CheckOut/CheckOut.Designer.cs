@@ -90,6 +90,8 @@
             this.checkOutButton.BackColor = System.Drawing.Color.Snow;
             this.checkOutButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.checkOutButton.FlatAppearance.BorderSize = 2;
+            this.checkOutButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.checkOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.checkOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkOutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkOutButton.Location = new System.Drawing.Point(787, 510);
@@ -145,6 +147,8 @@
             this.searchButton.BackColor = System.Drawing.Color.Snow;
             this.searchButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.searchButton.FlatAppearance.BorderSize = 2;
+            this.searchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.searchButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchButton.Location = new System.Drawing.Point(160, 462);
@@ -164,7 +168,6 @@
             this.searchLabel.Size = new System.Drawing.Size(66, 20);
             this.searchLabel.TabIndex = 9;
             this.searchLabel.Text = "Search";
-           // this.searchLabel.Click += new System.EventHandler(this.searchLabel_Click);
             // 
             // notesLabel
             // 
@@ -459,6 +462,8 @@
             this.resetButton.BackColor = System.Drawing.Color.Snow;
             this.resetButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.resetButton.FlatAppearance.BorderSize = 2;
+            this.resetButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.resetButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetButton.Location = new System.Drawing.Point(290, 462);
@@ -551,6 +556,8 @@
             this.refreshButtonCheckOut.BackColor = System.Drawing.Color.Snow;
             this.refreshButtonCheckOut.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.refreshButtonCheckOut.FlatAppearance.BorderSize = 2;
+            this.refreshButtonCheckOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.refreshButtonCheckOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.refreshButtonCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshButtonCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshButtonCheckOut.Location = new System.Drawing.Point(799, 40);
@@ -566,6 +573,8 @@
             this.saveButton.BackColor = System.Drawing.Color.Snow;
             this.saveButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.saveButton.FlatAppearance.BorderSize = 2;
+            this.saveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.saveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.Location = new System.Drawing.Point(345, 247);
@@ -592,6 +601,8 @@
             this.dressRetrievedButton.BackColor = System.Drawing.Color.Snow;
             this.dressRetrievedButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.dressRetrievedButton.FlatAppearance.BorderSize = 2;
+            this.dressRetrievedButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.dressRetrievedButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.dressRetrievedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dressRetrievedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dressRetrievedButton.Location = new System.Drawing.Point(209, 212);
