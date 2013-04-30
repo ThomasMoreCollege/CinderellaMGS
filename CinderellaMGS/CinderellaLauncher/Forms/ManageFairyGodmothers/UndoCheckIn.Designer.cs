@@ -89,6 +89,8 @@
             this.undoButton.BackColor = System.Drawing.Color.Snow;
             this.undoButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.undoButton.FlatAppearance.BorderSize = 2;
+            this.undoButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.undoButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.undoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.undoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.undoButton.Location = new System.Drawing.Point(205, 358);
@@ -104,6 +106,8 @@
             this.refreshButtonUndoCheckIn.BackColor = System.Drawing.Color.Snow;
             this.refreshButtonUndoCheckIn.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.refreshButtonUndoCheckIn.FlatAppearance.BorderSize = 2;
+            this.refreshButtonUndoCheckIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.refreshButtonUndoCheckIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.refreshButtonUndoCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshButtonUndoCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshButtonUndoCheckIn.Location = new System.Drawing.Point(411, 12);
