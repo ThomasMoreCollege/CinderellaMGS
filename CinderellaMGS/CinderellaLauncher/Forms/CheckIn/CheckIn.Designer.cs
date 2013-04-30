@@ -35,6 +35,7 @@
             this.cinderellasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCinderellaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoCinderellaCheckInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cinderellaCheckInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,6 @@
             this.searchLabel = new System.Windows.Forms.Label();
             this.changeAppointmentButton = new System.Windows.Forms.Button();
             this.refreshButtonCheckIn = new System.Windows.Forms.Button();
-            this.cinderellaCheckInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchDGV)).BeginInit();
@@ -88,6 +88,13 @@
             this.undoCinderellaCheckInToolStripMenuItem.Size = new System.Drawing.Size(262, 24);
             this.undoCinderellaCheckInToolStripMenuItem.Text = "Undo Checked-In Cinderellas";
             this.undoCinderellaCheckInToolStripMenuItem.Click += new System.EventHandler(this.undoCinderellaCheckInToolStripMenuItem_Click);
+            // 
+            // cinderellaCheckInToolStripMenuItem
+            // 
+            this.cinderellaCheckInToolStripMenuItem.Name = "cinderellaCheckInToolStripMenuItem";
+            this.cinderellaCheckInToolStripMenuItem.Size = new System.Drawing.Size(262, 24);
+            this.cinderellaCheckInToolStripMenuItem.Text = "Cinderella Check In";
+            this.cinderellaCheckInToolStripMenuItem.Click += new System.EventHandler(this.cinderellaCheckInToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -164,6 +171,8 @@
             this.checkInButton.BackColor = System.Drawing.Color.Snow;
             this.checkInButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.checkInButton.FlatAppearance.BorderSize = 2;
+            this.checkInButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.checkInButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.checkInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkInButton.Location = new System.Drawing.Point(667, 502);
@@ -292,6 +301,8 @@
             this.resetButton.BackColor = System.Drawing.Color.Snow;
             this.resetButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.resetButton.FlatAppearance.BorderSize = 2;
+            this.resetButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.resetButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetButton.Location = new System.Drawing.Point(575, 32);
@@ -319,6 +330,8 @@
             this.searchButton.BackColor = System.Drawing.Color.Snow;
             this.searchButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.searchButton.FlatAppearance.BorderSize = 2;
+            this.searchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.searchButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchButton.Location = new System.Drawing.Point(442, 32);
@@ -365,6 +378,8 @@
             this.changeAppointmentButton.BackColor = System.Drawing.Color.Snow;
             this.changeAppointmentButton.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.changeAppointmentButton.FlatAppearance.BorderSize = 2;
+            this.changeAppointmentButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.changeAppointmentButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.changeAppointmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.changeAppointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changeAppointmentButton.Location = new System.Drawing.Point(418, 502);
@@ -381,6 +396,8 @@
             this.refreshButtonCheckIn.BackColor = System.Drawing.Color.Snow;
             this.refreshButtonCheckIn.FlatAppearance.BorderColor = System.Drawing.Color.Pink;
             this.refreshButtonCheckIn.FlatAppearance.BorderSize = 2;
+            this.refreshButtonCheckIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.refreshButtonCheckIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.refreshButtonCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshButtonCheckIn.Location = new System.Drawing.Point(683, 43);
             this.refreshButtonCheckIn.Name = "refreshButtonCheckIn";
@@ -389,13 +406,6 @@
             this.refreshButtonCheckIn.Text = "Refresh";
             this.refreshButtonCheckIn.UseVisualStyleBackColor = false;
             this.refreshButtonCheckIn.Click += new System.EventHandler(this.refreshButtonCheckIn_Click);
-            // 
-            // cinderellaCheckInToolStripMenuItem
-            // 
-            this.cinderellaCheckInToolStripMenuItem.Name = "cinderellaCheckInToolStripMenuItem";
-            this.cinderellaCheckInToolStripMenuItem.Size = new System.Drawing.Size(262, 24);
-            this.cinderellaCheckInToolStripMenuItem.Text = "Cinderella Check In";
-            this.cinderellaCheckInToolStripMenuItem.Click += new System.EventHandler(this.cinderellaCheckInToolStripMenuItem_Click);
             // 
             // CheckIn
             // 
