@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Diagnostics;
 using System.Timers;
-using UITimer = System.Windows.Forms.Timer;
+
 
 
 namespace CinderellaLauncher
@@ -42,7 +42,7 @@ namespace CinderellaLauncher
             id = CinderellaCheckInBarcodeTextbox.Text;
             query.setCinderellaStatus(id, 2);
 
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2012; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2013DataForClass; User Id=cinderellamgs; Password=cinderellamgs2012;");
             sqlConnection.Open();
             SqlCommand Test = new SqlCommand();
 
@@ -56,7 +56,7 @@ namespace CinderellaLauncher
             
             while (Read.Read())
                 {
-                    DisplayCindi.Text = "You have Checked In: " + Read["firstName"].ToString() + " " + Read["lastName"];
+                    DisplayCindi.Text = "Last Checked In: " + Read["firstName"].ToString() + " " + Read["lastName"];
                 }
             sqlConnection.Close();
             CinderellaCheckInBarcodeTextbox.Clear();
@@ -66,22 +66,15 @@ namespace CinderellaLauncher
         {
             if (e.KeyChar == (char)13)
             {
-                { UITimer timer1 = new UITimer();
-
-                        timer1.Interval = 5000;
-
-                        timer1.Enabled = true;
-
-                        timer1.Tick += new System.EventHandler(OnTimerEvent);
+                { 
+                  
                     int id = Convert.ToInt16(CinderellaCheckInBarcodeTextbox.Text);
 
                     string status = query.getCinderellaStatus(id);
                     if (Convert.ToInt16(status) == 1)
                     {
-
-
-                        this.BackColor = System.Drawing.Color.Green;
-
+                        Thread Success = new Thread(() => Application.Run(new CinderellaLauncher.Forms.BarcodeCheckIn.Success()));
+                        Success.Start();
 
                         string currentTime = query.getTime(id);
 
@@ -138,7 +131,10 @@ namespace CinderellaLauncher
                     else
                     {
 
-                        this.BackColor = System.Drawing.Color.Red;
+                        Thread Fail = new Thread(() => Application.Run(new CinderellaLauncher.Forms.BarcodeCheckIn.Fail()));
+                        Fail.Start();
+
+
                         timeLbl.Text = "Cinderella is already checked in";
                         CinderellaCheckInBarcodeTextbox.Text = "";
 
@@ -153,14 +149,7 @@ namespace CinderellaLauncher
         }
 
 
-        private void OnTimerEvent(object sender, EventArgs e)
-        {
-
-            DisplayCindi.Text = "";
-            timeLbl.Text = "";
-            this.BackColor = System.Drawing.Color.LavenderBlush;
-
-        }
+      
 
         private void CinderellaCheckInBarcodeTextbox_TextChanged(object sender, EventArgs e)
         {

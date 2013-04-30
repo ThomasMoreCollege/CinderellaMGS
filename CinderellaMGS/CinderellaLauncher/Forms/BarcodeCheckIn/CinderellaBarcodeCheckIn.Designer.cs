@@ -61,7 +61,7 @@ namespace CinderellaLauncher
             // 
             this.DisplayCindi.AutoSize = true;
             this.DisplayCindi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DisplayCindi.Location = new System.Drawing.Point(473, 168);
+            this.DisplayCindi.Location = new System.Drawing.Point(179, 461);
             this.DisplayCindi.Name = "DisplayCindi";
             this.DisplayCindi.Size = new System.Drawing.Size(0, 13);
             this.DisplayCindi.TabIndex = 2;
@@ -69,7 +69,7 @@ namespace CinderellaLauncher
             // timeLbl
             // 
             this.timeLbl.AutoSize = true;
-            this.timeLbl.Location = new System.Drawing.Point(475, 205);
+            this.timeLbl.Location = new System.Drawing.Point(181, 498);
             this.timeLbl.Name = "timeLbl";
             this.timeLbl.Size = new System.Drawing.Size(0, 13);
             this.timeLbl.TabIndex = 3;
