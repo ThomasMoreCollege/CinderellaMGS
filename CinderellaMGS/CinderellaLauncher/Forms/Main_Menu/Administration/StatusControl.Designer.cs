@@ -55,6 +55,8 @@
             this.resetButton.BackColor = System.Drawing.Color.DarkGray;
             this.resetButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.resetButton.FlatAppearance.BorderSize = 2;
+            this.resetButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.resetButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetButton.Location = new System.Drawing.Point(492, 46);
@@ -87,6 +89,8 @@
             this.searchButton.BackColor = System.Drawing.Color.DarkGray;
             this.searchButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.searchButton.FlatAppearance.BorderSize = 2;
+            this.searchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.searchButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchButton.Location = new System.Drawing.Point(352, 46);
@@ -158,7 +162,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -239,6 +243,8 @@
             this.setStatusButton.BackColor = System.Drawing.Color.DarkGray;
             this.setStatusButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.setStatusButton.FlatAppearance.BorderSize = 2;
+            this.setStatusButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.setStatusButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.setStatusButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.setStatusButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setStatusButton.Location = new System.Drawing.Point(474, 289);
