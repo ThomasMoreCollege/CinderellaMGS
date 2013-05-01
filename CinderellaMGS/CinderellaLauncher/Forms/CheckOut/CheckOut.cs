@@ -475,7 +475,7 @@ namespace CinderellaLauncher
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(searchDGV.SelectedRows[0].Cells[1].Value.ToString());
+            int id = Convert.ToInt32(searchDGV.SelectedRows[0].Cells[0].Value.ToString());
 
             int dressSize = 0;
             if (dressSizeComboBox.SelectedItem != null)
