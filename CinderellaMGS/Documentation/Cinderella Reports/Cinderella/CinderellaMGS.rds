@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="CinderellaMGS">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=CIS-DBSERVER\CIS336;Initial Catalog=CinderellaMGS2013DataForClass</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>bee05bc9-6655-4106-b816-37718e533feb</DataSourceID>
+</RptDataSource>

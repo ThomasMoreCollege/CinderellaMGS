@@ -2400,7 +2400,7 @@ namespace CinderellaLauncher
             SqlCommand Test = new SqlCommand();
             Object returnValue1;
 
-            Test.CommandText = "SELECT COUNT(id) From FairyGodmothers INNER JOIN ShiftWorkers ON  FairyGodmothers.id = ShiftWorkers.fairyGodmotherID Where ShiftWorkers.roleID = '4'";
+            Test.CommandText = "SELECT Distinct COUNT(id) From FairyGodmothers INNER JOIN ShiftWorkers ON  FairyGodmothers.id = ShiftWorkers.fairyGodmotherID Where ShiftWorkers.roleID = '4'";
             Test.CommandType = CommandType.Text;
             Test.Connection = sqlConnection;
 
@@ -2431,7 +2431,7 @@ namespace CinderellaLauncher
 
         public string PrintFGIDGrid()
         {
-            string query = "Select id From FairyGodmothers INNER JOIN ShiftWorkers ON  FairyGodmothers.id = ShiftWorkers.fairyGodmotherID Where ShiftWorkers.roleID = '4' Order By FairyGodmothers.lastName";
+            string query = "Select id From CinderellaMGS2013DataForClass.dbo.FairyGodmothers INNER JOIN CinderellaMGS2013DataForClass.dbo.ShiftWorkers ON  FairyGodmothers.id = ShiftWorkers.fairyGodmotherID Where ShiftWorkers.roleID = '4' Order By FairyGodmothers.lastName";
 
             return query;
 
