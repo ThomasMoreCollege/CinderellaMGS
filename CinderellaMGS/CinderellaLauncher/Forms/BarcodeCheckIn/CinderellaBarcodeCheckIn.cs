@@ -41,8 +41,8 @@ namespace CinderellaLauncher
         {
             id = CinderellaCheckInBarcodeTextbox.Text;
             query.setCinderellaStatus(id, 2);
-
-            SqlConnection sqlConnection = new SqlConnection("Server=db.cisdept.thomasmore.edu,50336;Database=cinderellaMGS2013DataForClass; User Id=cinderellamgs; Password=cinderellamgs2012;");
+            string Connection = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+            SqlConnection sqlConnection = new SqlConnection(Connection);
             sqlConnection.Open();
             SqlCommand Test = new SqlCommand();
 

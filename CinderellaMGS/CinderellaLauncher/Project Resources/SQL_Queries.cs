@@ -795,7 +795,7 @@ namespace CinderellaLauncher
             string query = "SELECT Cinderellas.id, Cinderellas.firstName AS 'First Name', Cinderellas.lastName AS 'Last Name', Package.dressColor AS 'Dress Color', Package.dressSize AS 'Dress Size'" +
                            "FROM Cinderellas INNER JOIN Alteration ON Cinderellas.id = Alteration.cinderellaID INNER JOIN " +
                            "Package ON Cinderellas.id = Package.cinderellaID " +
-                           "WHERE Alteration.endAlterationTime IS NOT NULL AND Cinderellas.currentStatus = 6 AND Alteration.DressRetrieved = 0 " +
+                           "WHERE Alteration.endAlterationTime IS NOT NULL AND Cinderellas.currentStatus = 6 AND Alteration.DressRetrieve = 0 " +
                            "ORDER BY Alteration.endAlterationTime ASC";
             return query;
         }
@@ -2011,7 +2011,7 @@ namespace CinderellaLauncher
         public void addAlterations(string cindID)
         {
 
-            string query = "INSERT INTO Alteration (cinderellaID,startAlterationTime, straps,darts,fixZipper,generalMending,generalTakeIn,bust,hem,DressRetrieved) VALUES (" + cindID + ",GETDATE(),0,0,0,0,0,0,0,1)";
+            string query = "INSERT INTO Alteration (cinderellaID,startAlterationTime, straps,darts,fixZipper,generalMending,generalTakeIn,bust,hem,DressRetrieve) VALUES (" + cindID + ",GETDATE(),0,0,0,0,0,0,0,0)";
 
             database.ExecuteQuery(query);
 
@@ -2033,7 +2033,7 @@ namespace CinderellaLauncher
         {
 
             //string query = "INSERT INTO Alteration VALUES (" + cindID + ",'" + time + "','" + time + "','" + notes + "'," + straps + "," + darts + "," + zipper + "," + mending + "," + takeIn + "," + bust + "," + hem + "," + fgID + ")";
-            string query = "UPDATE Alteration SET endAlterationTime= GETDATE(), notes= '" + notes + "', straps = " + straps + ", darts= " + darts + ", fixZipper= " + zipper + ", generalMending = " + mending + ", generalTakeIn = " + takeIn + ", bust= " + bust + ", hem= " + hem + ", fairyGodmotherID= " + fgID + ", DressRetrieved = '0' WHERE cinderellaID = " + cindID;
+            string query = "UPDATE Alteration SET endAlterationTime= GETDATE(), notes= '" + notes + "', straps = " + straps + ", darts= " + darts + ", fixZipper= " + zipper + ", generalMending = " + mending + ", generalTakeIn = " + takeIn + ", bust= " + bust + ", hem= " + hem + ", fairyGodmotherID= " + fgID + ", DressRetrieve = '0' WHERE cinderellaID = " + cindID;
 
             database.ExecuteQuery(query);
 
@@ -2089,7 +2089,7 @@ namespace CinderellaLauncher
         /// <param name="cinID">Cinderella's ID#</param>
         public void RetrievedDress(int cinID)
         {
-            string query = "UPDATE Alteration SET DressRetrieved = 1 WHERE cinderellaID = " + cinID;
+            string query = "UPDATE Alteration SET DressRetrieve = 1 WHERE cinderellaID = " + cinID;
             database.ExecuteQuery(query);
         }
 
@@ -2431,7 +2431,7 @@ namespace CinderellaLauncher
 
         public string PrintFGIDGrid()
         {
-            string query = "Select id From CinderellaMGS2013DataForClass.dbo.FairyGodmothers INNER JOIN CinderellaMGS2013DataForClass.dbo.ShiftWorkers ON  FairyGodmothers.id = ShiftWorkers.fairyGodmotherID Where ShiftWorkers.roleID = '4' Order By FairyGodmothers.lastName";
+            string query = "Select id From FairyGodmothers INNER JOIN ShiftWorkers ON  FairyGodmothers.id = ShiftWorkers.fairyGodmotherID Where ShiftWorkers.roleID = '4' Order By FairyGodmothers.lastName";
 
             return query;
 
