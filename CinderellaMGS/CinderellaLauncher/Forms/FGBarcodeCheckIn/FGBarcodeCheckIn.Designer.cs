@@ -69,6 +69,7 @@
             this.BarcodeTextBox.Name = "BarcodeTextBox";
             this.BarcodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.BarcodeTextBox.TabIndex = 1;
+            this.BarcodeTextBox.TextChanged += new System.EventHandler(this.BarcodeTextBox_TextChanged);
             this.BarcodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarcodeTextBox_KeyPress);
             // 
             // FGCheckInBarcode

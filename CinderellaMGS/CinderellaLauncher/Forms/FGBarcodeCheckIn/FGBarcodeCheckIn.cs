@@ -40,6 +40,7 @@ namespace CinderellaLauncher
 
         private void BarcodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            
             if (e.KeyChar == (char)13)
             {
                 
@@ -140,9 +141,10 @@ namespace CinderellaLauncher
                                 Thread Fail = new Thread(() => Application.Run(new CinderellaLauncher.Forms.BarcodeCheckIn.Fail()));
                                 Fail.Start();
                             }
+                    BarcodeTextBox.Clear();
                     }
 
-                   
+            
 
             }
         
@@ -153,6 +155,11 @@ namespace CinderellaLauncher
             timeLbl.Text = "";
             BarcodeTextBox.Text = "";
             this.BackgroundImage = null;
+
+        }
+
+        private void BarcodeTextBox_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
