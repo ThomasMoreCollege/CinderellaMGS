@@ -1,0 +1,83 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Content/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <img class= "site-title-logo" src="Images/logoSmall.jpg" />
+                    
+                </div>
+                
+                <div class="float-right">
+                    <section id="login">
+                        <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
+                            <AnonymousTemplate>
+                                <ul>
+                                    <li><a id="loginLink" runat="server" href="~/Account/Login.aspx">Log in</a></li>
+                                </ul>
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                <p>
+                                    Hello, <a id="A2" runat="server" class="username" href="~/Account/Manage.aspx" title="Manage your account">
+                                        <asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
+                                    </a>!
+                                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
+                                </p>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li><a id="A3" runat="server" href="~/">Home</a></li>
+                            <li><a id="A4" runat="server" href="~/About.aspx">About</a></li>
+                            <li><a id="A5" runat="server" href="~/Contact.aspx">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <p class="site-title">
+                    <br />
+                    Cinderella MGS</p>
+
+            </div>
+        </header>
+                                
+        <div id="body">
+
+            <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+            <div id="nav">
+                <p>
+                    <ul>
+                        <li><a href="Index.html">Check-In </a></li>
+                        <li><a href="Activities/Activities.html">Registration </a></li>
+                        <li><a href="Reservations/Reservations.html">Appoinment Manager </a></li>
+                    </ul>
+                </p>
+            </div>
+            <section class="content-wrapper main-content clear-fix">
+                
+                <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+            </section>
+        </div>
+        
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>
+                        &copy; <%: DateTime.Now.Year %> - CinderellaMGS
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
