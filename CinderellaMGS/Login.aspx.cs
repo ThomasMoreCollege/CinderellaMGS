@@ -13,6 +13,7 @@ public partial class Login : System.Web.UI.Page
     }
     protected void LoginButton_Click(object sender, EventArgs e)
     {
+        // Sets up the session for keeping track of username and directs to HomePage
         Session["CurrentUser"] = UsernameTextBox.Text;
         Response.Redirect("HomePage.aspx");
     }

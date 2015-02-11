@@ -57,7 +57,9 @@
             <div id="nav">
                     <ul>
                         <li><asp:HyperLink ID="CheckinHyperLink" runat="server" Visible="False">Check-In</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="RegistrationHyperLink" runat="server" Visible="False">Registration</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="RegistrationHyperLink" runat="server" Visible="False">Registration</asp:HyperLink>     </li>
+                        <li><asp:HyperLink ID="AlterationHyperLink" runat="server" Visible="False">Alterations</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="CheckoutHyperLink" runat="server" Visible="False">Check Out</asp:HyperLink></li>
                         <li><asp:HyperLink ID="AppointmentHyperLink" runat="server" Visible="False">Appointment Manager</asp:HyperLink></li>
                     </ul>
             </div>
