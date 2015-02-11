@@ -55,13 +55,11 @@
 
             <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
             <div id="nav">
-                <p>
                     <ul>
-                        <li><a href="Index.html">Check-In </a></li>
-                        <li><a href="Activities/Activities.html">Registration </a></li>
-                        <li><a href="Reservations/Reservations.html">Appoinment Manager </a></li>
+                        <li><asp:HyperLink ID="CheckinHyperLink" runat="server" Visible="False">Check-In</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="RegistrationHyperLink" runat="server" Visible="False">Registration</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="AppointmentHyperLink" runat="server" Visible="False">Appointment Manager</asp:HyperLink></li>
                     </ul>
-                </p>
             </div>
             <section class="content-wrapper main-content clear-fix">
                 
