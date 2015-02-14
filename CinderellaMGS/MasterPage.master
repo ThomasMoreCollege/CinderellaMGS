@@ -10,74 +10,61 @@
     <link href="Content/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="form1" runat="server">
+    <div id="wrapper">
         <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <img class= "site-title-logo" src="Images/logoSmall.jpg" />
-                    
-                </div>
-                
-                <div class="float-right">
-                    <section id="login">
-                        <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
-                            <AnonymousTemplate>
-                                <ul>
-                                    <li><a id="loginLink" runat="server" href="~/Account/Login.aspx">Log in</a></li>
-                                </ul>
-                            </AnonymousTemplate>
-                            <LoggedInTemplate>
-                                <p>
-                                    Hello, <a id="A2" runat="server" class="username" href="~/Account/Manage.aspx" title="Manage your account">
-                                        <asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
-                                    </a>!
-                                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
-                                </p>
-                            </LoggedInTemplate>
-                        </asp:LoginView>
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li><a id="A3" runat="server" href="~/">Home</a></li>
-                            <li><a id="A4" runat="server" href="~/About.aspx">About</a></li>
-                            <li><a id="A5" runat="server" href="~/Contact.aspx">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <p class="site-title">
-                    <br />
-                    Cinderella MGS</p>
-
-            </div>
+            <h1>Home</h1>
         </header>
-                                
-        <div id="body">
 
-            <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
-            <div id="nav">
-                    <ul>
-                        <li><asp:HyperLink ID="CheckinHyperLink" runat="server" Visible="False">Check-In</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="RegistrationHyperLink" runat="server" Visible="False">Registration</asp:HyperLink>     </li>
-                        <li><asp:HyperLink ID="AlterationHyperLink" runat="server" Visible="False">Alterations</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="CheckoutHyperLink" runat="server" Visible="False">Check Out</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="AppointmentHyperLink" runat="server" Visible="False">Appointment Manager</asp:HyperLink></li>
-                    </ul>
-            </div>
-            <section class="content-wrapper main-content clear-fix">
-                
-                <asp:ContentPlaceHolder runat="server" ID="MainContent" />
-            </section>
+
+        <div id="LoginNav">
+            <asp:HyperLink ID="LoginHyperLink" runat="server" NavigateUrl="~/Forms/Login.aspx">Login</asp:HyperLink>
         </div>
-        
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>
-                        &copy; <%: DateTime.Now.Year %> - CinderellaMGS
-                    </p>
-                </div>
+        <div id="MenuNav">
+            
+            <asp:HyperLink ID="HomeHyperLink" runat="server" NavigateUrl="~/Forms/HomePage.aspx">Home</asp:HyperLink>&nbsp &nbsp
+            <asp:HyperLink ID="AboutHyperLink" runat="server" >About</asp:HyperLink>&nbsp &nbsp
+            <asp:HyperLink ID="ContactHyperLink" runat="server">Contact</asp:HyperLink>
+        </div>
+        <nav>
+            <ul>
+                <li id="UserTitle">User Features
+                    <ul id="UserFeatures">
+                        <li><a href="gameOne.html">Cinderella Check-In</a></li>
+                        <li><a href="gameTwo.html">Registration</a></li>
+                        <li><a href="gameThree.html">Appointment Managment</a></li>
+                        <li><a href="gameFour.html">Godmother Check-In </a></li>
+                        <li><a href="gameFive.html">Waiting Area</a></li>
+                    </ul>
+                </li>
+                <li id="AdminTitle">Admin Features 
+                    <ul id="AdminFeatures">
+                        <li><a href="gameOne.html">Godmother Registration</a></li>
+                        <li><a href="gameOne.html">Remove Godmother</a></li>
+                        <li><a href="gameTwo.html">Manual Pairing</a></li>
+                        <li><a href="gameThree.html">Manage Volunteers </a></li>
+                        <li><a href="gameFour.html">Manage Accounts </a></li>
+                        <li><a href="gameFive.html">Querying</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content">
+
+            <div id="mainImage">
+                <br />
+                <br />
+                <h2>Welcome to the Cinderela Management System</h2>
+
+                <asp:ContentPlaceHolder runat="server" ID="MainContent" />
             </div>
-        </footer>
-    </form>
+        </div>
+        <footer>
+            <i><small>Copyright &copy; 2015 Cinderella's Closet MGS<br />
+                Thomas More College</small></i>
+        </footer>  
+    </div>
+
+ 
 </body>
 </html>

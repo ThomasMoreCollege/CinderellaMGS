@@ -1,11 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
+
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
     <br />
+    <form runat="server"> 
     <table style="border: 1px solid black;">
         <tr>
             <td><asp:Label ID="Label1" runat="server" Text="Username"></asp:Label></td>
@@ -28,7 +26,7 @@
             <td><asp:Button ID="LoginButton" runat="server" Text="Login" Width="120px" OnClick="LoginButton_Click" /> </td>
         </tr>
     </table>
-
+    </form>
     <br />
 </asp:Content>
 
