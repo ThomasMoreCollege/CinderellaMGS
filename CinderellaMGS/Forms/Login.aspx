@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
+<%@ MasterType VirtualPath="~/MasterPage.master" %>
+
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
     <br />

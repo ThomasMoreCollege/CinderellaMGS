@@ -36,7 +36,7 @@
                         <li><a href="gameFive.html">Waiting Area</a></li>
                     </ul>
                 </li>
-                <li id="AdminTitle">Admin Features 
+                <li id="AdminTitle" runat="server">Admin Features 
                     <ul id="AdminFeatures">
                         <li><a href="gameOne.html">Godmother Registration</a></li>
                         <li><a href="gameOne.html">Remove Godmother</a></li>

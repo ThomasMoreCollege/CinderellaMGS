@@ -12,4 +12,15 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     }
 
+    public void RevealAdmin(bool showAdmin)
+    {
+        if (showAdmin)
+        {
+            AdminTitle.Visible = true;
+        }
+        else
+        {
+            AdminTitle.Visible = false;  
+        }
+    }
 }

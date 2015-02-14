@@ -9,13 +9,16 @@ public partial class HomePage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Sets all menu links to visible for admin access
-
-        // Sets alterations menu link to visible for alterations access
-
-        // Sets checkout menu links to visible for checkout access
-
-        // Sets checkin/registration menu links to visible for checkin access
-
+        // Checking if a session is running
+        if ((Session["CurrentUser"] == null)||(Session["CurrentUser"].ToString()) != "Admin")
+        {
+            // Sets admin menu to not visible
+            (this.Master as MasterPage).RevealAdmin(false);
+        }
+        else if ((Session["CurrentUser"].ToString()) == "Admin")
+        {
+            // Sets admin menu links to visible for admin access
+            (this.Master as MasterPage).RevealAdmin(true);
+        }
     }
 }
