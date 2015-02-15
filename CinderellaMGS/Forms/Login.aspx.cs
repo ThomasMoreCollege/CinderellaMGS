@@ -20,6 +20,7 @@ public partial class Login : System.Web.UI.Page
             // Sets admin menu links to visible for admin access
             (this.Master as MasterPage).RevealAdmin(true);
         }
+
     }
 
     protected void LoginButton_Click(object sender, EventArgs e)
@@ -28,4 +29,6 @@ public partial class Login : System.Web.UI.Page
         Session["CurrentUser"] = UsernameTextBox.Text;
         Response.Redirect("HomePage.aspx");
     }
+
+
 }

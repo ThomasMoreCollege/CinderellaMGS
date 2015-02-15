@@ -1,7 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
+<%-- Links Page to Master page --%>
 <%@ MasterType VirtualPath="~/MasterPage.master" %>
 
+<%-- Specifies the type of othe object returned by the content page's Master property --%>
+
+
+<asp:Content runat="server" ID="HeaderTitle" ContentPlaceHolderID="HeaderTitle">
+    <h2>User/Admin Login</h2>
+</asp:Content>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
     <br />

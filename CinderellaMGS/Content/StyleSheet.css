@@ -27,7 +27,7 @@ body {
 }
 
 h1 {
-	background-image:url(http://localhost:8814/CinderellaMGS/Images/HeaderLogo.jpg);
+	background-image:url(../Images/HeaderLogo.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size:100% 100%;
@@ -90,6 +90,7 @@ h1 {
 	text-align: center;
 	padding: 20px;
 	display: block;
+    border-bottom: 3px solid #FFF;
 
 }
 
@@ -98,7 +99,6 @@ h1 {
 	text-align: center;
 	padding: 20px;
 	display: block;
-    border-top: 3px solid #FFF;
     border-bottom: 3px solid #FFF;
 }
 

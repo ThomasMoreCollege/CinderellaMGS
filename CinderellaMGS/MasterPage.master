@@ -54,8 +54,7 @@
             <div id="mainImage">
                 <br />
                 <br />
-                <h2>Welcome to the Cinderela Management System</h2>
-
+                <asp:ContentPlaceHolder runat="server" ID="HeaderTitle" />
                 <asp:ContentPlaceHolder runat="server" ID="MainContent" />
             </div>
         </div>
