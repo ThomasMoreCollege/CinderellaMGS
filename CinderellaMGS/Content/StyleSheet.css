@@ -314,11 +314,12 @@ figure{
 	opacity:.25;	
 }
 
+#CinderellaInfoTable {
+    float:left;
+}
 
-	
-#mainImage img{
-	height:246px; 
-	width:444px;
+#ReferralInfoTable {
+    float:left;
 }
 
 @media only screen and (max-width: 768px){

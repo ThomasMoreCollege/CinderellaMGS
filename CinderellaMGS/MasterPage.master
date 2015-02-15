@@ -17,11 +17,11 @@
 
 
         <div id="LoginNav">
-            <asp:HyperLink ID="LoginHyperLink" runat="server" NavigateUrl="~/Forms/Login.aspx">Login</asp:HyperLink>
+            <asp:HyperLink ID="LoginHyperLink" runat="server" NavigateUrl="~/Forms/DefaultForms/Login.aspx">Login</asp:HyperLink>
         </div>
         <div id="MenuNav">
             
-            <asp:HyperLink ID="HomeHyperLink" runat="server" NavigateUrl="~/Forms/HomePage.aspx">Home</asp:HyperLink>&nbsp &nbsp
+            <asp:HyperLink ID="HomeHyperLink" runat="server" NavigateUrl="~/Forms/DefaultForms/HomePage.aspx">Home</asp:HyperLink>&nbsp &nbsp
             <asp:HyperLink ID="AboutHyperLink" runat="server" >About</asp:HyperLink>&nbsp &nbsp
             <asp:HyperLink ID="ContactHyperLink" runat="server">Contact</asp:HyperLink>
         </div>
@@ -29,8 +29,9 @@
             <ul>
                 <li id="UserTitle">User Features
                     <ul id="UserFeatures">
-                        <li><a href="CinderellaCheckin.aspx">Cinderella Check-In</a></li>
-                        <li><a href="gameTwo.html">Registration</a></li>
+                        <%-- Use ASP Hyper Links ONLY!! --%>
+                        <li><asp:HyperLink ID="CinderellaCheckInHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaCheckin.aspx">Cinderella Check-In</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="CinderellRegistrationHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaRegistration.aspx">Cinderella Registration</asp:HyperLink></li>
                         <li><a href="gameThree.html">Appointment Managment</a></li>
                         <li><a href="gameFour.html">Godmother Check-In </a></li>
                         <li><a href="gameFive.html">Waiting Area</a></li>
