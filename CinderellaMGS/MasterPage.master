@@ -33,13 +33,13 @@
                         <li><asp:HyperLink ID="CinderellaCheckInHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaCheckin.aspx">Cinderella Check-In</asp:HyperLink></li>
                         <li><asp:HyperLink ID="CinderellRegistrationHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaRegistration.aspx">Cinderella Registration</asp:HyperLink></li>
                         <li><a href="gameThree.html">Appointment Managment</a></li>
-                        <li><a href="gameFour.html">Godmother Check-In </a></li>
+                        <li><asp:HyperLink ID="GodMotherCheckInHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/VolunteerCheckin.aspx">Volunteer Check-In</asp:HyperLink></li>
                         <li><a href="gameFive.html">Waiting Area</a></li>
                     </ul>
                 </li>
                 <li id="AdminTitle" runat="server">Admin Features 
                     <ul id="AdminFeatures">
-                        <li><a href="gameOne.html">Godmother Registration</a></li>
+                        <li><asp:HyperLink ID="GodMotherRegistrationHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/VolunteerRegsitration.aspx">Volunteer Registration</asp:HyperLink></li>
                         <li><a href="gameOne.html">Remove Godmother</a></li>
                         <li><a href="gameTwo.html">Manual Pairing</a></li>
                         <li><a href="gameThree.html">Manage Volunteers </a></li>
