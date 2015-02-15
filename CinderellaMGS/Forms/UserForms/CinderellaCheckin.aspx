@@ -19,7 +19,7 @@
             <asp:ListBox ID="CinderellaListBox" runat="server" Height="209px" Width="275px"></asp:ListBox>
         </p>
         <p>
-            <asp:Button ID="CheckinButton" runat="server" OnClick="CheckinButton_Click" Text="Checkin" Width="70px" />
+            <asp:Button ID="CheckInButton" runat="server" OnClick="CheckinButton_Click" Text="Check-In" Width="70px" />
         </p>
     </form>
 
