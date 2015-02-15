@@ -29,7 +29,14 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
     }
     protected void SortButton_Click(object sender, EventArgs e)
     {
-        // Code that checks if the dropdown list is ALPHABETICALLY or APPOINTMENT
+        if (SortParameterDropDown.SelectedIndex == 0)
+        {
+
+        }
+        else
+        {
+
+        }
 
         // Depending on result, SQL code for sorting on that parameter
     }

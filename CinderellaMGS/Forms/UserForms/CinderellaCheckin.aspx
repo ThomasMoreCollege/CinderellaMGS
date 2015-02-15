@@ -11,7 +11,7 @@
         <p>
             <asp:Button ID="SortButton" runat="server" OnClick="SortButton_Click" Text="Sort By:" />
 &nbsp;
-            <asp:DropDownList ID="SortParamterDropDown" runat="server" OnSelectedIndexChanged="SortParamterDropDown_SelectedIndexChanged">
+            <asp:DropDownList ID="SortParameterDropDown" runat="server">
                 <asp:ListItem Selected="True">Appointment Time</asp:ListItem>
                 <asp:ListItem>Alphabetically</asp:ListItem>
             </asp:DropDownList>
