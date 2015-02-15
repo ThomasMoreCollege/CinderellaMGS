@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
     <form id="form1" runat="server">
-&nbsp;<asp:Label ID="CinderellaInfoLabel" runat="server" Font-Bold="True" Font-Size="Large" Text="Cinderella Information:"></asp:Label>
+<asp:Label ID="CinderellaInfoLabel" runat="server" Font-Bold="True" Font-Size="Large" Text="Cinderella Information:"></asp:Label>
         <br />
         <br />
         <table style="width:40%;" id="CinderellaInfoTable">
@@ -24,8 +24,9 @@
             <tr>
                 <td class="auto-style8">
                     Appointment Date:</td>
-                <td class="TableInputCell"><asp:TextBox ID="AppTimeTextBox" runat="server"></asp:TextBox>
-                </td>
+                <td class="TableInputCell">
+
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style8">
