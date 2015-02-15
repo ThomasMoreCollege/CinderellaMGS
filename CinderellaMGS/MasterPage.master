@@ -29,7 +29,7 @@
             <ul>
                 <li id="UserTitle">User Features
                     <ul id="UserFeatures">
-                        <li><a href="gameOne.html">Cinderella Check-In</a></li>
+                        <li><a href="CinderellaCheckin.aspx">Cinderella Check-In</a></li>
                         <li><a href="gameTwo.html">Registration</a></li>
                         <li><a href="gameThree.html">Appointment Managment</a></li>
                         <li><a href="gameFour.html">Godmother Check-In </a></li>
