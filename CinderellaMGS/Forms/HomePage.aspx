@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="HomePage.aspx.cs" Inherits="HomePage" %>
 
+<%-- Links Page to Master page --%>
 <%@ MasterType VirtualPath="~/MasterPage.master" %>
 
 
