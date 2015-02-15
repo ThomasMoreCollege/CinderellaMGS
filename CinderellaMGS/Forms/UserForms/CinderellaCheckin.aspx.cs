@@ -21,20 +21,16 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
             (this.Master as MasterPage).RevealAdmin(true);
         }
     }
- 
-    protected void SortAlphabeticallyButton_Click(object sender, EventArgs e)
-    {
-        // SQL code to order Cinderella's in ListBox by their Last/First name
-    }
 
-    protected void SortAppointmentsButton_Click(object sender, EventArgs e)
-    {
-        // SQL code to order Cinderella's by their Appointment time
-    }
-
-    protected void CheckinButton_Click(object sender, EventArgs e)
+    protected void CheckInButton_Click(object sender, EventArgs e)
     {
         // SQL code that changes the selected Cinderella's status to 'WAITING' and rebuilds list box 
         // to remove Cinderella
+    }
+    protected void SortButton_Click(object sender, EventArgs e)
+    {
+        // Code that checks if the dropdown list is ALPHABETICALLY or APPOINTMENT
+
+        // Depending on result, SQL code for sorting on that parameter
     }
 }
