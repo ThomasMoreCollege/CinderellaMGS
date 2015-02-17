@@ -326,6 +326,10 @@ figure{
     float:left;
 }
 
+#AddAcctTable {
+    float:left;
+}
+
 #AccMngTable {
     float:left;
     border-collapse: collapse;
@@ -337,6 +341,14 @@ figure{
 #middleRow {
  border-top: 1px solid #999999;
  border-bottom: 1px solid #999999;
+}
+
+#EditAcctTable {
+    float:left;
+}
+
+#DeleteAcctTable {
+    float:left;
 }
 
 

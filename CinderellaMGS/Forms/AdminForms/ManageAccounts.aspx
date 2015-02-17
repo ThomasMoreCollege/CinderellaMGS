@@ -11,19 +11,19 @@
             <td>
                 <asp:Button ID="AddButton" runat="server" Height="31px" Text="Add Account" Width="120px" PostBackUrl="~/Forms/AdminForms/ChildForms/AddAccount.aspx" />
             </td>
-            <td >Add a new account with specified permissions</td>
+            <td class="auto-style2" >Add a new account with specified permissions</td>
         </tr>
         <tr id="middleRow">
             <td >
                 <asp:Button ID="EditButton" runat="server" Height="31px" Text="Edit Account " Width="120px" PostBackUrl="~/Forms/AdminForms/ChildForms/EditAccount.aspx" />
             </td>
-            <td>&nbsp;</tds
+            <td class="auto-style2">Edit an existing accounts username, password, and permissions</td>
         </tr>
-                Edit an existing accounts username, password, and permissions<tr>
+        <tr>
             <td>
                 <asp:Button ID="RemoveButton" runat="server" Height="31px" Text="Delete Account " Width="120px" PostBackUrl="~/Forms/AdminForms/ChildForms/DeleteAccount.aspx" />
             </td>
-            <td>Delete an account from the system</td>
+            <td class="auto-style2">Delete an account from the system</td>
         </tr>
     </table>
     </form>
@@ -31,10 +31,6 @@
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="head">
     <style type="text/css">
-        .auto-style1
-        {
-            width: 166px;
-        }
         .auto-style2
         {
             font-size: small;
