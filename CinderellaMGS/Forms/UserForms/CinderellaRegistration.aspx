@@ -3,6 +3,7 @@
 <asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitle" Runat="Server">
     <h2>Cinderella Registration</h2>
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
     <form id="form1" runat="server">
 <asp:Label ID="CinderellaInfoLabel" runat="server" Font-Bold="True" Font-Size="Large" Text="Cinderella Information:"></asp:Label>
