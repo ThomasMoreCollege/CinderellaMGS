@@ -32,7 +32,7 @@
                         <%-- Use ASP Hyper Links ONLY!! --%>
                         <li><asp:HyperLink ID="CinderellaCheckInHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaCheckin.aspx">Cinderella Check-In</asp:HyperLink></li>
                         <li><asp:HyperLink ID="CinderellRegistrationHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaRegistration.aspx">Cinderella Registration</asp:HyperLink></li>
-                        <li><a href="gameThree.html">Appointment Managment</a></li>
+                        <li><asp:HyperLink ID="ManageAppointmentHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/ManageAppointment.aspx">Manage Appointment</asp:HyperLink></li>
                         <li><asp:HyperLink ID="GodMotherCheckInHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/VolunteerCheckin.aspx">Volunteer Check-In</asp:HyperLink></li>
                         <li><a href="gameFive.html">Waiting Area</a></li>
                     </ul>
