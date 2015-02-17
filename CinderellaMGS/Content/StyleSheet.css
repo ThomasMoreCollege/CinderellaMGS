@@ -246,7 +246,7 @@ b {
 
 table {
 	margin: auto;
-	width: 45%;
+	width: 90%;
 }
 
 td {
@@ -336,6 +336,10 @@ figure{
 }
 
 #AccMngTable td{
+    padding: 10px;
+}
+#ManualPairTable {
+    float: left;
     padding: 10px;
 }
 #middleRow {
