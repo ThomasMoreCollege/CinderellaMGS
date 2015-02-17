@@ -5,7 +5,11 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
     <form id="form1" runat="server">
-        <table id="ManualPairTable" runat="server">
+        <table id="ManualPairTable" runat="server" border="1">
+            <tr>
+                <th>Cinderellas</th>
+                <th>Godmothers</th>
+            </tr>
             <tr>
                 <td>
                     <asp:TextBox ID="CinderellaSearchTextBox" runat="server"></asp:TextBox>&nbsp;<asp:Button ID="CinderellaSearchButton" runat="server" Text="Search By: " />&nbsp;<asp:DropDownList ID="CinderellaSearchDropDown" runat="server">
@@ -26,10 +30,10 @@
                         <asp:ListItem>ALL STATUSES</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                                <td>
+                 <td>
                     <asp:Button ID="GodmotherStatusButton" runat="server" Text="Change Status" />&nbsp;<asp:DropDownList ID="GodmotherStatusDropDown" runat="server">
-                                        <asp:ListItem>ALL STATUSES</asp:ListItem>
-                                    </asp:DropDownList>
+                        <asp:ListItem>ALL STATUSES</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>
@@ -40,10 +44,10 @@
                     <asp:ListBox ID="GodmotherListBox" runat="server" Height="200px" Width="150px"></asp:ListBox>
                 </td>
             </tr>
+            <tr>
+                <td colspan="2"><asp:Button ID="Match" runat="server" Text="Match!" /></td>
+            </tr>
         </table>
-        <p>
-            <asp:Button ID="Match" runat="server" Text="Match!" />
-        </p>
     </form>
 </asp:Content>
 
