@@ -43,7 +43,7 @@
                         <li><a href="gameOne.html">Remove Godmother</a></li>
                         <li><a href="gameTwo.html">Manual Pairing</a></li>
                         <li><a href="gameThree.html">Manage Volunteers </a></li>
-                        <li><a href="gameFour.html">Manage Accounts </a></li>
+                        <asp:HyperLink ID="ManageAccountsHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageAccounts.aspx">Manage Accounts</asp:HyperLink>
                         <li><a href="gameFive.html">Querying</a></li>
                     </ul>
                 </li>

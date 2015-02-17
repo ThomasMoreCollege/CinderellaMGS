@@ -11,19 +11,19 @@
         <br />
         <table style="width:40%;" id="VolunteerInfoTable">
             <tr>
-                <td class="auto-style1" >
+                <td class="TableLabelCell" >
                     First Name:</td>
                 <td class="TableInputCell"><asp:TextBox ID="FirstTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">
+                <td class="TableLabelCell">
                     Last Name:</td>
                 <td class="TableInputCell"><asp:TextBox ID="LastNameTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">
+                <td class="TableLabelCell">
                     Address:</td>
                 <td class="TableInputCell">
 
@@ -31,31 +31,31 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">
+                <td class="TableLabelCell">
                     City:</td>
                 <td class="TableInputCell"><asp:TextBox ID="CityTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">
+                <td class="TableLabelCell">
                     State:</td>
                 <td class="TableInputCell"><asp:TextBox ID="StateTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">
+                <td class="TableLabelCell">
                     Zip Code:</td>
                 <td class="TableInputCell"><asp:TextBox ID="ZipCodeTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">
+                <td class="TableLabelCell">
                     Phone:</td>
                 <td class="TableInputCell"><asp:TextBox ID="PhoneTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">
+                <td class="TableLabelCell">
                     Email:</td>
                 <td class="TableInputCell"><asp:TextBox ID="EmailTextBox" runat="server"></asp:TextBox>
                 </td>

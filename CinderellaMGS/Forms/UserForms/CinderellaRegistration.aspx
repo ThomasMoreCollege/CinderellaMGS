@@ -10,26 +10,26 @@
         <br />
         <table style="width:40%;" id="CinderellaInfoTable">
             <tr>
-                <td class="auto-style8" >
+                <td class="TableLabelCell" >
                     First Name:</td>
                 <td class="TableInputCell"><asp:TextBox ID="FirstTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style8">
+                <td class="TableLabelCell">
                     Last Name:</td>
                 <td class="TableInputCell"><asp:TextBox ID="LastNameTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style8">
+                <td class="TableLabelCell">
                     Appointment Date:</td>
                 <td class="TableInputCell">
 
                     &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style8">
+                <td class="TableLabelCell">
                     Appointment Time:</td>
                 <td class="TableInputCell"><asp:TextBox ID="AppTimeTextBox0" runat="server"></asp:TextBox>
                 </td>
@@ -53,25 +53,25 @@
         <br />
         <table style="width:40%;" id="ReferralInfoTable">
             <tr>
-                <td class="auto-style8" >
+                <td class="TableLabelCell" >
                     Existing Referral:</td>
                 <td class="TableInputCell"><asp:TextBox ID="FirstTextBox0" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style8">
+                <td class="TableLabelCell">
                     New Referral Name:</td>
                 <td class="TableInputCell"><asp:TextBox ID="LastNameTextBox0" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style8">
+                <td class="TableLabelCell">
                     &nbsp;New Referral School/Agency:</td>
                 <td class="TableInputCell"><asp:TextBox ID="AppTimeTextBox2" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style8">
+                <td class="TableLabelCell">
                     Notes:</td>
                 <td class="TableInputCell"><asp:TextBox ID="AppTimeTextBox3" runat="server"></asp:TextBox>
                 </td>
