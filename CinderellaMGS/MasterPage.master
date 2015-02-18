@@ -36,7 +36,7 @@
                          <li><asp:HyperLink ID="AlterationsHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.html">Alterations</asp:HyperLink></li>
                         <li><asp:HyperLink ID="AutomatedPairingHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.html">Automated Pairing</asp:HyperLink></li>
                         <li><asp:HyperLink ID="CinderellaCheckInHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaCheckin.aspx">Cinderella Check-In</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="CinderellaCheckOutHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.html">Cinderella Check-Out</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="CinderellaCheckOutHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/Checkout.aspx">Cinderella Check-Out</asp:HyperLink></li>
                         <li><asp:HyperLink ID="CinderellRegistrationHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaRegistration.aspx">Cinderella Registration</asp:HyperLink></li>
                         <li><asp:HyperLink ID="ManageAppointmentHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/ManageAppointment.aspx">Manage Appointments</asp:HyperLink></li>
                         <li><asp:HyperLink ID="GodMotherCheckInHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/VolunteerCheckin.aspx">Volunteer Check-In</asp:HyperLink></li>
