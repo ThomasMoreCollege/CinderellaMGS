@@ -179,7 +179,7 @@ nav li:nth-of-type(6) a:hover {
 	padding-bottom: 20px;
 	background-color: #FFFFFF;
 	margin-left: 175px;
-    min-height: 550px;
+    min-height: 555px;
 }
 
 #content img{
@@ -240,7 +240,8 @@ p{
 	text-indent: 50px;
 }
 
-b {
+b{
+
 	padding-left: 20px;	
 }
 
@@ -250,7 +251,7 @@ table {
 }
 
 td {
-	text-align: center;
+
 	padding: 5px;
 }
 
