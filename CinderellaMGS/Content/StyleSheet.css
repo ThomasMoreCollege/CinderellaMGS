@@ -364,6 +364,30 @@ figure{
     float:left;
 }
 
+#CheckoutTable {
+    float:left;
+    border-collapse:collapse;
+}
+
+#DressCheckoutTable {
+    float:left;
+    border-collapse:collapse;
+}
+
+#JewelryCheckoutTable {
+    float:left;
+    border-collapse:collapse;
+}
+
+#ShoeCheckoutTable {
+    float:left;
+    border-collapse:collapse;
+}
+
+#NotesCheckouttable {
+    float: left;
+}
+
 @media only screen and (max-width: 768px){
 	
 	body{

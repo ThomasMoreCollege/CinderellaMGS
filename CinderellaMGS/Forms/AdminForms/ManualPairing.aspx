@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
     <form id="form1" runat="server">
-        <table id="ManualPairTable" runat="server" border="1">
+        <table id="ManualPairTable" border="1">
             <tr>
                 <th>Cinderellas</th>
                 <th>Godmothers</th>
