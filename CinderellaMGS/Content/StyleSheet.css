@@ -107,12 +107,12 @@ ul li ul {
 }
 
 ul li:hover ul {
-    display:list-item; /* display the dropdown */
+    display:block; /* display the dropdown */
 }
 
 nav{
 	float: left;
-	width: 175px;
+	width: 180px;
 	font-weight: bold;
 	letter-spacing: 0.1em;	
 }
@@ -126,7 +126,7 @@ nav ul{
 nav a{
 	text-decoration: none;
 	text-align: center;
-	padding: 10px;
+	padding: 10px 5px 10px 0px;
 	display: block;
 	background-color: #e98a8a;
 	border-bottom: 1px solid #FFFFFF;	
@@ -245,7 +245,7 @@ b {
 }
 
 table {
-	margin: auto;
+	margin: auto auto 25px auto;
 	width: 90%;
 }
 
@@ -279,15 +279,6 @@ iframe{
 	margin-left: 20%;
 }
 
-#PhilliesHome p:first-letter{
-	font-size:200%;
-	color:#F00;
-}
-
-#YankeesHome p:first-letter{
-	font-size:200%;
-	color:#006;
-}
 
 .dateLayout table {
 	margin: auto;
@@ -353,7 +344,11 @@ figure{
     float:left;
 }
 
-teAcctTable {
+#EditAcctTable {
+    float:left;
+}
+
+#DeleteAcctTable {
     float:left;
 }
 #VolMangTable {

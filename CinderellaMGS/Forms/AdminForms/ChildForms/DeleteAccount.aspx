@@ -32,7 +32,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="4""><asp:Button ID="DeleteButton" runat="server" Text="Delete Account" /></td>
+                <td></td>
+                <td></td>
+                <td><asp:Button ID="DeleteButton" runat="server" Text="Delete Account" /></td>
             </tr>
         </table>
 

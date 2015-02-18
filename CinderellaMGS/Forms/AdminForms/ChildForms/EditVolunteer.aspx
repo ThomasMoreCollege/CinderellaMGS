@@ -14,7 +14,7 @@
                 <th class="auto-style3">New Information:</th>
             </tr>
             <tr>
-                <td class="auto-style9">First Name:</td>
+                <td class="auto-style14">First Name:</td>
                 <td class="auto-style4">
                     <asp:Label ID="Label1" runat="server" Text="Label" CssClass="auto-style2"></asp:Label>
                 </td>
@@ -23,7 +23,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">Last Name:</td>
+                <td class="auto-style14">Last Name:</td>
                 <td class="auto-style4">
                     <asp:Label ID="Label2" runat="server" Text="Label" CssClass="auto-style2"></asp:Label>
                 </td>
@@ -32,7 +32,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">Address: </td>
+                <td class="auto-style14">Address: </td>
                 <td class="auto-style4">
                     <asp:Label ID="Label3" runat="server" CssClass="auto-style3" Text="Label"></asp:Label>
                 </td>
@@ -50,7 +50,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">State: </td>
+                <td class="auto-style14">State: </td>
                 <td class="auto-style6">
                     <asp:Label ID="Label5" runat="server" CssClass="auto-style3" Text="Label"></asp:Label>
                 </td>
@@ -59,7 +59,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">Zip Code: </td>
+                <td class="auto-style14">Zip Code: </td>
                 <td class="auto-style4">
                     <asp:Label ID="Label6" runat="server" CssClass="auto-style3" Text="Label"></asp:Label>
                 </td>
@@ -68,7 +68,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">Phone: </td>
+                <td class="auto-style14">Phone: </td>
                 <td class="auto-style4">
                     <asp:Label ID="Label7" runat="server" CssClass="auto-style3" Text="Label"></asp:Label>
                 </td>
@@ -77,7 +77,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">Email: </td>
+                <td class="auto-style14">Email: </td>
                 <td class="auto-style4">
                     <asp:Label ID="Label8" runat="server" style="font-size: small" Text="Label"></asp:Label>
                 </td>
@@ -87,8 +87,8 @@
             </tr>
             <tr>
                 <td class="auto-style9"></td>
-                <td class="auto-style4">
-                </td>
+                <td class="auto-style13"></td>
+                <td class="auto-style15"></td>
                 <td class="auto-style7">
                     <asp:Button ID="EditVolunterFormButton" runat="server" Text="Edit" />
                 </td>
@@ -109,16 +109,16 @@
             font-size: small;
         }
         .auto-style4 {
-            font-size: small;
-            width: 176px;
-        }
+        font-size: small;
+        width: 153px;
+    }
         .auto-style5 {
             height: 32px;
             width: 184px;
         }
         .auto-style6 {
             height: 32px;
-            width: 176px;
+            width: 153px;
         }
         .auto-style7 {
             height: 33px;
@@ -126,7 +126,7 @@
         }
         .auto-style8 {
             font-size: small;
-            width: 176px;
+            width: 153px;
             height: 33px;
         }
         .auto-style9 {
@@ -138,13 +138,28 @@
             height: 33px;
             font-size: small;
             text-align: right;
-            width: 96px;
+            width: 84px;
         }
         .auto-style11 {
             font-size: small;
-            width: 96px;
+            width: 84px;
             height: 33px;
         }
+    .auto-style13
+    {
+        font-size: small;
+        width: 84px;
+    }
+    .auto-style14
+    {
+        font-size: small;
+        text-align: right;
+        width: 84px;
+    }
+    .auto-style15
+    {
+        width: 153px;
+    }
     </style>
 </asp:Content>
 

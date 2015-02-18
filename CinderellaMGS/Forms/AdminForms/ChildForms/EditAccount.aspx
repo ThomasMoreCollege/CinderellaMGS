@@ -6,7 +6,7 @@
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
     <form id="form1" runat="server">
         
-        <table id="EditAcctTable" style="width:85%;">
+        <table id="EditAcctTable" style="width:80%;">
             <tr>
                 <th rowspan="4" class="auto-style5"><asp:ListBox ID="ListBox1" runat="server" Height="184px" Width="161px"></asp:ListBox></th>
                 <th class="auto-style8"></th>
@@ -14,7 +14,7 @@
                 <th class="auto-style6">New Settings:</th>
             </tr>
             <tr>
-                <td class="auto-style1">Username:</td>
+                <td class="auto-style9">Username:</td>
                 <td class="auto-style4">
                     <asp:Label ID="Label1" runat="server" Text="Label" CssClass="auto-style2"></asp:Label>
                 </td>
@@ -23,7 +23,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">Password:</td>
+                <td class="auto-style9">Password:</td>
                 <td class="auto-style4">
                     <asp:Label ID="Label2" runat="server" Text="Label" CssClass="auto-style2"></asp:Label>
                 </td>
@@ -32,13 +32,21 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">Current Permissions: </td>
+                <td class="auto-style9">Current Permissions: </td>
                 <td class="auto-style4">
                     <asp:ListBox ID="ListBox2" runat="server" Width="161px" CssClass="auto-style2"></asp:ListBox>
                 </td>
                 <td class="auto-style7">
                     <asp:CheckBoxList ID="CheckBoxList1" runat="server" CssClass="auto-style2">
                     </asp:CheckBoxList>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1"></td>
+                <td class="auto-style8"></td>
+                <td></td>
+                <td class="auto-style7">
+                    <asp:Button ID="EditAccountFormButton" runat="server" Text="Edit" />
                 </td>
             </tr>
         </table>
@@ -73,7 +81,13 @@
             width: 253px;
         }
         .auto-style8 {
-            width: 105px;
+            width: 120px;
+        }
+        .auto-style9
+        {
+            font-size: small;
+            width: 120px;
+            text-align: right;
         }
     </style>
 </asp:Content>

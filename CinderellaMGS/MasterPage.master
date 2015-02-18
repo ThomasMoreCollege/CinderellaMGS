@@ -19,31 +19,39 @@
         <div id="LoginNav">
             <asp:HyperLink ID="LoginHyperLink" runat="server" NavigateUrl="~/Forms/DefaultForms/Login.aspx">Login</asp:HyperLink>
         </div>
+
+        <%-- Horizontal Nav Bar --%>
         <div id="MenuNav">
-            
+        
             <asp:HyperLink ID="HomeHyperLink" runat="server" NavigateUrl="~/Forms/DefaultForms/HomePage.aspx">Home</asp:HyperLink>&nbsp &nbsp
             <asp:HyperLink ID="AboutHyperLink" runat="server" >About</asp:HyperLink>&nbsp &nbsp
             <asp:HyperLink ID="ContactHyperLink" runat="server">Contact</asp:HyperLink>
         </div>
+        <%-- Side Navigation Bar --%>
         <nav>
             <ul>
                 <li id="UserTitle">User Features
                     <ul id="UserFeatures">
                         <%-- Use ASP Hyper Links ONLY!! --%>
+                         <li><asp:HyperLink ID="AlterationsHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.html">Alterations</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="AutomatedPairingHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.html">Automated Pairing</asp:HyperLink></li>
                         <li><asp:HyperLink ID="CinderellaCheckInHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaCheckin.aspx">Cinderella Check-In</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="CinderellaCheckOutHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.html">Cinderella Check-Out</asp:HyperLink></li>
                         <li><asp:HyperLink ID="CinderellRegistrationHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaRegistration.aspx">Cinderella Registration</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="ManageAppointmentHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/ManageAppointment.aspx">Manage Appointment</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="ManageAppointmentHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/ManageAppointment.aspx">Manage Appointments</asp:HyperLink></li>
                         <li><asp:HyperLink ID="GodMotherCheckInHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/VolunteerCheckin.aspx">Volunteer Check-In</asp:HyperLink></li>
-                        <li><a href="gameFive.html">Waiting Area</a></li>
+                        
+                        
                     </ul>
                 </li>
                 <li id="AdminTitle" runat="server">Admin Features 
                     <ul id="AdminFeatures">
+                        <li><asp:HyperLink ID="ManageAccountsHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageAccounts.aspx">Manage Accounts</asp:HyperLink></li>
                         <li><asp:HyperLink ID="ManageVolunteersHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.aspx">Manage Volunteers</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="ManageShoppingHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.html">Manage Shopping</asp:HyperLink></li>
                         <li><asp:HyperLink ID="ManualPairingHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManualPairing.aspx">Manual Pairing</asp:HyperLink></li>
-                        <li><a href="gameThree.html">Manage Volunteers </a></li>
-                        <asp:HyperLink ID="ManageAccountsHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageAccounts.aspx">Manage Accounts</asp:HyperLink>
-                        <li><a href="gameFive.html">Querying</a></li>
+                        <li><asp:HyperLink ID="QueryingHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/Querying.aspx">Querying</asp:HyperLink></li>
+                        
                     </ul>
                 </li>
             </ul>
