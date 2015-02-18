@@ -14,10 +14,10 @@
             <td class="auto-style2" >Add a new account with specified permissions</td>
         </tr>
         <tr id="middleRow">
-            <td >
+            <td class="auto-style3" >
                 <asp:Button ID="EditButton" runat="server" Height="31px" Text="Edit Account " Width="120px" PostBackUrl="~/Forms/AdminForms/ChildForms/EditAccount.aspx" />
             </td>
-            <td class="auto-style2">Edit an existing accounts username, password, and permissions</td>
+            <td class="auto-style4">Edit an existing accounts username, password, and permissions</td>
         </tr>
         <tr>
             <td>
@@ -35,6 +35,13 @@
         {
             font-size: small;
         }
+    .auto-style3 {
+        height: 50px;
+    }
+    .auto-style4 {
+        font-size: small;
+        height: 50px;
+    }
     </style>
 </asp:Content>
 

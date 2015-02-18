@@ -353,10 +353,21 @@ figure{
     float:left;
 }
 
-#DeleteAcctTable {
+teAcctTable {
+    float:left;
+}
+#VolMangTable {
+    float:left;
+    border-collapse: collapse;
+}
+
+#DeleteVolTable {
     float:left;
 }
 
+#EditVolunTable {
+    float:left;
+}
 
 @media only screen and (max-width: 768px){
 	

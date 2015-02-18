@@ -39,8 +39,7 @@
                 </li>
                 <li id="AdminTitle" runat="server">Admin Features 
                     <ul id="AdminFeatures">
-                        <li><asp:HyperLink ID="GodMotherRegistrationHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/VolunteerRegsitration.aspx">Volunteer Registration</asp:HyperLink></li>
-                        <li><a href="gameOne.html">Remove Godmother</a></li>
+                        <li><asp:HyperLink ID="ManageVolunteersHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.aspx">Manage Volunteers</asp:HyperLink></li>
                         <li><asp:HyperLink ID="ManualPairingHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManualPairing.aspx">Manual Pairing</asp:HyperLink></li>
                         <li><a href="gameThree.html">Manage Volunteers </a></li>
                         <asp:HyperLink ID="ManageAccountsHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageAccounts.aspx">Manage Accounts</asp:HyperLink>
