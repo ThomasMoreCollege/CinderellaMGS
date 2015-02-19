@@ -336,6 +336,11 @@ figure{
     border: 1px, solid, black;
     border-collapse: collapse;
 }
+
+    #ManualPairTable td {
+        text-align:center;
+    }
+
 #middleRow {
  border-top: 1px solid #999999;
  border-bottom: 1px solid #999999;
@@ -385,9 +390,17 @@ figure{
     border-collapse:collapse;
 }
 
-#NotesCheckouttable {
+#NotesCheckoutTable {
     float: left;
 }
+
+#QueryTable {
+    float: left;
+}
+
+    #QueryTable td {
+        text-align: center;
+    }
 
 @media only screen and (max-width: 768px){
 	
