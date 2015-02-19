@@ -402,6 +402,13 @@ figure{
         text-align: center;
     }
 
+#AutoPairTable {
+    float: left;
+}
+    #AutoPairTable td {
+        text-align: center;
+    }
+
 @media only screen and (max-width: 768px){
 	
 	body{

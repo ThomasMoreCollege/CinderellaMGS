@@ -33,10 +33,10 @@
 
 <asp:Content ID="Content4" runat="server" contentplaceholderid="head">
     <style type="text/css">
-        #form1 {
-            height: 290px;
-        }
-    </style>
+    #form1 {
+        height: 290px;
+    }
+</style>
 </asp:Content>
 
 
