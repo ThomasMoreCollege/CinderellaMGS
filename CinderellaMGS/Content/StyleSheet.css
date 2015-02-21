@@ -307,7 +307,7 @@ figure{
 	opacity:.25;	
 }
 
-#CinderellaInfoTable {
+#RegistrationTable {
     float:left;
 }
 
@@ -406,9 +406,14 @@ figure{
 #AutoPairTable {
     float: left;
 }
-    #AutoPairTable td {
-        text-align: center;
-    }
+#AutoPairTable td {
+    text-align: center;
+}
+
+textarea{
+    resize:none;
+    margin-top: 0px;
+}
 
 @media only screen and (max-width: 768px){
 	

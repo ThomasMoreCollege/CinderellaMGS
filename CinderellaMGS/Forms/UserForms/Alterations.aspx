@@ -41,7 +41,7 @@
             </tr>
             <tr>
                 <td class="auto-style10" ></td>
-                <td class="auto-style42">
+                <td class="auto-style11">
                     <asp:CheckBox ID="StrapsCheckBox" runat="server" Text="Straps Add/Adjust" CssClass="auto-style2" />
                 </td>
                 <td class="auto-style2">
@@ -56,7 +56,7 @@
                 <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style10"></td>
                 <td class="auto-style10"></td>
-                <td class="auto-style40">
+                <td class="auto-style11">
                     <asp:CheckBox ID="GeneralMendingCheckBox" runat="server" Text="General Mending" CssClass="auto-style13" style="font-size: small" />
                 </td>
                 <td rowspan="2">
@@ -74,7 +74,7 @@
                 <td class="auto-style9">
                     &nbsp;</td>
                 <td class="auto-style10"></td>
-                <td class="auto-style40">
+                <td class="auto-style11">
                     <asp:CheckBox ID="GeneralTakeinCheckBox" runat="server" Text="General Take In" CssClass="auto-style13" style="font-size: small" />
                 </td>
                 <td class="auto-style2">
@@ -90,7 +90,7 @@
                 <td  class="auto-style3"></td>
                 <td class="auto-style9">&nbsp;</td>
                 <td class="auto-style10">&nbsp;</td>
-                <td class="auto-style40">
+                <td class="auto-style11">
                     <asp:CheckBox ID="FixZipperCheckBox" runat="server" Text="Fix Zipper" CssClass="auto-style13" style="font-size: small" />
                 </td>
                 <td class="auto-style2" >
@@ -102,7 +102,7 @@
                 <td class="auto-style11"></td>
                 <td class="auto-style11"></td>
                 <td class="auto-style10"></td>
-                <td class="auto-style81">
+                <td class="auto-style11">
                     <asp:CheckBox ID="DartsCheckBox" runat="server" Text="Darts" CssClass="auto-style13" style="font-size: small" />
                 </td>
                 <td class="auto-style69">
@@ -117,7 +117,7 @@
                 <td></td>
                 <td class="auto-style9">&nbsp;</td>
                 <td class="auto-style10">&nbsp;</td>
-                <td class="auto-style40">
+                <td class="auto-style11">
                     <asp:CheckBox ID="BustCheckBox" runat="server" Text="Bust" CssClass="auto-style13" style="font-size: small" />
                     </td>
                 <td class="auto-style82" >
@@ -129,7 +129,7 @@
                 <td></td>
                 <td class="auto-style9"></td>
                 <td class="auto-style10"></td>
-                <td>
+                <td class="auto-style11">
                     <asp:CheckBox ID="HemCheckBox" runat="server" Text="Hem" CssClass="auto-style13" style="font-size: small" />
                     </td>
                 <td>
@@ -176,6 +176,10 @@
         .auto-style10
         {
             width: 87px;
+        }
+        .auto-style11
+        {
+            text-align: left;
         }
         </style>
 </asp:Content>

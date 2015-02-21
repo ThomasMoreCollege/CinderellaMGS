@@ -21,4 +21,14 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             (this.Master as MasterPage).RevealAdmin(true);
         }
     }
+    protected void ExistingReferralRadioButton_CheckedChanged(object sender, EventArgs e)
+    {
+        ExistingReferralDropDownList.Enabled = true;
+        NewReferralNameTextBox.Enabled = false;
+        NewSchoolAgencyTextBox.Enabled = false;
+    }
+    protected void NewReferralRadioButton_CheckedChanged(object sender, EventArgs e)
+    {
+        ExistingReferralDropDownList.Enabled = false;
+    }
 }

@@ -30,7 +30,7 @@
         <%-- Side Navigation Bar --%>
         <nav>
             <ul>
-                <li id="UserTitle">User Features
+                <li id="UserTitle" runat="server">User Features
                     <ul id="UserFeatures">
                         <%-- Use ASP Hyper Links ONLY!! --%>
                          <li><asp:HyperLink ID="AlterationsHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/Alterations.aspx">Alterations</asp:HyperLink></li>

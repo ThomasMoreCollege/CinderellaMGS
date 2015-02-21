@@ -26,4 +26,16 @@ public partial class MasterPage : System.Web.UI.MasterPage
             AdminTitle.Visible = false;  
         }
     }
+
+    public void RevealAllUserFeatures(bool showAllUser)
+    {
+        if (showAllUser)
+        {
+            UserTitle.Visible = true;
+        }
+        else
+        {
+            UserTitle.Visible = false;
+        }
+    }
 }
