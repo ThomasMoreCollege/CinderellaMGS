@@ -39,7 +39,7 @@
                         <li><asp:HyperLink ID="CinderellaCheckOutHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/Checkout.aspx">Cinderella Check-Out</asp:HyperLink></li>
                         <li><asp:HyperLink ID="CinderellRegistrationHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaRegistration.aspx">Cinderella Registration</asp:HyperLink></li>
                         <li><asp:HyperLink ID="ManageAppointmentHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/ManageAppointment.aspx">Manage Appointments</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="ManageShoppingHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.html">Manage Shopping</asp:HyperLink></li>                      
+                        <li><asp:HyperLink ID="ManageShoppingHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/ManageShopping.aspx">Manage Shopping</asp:HyperLink></li>                      
                     </ul>
                 </li>
                 <li id="AdminTitle" runat="server">Admin Features 
