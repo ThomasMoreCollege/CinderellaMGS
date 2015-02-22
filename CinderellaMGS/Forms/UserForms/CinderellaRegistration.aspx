@@ -56,10 +56,10 @@
             </tr>
             <tr>
                 <td class="auto-style2">
-                    <asp:RadioButton ID="ExistingReferralRadioButton" runat="server" Text="Existing Referral" GroupName="Referrals" OnCheckedChanged="ExistingReferralRadioButton_CheckedChanged" />
+                    <asp:RadioButton ID="ExistingReferralRadioButton" runat="server" Text="Existing Referral" GroupName="Referrals"  Checked="True" AutoPostBack="True" OnCheckedChanged="ExistingReferralRadioButton_CheckedChanged"  />
                 </td>
                 <td>
-                    <asp:RadioButton ID="NewReferralRadioButton" runat="server" Text="New Referral" GroupName="Referrals" OnCheckedChanged="NewReferralRadioButton_CheckedChanged" />
+                    <asp:RadioButton ID="NewReferralRadioButton" runat="server" Text="New Referral" GroupName="Referrals" AutoPostBack="True" OnCheckedChanged="NewReferralRadioButton_CheckedChanged" />
                 </td>
             </tr>
             <tr>
@@ -70,7 +70,7 @@
                 <td class="auto-style3" >
                     Existing Referral:</td>
                 <td class="TableInputCell">
-                    <asp:DropDownList ID="ExistingReferralDropDownList" runat="server" Enabled="False">
+                    <asp:DropDownList ID="ExistingReferralDropDownList" runat="server">
                         <asp:ListItem>All Existing Referrals</asp:ListItem>
                     </asp:DropDownList>
                 </td>
@@ -91,7 +91,8 @@
                 <td class="auto-style3">
                     Notes:</td>
                 <td class="TableInputCell">
-                    <textarea id="ReferralNotesTextArea" name="S1"></textarea></td>
+                    <asp:TextBox ID="ReferralNotesTextBox" runat="server" TextMode="MultiLine"></asp:TextBox>
+                </td>
             </tr>
             <tr>
                 <td></td>

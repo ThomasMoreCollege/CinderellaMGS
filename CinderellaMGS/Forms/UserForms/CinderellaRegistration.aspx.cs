@@ -20,15 +20,41 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             // Sets admin menu links to visible for admin access
             (this.Master as MasterPage).RevealAdmin(true);
         }
+
+        //Disable/enable the appropiate textboxes upon chosing a referral radio button
     }
-    protected void ExistingReferralRadioButton_CheckedChanged(object sender, EventArgs e)
+    public void NewReferralRadioButton_CheckedChanged(object sender, EventArgs e)
     {
-        ExistingReferralDropDownList.Enabled = true;
-        NewReferralNameTextBox.Enabled = false;
-        NewSchoolAgencyTextBox.Enabled = false;
+        if (NewReferralRadioButton.Checked == true)
+        {
+            ExistingReferralDropDownList.Enabled = false;
+            ExistingReferralDropDownList.BackColor = System.Drawing.Color.LightGray;
+
+            NewReferralNameTextBox.Enabled = true;
+            NewReferralNameTextBox.BackColor = System.Drawing.Color.White;
+
+            NewSchoolAgencyTextBox.Enabled = true;
+            NewSchoolAgencyTextBox.BackColor = System.Drawing.Color.White;
+
+            ReferralNotesTextBox.Enabled = true;
+            ReferralNotesTextBox.BackColor = System.Drawing.Color.White;
+        }
     }
-    protected void NewReferralRadioButton_CheckedChanged(object sender, EventArgs e)
+    public void ExistingReferralRadioButton_CheckedChanged(object sender, EventArgs e)
     {
-        ExistingReferralDropDownList.Enabled = false;
+        if (ExistingReferralRadioButton.Checked == true)
+        {
+            ExistingReferralDropDownList.Enabled = true;
+            ExistingReferralDropDownList.BackColor = System.Drawing.Color.White;
+
+            NewReferralNameTextBox.Enabled = false;
+            NewReferralNameTextBox.BackColor = System.Drawing.Color.LightGray;
+
+            NewSchoolAgencyTextBox.Enabled = false;
+            NewSchoolAgencyTextBox.BackColor = System.Drawing.Color.LightGray;
+
+            ReferralNotesTextBox.Enabled = false;
+            ReferralNotesTextBox.BackColor = System.Drawing.Color.LightGray;
+        }
     }
 }
