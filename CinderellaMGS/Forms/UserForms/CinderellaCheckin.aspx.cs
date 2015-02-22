@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Configuration;
 
 public partial class Forms_CinderellaCheckin : System.Web.UI.Page
 {
@@ -24,20 +28,17 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
 
     protected void CheckInButton_Click(object sender, EventArgs e)
     {
-        // SQL code that changes the selected Cinderella's status to 'WAITING' and rebuilds list box 
-        // to remove Cinderella
-    }
-    protected void SortButton_Click(object sender, EventArgs e)
-    {
-        if (SortParameterDropDown.SelectedIndex == 0)
+        // ERROR CHECKING FLUFF
+        if (CinderellaGridView.SelectedRow == null)
         {
-
+            CheckInButton.Text = "B";
         }
         else
         {
+            CheckInButton.Text = CinderellaGridView.SelectedRow.Cells[2].Text;
 
         }
-
-        // Depending on result, SQL code for sorting on that parameter
+        // SQL code that changes the selected Cinderella's status to 'WAITING' and rebuilds list box 
+        // to remove Cinderella
     }
 }
