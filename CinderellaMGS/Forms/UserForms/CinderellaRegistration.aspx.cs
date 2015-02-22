@@ -31,4 +31,20 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
     {
         ExistingReferralDropDownList.Enabled = false;
     }
+    protected void RegisterCinderellaButton_Click(object sender, EventArgs e)
+    {
+
+        String errorVar = "";
+
+        if (FirstTextBox.Text == "")
+        {
+            errorVar = "Please enter a first name.";
+        }
+        if (LastNameTextBox.Text == "")
+        {
+            String tempVar =
+            errorVar += Environment.NewLine + "Please enter a last name.";
+        }
+        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + errorVar + "');", true);
+    }
 }
