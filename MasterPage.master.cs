@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class MasterPage : System.Web.UI.MasterPage
+{
+
+
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    public void RevealAdmin(bool showAdmin)
+    {
+        if (showAdmin)
+        {
+            AdminTitle.Visible = true;
+        }
+        else
+        {
+            AdminTitle.Visible = false;  
+        }
+    }
+
+    public void RevealAllUserFeatures(bool showAllUser)
+    {
+        if (showAllUser)
+        {
+            UserTitle.Visible = true;
+        }
+        else
+        {
+            UserTitle.Visible = false;
+        }
+    }
+}
