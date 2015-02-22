@@ -10,7 +10,10 @@
 
 
 body {
-	background-color:#999999;
+    background-image:url(../Images/cinderellas-closet_Two.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*background-color: #ffdada;*/
 	font-family: Verdana, Arial, sans-serif;
 	color: #2E0000;
 }
@@ -21,13 +24,14 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
-	background-color: #e98a8a;
+	background-color: #ff69b4;
 	min-width: 960px;
     max-width: 1152px; 
 }
 
 h1 {
-	background-image:url(../Images/HeaderLogo.jpg);
+	/*background-image:url(../Images/Cinderella_Logo_Five.jpg);*/
+    background-image:url(../Images/Cinderella_Logo_Six.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size:100% 100%;
@@ -55,7 +59,7 @@ h1 {
 
 #LoginNav a:visited { color:#666 }
 
-#LoginNav a:hover { text-shadow: #e98a8a 0.1em 0.1em 0.0em; } 
+#LoginNav a:hover { text-shadow: #ff69b4 0.1em 0.1em 0.0em; } 
 
 #MenuNav {
     font-size: 20px;
@@ -76,7 +80,7 @@ h1 {
 
 #MenuNav a:visited { color:#003; }
 
-#MenuNav a:hover { text-shadow: #e98a8a 0.1em 0.1em 0.0em; } 
+#MenuNav a:hover { text-shadow: #ff69b4 0.1em 0.1em 0.0em; } 
 
 #UserLinks{
 	font-size:14px;
@@ -128,7 +132,7 @@ nav a{
 	text-align: center;
 	padding: 10px 5px 10px 0px;
 	display: block;
-	background-color: #e98a8a;
+	background-color: #FF69B4;
 	border-bottom: 1px solid #FFFFFF;	
 }
 
@@ -209,26 +213,26 @@ dd {
 }
 
 header {
-	background-color: #d9d9d9;
+	background-color: #ff69b4;
 }
 
 footer {
 	padding: 20px;
 	text-align: center;
 	font-style: italic;
-	background-color: #d9d9d9;
-	color: #000000;	
+	background-color: #ff69b4;
+	color: #FFFFFF;	
 }
 
 h2 {
-	background-color: #e98a8a;
+	background-color: #ff69b4;
 	color: #FFFFFF;
 	padding-left: 10px;
 	text-transform: uppercase;
 }
 
 h3 {
-	background-color: #e98a8a;
+	background-color: #ff69b4;
 	color: #FFFFFF;
 	padding-left: 10px;
 	text-transform: uppercase;
@@ -292,7 +296,7 @@ iframe{
 }
 
 .dateLayout tr:nth-of-type(odd){
-		background-color: #e98a8a;
+		background-color: #ff69b4;
 		color:#FFF;
 }
 
