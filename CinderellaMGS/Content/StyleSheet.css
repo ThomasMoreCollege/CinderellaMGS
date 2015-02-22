@@ -257,8 +257,7 @@ table {
 td {
 
 	padding: 5px;
-    text-align: center;
-}
+    }
 
 
 #lineUpsAway{
@@ -418,6 +417,14 @@ textarea{
     resize:none;
     margin-top: 0px;
 }
+
+#RolesCheckBoxList input {
+    float: right;
+    display: inline-block; 
+    zoom: 1;
+    *display: inline; 
+}
+#RolesCheckBoxList label {  float: left; }
 
 @media only screen and (max-width: 768px){
 	

@@ -8,34 +8,36 @@
     <form id="form1" runat="server">
     <table id="AddAcctTable" style="width:36%;">
         <tr>
-            <td class="auto-style1">New Username:</td>
+            <td class="auto-style1">*New Username:</td>
             <td>
                 <asp:TextBox ID="NewUserNameTextBox" runat="server"></asp:TextBox>
+                <asp:Label ID="Label" runat="server" Text="Label"></asp:Label>
             </td>
         </tr>
         <tr>
-            <td class="auto-style1">Password:</td>
+            <td class="auto-style1">*Password:</td>
             <td>
                 <asp:TextBox ID="PasswordTextBox" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td class="auto-style1">Confirm Password:</td>
+            <td class="auto-style1">*Confirm Password:</td>
             <td>
                 <asp:TextBox ID="ConfirmPasswordTextBox" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
-            <td class="auto-style1">Permissions:</td>
+            <td class="auto-style1">*Permissions:</td>
             <td>
-                <asp:CheckBoxList ID="RolesCheckBoxList" runat="server" style="font-size: small">
+                <asp:CheckBoxList ID="RolesCheckBoxList" runat="server" style="font-size: small; text-align: left;" DataSourceID="RoleNameSqlDataSource" DataTextField="RoleName" DataValueField="RoleName">
                 </asp:CheckBoxList>
+                <asp:SqlDataSource ID="RoleNameSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [RoleName] FROM [RoleType]"></asp:SqlDataSource>
             </td>
         </tr>
         <tr>
             <td class="auto-style1"></td>
             <td>
-                <asp:Button ID="CreateAccButton" runat="server" Text="Create Account" Width="116px" />
+                <asp:Button ID="CreateAccButton" runat="server" Text="Create Account" Width="116px" OnClick="CreateAccButton_Click" />
             </td>
         </tr>
     </table>

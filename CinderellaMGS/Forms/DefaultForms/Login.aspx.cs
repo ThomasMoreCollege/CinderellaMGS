@@ -6,8 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.Sql;
-using System.Data.SqlClient;
-using System.Configuration;
+using System.Data.SqlClient; //Must be include if using SQL
+using System.Configuration; //Must be include if using SQL
 
 public partial class Login : System.Web.UI.Page
 {
