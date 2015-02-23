@@ -47,7 +47,7 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
             conn.Open();
 
             // SQL string to INSERT Waiting status into StatusRecord
-            string sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + SelectedVolunteerID + "', '" + now + "', 'On Break', 'Y')";
+            string sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + SelectedVolunteerID + "', '" + now + "', 'Ready', 'Y')";
 
             // Execute query
             SqlCommand comm1 = new SqlCommand(sql, conn);

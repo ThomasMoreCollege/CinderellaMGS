@@ -12,40 +12,56 @@
             </tr>
             <tr>
                 <td>
-                    <asp:TextBox ID="CinderellaSearchTextBox" runat="server"></asp:TextBox>&nbsp;<asp:Button ID="CinderellaSearchButton" runat="server" Text="Search By: " />&nbsp;<asp:DropDownList ID="CinderellaSearchDropDown" runat="server">
-                        <asp:ListItem>First Name</asp:ListItem>
-                        <asp:ListItem>Last Name</asp:ListItem>
-                    </asp:DropDownList>
+                    <div style ="height:600px; overflow:auto;">
+                        <asp:GridView ID="CinderellaGridView" runat="server" 
+                            AllowSorting="True" 
+                            AutoGenerateColumns="False" 
+                            DataSourceID="CinderellaDataSource">
+                            <Columns>
+                                <asp:CommandField ShowSelectButton="True" />
+                                <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
+                                <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
+                            </Columns>
+                            <SelectedRowStyle BackColor="Fuchsia" />
+                        </asp:GridView>
+                        <asp:SqlDataSource ID="CinderellaDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
+                            SelectCommand="SELECT [LastName], 
+                                                    [FirstName] 
+                                            FROM [Cinderella] 
+                                            INNER JOIN CinderellaStatusRecord 
+                                                ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
+                                            WHERE Status_Name = 'Waiting' AND IsCurrent = 'Y'
+                                            ORDER BY [LastName]"></asp:SqlDataSource>
+                    </div>
                 </td>
                 <td>
-                    <asp:TextBox ID="GodmotherSearchTextBox" runat="server"></asp:TextBox>&nbsp;<asp:Button ID="GodmotherSearchButton" runat="server" Text="Search By:" />&nbsp;<asp:DropDownList ID="GodmotherSearchDropDown" runat="server">
-                        <asp:ListItem>First Name</asp:ListItem>
-                        <asp:ListItem>Last Name</asp:ListItem>
-                    </asp:DropDownList>
+                    <div style ="height:600px; overflow:auto;">
+                        <asp:GridView ID="GodmotherGridView" runat="server" 
+                            AllowSorting="True" 
+                            AutoGenerateColumns="False" 
+                            DataSourceID="GodmotherDataSource">
+                            <Columns>
+                                <asp:CommandField ShowSelectButton="True" />
+                                <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
+                                <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
+                            </Columns>
+                            <SelectedRowStyle BackColor="Fuchsia" />
+                        </asp:GridView>
+                        <asp:SqlDataSource ID="GodmotherDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
+                            SelectCommand="SELECT [VolunteerID],
+                                                    [LastName], 
+                                                    [FirstName], 
+                                                    [Email] 
+                                            FROM [Volunteer] 
+                                            INNER JOIN VolunteerRoleRecord 
+                                                ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID 
+                                            WHERE Role_Name = 'Godmother' AND IsCurrent = 'Y'
+                                            ORDER BY [LastName]"></asp:SqlDataSource>
+                    </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <asp:Button ID="CinderellaStatusButton" runat="server" Text="Change Status" />&nbsp;<asp:DropDownList ID="CinderellaStatusDropDown" runat="server">
-                        <asp:ListItem>ALL STATUSES</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                 <td>
-                    <asp:Button ID="GodmotherStatusButton" runat="server" Text="Change Status" />&nbsp;<asp:DropDownList ID="GodmotherStatusDropDown" runat="server">
-                        <asp:ListItem>ALL STATUSES</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:ListBox ID="CinderellaListBox" runat="server" Height="200px" Width="150px"></asp:ListBox>
-                </td>
-                <td>
-                    <asp:ListBox ID="GodmotherListBox" runat="server" Height="200px" Width="150px"></asp:ListBox>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"><asp:Button ID="Match" runat="server" Text="Match!" /></td>
+                <td colspan="2"><asp:Button ID="MatchButton" runat="server" Text="Match!" OnClick="MatchButton_Click" /></td>
             </tr>
         </table>
     </form>
