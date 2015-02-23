@@ -37,7 +37,7 @@ public partial class Forms_AdminForms_ChildForms_AddAccount : System.Web.UI.Page
             //Execute Query 
             insertNewAccount.ExecuteNonQuery();
 
-            Response.Redirect("~/Forms/DefaultForms/Login.aspx");
+            Response.Redirect("~/Forms/AdminForms/ChildForms/AddAccount.aspx");
 
             Label.Text = "Success!";
 
