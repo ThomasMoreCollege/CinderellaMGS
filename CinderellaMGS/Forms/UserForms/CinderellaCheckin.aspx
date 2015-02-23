@@ -35,11 +35,12 @@
                                 FROM [Cinderella] 
                                 INNER JOIN CinderellaStatusRecord 
                                     ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
-                                WHERE Status_Name = 'Pending' AND IsCurrent = 'Y'"></asp:SqlDataSource>
+                                WHERE Status_Name = 'Pending' AND IsCurrent = 'Y'
+                                ORDER BY [AppointmentDateTime]"></asp:SqlDataSource>
         </div>
 
         <p>
-            <asp:Button ID="CheckInButton" runat="server" OnClick="CheckInButton_Click" Text="Check-In" Width="823px" />
+            <asp:Button ID="CheckInButton" runat="server" OnClick="CheckInButton_Click" Text="Check-In" Width="70px" />
         </p>
     </form>
 
