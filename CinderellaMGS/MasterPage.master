@@ -48,7 +48,7 @@
                         <li><asp:HyperLink ID="ManageVolunteersHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.aspx">Manage Volunteers</asp:HyperLink></li>
                         <li><asp:HyperLink ID="ManualPairingHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManualPairing.aspx">Manual Pairing</asp:HyperLink></li>
                         <li><asp:HyperLink ID="QueryingHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/Querying.aspx">Querying</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="VolunteerCheckInHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/VolunteerCheckin.aspx">Volunteer Check-In</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="VolunteerCheckInHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/VolunteerCheckin.aspx">Volunteer Check-In</asp:HyperLink></li>
                     </ul>
                 </li>
             </ul>
