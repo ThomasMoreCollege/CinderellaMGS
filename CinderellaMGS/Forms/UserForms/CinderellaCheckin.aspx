@@ -17,22 +17,29 @@
             <asp:GridView ID="CinderellaGridView" runat="server" 
                 AllowSorting="True" 
                 AutoGenerateColumns="False" 
-                DataSourceID="Cinderella2015" DataKeyNames="CinderellaID">
+                DataSourceID="Cinderella2015" 
+                DataKeyNames="CinderellaID">
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
-                    <asp:BoundField DataField="CinderellaID" HeaderText="CinderellaID" ReadOnly="True" SortExpression="CinderellaID" Visible="false"/>
-                    <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
-                    <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
-                    <asp:BoundField DataField="AppointmentDateTime" HeaderText="AppointmentDateTime" SortExpression="AppointmentDateTime" />
+                    <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                    <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                    <asp:BoundField DataField="AppointmentDateTime" HeaderText="Appointment Time" SortExpression="AppointmentDateTime" />
                 </Columns>
                 <SelectedRowStyle BackColor="Fuchsia" />
             </asp:GridView>
             <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
-                SelectCommand="SELECT [CinderellaID], [LastName], [FirstName], [AppointmentDateTime] FROM [Cinderella]"></asp:SqlDataSource>
+                SelectCommand="SELECT [CinderellaID], 
+                                        [LastName], 
+                                        [FirstName], 
+                                        [AppointmentDateTime] 
+                                FROM [Cinderella] 
+                                INNER JOIN CinderellaStatusRecord 
+                                    ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
+                                WHERE Status_Name = 'Pending' AND IsCurrent = 'Y'"></asp:SqlDataSource>
         </div>
 
         <p>
-            <asp:Button ID="CheckInButton" runat="server" OnClick="CheckInButton_Click" Text="Check-In" Width="70px" />
+            <asp:Button ID="CheckInButton" runat="server" OnClick="CheckInButton_Click" Text="Check-In" Width="823px" />
         </p>
     </form>
 
