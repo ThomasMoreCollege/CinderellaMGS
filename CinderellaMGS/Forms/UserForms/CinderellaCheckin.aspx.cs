@@ -31,8 +31,10 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
         // Checking to make sure a Cinderella is selected
         if (CinderellaGridView.SelectedRow == null)
         {
-            // NOTE - look at Tommy's error code and implement here
-            CheckInButton.Text = "B";
+            // Outputs error message if no Cinderella is selected
+            String errorVar = "Please select a Cinderella";
+
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + errorVar + "');", true);
         }
         else
         {

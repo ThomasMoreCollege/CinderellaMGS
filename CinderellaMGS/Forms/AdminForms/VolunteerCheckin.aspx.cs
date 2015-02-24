@@ -30,8 +30,10 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
         // Checking to make sure a Volunteer is selected
         if (VolunteerGridView.SelectedRow == null)
         {
-            // NOTE - look at Tommy's error code and implement here
-            CheckInButton.Text = "B";
+            // Outputs error message if no Volunteer is selected
+            String errorVar = "Please select a Volunteer";
+
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + errorVar + "');", true);
         }
         else
         {
