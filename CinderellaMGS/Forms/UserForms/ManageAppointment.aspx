@@ -1,26 +1,42 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ManageAppointment.aspx.cs" Inherits="Forms_UserForms_ManageAppointment" %>
+﻿<%@ Page Title="" 
+    Language="C#" 
+    MasterPageFile="~/MasterPage.master" 
+    AutoEventWireup="true" 
+    CodeFile="ManageAppointment.aspx.cs" 
+    Inherits="Forms_UserForms_ManageAppointment" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeaderTitle" Runat="Server">
     <h2>Appointment Manager</h2>
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-
     <form id="form1" runat="server">
-        <p>
-
-            <asp:TextBox ID="SearchTextBox" runat="server"></asp:TextBox>
-&nbsp;<asp:Button ID="SearchByButton" runat="server" OnClick="SearchByButton_Click" Text="Search By:" />
-&nbsp;<asp:DropDownList ID="SearchDropDown" runat="server">
-                <asp:ListItem>First Name</asp:ListItem>
-                <asp:ListItem>Last Name</asp:ListItem>
-            </asp:DropDownList>
-
-        </p>
-        <table>
+        <table  id="AppMngTable">
             <tr>
-                <td><asp:ListBox ID="ListBox1" runat="server" Height="200px" Width="248px"></asp:ListBox></td>
+                <th>Cinderella</th>
+                <th>New Appointment Date</th>
+            </tr>
+            <tr>
                 <td>
-                    <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px">
+                    <asp:GridView ID="CinderellaGridView" runat="server"                
+                        AllowSorting="True" 
+                        AutoGenerateColumns="False" 
+                        DataSourceID="Cinderella2015"
+                        DataKeyNames ="CinderellaID" Width="409px">
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="True" />
+                            <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                            <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                        </Columns>
+                        <SelectedRowStyle BackColor="Fuchsia" />
+                    </asp:GridView>
+                    <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [LastName], [FirstName], [CinderellaID] FROM [Cinderella]">
+
+                    </asp:SqlDataSource>
+
+                </td>
+                <td>
+                    <asp:Calendar ID="NewDateCalendar" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px">
                         <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
                         <NextPrevStyle VerticalAlign="Bottom" />
                         <OtherMonthDayStyle ForeColor="#808080" />
@@ -32,15 +48,8 @@
                     </asp:Calendar>
                 </td>
             </tr>
-        </table>
-
-        <table border="0">
             <tr>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td class="label">
-                    New Appointment Time</td>
+                <th class="label">New Appointment Time</th>
                 <td>
                     <asp:DropDownList ID="ddlStartTimeHr" runat="server" CssClass="DropDown" Width="44px" >
                         <asp:ListItem Text="1" Value="1" Selected="True" />
@@ -87,4 +96,5 @@
     </form>
 
 </asp:Content>
+
 

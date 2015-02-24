@@ -333,6 +333,11 @@ figure{
 #AccMngTable td{
     padding: 10px;
 }
+
+#AppMngTable {
+    padding: 5px;
+    float: left;
+}
 #ManualPairTable {
     float: left;
     padding: 5px;
