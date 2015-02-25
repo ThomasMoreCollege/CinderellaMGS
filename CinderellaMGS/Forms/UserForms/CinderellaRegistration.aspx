@@ -118,14 +118,50 @@
             </tr>
             <tr>
                 <td>
-                 <asp:RequiredFieldValidator ID="NewReferalNameValidator" runat="server"
-                     ControlToValidate="NewReferralNameTextBox"
-                     ErrorMessage="Referral Name is required!"><font color="red">*Please enter a referral name!</font>
+                 <asp:RequiredFieldValidator ID="NewReferalFirstNameValidator" runat="server"
+                     ControlToValidate="NewReferralFirstNameTextBox"
+                     ErrorMessage="Referral First Name is required!"><font color="red">*Please enter a referral first name!</font>
                      </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">
-                    New Referral Name:</td>
-                <td class="TableInputCell"><asp:TextBox ID="NewReferralNameTextBox" runat="server"></asp:TextBox>
+                    New Referral First Name:</td>
+                <td class="TableInputCell"><asp:TextBox ID="NewReferralFirstNameTextBox" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                 <asp:RequiredFieldValidator ID="NewReferalLastNameValidator" runat="server"
+                     ControlToValidate="NewReferralLastNameTextBox"
+                     ErrorMessage="Referral Last Name is required!"><font color="red">*Please enter a referral Last name!</font>
+                     </asp:RequiredFieldValidator>
+                </td>
+                <td class="auto-style3">
+                    New Referral Last Name:</td>
+                <td class="TableInputCell"><asp:TextBox ID="NewReferralLastNameTextBox" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                 <asp:RequiredFieldValidator ID="NewReferalPhoneValidator" runat="server"
+                     ControlToValidate="NewReferralPhoneTextBox"
+                     ErrorMessage="Referral Phone Number is required!"><font color="red">*Please enter a referral phone number!</font>
+                     </asp:RequiredFieldValidator>
+                </td>
+                <td class="auto-style3">
+                    New Referral Phone Number:</td>
+                <td class="TableInputCell"><asp:TextBox ID="NewReferralPhoneTextBox" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                 <asp:RequiredFieldValidator ID="NewReferalEmailValidator" runat="server"
+                     ControlToValidate="NewReferralEmailTextBox"
+                     ErrorMessage="Referral Email is required!"><font color="red">*Please enter a referral Email!</font>
+                     </asp:RequiredFieldValidator>
+                </td>
+                <td class="auto-style3">
+                    New Referral Email:</td>
+                <td class="TableInputCell"><asp:TextBox ID="NewReferralEmailTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>

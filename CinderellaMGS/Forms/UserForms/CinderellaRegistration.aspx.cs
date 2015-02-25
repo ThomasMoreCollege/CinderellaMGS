@@ -28,7 +28,7 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
     protected void ExistingReferralRadioButton_CheckedChanged(object sender, EventArgs e)
     {
         ExistingReferralDropDownList.Enabled = true;
-        NewReferralNameTextBox.Enabled = false;
+        NewReferralFirstNameTextBox.Enabled = false;
         NewSchoolAgencyTextBox.Enabled = false;
     }
     protected void NewReferralRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -41,7 +41,10 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         // Store the user input into easy to insert variables. 
         string firstname = FirstTextBox.Text;
         string lastname = LastNameTextBox.Text;
-        string newReferralName = NewReferralNameTextBox.Text;
+        string newReferralFirstName = NewReferralFirstNameTextBox.Text;
+        string newReferralLastName = NewReferralLastNameTextBox.Text;
+        string newReferralPhone = NewReferralPhoneTextBox.Text;
+        string newReferralEmail = NewReferralEmailTextBox.Text;
         string newReferralAgency = NewSchoolAgencyTextBox.Text;
         string phoneNumber = PhoneNumberTextBox.Text;
         string email = EmailTextBox.Text;
@@ -57,8 +60,7 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         SqlCommand getNumCinderellas = new SqlCommand(getTotal, conn);
         getNumCinderellas.ExecuteNonQuery();
         int totalCinderellas = (Int32)getNumCinderellas.ExecuteScalar();
-
-        totalCinderellas = totalCinderellas + 1;
+        totalCinderellas = totalCinderellas + 1;    // Used for the key counter. (+1 to the number of current rows.)
 
         string sql = "INSERT INTO Cinderella (CinderellaID, FirstName, LastName, Phone, Email, AppointmentDateTime, Note) VALUES ('" + totalCinderellas + "', '" + firstname + "', '" + lastname + "', '" + phoneNumber + "', '" + email + "', '2015-02-23 12:00:00.000', '" + notes + "')";
 
@@ -73,12 +75,27 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         SqlCommand comm2 = new SqlCommand(sqlTwo, conn);
         comm2.ExecuteNonQuery();
 
+        string getTotalReferrals = "SELECT Count(ReferralID) FROM Referrals";
+        SqlCommand getNumReferrals = new SqlCommand(getTotalReferrals, conn);
+        getNumReferrals.ExecuteNonQuery();
+        int totalReferrals = (Int32)getNumReferrals.ExecuteScalar();
+        totalReferrals = totalReferrals + 1;    // Used for the key counter. (+1 to the number of current rows.)
+
+        string sqlThree = "INSERT INTO Referrals (ReferralID, FirstName, LastName, Phone, Email, Agency) VALUES ('" + totalReferrals + "', '" + newReferralFirstName + "', '" + newReferralLastName + "', '" + newReferralPhone + "', '" + newReferralEmail + "', '" + newReferralAgency + "')";
+
+        // Execute query
+        SqlCommand comm3 = new SqlCommand(sqlThree, conn);
+        comm3.ExecuteNonQuery();
+
         conn.Close();
 
-
+        // Revent all text field values back to empty to allow for another Cinderella input.
         FirstTextBox.Text = "";
         LastNameTextBox.Text = "";
-        NewReferralNameTextBox.Text = "";
+        NewReferralFirstNameTextBox.Text = "";
+        NewReferalLastNameValidator.Text = "";
+        NewReferralPhoneTextBox.Text = "";
+        NewReferralEmailTextBox.Text = "";
         NewSchoolAgencyTextBox.Text = "";
         PhoneNumberTextBox.Text = "";
         EmailTextBox.Text = "";
@@ -87,3 +104,9 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
 
     }
 }
+
+/*
+
+string sqlThree = "INSERT INTO Referrals (ReferralID, FirstName, LastName, Phone, Email, Agency) VALUES ('4', '" + newReferralFirstName + "', '" + newReferralLastName + "', '" + newReferralPhone + "', '" + newReferralEmail + "', '" + newReferralAgency + "')";
+
+*/
