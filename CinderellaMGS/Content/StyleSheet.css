@@ -1,5 +1,9 @@
 ﻿header, hgroup, nav, footer, figure, figcaption, aside, section, article { display: block; }
 
+.errorLabel {
+    color: red;
+}
+
 #mobile{
 	display:none;	
 }
