@@ -7,23 +7,29 @@
 
     <form id="form1" runat="server">
         
-        <table id="DeleteAcctTable" style="width:60%;">
+        <table id="DeleteAcctTable" style="width:70%;">
             <tr>
-                <th rowspan="3" class="auto-style3"><asp:ListBox ID="ExistingAcctsListBox" runat="server" Height="184px" Width="161px" DataSourceID="AccountsToBeDeletedSqlDataSource" DataTextField="Username" DataValueField="Username"></asp:ListBox>
+                <th rowspan="4" class="auto-style3"><asp:ListBox ID="ExistingAcctsListBox" runat="server" Height="167px" Width="145px" DataSourceID="AccountsToBeDeletedSqlDataSource" DataTextField="Username" DataValueField="Username" AutoPostBack="True" OnSelectedIndexChanged="ExistingAcctsListBox_SelectedIndexChanged"></asp:ListBox>
                     <asp:SqlDataSource ID="AccountsToBeDeletedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Username] FROM [Accounts]"></asp:SqlDataSource>
                 </th>
                 <th class="auto-style6"></th>
-                <th class="auto-style7">Current Settings:</th>
+                <th class="auto-style7">Account Information:</th>
             </tr>
             <tr>
-                <td class="auto-style5">Username:</td>
+                <td class="auto-style8">Username:</td>
                 <td class="auto-style4">
-                    &nbsp;</td>
+                    <asp:Label ID="UsernameLabel" runat="server" Text="--" style="text-align: left"></asp:Label>
+                </td>
             </tr>
             <tr>
-                <td class="auto-style5">Account Type:</td>
+                <td class="auto-style8">Account Type:</td>
                 <td class="auto-style4">
-                    &nbsp;</td>
+                    <asp:Label ID="AccountTypeLabel" runat="server" Text="--" style="text-align: left"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
                 <td>
@@ -47,19 +53,18 @@
         }
         .auto-style4 {
             width: 164px;
-            text-align: center;
-        }
-        .auto-style5 {
-            font-size: small;
-            width: 107px;
-            text-align: right;
+            text-align: left;
         }
         .auto-style6 {
             width: 107px;
         }
         .auto-style7 {
-            font-size: small;
             width: 164px;
+        }
+        .auto-style8
+        {
+            width: 107px;
+            text-align: right;
         }
         </style>
 </asp:Content>

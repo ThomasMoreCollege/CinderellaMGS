@@ -35,7 +35,7 @@
                         <td></td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="A password is required." ForeColor="Red" CssClass="auto-style4" ControlToValidate="PasswordTextBox" Display="Dynamic"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="PasswordTextBox" Display="Dynamic" ErrorMessage="Password must be at least eight characters and/or long." ForeColor="Red" style="font-size: small" ValidationExpression="^[a-zA-Z0-9]{8,}$"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="PasswordTextBox" Display="Dynamic" ErrorMessage="Password must be at least eight characters and/or numbers long." ForeColor="Red" style="font-size: small" ValidationExpression="^[a-zA-Z0-9]{8,}$"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                     <tr>

@@ -358,12 +358,18 @@ figure{
  border-bottom: 1px solid #999999;
 }
 
-#EditAcctTable {
+#PasswordBorder {
+ border-bottom: 1px solid #999999;
+}
+
+#AccMngTable {
     float:left;
+    border-collapse: collapse;
 }
 
 #EditAcctTable {
     float:left;
+    border-collapse: collapse;
 }
 
 #DeleteAcctTable {

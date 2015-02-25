@@ -130,6 +130,7 @@ public partial class Forms_AdminForms_ChildForms_AddAccount : System.Web.UI.Page
             catch (Exception ex)
             {
                 AddedAccountLabel.Text = "Account was not added successfully";
+                AddedAccountLabel.Visible = true;
                 
             };
         }
