@@ -16,7 +16,8 @@
                         <asp:GridView ID="CinderellaGridView" runat="server" 
                             AllowSorting="True" 
                             AutoGenerateColumns="False" 
-                            DataSourceID="CinderellaDataSource">
+                            DataSourceID="CinderellaDataSource"
+                            DataKeyNames="CinderellaID">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
@@ -25,7 +26,8 @@
                             <SelectedRowStyle BackColor="Fuchsia" />
                         </asp:GridView>
                         <asp:SqlDataSource ID="CinderellaDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
-                            SelectCommand="SELECT [LastName], 
+                            SelectCommand="SELECT [CinderellaID],
+                                                    [LastName], 
                                                     [FirstName] 
                                             FROM [Cinderella] 
                                             INNER JOIN CinderellaStatusRecord 
@@ -39,7 +41,8 @@
                         <asp:GridView ID="GodmotherGridView" runat="server" 
                             AllowSorting="True" 
                             AutoGenerateColumns="False" 
-                            DataSourceID="GodmotherDataSource">
+                            DataSourceID="GodmotherDataSource"
+                            DataKeyNames="VolunteerID ">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
@@ -55,7 +58,9 @@
                                             FROM [Volunteer] 
                                             INNER JOIN VolunteerRoleRecord 
                                                 ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID 
-                                            WHERE Role_Name = 'Godmother' AND IsCurrent = 'Y'
+                                            INNER JOIN VolunteerStatusRecord
+                                                ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID
+                                            WHERE Role_Name = 'Godmother' AND VolunteerRoleRecord.IsCurrent = 'Y' AND VolunteerStatusRecord.Status_Name = 'Ready' AND VolunteerStatusRecord.IsCurrent = 'Y'
                                             ORDER BY [LastName]"></asp:SqlDataSource>
                     </div>
                 </td>

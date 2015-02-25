@@ -40,6 +40,7 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
         {
             // Creating a variable to hold a string of the Cinderella's ID
             string SelectedCinderellaID = CinderellaGridView.SelectedValue.ToString();
+
             // Creating a variable to hold the current time
             string now = DateTime.Now.ToString();
 
@@ -57,7 +58,7 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
             comm1.ExecuteNonQuery();
 
             // SQL string to UPDATE Pending status 
-            sql = "UPDATE CinderellaStatusRecord SET EndTime = '" + now + "', IsCurrent = 'N' WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND Status_Name = 'Pending'";
+            sql = "UPDATE CinderellaStatusRecord SET EndTime = '" + now + "', IsCurrent = 'N' WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
 
             // Execute query
             SqlCommand comm2 = new SqlCommand(sql, conn);

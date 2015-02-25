@@ -56,7 +56,7 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
             comm1.ExecuteNonQuery();
 
             // SQL string to UPDATE Pending status 
-            sql = "UPDATE VolunteerStatusRecord SET EndTime = '" + now + "', IsCurrent = 'N' WHERE Volunteer_ID = '" + SelectedVolunteerID + "' AND Status_Name = 'Pending'";
+            sql = "UPDATE VolunteerStatusRecord SET EndTime = '" + now + "', IsCurrent = 'N' WHERE Volunteer_ID = '" + SelectedVolunteerID + "' AND IsCurrent = 'Y'";
 
             // Execute query
             SqlCommand comm2 = new SqlCommand(sql, conn);
