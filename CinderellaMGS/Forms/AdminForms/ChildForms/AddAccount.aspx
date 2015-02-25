@@ -16,73 +16,67 @@
                     <tr>
                         <td class="auto-style2">*New Username:</td>
                         <td >
-                            <asp:TextBox ID="NewUserNameTextBox" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="NewUserNameTextBox" runat="server" OnTextChanged="NewUserNameTextBox_TextChanged"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td><asp:Label ID="UserNameErrorLabel" runat="server" ForeColor="Red" Text="Label" Visible="False" CssClass="auto-style4"></asp:Label>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Username is required." ForeColor="Red" style="font-size: small" ControlToValidate="NewUserNameTextBox" Display="Dynamic"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
                         <td class="auto-style2" >*Password:</td>
                         <td >
-                            <asp:TextBox ID="PasswordTextBox" runat="server" TextMode="Password"></asp:TextBox>
+                            <asp:TextBox ID="PasswordTextBox" runat="server" TextMode="Password" OnTextChanged="PasswordTextBox_TextChanged"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><asp:Label ID="Password1ErrorLabel" runat="server" ForeColor="Red" Text="Label" Visible="False" CssClass="auto-style4"></asp:Label>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="A password is required." ForeColor="Red" CssClass="auto-style4" ControlToValidate="PasswordTextBox" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="PasswordTextBox" Display="Dynamic" ErrorMessage="Password must be at least eight characters and/or long." ForeColor="Red" style="font-size: small" ValidationExpression="^[a-zA-Z0-9]{8,}$"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                     <tr>
                         <td class="auto-style2" >*Confirm Password:</td>
                         <td >
-                            <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" TextMode="Password"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><asp:Label ID="Password2ErrorLabel" runat="server" ForeColor="Red" Text="Label" Visible="False" CssClass="auto-style4"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style2" >*Permissions:</td>
-                        <td >
-                            <asp:CheckBox ID="AdminCheckBox" runat="server" Text="Administrator" AutoPostBack="True" OnCheckedChanged="AdminCheckBox_CheckedChanged" />
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="AlterationsCheckBox" runat="server" Text="Alterations" AutoPostBack="True" />
-
+                            <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" TextMode="Password" OnTextChanged="ConfirmPasswordTextBox_TextChanged"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <asp:CheckBox ID="CheckInCheckBox" runat="server" Text="Check-In" AutoPostBack="True" />
-
+                            <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Passwords do not match." ForeColor="Red" style="font-size: small" ControlToCompare="PasswordTextBox" ControlToValidate="ConfirmPasswordTextBox" Display="Dynamic"></asp:CompareValidator>
                         </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2" >*Account Type:</td>
+                        <td rowspan="5">
+                            <asp:RadioButtonList ID="AccountTypesRadioButtonList" runat="server">
+                                <asp:ListItem>Administrator</asp:ListItem>
+                                <asp:ListItem>Standard</asp:ListItem>
+                                <asp:ListItem>Pairing</asp:ListItem>
+                            </asp:RadioButtonList>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style6"></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <asp:CheckBox ID="CheckOutCheckBox" runat="server" Text="Check-Out" AutoPostBack="True" />
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="PairingCheckBox" runat="server" Text="Pairing" AutoPostBack="True" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><asp:Label ID="PermissionsErrorLabel" runat="server" ForeColor="Red" Text="Label" Visible="False" CssClass="auto-style4"></asp:Label>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="AccountTypesRadioButtonList" ErrorMessage="Account type must be selected." ForeColor="Red" style="font-size: small" Display="Dynamic"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -141,9 +135,13 @@
         }
         .auto-style4 {
             font-size: small;
+            text-align: justify;
         }
         .auto-style5 {
             width: 165px;
+        }
+        .auto-style6 {
+            height: 28px;
         }
     </style>
 </asp:Content>

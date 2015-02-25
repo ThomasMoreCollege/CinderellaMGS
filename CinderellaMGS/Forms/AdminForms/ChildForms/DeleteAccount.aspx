@@ -9,32 +9,28 @@
         
         <table id="DeleteAcctTable" style="width:60%;">
             <tr>
-                <th rowspan="4" class="auto-style3"><asp:ListBox ID="ListBox1" runat="server" Height="184px" Width="161px"></asp:ListBox></th>
+                <th rowspan="3" class="auto-style3"><asp:ListBox ID="ExistingAcctsListBox" runat="server" Height="184px" Width="161px" DataSourceID="AccountsToBeDeletedSqlDataSource" DataTextField="Username" DataValueField="Username"></asp:ListBox>
+                    <asp:SqlDataSource ID="AccountsToBeDeletedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Username] FROM [Accounts]"></asp:SqlDataSource>
+                </th>
                 <th class="auto-style6"></th>
                 <th class="auto-style7">Current Settings:</th>
             </tr>
             <tr>
                 <td class="auto-style5">Username:</td>
                 <td class="auto-style4">
-                    <asp:Label ID="Label1" runat="server" Text="Label" CssClass="auto-style2"></asp:Label>
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style5">Password:</td>
+                <td class="auto-style5">Account Type:</td>
                 <td class="auto-style4">
-                    <asp:Label ID="Label2" runat="server" Text="Label" CssClass="auto-style2"></asp:Label>
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style5">Current Permissions: </td>
-                <td class="auto-style4">
-                    <asp:ListBox ID="ListBox2" runat="server" Width="161px" CssClass="auto-style2"></asp:ListBox>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ExistingAcctsListBox" ErrorMessage="Please select an account to delete." ForeColor="Red" style="font-size: small"></asp:RequiredFieldValidator>
                 </td>
-            </tr>
-            <tr>
                 <td></td>
-                <td></td>
-                <td><asp:Button ID="DeleteButton" runat="server" Text="Delete Account" /></td>
+                <td><asp:Button ID="DeleteButton" runat="server" Text="Delete Account" OnClick="DeleteButton_Click" /></td>
             </tr>
         </table>
 
@@ -46,9 +42,6 @@
 <asp:Content ID="Content1" runat="server" contentplaceholderid="head">
     <style type="text/css">
 
-        .auto-style2 {
-            font-size: small;
-        }
         .auto-style3 {
             width: 176px;
         }

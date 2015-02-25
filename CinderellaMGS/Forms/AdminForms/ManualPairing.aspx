@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ManualPairing.aspx.cs" Inherits="Forms_AdminForms_ManualPairing" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="HeaderTitle" Runat="Server">
+<asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitle" Runat="Server">
     <h2>Manual Pairing</h2>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
-        <table id="ManualPairTable" border="1">
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
+    <form id="form1" runat="server" >
+        <table id="ManualPairTable" border="1" style="width:100%;">
             <tr>
                 <th>Cinderellas</th>
                 <th>Godmothers</th>

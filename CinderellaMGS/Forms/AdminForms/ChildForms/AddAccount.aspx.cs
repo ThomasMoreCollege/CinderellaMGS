@@ -9,8 +9,11 @@ using System.Configuration; //Must be include if using SQL
 
 public partial class Forms_AdminForms_ChildForms_AddAccount : System.Web.UI.Page
 {
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        
     }
     protected void CreateAccButton_Click(object sender, EventArgs e)
     {
@@ -58,48 +61,14 @@ public partial class Forms_AdminForms_ChildForms_AddAccount : System.Web.UI.Page
             }
         }
 
-        //Check password strength
-        if (PasswordTextBox.Text.Length < 8)
-        {
-            Password1ErrorLabel.Text = "Password must be at least eight characters long.";
-            Password1ErrorLabel.Visible = true;
-            errorCounter++;
-        }
-        else
-        {
-            Password1ErrorLabel.Visible = false;
-        }
-
-        //Check if passwords are matching
-        if (PasswordTextBox.Text != ConfirmPasswordTextBox.Text)
-        {
-            Password2ErrorLabel.Text = "Passwords do not match.";
-            Password2ErrorLabel.Visible = true;
-            errorCounter++;
-        }
-        else
-        {
-            Password2ErrorLabel.Visible = false;
-        }
-
-        //Check if at least one permission was selected 
-        if (AdminCheckBox.Checked == false && AlterationsCheckBox.Checked == false && CheckInCheckBox.Checked == false && CheckOutCheckBox.Checked == false && PairingCheckBox.Checked == false)
-        {
-            PermissionsErrorLabel.Text = "Account must be given permission(s).";
-            PermissionsErrorLabel.Visible = true;
-            errorCounter++;
-        }
-        else
-        {
-            PermissionsErrorLabel.Visible = false;
-        }
-
-
         //REMEMBER TO CLOSE CONNECTION!!
         conn1.Close();
 
-
-        if (errorCounter == 0)
+        if (errorCounter != 0 || !(IsValid))
+        {
+            AddedAccountLabel.Visible = false;
+        }
+        if (errorCounter == 0 && IsValid)
         {
             try
             {
@@ -111,7 +80,7 @@ public partial class Forms_AdminForms_ChildForms_AddAccount : System.Web.UI.Page
                 conn2.Open();
 
                 //Initialize a string variable to hold a query
-                string addNewUser = "INSERT INTO Accounts (Username,Password) VALUES (@Uname, @Upassword)";
+                string addNewUser = "INSERT INTO Accounts (Username,Password,Account_Type) VALUES (@Uname, @Upassword, @Uacctype)";
 
                 //Execute query 
                 SqlCommand insertNewAccount = new SqlCommand(addNewUser, conn2);
@@ -120,8 +89,24 @@ public partial class Forms_AdminForms_ChildForms_AddAccount : System.Web.UI.Page
                 insertNewAccount.Parameters.AddWithValue("@Uname", NewUserNameTextBox.Text);
                 insertNewAccount.Parameters.AddWithValue("@Upassword", PasswordTextBox.Text);
 
+                if (AccountTypesRadioButtonList.Items[0].Selected == true)
+                {
+                    insertNewAccount.Parameters.AddWithValue("@Uacctype", AccountTypesRadioButtonList.Items[0].Text);
+                }
+                if (AccountTypesRadioButtonList.Items[1].Selected == true)
+                {
+                    insertNewAccount.Parameters.AddWithValue("@Uacctype", AccountTypesRadioButtonList.Items[1].Text);
+                }
+                if (AccountTypesRadioButtonList.Items[2].Selected == true)
+                {
+                    insertNewAccount.Parameters.AddWithValue("@Uacctype", AccountTypesRadioButtonList.Items[2].Text);
+                }
+
                 //Execute Query 
                 insertNewAccount.ExecuteNonQuery();
+
+                //REMEMBER TO CLOSE CONNECTION!!
+                conn2.Close();                
 
                 //Show success label
                 AddedAccountLabel.Visible = true;
@@ -132,41 +117,44 @@ public partial class Forms_AdminForms_ChildForms_AddAccount : System.Web.UI.Page
                 ExistingUserNamesListBox.DataValueField = "Username";
                 ExistingUserNamesListBox.DataBind();
 
-                //REMEMBER TO CLOSE CONNECTION!!
-                conn2.Close();
+                NewUserNameTextBox.Text = "";
+                PasswordTextBox.Text = "";
+                ConfirmPasswordTextBox.Text = "";
+                foreach (ListItem item in AccountTypesRadioButtonList.Items)
+                {
+                    item.Selected = false;
+                }
+                NewUserNameTextBox.Focus();
+                
             }
             catch (Exception ex)
             {
                 AddedAccountLabel.Text = "Account was not added successfully";
+                
             };
         }
     }
-    protected void AdminCheckBox_CheckedChanged(object sender, EventArgs e)
+
+
+    protected void NewUserNameTextBox_TextChanged(object sender, EventArgs e)
     {
-        if (AdminCheckBox.Checked == true)
+        if (AddedAccountLabel.Visible == true)
         {
-            AlterationsCheckBox.Checked = true;
-            CheckInCheckBox.Checked = true;
-            CheckOutCheckBox.Checked = true;
-            PairingCheckBox.Checked = true;
-
-            AlterationsCheckBox.Enabled = false;
-            CheckInCheckBox.Enabled = false;
-            CheckOutCheckBox.Enabled = false;
-            PairingCheckBox.Enabled = false;
+            AddedAccountLabel.Visible = false;
         }
-
-        if (AdminCheckBox.Checked == false)
+    }
+    protected void PasswordTextBox_TextChanged(object sender, EventArgs e)
+    {
+        if (AddedAccountLabel.Visible == true)
         {
-            AlterationsCheckBox.Checked = false;
-            CheckInCheckBox.Checked = false;
-            CheckOutCheckBox.Checked = false;
-            PairingCheckBox.Checked = false;
-
-            AlterationsCheckBox.Enabled = true;
-            CheckInCheckBox.Enabled = true;
-            CheckOutCheckBox.Enabled = true;
-            PairingCheckBox.Enabled = true;
+            AddedAccountLabel.Visible = false;
+        }
+    }
+    protected void ConfirmPasswordTextBox_TextChanged(object sender, EventArgs e)
+    {
+        if (AddedAccountLabel.Visible == true)
+        {
+            AddedAccountLabel.Visible = false;
         }
     }
 }
