@@ -67,13 +67,21 @@
                 </td>
             </tr>
             <tr>
+                <td></td>
                 <td class="auto-style3">
                     Appointment Date:</td>
                 <td class="TableInputCell">
 
-                    &nbsp;</td>
+                    <asp:Calendar ID="appointmentSelectDateCalender" runat="server"></asp:Calendar>
+                </td>
             </tr>
-            <tr>
+            <tr>     
+                <td><!-- Spacing. --></td>
+                <asp:RegularExpressionValidator ID="rev"
+                    runat="server" ErrorMessage="Appointment Time must be  valid time! (E.g. 3:45)" 
+                    ControlToValidate="AppTimeTextBox0"
+                    ValidationExpression="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$">
+                </asp:RegularExpressionValidator>
                 <td class="auto-style3">
                     Appointment Time:</td>
                 <td class="TableInputCell"><asp:TextBox ID="AppTimeTextBox0" runat="server"></asp:TextBox>
@@ -178,10 +186,6 @@
             </tr>
             <tr>
                 <td>
-                 <asp:RequiredFieldValidator ID="NotesValidator" runat="server"
-                     ControlToValidate="ReferralNotesTextBox"
-                     ErrorMessage="">
-                     </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">
                     Notes:</td>

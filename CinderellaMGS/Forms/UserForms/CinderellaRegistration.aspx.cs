@@ -49,6 +49,9 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         string phoneNumber = PhoneNumberTextBox.Text;
         string email = EmailTextBox.Text;
         string notes = ReferralNotesTextBox.Text;
+        string date = appointmentSelectDateCalender.SelectedDate.ToString("d");
+        string time = AppTimeTextBox0.Text;
+        string appointmentTime = date + ' '  + time;
 
 
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
@@ -62,7 +65,7 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         int totalCinderellas = (Int32)getNumCinderellas.ExecuteScalar();
         totalCinderellas = totalCinderellas + 1;    // Used for the key counter. (+1 to the number of current rows.)
 
-        string sql = "INSERT INTO Cinderella (CinderellaID, FirstName, LastName, Phone, Email, AppointmentDateTime, Note) VALUES ('" + totalCinderellas + "', '" + firstname + "', '" + lastname + "', '" + phoneNumber + "', '" + email + "', '2015-02-23 12:00:00.000', '" + notes + "')";
+        string sql = "INSERT INTO Cinderella (CinderellaID, FirstName, LastName, Phone, Email, AppointmentDateTime, Note) VALUES ('" + totalCinderellas + "', '" + firstname + "', '" + lastname + "', '" + phoneNumber + "', '" + email + "', '" + appointmentTime + "', '" + notes + "')";
 
 
         // Execute query
