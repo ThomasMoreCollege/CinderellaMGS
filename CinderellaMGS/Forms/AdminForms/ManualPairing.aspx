@@ -20,8 +20,8 @@
                             DataKeyNames="CinderellaID">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
-                                <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
-                                <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
+                                <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                                <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                             </Columns>
                             <SelectedRowStyle BackColor="Fuchsia" />
                         </asp:GridView>
@@ -45,8 +45,8 @@
                             DataKeyNames="VolunteerID ">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
-                                <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
-                                <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
+                                <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                                <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                             </Columns>
                             <SelectedRowStyle BackColor="Fuchsia" />
                         </asp:GridView>
