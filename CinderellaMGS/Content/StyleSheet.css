@@ -380,6 +380,11 @@ figure{
     border-collapse: collapse;
 }
 
+#PackMangtable {
+    float:left;
+    border-collapse: collapse;
+}
+
 #DeleteVolTable {
     float:left;
 }

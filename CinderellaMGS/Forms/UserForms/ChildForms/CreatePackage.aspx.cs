@@ -141,6 +141,9 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             //REMEMBER TO CLOSE CONNECTION!!
             conn.Close();
         }
-        // SQL code to add appropriate information into Package entity
+
+        // Rebind the data to refresh the Grid
+        CinderellaGridView.DataBind();
+        CinderellaGridView.SelectedIndex = -1;
     }
 }
