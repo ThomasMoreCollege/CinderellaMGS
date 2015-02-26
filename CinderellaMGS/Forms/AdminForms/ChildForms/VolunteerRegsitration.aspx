@@ -112,7 +112,7 @@
             <tr>
                 <td class="auto-style2"></td>
                 <td class="TableInputCell">
-                    <asp:Button ID="RegisterFormButton" runat="server" Text="Register" />
+                    <asp:Button ID="RegisterFormButton" runat="server" Text="Register" OnClick="RegisterFormButton_Click" />
                 </td>
             </tr>
         </table>
