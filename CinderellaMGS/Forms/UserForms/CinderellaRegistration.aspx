@@ -105,23 +105,34 @@
             </tr>
             <tr>
                 <td class="auto-style2">
-                    <asp:RadioButton ID="ExistingReferralRadioButton" runat="server" Text="Existing Referral" GroupName="Referrals" OnCheckedChanged="ExistingReferralRadioButton_CheckedChanged" />
-                </td>
+                    &nbsp;</td>
                 <td>
-                    <asp:RadioButton ID="NewReferralRadioButton" runat="server" Text="New Referral" GroupName="Referrals" OnCheckedChanged="NewReferralRadioButton_CheckedChanged" />
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td></td>
-                <td></td>
+                <td>
+                    <asp:CheckBox ID="existingReferralCheckBox" 
+                        AutoPostBack ="true"
+                        runat="server" 
+                        OnCheckedChanged="existingReferralCheckBox_CheckedChanged" 
+                        Text="Existing Referral" />
+                </td>
+                <td>
+                    <asp:CheckBox ID="newReferralCheckBox" 
+                        AutoPostBack ="true"
+                        runat="server" 
+                        OnCheckedChanged="newReferralCheckBox_CheckedChanged" 
+                        Text="New Referral" />
+                </td>
             </tr>
             <tr>
                 <td class="auto-style3" >
                     Existing Referral:</td>
                 <td class="TableInputCell">
-                    <asp:DropDownList ID="ExistingReferralDropDownList" runat="server" Enabled="False">
-                        <asp:ListItem>All Existing Referrals</asp:ListItem>
+                    <asp:DropDownList ID="referralDropDownList" runat="server" DataSourceID="ReferralDS" DataTextField="Agency" DataValueField="Agency">
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="ReferralDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString2 %>" SelectCommand="SELECT [Agency] FROM [Referrals]"></asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
