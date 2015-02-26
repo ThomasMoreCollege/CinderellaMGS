@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="CreatePackage.aspx.cs" Inherits="Forms_UserForms_Checkout" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeaderTitle" Runat="Server">
-    <h2>Checkout</h2>
+    <h2>Create Package</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
 

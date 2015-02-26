@@ -15,7 +15,7 @@
         </tr>
         <tr id="middleRow">
             <td class="auto-style7">
-                <asp:Button ID="PackageCheckoutButton" runat="server" Text="Checkout Package" Height="31px" Width="125px" PostBackUrl="~/Forms/UserForms/ChildForms/CreatePackage.aspx"/>
+                <asp:Button ID="PackageCheckoutButton" runat="server" Text="Checkout Package" Height="31px" Width="125px" PostBackUrl="~/Forms/UserForms/ChildForms/PackageCheckout.aspx"/>
             </td>
             <td class="auto-style8">Marks a package as ready to be sent out</td>
         </tr>
