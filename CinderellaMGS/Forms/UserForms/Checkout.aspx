@@ -41,9 +41,9 @@
             </table>
         </div>
         <div>
-            <asp:RequiredFieldValidator ID="DressSizeValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="DressSizeDropDown" ForeColor="Red">*Please select a dress size</asp:RequiredFieldValidator><br />
-            <asp:RequiredFieldValidator ID="DressLengthValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="DressLengthDropDown" ForeColor="Red">*Please select a dress length</asp:RequiredFieldValidator><br />
-            <asp:RequiredFieldValidator ID="DressColorValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="DressColorDropDown" ForeColor="Red">*Please select a dress color</asp:RequiredFieldValidator><br />
+            <asp:RequiredFieldValidator ID="DressSizeValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="DressSizeDropDown" ForeColor="Red" Display="Dynamic">*Please select a dress size</asp:RequiredFieldValidator><br />
+            <asp:RequiredFieldValidator ID="DressLengthValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="DressLengthDropDown" ForeColor="Red" Display="Dynamic">*Please select a dress length</asp:RequiredFieldValidator><br />
+            <asp:RequiredFieldValidator ID="DressColorValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="DressColorDropDown" ForeColor="Red" Display="Dynamic">*Please select a dress color</asp:RequiredFieldValidator><br />
             <table id="DressCheckoutTable" border="1">
                 <tr>
                     <th colspan="3">Dress</th>
@@ -107,8 +107,8 @@
         </div>
 
         <div>
-            <asp:RequiredFieldValidator ID="ShoeSizeValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="ShoeSizeDropDown" ForeColor="Red">*Please select a shoe size</asp:RequiredFieldValidator><br />
-            <asp:RequiredFieldValidator ID="ShoeColorValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="ShoeColorDropDown" ForeColor="Red">*Please select a shoe color</asp:RequiredFieldValidator><br />
+            <asp:RequiredFieldValidator ID="ShoeSizeValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="ShoeSizeDropDown" ForeColor="Red" Display="Dynamic">*Please select a shoe size</asp:RequiredFieldValidator><br />
+            <asp:RequiredFieldValidator ID="ShoeColorValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="ShoeColorDropDown" ForeColor="Red" Display="Dynamic">*Please select a shoe color</asp:RequiredFieldValidator><br />
 
             <table id="ShoeCheckoutTable" border="1">
             <tr>
@@ -119,7 +119,9 @@
                     <asp:Label ID="Label4" runat="server" Text="Shoe Size:"></asp:Label>
                     &nbsp;<asp:DropDownList ID="ShoeSizeDropDown" runat="server">
                         <asp:ListItem></asp:ListItem>
-                        <asp:ListItem>RANGE OF NUMBERS</asp:ListItem>
+                        <asp:ListItem>1</asp:ListItem>
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>3</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td>

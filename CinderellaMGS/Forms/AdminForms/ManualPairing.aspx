@@ -32,7 +32,7 @@
                                             FROM [Cinderella] 
                                             INNER JOIN CinderellaStatusRecord 
                                                 ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
-                                            WHERE Status_Name = 'Waiting' AND IsCurrent = 'Y'
+                                            WHERE Status_Name = 'Waiting for Godmother' AND IsCurrent = 'Y'
                                             ORDER BY [LastName]"></asp:SqlDataSource>
                     </div>
                 </td>
