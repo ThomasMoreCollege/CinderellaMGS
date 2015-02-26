@@ -20,6 +20,9 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             NewUsernameTextBox.Enabled = true;
             NewUsernameTextBox.BackColor = System.Drawing.Color.White;
             EditAccountFormButton.Enabled = true;
+
+            //NewUsernameRequiredFieldValidator.Enabled = true;
+            UsernameCompareValidator.Enabled = true;
         }
 
     }
@@ -34,15 +37,11 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
     }
     protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        //Enable Password Change
-        CurrentPasswordTextBox.Enabled = true;
-        CurrentPasswordTextBox.BackColor = System.Drawing.Color.White;
-
-        NewPasswordTextBox.Enabled = true;
-        NewPasswordTextBox.BackColor = System.Drawing.Color.White;
-
-        ConfirmPasswordTextBox.Enabled = true;
-        ConfirmPasswordTextBox.BackColor = System.Drawing.Color.White;
+        
+        //Enable all button
+        ChangePasswordButton.Enabled = true;
+        EditUserNameButton.Enabled = true;
+        EditAcctTypeButton.Enabled = true;
 
         //Disable New USer textbox
         NewUsernameTextBox.Enabled = false;
@@ -57,10 +56,9 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
 
         //Hide label notifying account changed if it is visible
         ChangedAccountLabel.Visible = false;
-        InvalidPasswordLabel.Visible = false;
 
         //Disable Save Button
-        EditAccountFormButton.Enabled = true;
+        EditAccountFormButton.Enabled = false;
 
         //Initialize database connection with "DefaultConnection" setup in the web.config
         SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
@@ -78,6 +76,7 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
         string selectedUsername = com1.ExecuteScalar().ToString();
 
         UserNameLabel.Text = selectedUsername;
+        HiddenTextBox1.Text = selectedUsername;
 
         conn1.Close();
 
@@ -139,28 +138,18 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             int validUserLogin = Convert.ToInt32(com1.ExecuteScalar().ToString());
 
             //Check if username textbox is empty
-            if (NewUsernameTextBox.Text == string.Empty)
+
+            //Validate if such a user login already exists
+            if (validUserLogin != 0)
             {
-                UserNameErrorLabel.Text = "Please enter a new username.";
-                UserNameErrorLabel.Visible = true;
+                //Display error message
+                //UserNameErrorLabel.Text = "Username already exists.";
+                //UserNameErrorLabel.Visible = true;
                 errorCounter++;
             }
             else
             {
-                UserNameErrorLabel.Visible = false;
-
-                //Validate if such a user login is correct exists
-                if (validUserLogin != 0)
-                {
-                    //Display error message
-                    UserNameErrorLabel.Text = "Username already exists.";
-                    UserNameErrorLabel.Visible = true;
-                    errorCounter++;
-                }
-                else
-                {
-                    UserNameErrorLabel.Visible = false;
-                }
+                //UserNameErrorLabel.Visible = false;
             }
             if (errorCounter == 0 && IsValid)
             {
@@ -244,7 +233,7 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             }
         }
 
-        if (CurrentPasswordTextBox.Text != string.Empty)
+        if (NewPasswordTextBox.Enabled == true)
         {
             //Initialize database connection with "DefaultConnection" setup in the web.config
             SqlConnection currentPasswordConn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
@@ -264,13 +253,13 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             if (validCurrentPassword == 0)
             {
                 //Display error message
-                InvalidPasswordLabel.Text = "Password is incorrect.";
-                InvalidPasswordLabel.Visible = true;
+                //InvalidPasswordLabel.Text = "Password is incorrect.";
+                //InvalidPasswordLabel.Visible = true;
                 errorCounter++;
             }
             else
             {
-                InvalidPasswordLabel.Visible = false;
+                //InvalidPasswordLabel.Visible = false;
             }
             currentPasswordConn.Close();
         }
@@ -301,9 +290,9 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             //Reset all labels
             UserNameLabel.Text = "--";
             CurrentAcctTypeLabel.Text = "--";
-            UserNameErrorLabel.Visible = false;
+            //UserNameErrorLabel.Visible = false;
             NewAcctTypeErrorLabel.Visible = false;
-            InvalidPasswordLabel.Visible = false;
+            //InvalidPasswordLabel.Visible = false;
 
             //Reset username listbox
             CurrentAcctsListBox.SelectedIndex = -1;
@@ -315,6 +304,14 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
     }
     protected void CancelButton_Click(object sender, EventArgs e)
     {
+        //Disable validators
+        UsernameCompareValidator.Enabled = false;
+        NewUsernameRequiredFieldValidator.Enabled = false;
+
+        CurrentPasswordRequiredFieldValidator.Enabled = false;
+        NewPasswordRequiredFieldValidator.Enabled = false;
+        NewPasswordRegularExpressionValidator.Enabled = false;
+
         //Disable Password Change
         CurrentPasswordTextBox.Enabled = false;
         CurrentPasswordTextBox.BackColor = System.Drawing.Color.LightGray;
@@ -340,9 +337,9 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
         //Reset all label
         UserNameLabel.Text = "--";
         CurrentAcctTypeLabel.Text = "--";
-        UserNameErrorLabel.Visible = false;
+        //UserNameErrorLabel.Visible = false;
         NewAcctTypeErrorLabel.Visible = false;
-        InvalidPasswordLabel.Visible = false;
+        //InvalidPasswordLabel.Visible = false;
 
         //Reset username listbox
         CurrentAcctsListBox.SelectedIndex = -1;
@@ -350,7 +347,29 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
         //Hide Success message
         ChangedAccountLabel.Visible = false;
 
-        //Disable Save Changes button 
+        //Disable all buttons
+        ChangePasswordButton.Enabled = false;
+        EditAcctTypeButton.Enabled = false;
+        EditUserNameButton.Enabled = false;
         EditAccountFormButton.Enabled = false;
+    }
+    protected void ChangePasswordButton_Click(object sender, EventArgs e)
+    {
+        EditAccountFormButton.Enabled = true;
+
+        //Enable Validators 
+        CurrentPasswordRequiredFieldValidator.Enabled = true;
+        NewPasswordRequiredFieldValidator.Enabled = true;
+        NewPasswordRegularExpressionValidator.Enabled = true;
+
+        //Enable Password Change
+        CurrentPasswordTextBox.Enabled = true;
+        CurrentPasswordTextBox.BackColor = System.Drawing.Color.White;
+
+        NewPasswordTextBox.Enabled = true;
+        NewPasswordTextBox.BackColor = System.Drawing.Color.White;
+
+        ConfirmPasswordTextBox.Enabled = true;
+        ConfirmPasswordTextBox.BackColor = System.Drawing.Color.White;
     }
 }
