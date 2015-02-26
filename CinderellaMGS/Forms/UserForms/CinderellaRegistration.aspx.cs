@@ -25,6 +25,8 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             (this.Master as MasterPage).RevealAdmin(true);
         }
 
+        referralDropDownList.Enabled = false;
+        
     }
     
    
@@ -98,6 +100,71 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             ReferralNotesTextBox.Text = "";
             AppTimeTextBox0.Text = "";
             NewReferralLastNameTextBox.Text = "";
+
+            existingReferralCheckBox.Checked = false;
+            newReferralCheckBox.Checked = false;
+        }
+
+        else if (existingReferralCheckBox.Checked == true)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+            //Open the connection 
+            conn.Open();
+
+            string agency = referralDropDownList.SelectedItem.Text;
+
+            string getTotal = "SELECT Count(CinderellaID) FROM Cinderella";
+            SqlCommand getNumCinderellas = new SqlCommand(getTotal, conn);
+            getNumCinderellas.ExecuteNonQuery();
+            int totalCinderellas = (Int32)getNumCinderellas.ExecuteScalar();
+            totalCinderellas = totalCinderellas + 1;    // Used for the key counter. (+1 to the number of current rows.)
+
+            string getAgencyIDQuery = "SELECT referralID FROM Referrals WHERE agency = '" + agency + "'";
+            SqlCommand getAgencyID = new SqlCommand(getAgencyIDQuery, conn);
+            getAgencyID.ExecuteNonQuery();
+            int agencyID = (Int32)getAgencyID.ExecuteScalar();
+
+            string firstname = FirstTextBox.Text;
+            string lastname = LastNameTextBox.Text;
+            string phoneNumber = PhoneNumberTextBox.Text;
+            string email = EmailTextBox.Text;
+            string notes = ReferralNotesTextBox.Text;
+            string date = appointmentSelectDateCalender.SelectedDate.ToString("d");
+            string time = AppTimeTextBox0.Text;
+            string appointmentTime = date + ' ' + time;
+
+            string sql = "INSERT INTO Cinderella (CinderellaID, FirstName, LastName, Phone, Email, AppointmentDateTime, Note, Referral_ID) VALUES ('" + totalCinderellas + "', '" + firstname + "', '" + lastname + "', '" + phoneNumber + "', '" + email + "', '" + appointmentTime + "', '" + notes + "', '" + agencyID + "')";
+            string sqlTwo = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + totalCinderellas + "', GetDate(), 'Pending', 'Y')";
+
+            // Execute query
+            SqlCommand comm1 = new SqlCommand(sql, conn);
+            comm1.ExecuteNonQuery();
+
+            // Execute query
+            SqlCommand comm2 = new SqlCommand(sqlTwo, conn);
+            comm2.ExecuteNonQuery();
+
+            conn.Close();
+
+            // Revent all text field values back to empty to allow for another Cinderella input.
+            FirstTextBox.Text = "";
+            AppTimeTextBox0.Text = "";
+            LastNameTextBox.Text = "";
+            NewReferralFirstNameTextBox.Text = "";
+            NewReferalLastNameValidator.Text = "";
+            NewReferralPhoneTextBox.Text = "";
+            NewReferralEmailTextBox.Text = "";
+            NewSchoolAgencyTextBox.Text = "";
+            PhoneNumberTextBox.Text = "";
+            EmailTextBox.Text = "";
+            ReferralNotesTextBox.Text = "";
+            AppTimeTextBox0.Text = "";
+            NewReferralLastNameTextBox.Text = "";
+
+            existingReferralCheckBox.Checked = false;
+            newReferralCheckBox.Checked = false;
+          
         }
 
     }
@@ -112,6 +179,14 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         NewReferralPhoneTextBox.Enabled = false;
         NewReferralEmailTextBox.Enabled = false;
         NewSchoolAgencyTextBox.Enabled = false;
+
+        NewReferalFirstNameValidator.Enabled = false;
+        NewReferalLastNameValidator.Enabled = false;
+        NewReferalPhoneValidator.Enabled = false;
+        NewReferalEmailValidator.Enabled = false;
+        NewSchoolAgengyValidator.Enabled = false;
+
+        referralDropDownList.DataBind();
     }
     protected void newReferralCheckBox_CheckedChanged(object sender, EventArgs e)
     {
@@ -123,6 +198,14 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         NewReferralPhoneTextBox.Enabled = true;
         NewReferralEmailTextBox.Enabled = true;
         NewSchoolAgencyTextBox.Enabled = true;
+
+        NewReferalFirstNameValidator.Enabled = true;
+        NewReferalLastNameValidator.Enabled = true;
+        NewReferalPhoneValidator.Enabled = true;
+        NewReferalEmailValidator.Enabled = true;
+        NewSchoolAgengyValidator.Enabled = true;
+
+        referralDropDownList.DataBind();
     }
 }
 
