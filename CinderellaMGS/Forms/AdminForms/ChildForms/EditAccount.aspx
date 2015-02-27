@@ -41,7 +41,7 @@
                     <asp:RequiredFieldValidator ID="NewUsernameRequiredFieldValidator" runat="server" ControlToValidate="NewUsernameTextBox" Display="Dynamic" Enabled="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red" style="font-size: small">New username cannot be blank.</asp:RequiredFieldValidator>
                     <br />
                     <%--<asp:Label ID="UserNameErrorLabel" runat="server" ForeColor="Red" style="font-size: small" Text="Label" Visible="False"></asp:Label>--%>
-                            <asp:CompareValidator ID="UsernameCompareValidator" runat="server" ErrorMessage="Passwords do not match." ForeColor="Red" style="font-size: small" ControlToCompare="HiddenTextBox1" ControlToValidate="NewUsernameTextBox" Display="Dynamic"></asp:CompareValidator>
+                            <asp:Label ID="UserNameErrorLabel" runat="server" ForeColor="Red" style="font-size: small" Text="Label" Visible="False"></asp:Label>
                 </td>
                 <td></td>
             </tr>
@@ -118,6 +118,7 @@
                 <td></td>
                 <td>
                     <asp:RequiredFieldValidator ID="CurrentPasswordRequiredFieldValidator" runat="server" ControlToValidate="CurrentPasswordTextBox" Display="Dynamic" ErrorMessage="Current password is required." ForeColor="Red" style="font-size: small" Enabled="False"></asp:RequiredFieldValidator>
+                    <asp:Label ID="InvalidPasswordLabel" runat="server" ForeColor="Red" style="font-size: small" Text="Label" Visible="False"></asp:Label>
                 </td>
                 <td></td>
                 <td class="auto-style7"></td>
@@ -139,6 +140,7 @@
                 <td>
                             <asp:RequiredFieldValidator ID="NewPasswordRequiredFieldValidator" runat="server" ErrorMessage="New password cannot be empty." ForeColor="Red" CssClass="auto-style17" ControlToValidate="NewPasswordTextBox" Display="Dynamic" Enabled="False"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="NewPasswordRegularExpressionValidator" runat="server" ControlToValidate="NewPasswordTextBox" Display="Dynamic" ErrorMessage="New password must be at least eight characters and/or numbers long." ForeColor="Red" ValidationExpression="^[a-zA-Z0-9]{8,}$" CssClass="auto-style14" Enabled="False"></asp:RegularExpressionValidator>
+                            <asp:CompareValidator ID="DiffNewPasswordCompareValidator" runat="server" ControlToCompare="CurrentPasswordTextBox" ControlToValidate="NewPasswordTextBox" Display="Dynamic" ErrorMessage="Password cannot be the same as current password." ForeColor="Red" Operator="NotEqual" style="font-size: small"></asp:CompareValidator>
                         </td>
                 <td></td>
                 <td class="auto-style7"></td>

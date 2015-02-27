@@ -21,8 +21,7 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             NewUsernameTextBox.BackColor = System.Drawing.Color.White;
             EditAccountFormButton.Enabled = true;
 
-            //NewUsernameRequiredFieldValidator.Enabled = true;
-            UsernameCompareValidator.Enabled = true;
+            NewUsernameRequiredFieldValidator.Enabled = true;
         }
 
     }
@@ -46,6 +45,7 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
         //Disable New USer textbox
         NewUsernameTextBox.Enabled = false;
         NewUsernameTextBox.BackColor = System.Drawing.Color.LightGray;
+        NewUsernameTextBox.Text = "";
 
         //Disable and unselect Radiobutton controls and 
         NewAccountTypeRadioButtonList.Enabled = false;
@@ -143,13 +143,13 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             if (validUserLogin != 0)
             {
                 //Display error message
-                //UserNameErrorLabel.Text = "Username already exists.";
-                //UserNameErrorLabel.Visible = true;
+                UserNameErrorLabel.Text = "Username already exists.";
+                UserNameErrorLabel.Visible = true;
                 errorCounter++;
             }
             else
             {
-                //UserNameErrorLabel.Visible = false;
+                UserNameErrorLabel.Visible = false;
             }
             if (errorCounter == 0 && IsValid)
             {
@@ -242,6 +242,8 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             currentPasswordConn.Open();
 
             //Initialize a string variable to hold a query
+
+            // string checkUserNameInput = "SELECT count(*) FROM Accounts WHERE Username='" + NewUserNameTextBox.Text + "'";
             string checkCurrentPassword = "SELECT count(*) FROM Accounts WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "' AND Password='" + CurrentPasswordTextBox.Text + "'";
 
             //Execute query 
@@ -253,15 +255,45 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             if (validCurrentPassword == 0)
             {
                 //Display error message
-                //InvalidPasswordLabel.Text = "Password is incorrect.";
-                //InvalidPasswordLabel.Visible = true;
+                InvalidPasswordLabel.Text = "Password is incorrect.";
+                InvalidPasswordLabel.Visible = true;
                 errorCounter++;
             }
             else
             {
-                //InvalidPasswordLabel.Visible = false;
+                InvalidPasswordLabel.Visible = false;
             }
             currentPasswordConn.Close();
+            if (errorCounter == 0 && IsValid)
+            {
+                try
+                {
+                    //Initialize database connection with "DefaultConnection" setup in the web.config
+                    SqlConnection conn4 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+                    //Open the connection 
+                    conn4.Open();
+
+                    string editPasswordQuery = "UPDATE Accounts SET Password=@Upassword WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "'";
+
+                    //Execute query 
+                    SqlCommand editPassword = new SqlCommand(editPasswordQuery, conn4);
+
+                    //Add values to variables in the query
+                    editPassword.Parameters.AddWithValue("@Upassword", NewPasswordTextBox.Text);
+
+                    editPassword.ExecuteNonQuery();
+
+                    //REMEMBER TO CLOSE CONNECTION!!
+                    conn4.Close();
+                }
+                catch (Exception ex)
+                {
+                    ChangedAccountLabel.Text = "Account was not added successfully";
+                    ChangedAccountLabel.Visible = true;
+                    catchCounter++;
+                };
+            }
         }
 
         if (catchCounter == 0 && errorCounter == 0 && IsValid)
@@ -290,22 +322,31 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             //Reset all labels
             UserNameLabel.Text = "--";
             CurrentAcctTypeLabel.Text = "--";
-            //UserNameErrorLabel.Visible = false;
+            UserNameErrorLabel.Visible = false;
             NewAcctTypeErrorLabel.Visible = false;
-            //InvalidPasswordLabel.Visible = false;
+            InvalidPasswordLabel.Visible = false;
 
             //Reset username listbox
             CurrentAcctsListBox.SelectedIndex = -1;
 
-            //Disable Save Button
+            //Disable Save and change password button and password labels Button
             EditAccountFormButton.Enabled = false;
+
+            //Disable Password Change
+            CurrentPasswordTextBox.Enabled = false;
+            CurrentPasswordTextBox.BackColor = System.Drawing.Color.LightGray;
+
+            NewPasswordTextBox.Enabled = false;
+            NewPasswordTextBox.BackColor = System.Drawing.Color.LightGray;
+
+            ConfirmPasswordTextBox.Enabled = false;
+            ConfirmPasswordTextBox.BackColor = System.Drawing.Color.LightGray;
         }
         
     }
     protected void CancelButton_Click(object sender, EventArgs e)
     {
         //Disable validators
-        UsernameCompareValidator.Enabled = false;
         NewUsernameRequiredFieldValidator.Enabled = false;
 
         CurrentPasswordRequiredFieldValidator.Enabled = false;
@@ -337,9 +378,9 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
         //Reset all label
         UserNameLabel.Text = "--";
         CurrentAcctTypeLabel.Text = "--";
-        //UserNameErrorLabel.Visible = false;
+        UserNameErrorLabel.Visible = false;
         NewAcctTypeErrorLabel.Visible = false;
-        //InvalidPasswordLabel.Visible = false;
+        InvalidPasswordLabel.Visible = false;
 
         //Reset username listbox
         CurrentAcctsListBox.SelectedIndex = -1;
@@ -355,21 +396,24 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
     }
     protected void ChangePasswordButton_Click(object sender, EventArgs e)
     {
-        EditAccountFormButton.Enabled = true;
+        if (CurrentAcctsListBox.SelectedIndex > -1)
+        {
+            EditAccountFormButton.Enabled = true;
 
-        //Enable Validators 
-        CurrentPasswordRequiredFieldValidator.Enabled = true;
-        NewPasswordRequiredFieldValidator.Enabled = true;
-        NewPasswordRegularExpressionValidator.Enabled = true;
+            //Enable Validators 
+            CurrentPasswordRequiredFieldValidator.Enabled = true;
+            NewPasswordRequiredFieldValidator.Enabled = true;
+            NewPasswordRegularExpressionValidator.Enabled = true;
 
-        //Enable Password Change
-        CurrentPasswordTextBox.Enabled = true;
-        CurrentPasswordTextBox.BackColor = System.Drawing.Color.White;
+            //Enable Password Change
+            CurrentPasswordTextBox.Enabled = true;
+            CurrentPasswordTextBox.BackColor = System.Drawing.Color.White;
 
-        NewPasswordTextBox.Enabled = true;
-        NewPasswordTextBox.BackColor = System.Drawing.Color.White;
+            NewPasswordTextBox.Enabled = true;
+            NewPasswordTextBox.BackColor = System.Drawing.Color.White;
 
-        ConfirmPasswordTextBox.Enabled = true;
-        ConfirmPasswordTextBox.BackColor = System.Drawing.Color.White;
+            ConfirmPasswordTextBox.Enabled = true;
+            ConfirmPasswordTextBox.BackColor = System.Drawing.Color.White;
+        }
     }
 }
