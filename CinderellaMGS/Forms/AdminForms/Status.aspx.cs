@@ -13,6 +13,7 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.AppendHeader("Refresh", 5 + "; URL=Status.aspx");
         // Various SQL code to update table totals
 
         //Initialize database connection with "DefaultConnection" setup in the web.config
