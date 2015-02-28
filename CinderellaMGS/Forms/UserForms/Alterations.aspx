@@ -60,7 +60,8 @@
                     <asp:CheckBox ID="GeneralMendingCheckBox" runat="server" Text="General Mending" CssClass="auto-style13" style="font-size: small" />
                 </td>
                 <td rowspan="2">
-                    <textarea id="NotesTextArea" name="S1"></textarea></td>
+                    <asp:TextBox ID="notesTextBox" runat="server" Width="194px"></asp:TextBox>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style2">
@@ -106,8 +107,9 @@
                     <asp:CheckBox ID="DartsCheckBox" runat="server" Text="Darts" CssClass="auto-style13" style="font-size: small" />
                 </td>
                 <td class="auto-style69">
-                    <asp:DropDownList ID="SeamstressDropDownList" runat="server">
+                    <asp:DropDownList ID="SeamstressDropDownList" runat="server" DataSourceID="VolunteerNameDS" DataTextField="LastName" DataValueField="LastName">
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="VolunteerNameDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT [LastName] FROM [Volunteer]"></asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
@@ -133,7 +135,7 @@
                     <asp:CheckBox ID="HemCheckBox" runat="server" Text="Hem" CssClass="auto-style13" style="font-size: small" />
                     </td>
                 <td>
-                    <asp:Button ID="SubmitDressButton" runat="server" Text="Submit" />
+                    <asp:Button ID="SubmitDressButton" runat="server" Text="Submit" OnClick="SubmitDressButton_Click" />
                 </td>
             </tr>
             
