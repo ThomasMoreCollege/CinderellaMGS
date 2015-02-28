@@ -25,6 +25,12 @@
             </td>
             <td class="auto-style2">Delete an account from the system</td>
         </tr>
+        <tr>
+            <td>
+                <asp:Button ID="ManageVolunteerRoles" runat="server" Height="31px" Text="Manage Roles" Width="120px" PostBackUrl="~/Forms/AdminForms/ChildForms/ManageVolunteerRoles.aspx" />
+            </td>
+            <td class="auto-style2">Manage the various volunteer roles.</td>
+        </tr>
     </table>
     </form>
 </asp:Content>
