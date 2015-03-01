@@ -75,6 +75,7 @@ public partial class Forms_AdminForms_ChildForms_DeleteVolunteer : System.Web.UI
         //REMEMBER TO CLOSE CONNECTION!!
         conn2.Close();
 
+        //Refresh Grid
         VolunteerGridView.DataSourceID = "VolunteersToBeDeletedSqlDataSource";
         VolunteerGridView.DataBind();
 

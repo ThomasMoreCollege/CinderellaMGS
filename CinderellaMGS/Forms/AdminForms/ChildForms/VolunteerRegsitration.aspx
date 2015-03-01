@@ -66,7 +66,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:RegularExpressionValidator ID="PhoneRegularExpressionValidator" runat="server" ErrorMessage="Phone number must be 7 to 10 digits long." ForeColor="Red" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" ControlToValidate="PhoneTextBox" Display="Dynamic"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="PhoneRegularExpressionValidator" runat="server" ErrorMessage="Phone number must be 7 to 10 digits long (dash seperated)." ForeColor="Red" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" ControlToValidate="PhoneTextBox" Display="Dynamic"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
