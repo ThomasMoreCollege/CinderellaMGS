@@ -15,24 +15,24 @@
                 </tr>
                 <tr>
                     <td>
-                    <asp:ListBox ID="VolunteerNamesListBox" runat="server" DataSourceID="VolunteerDS" DataTextField="LastName" DataValueField="LastName" Height="145px" Width="158px" OnSelectedIndexChanged="VolunteerNamesListBox_SelectedIndexChanged"></asp:ListBox>
-                    <asp:SqlDataSource ID="VolunteerDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT Volunteer.Lastname, VolunteerRoleRecord.Role_Name
-FROM Volunteer
-	INNER JOIN VolunteerRoleRecord
-		on Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID
-WHERE VolunteerRoleRecord.isCurrent = 'Y'"></asp:SqlDataSource>
+                        <asp:ListBox ID="volunteerListBox" runat="server" AutoPostBack="True" DataSourceID="VolunteerDisplayDS" DataTextField="LastName" DataValueField="LastName" Height="141px" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged" Width="165px"></asp:ListBox>
+                        <asp:SqlDataSource ID="VolunteerDisplayDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT [LastName] FROM [Volunteer]"></asp:SqlDataSource>
                     </td>
                     <td>
-                        Default value is the current volunteer role.
-                        <asp:DropDownList ID="VolunteerRolesDropDownList" runat="server" DataSourceID="VolunteerRolesDS" DataTextField="RoleName" DataValueField="RoleName" AutoPostBack="True">
+                        <br />
+                        <br />
+                        <br />
+                        <asp:Label ID="dropDownLabel" runat="server" Text="Select a Role:"></asp:Label>
+                        <asp:DropDownList ID="roleDropDownList" runat="server" AutoPostBack="True" DataValueField="&quot;SELECT RoleType.RoleName FROM RoleType WHERE RoleType.RoleName &lt;&gt; 'Administrator' AND RoleType.RoleName &lt;&gt; (SELECT RoleType.RoleName FROM RoleType INNER JOIN VolunteerRoleRecord ON RoleType.RoleName = VolunteerRoleRecord.Role_Name INNER JOIN Volunteer ON VolunteerRoleRecord.Volunteer_ID = Volunteer.VolunteerID WHERE VolunteerRoleRecord.IsCurrent = 'Y' AND Volunteer.LastName = '&quot; + volunteerListBox.SelectedItem.Text + &quot;')&quot;">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="VolunteerRolesDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT RoleName FROM RoleType WHERE (RoleName &lt;&gt; 'Administrator') AND (RoleName &lt;&gt; 'Pairing')"></asp:SqlDataSource>
                     </td>
                </tr>
                 <tr>
                     <td>
                      <asp:Button ID="changeRoleButton" runat="server" Text="Change Role" OnClick="changeRoleButton_Click" />
                     </td>
+                    <td>
+                        &nbsp;</td>
                 </tr>
                 </table>
                 </div>
