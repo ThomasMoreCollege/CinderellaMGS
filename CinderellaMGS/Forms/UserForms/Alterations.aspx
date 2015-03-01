@@ -13,26 +13,28 @@
                 <td colspan="4" class="auto-style1"><strong>Cinderellas in Alterations</strong></td>
             </tr>
             <tr>
-                <td class="auto-style2">Search by:</td>
-                <td class="auto-style5">
-                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="auto-style13">
-                        <asp:ListItem>Last Name</asp:ListItem>
-                        <asp:ListItem>FirstName</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
+                <td class="auto-style12">Search Last Name:</td>
+                
                 <td class="auto-style3">
-                    <asp:TextBox ID="SearchTextBox" runat="server" CssClass="auto-style13"></asp:TextBox>
+                    <asp:TextBox ID="searchTextBox" runat="server" CssClass="auto-style13"></asp:TextBox>
                 </td>
                 <td class="auto-style9">
-                    <asp:Button ID="SearchShoppingCindButton" runat="server" Text="Search" CssClass="auto-style13" /></td>
+                    <asp:Button ID="SearchShoppingCindButton" runat="server" Text="Search" CssClass="auto-style13" OnClick="SearchShoppingCindButton_Click" /></td>
                 <td class="auto-style10"></td>
+                <td></td>
                 <td colspan="2" rowspan="3">
                     <asp:ListBox ID="CinderellasInAlterationListBox" runat="server" Height="222px" Width="401px"></asp:ListBox>
                 </td>
             </tr>
             <tr>
                 <td colspan="4" rowspan="3">
-                    <asp:ListBox ID="ShoppingCinderellasListBox" runat="server" Height="206px" Width="400px"></asp:ListBox>
+                    <asp:ListBox ID="ShoppingCinderellasListBox" runat="server" Height="206px" Width="400px" DataSourceID="CinderellaShoppingDS" DataTextField="FirstName" DataValueField="FirstName"></asp:ListBox>
+                    <asp:SqlDataSource ID="CinderellaShoppingDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT Cinderella.FirstName
+FROM Cinderella
+INNER JOIN CinderellaStatusRecord
+	on Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID
+WHERE CinderellaStatusRecord.Status_Name = 'Shopping' AND CinderellaStatusRecord.isCurrent = 'Y'
+"></asp:SqlDataSource>
                 </td>
                 <td class="auto-style10"></td>
             </tr>
@@ -48,9 +50,24 @@
                     Notes:</td>
             </tr>
             <tr>
-                <td class="auto-style2">Size :</td>
+                <td class="auto-style12">Size :</td>
                 <td class="auto-style2">
                     <asp:DropDownList ID="DressSizeDropDownList" runat="server" style="text-align: center">
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>4</asp:ListItem>
+                        <asp:ListItem>6</asp:ListItem>
+                        <asp:ListItem>8</asp:ListItem>
+                        <asp:ListItem>10</asp:ListItem>
+                        <asp:ListItem>12</asp:ListItem>
+                        <asp:ListItem>14</asp:ListItem>
+                        <asp:ListItem>16</asp:ListItem>
+                        <asp:ListItem>18</asp:ListItem>
+                        <asp:ListItem>20</asp:ListItem>
+                        <asp:ListItem>22</asp:ListItem>
+                        <asp:ListItem>24</asp:ListItem>
+                        <asp:ListItem>26</asp:ListItem>
+                        <asp:ListItem>28</asp:ListItem>
+                        <asp:ListItem>30</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style2">&nbsp;</td>
@@ -64,10 +81,25 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">
+                <td class="auto-style12">
                     Color:</td>
                 <td>
                     <asp:DropDownList ID="DressColorDropDownList" runat="server">
+                        <asp:ListItem>Brown</asp:ListItem>
+                        <asp:ListItem>Yellow</asp:ListItem>
+                        <asp:ListItem>Orange</asp:ListItem>
+                        <asp:ListItem>Coral</asp:ListItem>
+                        <asp:ListItem>Pink</asp:ListItem>
+                        <asp:ListItem>Red</asp:ListItem>
+                        <asp:ListItem>Green</asp:ListItem>
+                        <asp:ListItem>Aqua/Green</asp:ListItem>
+                        <asp:ListItem>Purple</asp:ListItem>
+                        <asp:ListItem>Aqua/Blue</asp:ListItem>
+                        <asp:ListItem>Blue</asp:ListItem>
+                        <asp:ListItem>Silver</asp:ListItem>
+                        <asp:ListItem>Grey</asp:ListItem>
+                        <asp:ListItem>Black</asp:ListItem>
+                        <asp:ListItem>White</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style3" >
@@ -82,7 +114,7 @@
                     &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style2">
+                <td class="auto-style12">
                     Length:</td>
                 <td  class="auto-style5">
                     <asp:DropDownList ID="DressLengthDropDownList" runat="server">
@@ -98,7 +130,7 @@
                     Seamstress:</td>
             </tr>
             <tr>
-                <td></td>
+                <td class="auto-style14"></td>
                 <td class="auto-style11"></td>
                 <td class="auto-style11"></td>
                 <td class="auto-style11"></td>
@@ -126,7 +158,7 @@
                     &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style8"></td>
+                <td class="auto-style14"></td>
                 <td class="auto-style5"></td>
                 <td></td>
                 <td class="auto-style9"></td>
@@ -182,6 +214,16 @@
         .auto-style11
         {
             text-align: left;
+        }
+        .auto-style12 {
+            font-size: small;
+            width: 116px;
+        }
+        .auto-style13 {
+            width: 97px;
+        }
+        .auto-style14 {
+            width: 116px;
         }
         </style>
 </asp:Content>

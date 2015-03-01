@@ -9,9 +9,14 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        VolunteerNamesListBox.DataBind();
+        VolunteerRolesDropDownList.DataBind();
     }
     protected void VolunteerNamesListBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void changeRoleButton_Click(object sender, EventArgs e)
     {
 
     }

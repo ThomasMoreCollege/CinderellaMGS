@@ -22,7 +22,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="FirstNameValidator" runat="server"
                      ControlToValidate="FirstTextBox"
-                     ErrorMessage="First Name is required!"><font color="red">*Please enter a first name!</font>
+                     ErrorMessage="First Name is required!" Display="Dynamic"><font color="red">*Please enter a first name!</font>
                      </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3" >
@@ -34,7 +34,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="LastNameValidator" runat="server"
                      ControlToValidate="LastNameTextBox"
-                     ErrorMessage="Last Name is required!"><font color="red">*Please enter a last name!</font>
+                     ErrorMessage="Last Name is required!" Display="Dynamic"><font color="red">*Please enter a last name!</font>
                      </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">
@@ -46,7 +46,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="PhoneNumberValidator" runat="server"
                      ControlToValidate="PhoneNumberTextBox"
-                     ErrorMessage="Phone Number is required!"><font color="red">*Please enter a Phone Number!</font>
+                     ErrorMessage="Phone Number is required!" Display="Dynamic"><font color="red">*Please enter a Phone Number!</font>
                      </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">
@@ -58,7 +58,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="EmailValidator" runat="server"
                      ControlToValidate="EmailTextBox"
-                     ErrorMessage="Email is required!"><font color="red">*Please enter an Email!</font>
+                     ErrorMessage="Email is required!" Display="Dynamic"><font color="red">*Please enter an Email!</font>
                      </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">
@@ -77,7 +77,7 @@
             </tr>
             <tr>     
                 <td><!-- Spacing. --></td>
-                <asp:RegularExpressionValidator ID="rev"
+                <asp:RegularExpressionValidator ID="AppointmentTimeValidator"
                     runat="server" ErrorMessage="Appointment Time must be  valid time! (E.g. 3:45)" 
                     ControlToValidate="AppTimeTextBox0"
                     ValidationExpression="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$">
@@ -139,7 +139,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="NewReferalFirstNameValidator" runat="server"
                      ControlToValidate="NewReferralFirstNameTextBox"
-                     ErrorMessage="Referral First Name is required!"><font color="red">*Please enter a referral first name!</font>
+                     ErrorMessage="Referral First Name is required!" Display="Dynamic"><font color="red">*Please enter a referral first name!</font>
                      </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">
@@ -151,7 +151,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="NewReferalLastNameValidator" runat="server"
                      ControlToValidate="NewReferralLastNameTextBox"
-                     ErrorMessage="Referral Last Name is required!"><font color="red">*Please enter a referral Last name!</font>
+                     ErrorMessage="Referral Last Name is required!" Display="Dynamic"><font color="red">*Please enter a referral Last name!</font>
                      </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">
@@ -163,7 +163,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="NewReferalPhoneValidator" runat="server"
                      ControlToValidate="NewReferralPhoneTextBox"
-                     ErrorMessage="Referral Phone Number is required!"><font color="red">*Please enter a referral phone number!</font>
+                     ErrorMessage="Referral Phone Number is required!" Display="Dynamic"><font color="red">*Please enter a referral phone number!</font>
                      </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">
@@ -175,7 +175,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="NewReferalEmailValidator" runat="server"
                      ControlToValidate="NewReferralEmailTextBox"
-                     ErrorMessage="Referral Email is required!"><font color="red">*Please enter a referral Email!</font>
+                     ErrorMessage="Referral Email is required!" Display="Dynamic"><font color="red">*Please enter a referral Email!</font>
                      </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">
@@ -187,7 +187,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="NewSchoolAgengyValidator" runat="server"
                      ControlToValidate="NewSchoolAgencyTextBox"
-                     ErrorMessage="Referral School/Agency is required!"><font color="red">*Please enter a referral school/agency!</font>
+                     ErrorMessage="Referral School/Agency is required!" Display="Dynamic"><font color="red">*Please enter a referral school/agency!</font>
                      </asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style3">

@@ -13,7 +13,7 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
     }
     protected void SubmitDressButton_Click(object sender, EventArgs e)
     {
-        SearchTextBox.Text = "";
+        searchTextBox.Text = "";
         StrapsCheckBox.Checked = false;
         GeneralMendingCheckBox.Checked = false;
         GeneralTakeinCheckBox.Checked = false;
@@ -23,5 +23,9 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         HemCheckBox.Checked = false;
         notesTextBox.Text = "";
 
+    }
+    protected void SearchShoppingCindButton_Click(object sender, EventArgs e)
+    {
+        ShoppingCinderellasListBox.DataBind();
     }
 }

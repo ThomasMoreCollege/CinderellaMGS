@@ -16,7 +16,11 @@
                 <tr>
                     <td>
                     <asp:ListBox ID="VolunteerNamesListBox" runat="server" DataSourceID="VolunteerDS" DataTextField="LastName" DataValueField="LastName" Height="145px" Width="158px" OnSelectedIndexChanged="VolunteerNamesListBox_SelectedIndexChanged"></asp:ListBox>
-                    <asp:SqlDataSource ID="VolunteerDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT [LastName] FROM [Volunteer]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="VolunteerDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT Volunteer.Lastname, VolunteerRoleRecord.Role_Name
+FROM Volunteer
+	INNER JOIN VolunteerRoleRecord
+		on Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID
+WHERE VolunteerRoleRecord.isCurrent = 'Y'"></asp:SqlDataSource>
                     </td>
                     <td>
                         Default value is the current volunteer role.
@@ -27,7 +31,7 @@
                </tr>
                 <tr>
                     <td>
-                     <asp:Button ID="changeRoleButton" runat="server" Text="Change Role" />
+                     <asp:Button ID="changeRoleButton" runat="server" Text="Change Role" OnClick="changeRoleButton_Click" />
                     </td>
                 </tr>
                 </table>
