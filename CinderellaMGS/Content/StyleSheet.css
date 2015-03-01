@@ -450,6 +450,9 @@ textarea{
 #VolunteerGridView {
     width:100%;
 }
+
+#ClockingTable td{
+}
 @media only screen and (max-width: 768px){
 	
 	body{
