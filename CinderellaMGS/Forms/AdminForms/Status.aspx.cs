@@ -13,7 +13,7 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.AppendHeader("Refresh", 5 + "; URL=Status.aspx");
+        Response.AppendHeader("Refresh", 10 + "; URL=Status.aspx");
         // Various SQL code to update table totals
 
         //Initialize database connection with "DefaultConnection" setup in the web.config
@@ -130,14 +130,12 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
 
         VolunteerShoppingLabel.Text = total.ToString();
 
-        // SQL to count total Volunteers with CurrentStatus 'On Break' and CurrentRole 'Godmother'
+        // SQL to count total Volunteers with CurrentStatus 'On Break'
         VolSQL = "SELECT COUNT (VolunteerID) "
                 + "FROM Volunteer "
                 + "INNER JOIN VolunteerStatusRecord "
                 + "ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID "
-                + "INNER JOIN VolunteerRoleRecord "
-                + "ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID "
-                + "WHERE Status_Name = 'On Break' AND VolunteerStatusRecord.IsCurrent = 'Y' AND Role_Name = 'Godmother' AND VolunteerRoleREcord.IsCurrent = 'Y'";
+                + "WHERE Status_Name = 'On Break' AND VolunteerStatusRecord.IsCurrent = 'Y'";
 
         // Execute query
         SqlCommand comm9 = new SqlCommand(VolSQL, conn);
