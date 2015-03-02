@@ -13,8 +13,8 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Refreshes page every 10 seconds to update information
         Response.AppendHeader("Refresh", 10 + "; URL=Status.aspx");
-        // Various SQL code to update table totals
 
         //Initialize database connection with "DefaultConnection" setup in the web.config
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
@@ -22,12 +22,15 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
         //Open the connection 
         conn.Open();
 
-        // SQL to count total Cinderellas  with CurrentStatus 'Pending'
+        // Creating a variable to hold the current date
+        DateTime today = DateTime.Today.Date;
+
+        // SQL to count total Cinderellas  with CurrentStatus 'Pending' for today
         string CinderSQL = "SELECT COUNT (CinderellaID) "
                 + "FROM Cinderella "
                 + "INNER JOIN CinderellaStatusRecord "
                 + "ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID "
-                + "WHERE Status_Name = 'Pending' AND IsCurrent = 'Y'";
+                + "WHERE Status_Name = 'Pending' AND IsCurrent = 'Y' AND CAST(AppointmentDateTime as DATE) = '" + today + "'";
 
         // Execute query
         SqlCommand comm1 = new SqlCommand(CinderSQL, conn);
@@ -66,7 +69,7 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
                 + "FROM Cinderella "
                 + "INNER JOIN CinderellaStatusRecord "
                 + "ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID "
-                +"WHERE Status_Name = 'Waiting for Package' AND IsCurrent = 'Y'";
+                + "WHERE Status_Name = 'Waiting for Package' AND IsCurrent = 'Y'";
 
         // Execute query
         SqlCommand comm4 = new SqlCommand(CinderSQL, conn);
@@ -74,12 +77,12 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
 
         WaitingForPackageLabel.Text = total.ToString();
 
-        // SQL to count total Cinderellas with CurrentStatus 'Checked Out'
+        // SQL to count total Cinderellas with CurrentStatus 'Checked Out' for today
         CinderSQL = "SELECT COUNT (CinderellaID) "
                 + "FROM Cinderella "
                 + "INNER JOIN CinderellaStatusRecord "
                 + "ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID "
-                + "WHERE Status_Name = 'Checked Out' AND IsCurrent = 'Y'";
+                + "WHERE Status_Name = 'Checked Out' AND IsCurrent = 'Y' AND CAST(AppointmentDateTime as DATE) = '" + today + "'";
 
         // Execute query
         SqlCommand comm5 = new SqlCommand(CinderSQL, conn);
@@ -107,7 +110,7 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
                 + "ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID "
                 + "INNER JOIN VolunteerRoleRecord "
                 + "ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID "
-                + "WHERE Status_Name = 'Ready' AND VolunteerStatusRecord.IsCurrent = 'Y' AND Role_Name = 'Godmother' AND VolunteerRoleREcord.IsCurrent = 'Y'";
+                + "WHERE Status_Name = 'Ready' AND VolunteerStatusRecord.IsCurrent = 'Y' AND Role_Name = 'Godmother' AND VolunteerRoleRecord.IsCurrent = 'Y'";
 
         // Execute query
         SqlCommand comm7 = new SqlCommand(VolSQL, conn);

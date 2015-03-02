@@ -49,25 +49,25 @@
             <th>Total</th>
         </tr>
         <tr>
-            <td>Pending for Today</td>
+            <td>Volunteers Pending for Today</td>
             <td>
                 <asp:Label ID="VolunteerPendingLabel" runat="server" Text="Label"></asp:Label>
             </td>
         </tr>
         <tr>
-            <td>Ready for Cinderella</td>
+            <td>Godmothers Ready for Cinderella</td>
             <td>
                 <asp:Label ID="VolunteerReadyLabel" runat="server" Text="Label"></asp:Label>
             </td>
         </tr>
         <tr>
-            <td>Shopping</td>
+            <td>Godmothers Shopping</td>
             <td>
                 <asp:Label ID="VolunteerShoppingLabel" runat="server" Text="Label"></asp:Label>
             </td>
         </tr>
         <tr>
-            <td>Godmothers On Break</td>
+            <td>Volunteers&nbsp; On Break</td>
             <td>
                 <asp:Label ID="VolunteerOnBreakLabel" runat="server" Text="Label"></asp:Label>
             </td>
