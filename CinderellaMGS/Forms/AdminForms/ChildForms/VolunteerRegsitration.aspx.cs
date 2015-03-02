@@ -62,12 +62,16 @@ public partial class Forms_AdminForms_GodMotherRegsitration : System.Web.UI.Page
         SqlCommand comm1 = new SqlCommand(sql, conn);
         comm1.ExecuteNonQuery();
 
+        // String to retrieve the recently inserted VolunteerID
+        string sqlTwo = "SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY]";
+        SqlCommand comm2 = new SqlCommand(sqlTwo, conn);
+        string newID = comm2.ExecuteScalar().ToString();
 
-       //string sqlTwo = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + totalVolunteers + "', GetDate(), 'Pending', 'Y')";
+        //  SQL string to insert Volunteer into VolunteerStatusRecord with a current status of Pending
+        string sqlThree = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + newID + "', GetDate(), 'Pending', 'Y')";
+        SqlCommand comm3 = new SqlCommand(sqlThree, conn);
+        comm3.ExecuteNonQuery();
 
-        // Execute query
-        //SqlCommand comm2 = new SqlCommand(sqlTwo, conn);
-       // comm2.ExecuteNonQuery();
 
         conn.Close();
 
