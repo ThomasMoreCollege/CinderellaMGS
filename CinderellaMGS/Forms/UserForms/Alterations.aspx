@@ -27,9 +27,16 @@
                     <asp:ListBox ID="CinderellasInAlterationListBox" runat="server" Height="222px" Width="401px"></asp:ListBox>
                 </td>
             </tr>
+            <tr><td class="auto-style15">
+                <asp:Label ID="noSearchLabel" runat="server" Font-Size="Smaller" Text="No Search"></asp:Label>
+                </td><td></td><td>
+                <asp:Label ID="searchLabel" runat="server" Font-Size="Smaller" Text="Search"></asp:Label>
+                </td></tr>
             <tr>
                 <td colspan="4" rowspan="3">
-                    <asp:ListBox ID="shoppingCinderellaListBox" runat="server" AutoPostBack="True" Height="139px" OnSelectedIndexChanged="shoppingCinderellaListBox_SelectedIndexChanged" Width="283px"></asp:ListBox>
+&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="noSearchTextBox" runat="server" Height="134px"></asp:TextBox>
+                    &nbsp;&nbsp;
+                    <asp:ListBox ID="shoppingCinderellaListBox" runat="server" AutoPostBack="True" Height="141px" OnSelectedIndexChanged="shoppingCinderellaListBox_SelectedIndexChanged1" Width="122px"></asp:ListBox>
                 </td>
                 <td class="auto-style10"></td>
             </tr>
@@ -145,7 +152,7 @@
                     Seamstress:</td>
             </tr>
             <tr>
-                <td class="auto-style14"></td>
+                <td class="auto-style15"></td>
                 <td class="auto-style11"></td>
                 <td class="auto-style11"></td>
                 <td class="auto-style11"></td>
@@ -173,7 +180,7 @@
                     &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style14"></td>
+                <td class="auto-style15"></td>
                 <td class="auto-style5"></td>
                 <td></td>
                 <td class="auto-style9"></td>
@@ -232,13 +239,13 @@
         }
         .auto-style12 {
             font-size: small;
-            width: 116px;
+            width: 120px;
         }
         .auto-style13 {
             width: 97px;
         }
-        .auto-style14 {
-            width: 116px;
+        .auto-style15 {
+            width: 120px;
         }
         </style>
 </asp:Content>

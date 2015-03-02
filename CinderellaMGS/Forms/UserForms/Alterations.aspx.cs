@@ -18,6 +18,7 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
     protected void searchShoppingCindButton_Click1(object sender, EventArgs e)
     {
+
         //Initialize database connection with "DefaultConnection" setup in the web.config
         SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
@@ -42,15 +43,20 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         conn1.Close();
     }
 
-    protected void shoppingCinderellaListBox_SelectedIndexChanged(object sender, EventArgs e)
+  
+    protected void AltertationsCheckinButton_Click(object sender, EventArgs e)
+    {
+        DressSizeDropDownList.Enabled = false;
+        DressColorDropDownList.Enabled = false;
+        DressLengthDropDownList.Enabled = false;
+        AltertationsCheckinButton.Enabled = false;
+        AltertationsCheckinButton.Enabled = false;
+    }
+    protected void shoppingCinderellaListBox_SelectedIndexChanged1(object sender, EventArgs e)
     {
         DressSizeDropDownList.Enabled = true;
         DressColorDropDownList.Enabled = true;
         DressLengthDropDownList.Enabled = true;
         AltertationsCheckinButton.Enabled = true;
-    }
-    protected void AltertationsCheckinButton_Click(object sender, EventArgs e)
-    {
-
     }
 }
