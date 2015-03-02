@@ -54,6 +54,7 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
 
         roleDropDownList.Enabled = false;
         currentRoleDisplay.Text = "---";
+        changeRoleButton.Enabled = false;
         
     }
 

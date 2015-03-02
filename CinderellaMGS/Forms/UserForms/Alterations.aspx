@@ -16,10 +16,11 @@
                 <td class="auto-style12">Search Last Name:</td>
                 
                 <td class="auto-style3">
-                    <asp:TextBox ID="searchTextBox" runat="server" CssClass="auto-style13"></asp:TextBox>
+                    <asp:TextBox ID="searchTextBox" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style9">
-                    <asp:Button ID="SearchShoppingCindButton" runat="server" Text="Search" CssClass="auto-style13" OnClick="SearchShoppingCindButton_Click" /></td>
+                    <asp:Button ID="searchShoppingCindButton" runat="server" OnClick="searchShoppingCindButton_Click1" Text="Search" />
+                </td>
                 <td class="auto-style10"></td>
                 <td></td>
                 <td colspan="2" rowspan="3">
@@ -28,13 +29,7 @@
             </tr>
             <tr>
                 <td colspan="4" rowspan="3">
-                    <asp:ListBox ID="ShoppingCinderellasListBox" runat="server" Height="206px" Width="400px" DataSourceID="CinderellaShoppingDS" DataTextField="FirstName" DataValueField="FirstName"></asp:ListBox>
-                    <asp:SqlDataSource ID="CinderellaShoppingDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT Cinderella.FirstName
-FROM Cinderella
-INNER JOIN CinderellaStatusRecord
-	on Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID
-WHERE CinderellaStatusRecord.Status_Name = 'Shopping' AND CinderellaStatusRecord.isCurrent = 'Y'
-"></asp:SqlDataSource>
+                    <asp:ListBox ID="shoppingCinderellaListBox" runat="server" AutoPostBack="True" Height="139px" OnSelectedIndexChanged="shoppingCinderellaListBox_SelectedIndexChanged" Width="283px"></asp:ListBox>
                 </td>
                 <td class="auto-style10"></td>
             </tr>
@@ -52,7 +47,7 @@ WHERE CinderellaStatusRecord.Status_Name = 'Shopping' AND CinderellaStatusRecord
             <tr>
                 <td class="auto-style12">Size :</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DressSizeDropDownList" runat="server" style="text-align: center">
+                    <asp:DropDownList ID="DressSizeDropDownList" runat="server" style="text-align: center" Enabled="False">
                         <asp:ListItem>2</asp:ListItem>
                         <asp:ListItem>4</asp:ListItem>
                         <asp:ListItem>6</asp:ListItem>
@@ -84,7 +79,7 @@ WHERE CinderellaStatusRecord.Status_Name = 'Shopping' AND CinderellaStatusRecord
                 <td class="auto-style12">
                     Color:</td>
                 <td>
-                    <asp:DropDownList ID="DressColorDropDownList" runat="server">
+                    <asp:DropDownList ID="DressColorDropDownList" runat="server" Enabled="False" style="width: 95px">
                         <asp:ListItem>Brown</asp:ListItem>
                         <asp:ListItem>Yellow</asp:ListItem>
                         <asp:ListItem>Orange</asp:ListItem>
@@ -117,7 +112,27 @@ WHERE CinderellaStatusRecord.Status_Name = 'Shopping' AND CinderellaStatusRecord
                 <td class="auto-style12">
                     Length:</td>
                 <td  class="auto-style5">
-                    <asp:DropDownList ID="DressLengthDropDownList" runat="server">
+                    <asp:DropDownList ID="DressLengthDropDownList" runat="server" Enabled="False">
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>4</asp:ListItem>
+                        <asp:ListItem>6</asp:ListItem>
+                        <asp:ListItem>8</asp:ListItem>
+                        <asp:ListItem>10</asp:ListItem>
+                        <asp:ListItem>12</asp:ListItem>
+                        <asp:ListItem>14</asp:ListItem>
+                        <asp:ListItem>16</asp:ListItem>
+                        <asp:ListItem>18</asp:ListItem>
+                        <asp:ListItem>20</asp:ListItem>
+                        <asp:ListItem>22</asp:ListItem>
+                        <asp:ListItem>24</asp:ListItem>
+                        <asp:ListItem>26</asp:ListItem>
+                        <asp:ListItem>28</asp:ListItem>
+                        <asp:ListItem>30</asp:ListItem>
+                        <asp:ListItem>32</asp:ListItem>
+                        <asp:ListItem>34</asp:ListItem>
+                        <asp:ListItem>36</asp:ListItem>
+                        <asp:ListItem>38</asp:ListItem>
+                        <asp:ListItem>40</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td  class="auto-style3"></td>
@@ -146,7 +161,7 @@ WHERE CinderellaStatusRecord.Status_Name = 'Shopping' AND CinderellaStatusRecord
             </tr>
             <tr>
                 <td colspan="2" class="auto-style8">
-                    <asp:Button ID="AltertationsCheckinButton" runat="server" Text="Check-In to Altertations" style="text-align: center" />
+                    <asp:Button ID="AltertationsCheckinButton" runat="server" Text="Check-In to Altertations" style="text-align: center" Enabled="False" OnClick="AltertationsCheckinButton_Click" />
                 </td>
                 <td></td>
                 <td class="auto-style9">&nbsp;</td>
@@ -167,7 +182,7 @@ WHERE CinderellaStatusRecord.Status_Name = 'Shopping' AND CinderellaStatusRecord
                     <asp:CheckBox ID="HemCheckBox" runat="server" Text="Hem" CssClass="auto-style13" style="font-size: small" />
                     </td>
                 <td>
-                    <asp:Button ID="SubmitDressButton" runat="server" Text="Submit" OnClick="SubmitDressButton_Click" />
+                    <asp:Button ID="submitDressButton" runat="server" Text="Submit" />
                 </td>
             </tr>
             
