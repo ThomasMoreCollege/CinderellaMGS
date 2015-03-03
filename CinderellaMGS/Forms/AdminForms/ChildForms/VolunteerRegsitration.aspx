@@ -117,7 +117,7 @@
             <tr>
                 <td class="auto-style3">Role For Friday:</td>
                 <td>
-                    <asp:DropDownList ID="FridayRolseDropDownList" runat="server">
+                    <asp:DropDownList ID="FridayRolesDropDownList" runat="server">
                         <asp:ListItem>Altertations</asp:ListItem>
                         <asp:ListItem>Check-In</asp:ListItem>
                         <asp:ListItem>Check-Out</asp:ListItem>

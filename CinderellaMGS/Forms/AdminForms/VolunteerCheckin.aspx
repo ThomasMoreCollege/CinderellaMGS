@@ -29,7 +29,9 @@
                                 FROM [Volunteer] 
                                 INNER JOIN VolunteerStatusRecord 
                                     ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID 
-                                WHERE Status_Name = 'Pending' AND IsCurrent = 'Y'
+                                INNER JOIN VolunteerShiftRecord 
+                                    ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
+                                WHERE Status_Name = 'Pending' AND IsCurrent = 'Y' AND Shift_Name = 'Friday'
                                 ORDER BY [LastName]"></asp:SqlDataSource>
         </div>
         <p>

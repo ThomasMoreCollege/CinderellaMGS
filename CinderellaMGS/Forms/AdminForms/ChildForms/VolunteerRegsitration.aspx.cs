@@ -72,6 +72,42 @@ public partial class Forms_AdminForms_GodMotherRegsitration : System.Web.UI.Page
         SqlCommand comm3 = new SqlCommand(sqlThree, conn);
         comm3.ExecuteNonQuery();
 
+        // Checking if a Role is selected for the Friday Shift
+        if (FridayRolesDropDownList.SelectedValue != "Not Volunteering")
+        {
+            // Creating a variable to hold the role for Friday
+            string FriRole = FridayRolesDropDownList.SelectedValue;
+
+            // If Personal Shopper is selected, making the role Godmother
+            if (FriRole == "Personal Shopper")
+            {
+                FriRole = "Godmother";
+            }
+            // String to INSERT Volunteer ShiftRecord for Friday
+            string sqlFour = "INSERT INTO VolunteerShiftRecord (Volunteer_ID, Shift_Name, Role_Name) "
+                            + "VALUES('" + newID + "', 'Friday', '" + FriRole + "')";
+            SqlCommand comm4 = new SqlCommand(sqlFour, conn);
+            comm4.ExecuteNonQuery();
+        }
+
+        // Checking if a Role is selected for the Saturday Shift
+        if (SaturdayRolesDropDownList.SelectedValue != "Not Volunteering")
+        {
+            // Creating a variable to hold the role for Friday
+            string SatRole = SaturdayRolesDropDownList.SelectedValue;
+
+            // If Personal Shopper is selected, making the role Godmother
+            if (SatRole == "Personal Shopper")
+            {
+                SatRole = "Godmother";
+            }
+            // String to INSERT Volunteer ShiftRecord for Saturday
+            string sqlFive = "INSERT INTO VolunteerShiftRecord (Volunteer_ID, Shift_Name, Role_Name) "
+                            + "VALUES('" + newID + "', 'Saturday', '" + SatRole + "')";
+            SqlCommand comm5 = new SqlCommand(sqlFive, conn);
+            comm5.ExecuteNonQuery();
+        }
+
 
         conn.Close();
 

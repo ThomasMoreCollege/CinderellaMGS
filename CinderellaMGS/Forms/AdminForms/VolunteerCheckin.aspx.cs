@@ -49,21 +49,33 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
             conn.Open();
 
             // SQL string to INSERT Waiting status into StatusRecord
-            string sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
-                            + "VALUES ('" + SelectedVolunteerID + "', '" + now + "', 'Ready', 'Y')";
-
+            string sql = "UPDATE VolunteerStatusRecord "
+                    + "SET EndTime = '" + now + "', IsCurrent = 'N' "
+                    + "WHERE Volunteer_ID = '" + SelectedVolunteerID + "' AND IsCurrent = 'Y'";
             // Execute query
             SqlCommand comm1 = new SqlCommand(sql, conn);
             comm1.ExecuteNonQuery();
 
             // SQL string to UPDATE Pending status 
-            sql = "UPDATE VolunteerStatusRecord "
-                    + "SET EndTime = '" + now + "', IsCurrent = 'N' "
-                    + "WHERE Volunteer_ID = '" + SelectedVolunteerID + "' AND IsCurrent = 'Y'";
-
+            sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
+                    + "VALUES ('" + SelectedVolunteerID + "', '" + now + "', 'Ready', 'Y')";
             // Execute query
             SqlCommand comm2 = new SqlCommand(sql, conn);
             comm2.ExecuteNonQuery();
+
+            // SQL string to SELECT the Volunteer's Role for this Shift
+            sql = "SELECT Role_Name "
+                    + "FROM VolunteerShiftRecord "
+                    + "WHERE Shift_Name = 'Friday' AND Volunteer_ID = '" + SelectedVolunteerID + "'";
+            SqlCommand comm3 = new SqlCommand(sql, conn);
+            string ShiftRole = comm3.ExecuteScalar().ToString();
+
+            // SQL string to INSERT the Volunteer's RoleRecord 
+            sql = "INSERT INTO VolunteerRoleRecord(Volunteer_ID, StartTime, Role_Name, IsCurrent) "
+                    + "VALUES ('" + SelectedVolunteerID + "', '" + now + "', '" + ShiftRole + "', 'Y')";
+            // Execute query
+            SqlCommand comm4 = new SqlCommand(sql, conn);
+            comm4.ExecuteNonQuery();
 
             //REMEMBER TO CLOSE CONNECTION!!
             conn.Close();
