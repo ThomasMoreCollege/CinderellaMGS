@@ -36,6 +36,12 @@
             </td>
         </tr>
         <tr>
+            <td>Dress In Alterations</td>
+            <td>
+                <asp:Label ID="DressAlterationsLabel" runat="server" Text="Label"></asp:Label>
+            </td>
+        </tr>
+        <tr>
             <td>Checked Out</td>
             <td>
                 <asp:Label ID="CinderellaCheckedOutLabel" runat="server" Text="Label"></asp:Label>
@@ -89,12 +95,6 @@
             <td>Checked Out</td>
             <td>
                 <asp:Label ID="PackageCheckedOutLabel" runat="server" Text="Label"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td>Dresses In Alterations</td>
-            <td>
-                <asp:Label ID="DressAlterationsLabel" runat="server" Text="Label"></asp:Label>
             </td>
         </tr>
     </table>
