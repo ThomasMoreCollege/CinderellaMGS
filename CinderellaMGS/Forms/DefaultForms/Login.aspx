@@ -12,7 +12,6 @@
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
     <br />
-    <form runat="server"> 
     <table id="LoginTable "style="border: 1px solid black; width:45%;"">
         <tr>
             <td colspan="2">
@@ -47,7 +46,6 @@
             </td>
         </tr>
     </table>
-    </form>
     <br />
 </asp:Content>
 

@@ -6,7 +6,6 @@
     <h2>Package Checkout</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
         <div style ="height:600px; width:1345px; overflow:auto;">
             <asp:GridView ID="CinderellaPackageGridView" runat="server" 
                 AllowSorting="True" 
@@ -56,6 +55,5 @@
             <asp:label runat="server" Visible =" false" ForeColor="Red" ID="SelectionValidationLabel">*Please select a Cinderella's Package</asp:label><br />
             <asp:Button ID="CheckOutButton" runat="server" Text="Check-Out Package" OnClick="CheckOutButton_Click" />
         </p>
-    </form>
 </asp:Content>
 

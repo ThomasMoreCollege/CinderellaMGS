@@ -5,8 +5,6 @@
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
 
-    <form id="form1" runat="server">
-
     <table id="VolMangTable" style="width:60%;">
         <tr>
             <td class="auto-style7">
@@ -27,8 +25,6 @@
             <td class="auto-style8">Remove a registered volunteer.</td>
         </tr>
     </table>
-
-    </form>
 
 </asp:Content>
 

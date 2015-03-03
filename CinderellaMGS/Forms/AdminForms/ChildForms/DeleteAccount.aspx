@@ -4,8 +4,6 @@
     <h2>Delete Account</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
-
-    <form id="form1" runat="server">
         
         <table id="DeleteAcctTable" style="width:70%;">
             <tr>
@@ -39,9 +37,6 @@
                 <td><asp:Button ID="DeleteButton" runat="server" Text="Delete Account" OnClick="DeleteButton_Click" /></td>
             </tr>
         </table>
-
-        
-    </form>
 
 </asp:Content>
 

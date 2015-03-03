@@ -14,6 +14,7 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        (this.Master as MasterPage).ManageMasterLayout();
     }
 
 

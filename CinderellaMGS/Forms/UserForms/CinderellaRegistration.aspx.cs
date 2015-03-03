@@ -13,20 +13,7 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Checking if a session is running
-        if ((Session["CurrentUser"] == null) || (Session["CurrentUser"].ToString()) != "Admin")
-        {
-            // Sets admin menu to not visible
-            (this.Master as MasterPage).RevealAdmin(false);
-        }
-        else if ((Session["CurrentUser"].ToString()) == "Admin")
-        {
-            // Sets admin menu links to visible for admin access
-            (this.Master as MasterPage).RevealAdmin(true);
-        }
-
-        referralDropDownList.Enabled = false;
-        
+        (this.Master as MasterPage).ManageMasterLayout();   
     }
     
    

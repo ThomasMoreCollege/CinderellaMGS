@@ -10,7 +10,6 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
         <table  id="AppMngTable">
             <tr>
                 <th>Cinderella</th>
@@ -92,8 +91,6 @@
             <asp:Button ID="ChangeAppointmentButton" runat="server" OnClick="ChangeAppointmentButton_Click" Text="Change Appointment Time" />
 
         </p>
-        
-    </form>
 
 </asp:Content>
 

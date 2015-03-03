@@ -13,6 +13,8 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        (this.Master as MasterPage).ManageMasterLayout();
+
         // Refreshes page every 10 seconds to update information
         Response.AppendHeader("Refresh", 10 + "; URL=Status.aspx");
 

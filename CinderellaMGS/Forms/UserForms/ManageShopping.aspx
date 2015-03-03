@@ -4,8 +4,6 @@
     <h2>Manage Shopping</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
-
-    <form id="form1" runat="server">
         <table style="width:100%;">
             <tr>
                 <td class="auto-style2"><strong>Paired Automatically</strong></td>
@@ -66,7 +64,6 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
-    </form>
 
 </asp:Content>
 

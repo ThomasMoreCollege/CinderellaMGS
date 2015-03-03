@@ -4,7 +4,6 @@
     <h2>Delete Volunteer</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
     <table id="DeleteVolTable"style="width:80%;">
         <tr>
             <th class="auto-style1">
@@ -87,7 +86,6 @@
             </td>
         </tr>
     </table>
-    </form>
 </asp:Content>
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="head">

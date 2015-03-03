@@ -14,7 +14,7 @@ public partial class Forms_AdminForms_GodmotherClocking : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        (this.Master as MasterPage).ManageMasterLayout();
     }
     protected void TakeOffBreakButton_Click(object sender, EventArgs e)
     {

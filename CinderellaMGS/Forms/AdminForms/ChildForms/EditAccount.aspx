@@ -4,8 +4,6 @@
     <h2>Edit Account</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
-        
         <table id="EditAcctTable" style="width:85%;">
             <tr>
                 <th rowspan="6" class="auto-style5"><asp:ListBox ID="CurrentAcctsListBox" runat="server" Height="166px" Width="147px" DataSourceID="AccountsToBeEdittedSqlDataSource" DataTextField="Username" DataValueField="Username" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
@@ -180,7 +178,6 @@
                 </td>
             </tr>
         </table>
-    </form>
 </asp:Content>
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="head">

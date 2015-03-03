@@ -11,7 +11,7 @@ public partial class Forms_AdminForms_ChildForms_DeleteAccount : System.Web.UI.P
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        (this.Master as MasterPage).ManageMasterLayout();
     }
     protected void DeleteButton_Click(object sender, EventArgs e)
     {

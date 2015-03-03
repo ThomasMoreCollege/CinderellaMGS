@@ -12,7 +12,7 @@ public partial class Forms_AdminForms_ChildForms_DeleteVolunteer : System.Web.UI
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        (this.Master as MasterPage).ManageMasterLayout();
     }
     protected void VolunteerGridView_SelectedIndexChanged(object sender, EventArgs e)
     {

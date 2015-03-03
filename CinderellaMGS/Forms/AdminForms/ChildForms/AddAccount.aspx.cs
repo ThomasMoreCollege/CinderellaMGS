@@ -13,7 +13,7 @@ public partial class Forms_AdminForms_ChildForms_AddAccount : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        (this.Master as MasterPage).ManageMasterLayout();
     }
     protected void CreateAccButton_Click(object sender, EventArgs e)
     {
@@ -28,7 +28,7 @@ public partial class Forms_AdminForms_ChildForms_AddAccount : System.Web.UI.Page
         int errorCounter = 0;
 
         //Initialize a string variable to hold a query
-        string checkUserNameInput = "SELECT count(*) FROM Accounts WHERE Username='" + NewUserNameTextBox.Text + "'";
+        string checkUserNameInput = "SELECT count(*) FROM Accounts WHERE Username='" + NewUserNameTextBox.Text.Trim() + "'";
 
         //Execute query 
         SqlCommand com1 = new SqlCommand(checkUserNameInput, conn1);
@@ -37,7 +37,7 @@ public partial class Forms_AdminForms_ChildForms_AddAccount : System.Web.UI.Page
         int validUserLogin = Convert.ToInt32(com1.ExecuteScalar().ToString());
 
         //Check if username textbox is empty
-        if (NewUserNameTextBox.Text == string.Empty)
+        if (NewUserNameTextBox.Text.Trim() == string.Empty)
         {
             UserNameErrorLabel.Text = "Please create a username.";
             UserNameErrorLabel.Visible = true;
@@ -86,8 +86,8 @@ public partial class Forms_AdminForms_ChildForms_AddAccount : System.Web.UI.Page
                 SqlCommand insertNewAccount = new SqlCommand(addNewUser, conn2);
 
                 //Add values to variables in the query
-                insertNewAccount.Parameters.AddWithValue("@Uname", NewUserNameTextBox.Text);
-                insertNewAccount.Parameters.AddWithValue("@Upassword", PasswordTextBox.Text);
+                insertNewAccount.Parameters.AddWithValue("@Uname", NewUserNameTextBox.Text.Trim());
+                insertNewAccount.Parameters.AddWithValue("@Upassword", PasswordTextBox.Text.Trim());
 
                 if (AccountTypesRadioButtonList.Items[0].Selected == true)
                 {

@@ -5,7 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="HeaderTitle" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
         <div id="AddAcctTable" style="width: 86%; float: left; height: 397px;">
             <table id="NewUserTable" style="width: 100%;">
                 <tr>
@@ -44,6 +43,5 @@ WHERE VolunteerRoleRecord.isCurrent = 'Y'"></asp:SqlDataSource>
                 </tr>
                 </table>
                 </div>
-    </form>
 </asp:Content>
 

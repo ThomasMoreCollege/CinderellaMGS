@@ -9,6 +9,6 @@ public partial class Forms_AdminForms_ManageVolunteers : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        (this.Master as MasterPage).ManageMasterLayout();
     }
 }

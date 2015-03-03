@@ -4,7 +4,6 @@
     <h2>Manual Pairing</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server" >
         <table id="ManualPairTable" border="1" style="width:100%;">
             <tr>
                 <th>Cinderellas</th>
@@ -69,7 +68,6 @@
                 <td colspan="2"><asp:Button ID="MatchButton" runat="server" Text="Match!" OnClick="MatchButton_Click" /></td>
             </tr>
         </table>
-    </form>
 </asp:Content>
 
 

@@ -4,8 +4,6 @@
     <h2>Alterations</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
-
-    <form id="form1" runat="server">
         <table style="width:100%;">
             <tr>
                 <td colspan="4" class="auto-style1" ><strong>Cinderelas Currently Shopping</strong></td>
@@ -192,7 +190,6 @@ WHERE VolunteerRoleRecord.Role_Name = 'Alterations' AND VolunteerRoleRecord.IsCu
             </tr>
             
         </table>
-    </form>
 
 </asp:Content>
 

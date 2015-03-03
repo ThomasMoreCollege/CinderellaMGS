@@ -5,7 +5,6 @@
     <h2>Automated Pairings</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
         <table id="AutoPairTable">
             <tr>
                 <th>Godmothers</th>
@@ -20,7 +19,6 @@
                 </td>
             </tr>
         </table>
-    </form>
 </asp:Content>
 
 <asp:Content ID="Content4" runat="server" contentplaceholderid="head">

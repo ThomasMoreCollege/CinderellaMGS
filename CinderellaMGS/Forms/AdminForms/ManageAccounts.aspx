@@ -5,7 +5,6 @@
     <h2>Account Manager</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
     <table id="AccMngTable" style="width:60%;">
         <tr> 
             <td>
@@ -32,7 +31,6 @@
             <td class="auto-style2">Manage the various volunteer roles.</td>
         </tr>
     </table>
-    </form>
 </asp:Content>
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="head">

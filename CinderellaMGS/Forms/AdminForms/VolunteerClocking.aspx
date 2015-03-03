@@ -4,8 +4,6 @@
     <h2>Volunteer Clockin/Clockout</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-
-    <form id="form1" runat="server">
         <table id="ClockingTable">
             <tr>
                 <th>Volunteers on Break</th>
@@ -74,6 +72,5 @@
                     <asp:Button ID="SendOnBreakButton" runat="server" Text="Send on Break" OnClick="SendOnBreakButton_Click" />
                 </td>
             </tr>
-        </table>          
-    </form>
+        </table>   
 </asp:Content>

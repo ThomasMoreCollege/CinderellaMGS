@@ -5,8 +5,6 @@
 </asp:Content>
 
 <asp:Content runat="server" ID="MainContent" ContentPlaceHolderID="MainContent">
-
-    <form id="form1" runat="server">
         <div style ="height:600px; width:650px; overflow:auto;">
             <asp:GridView ID="VolunteerGridView" runat="server" 
                 AllowSorting="True" 
@@ -37,7 +35,6 @@
         <p>
             <asp:Button ID="CheckInButton" runat="server" OnClick="CheckinButton_Click" Text="Check-In" Width="70px" />
         </p>
-    </form>
 
 </asp:Content>
 

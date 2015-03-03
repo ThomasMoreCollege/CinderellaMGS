@@ -13,7 +13,7 @@ public partial class Forms_AdminForms_ManualPairing : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        (this.Master as MasterPage).ManageMasterLayout();
     }
     protected void MatchButton_Click(object sender, EventArgs e)
     {

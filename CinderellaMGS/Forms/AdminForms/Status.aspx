@@ -5,7 +5,6 @@
     <h2>Statuses</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
     <table id="CinderellaStatusTable">
         <tr>
             <th>Cinderella Status</th>
@@ -98,6 +97,5 @@
             </td>
         </tr>
     </table>
-</form>
 </asp:Content>
 

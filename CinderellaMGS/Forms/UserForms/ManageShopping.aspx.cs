@@ -9,6 +9,6 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        (this.Master as MasterPage).ManageMasterLayout();
     }
 }

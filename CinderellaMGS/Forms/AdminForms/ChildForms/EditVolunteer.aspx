@@ -3,9 +3,7 @@
 <asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitle" Runat="Server">
     <h2>Edit Volunteer</h2>
 </asp:Content>
-<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
-        
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">        
         <table id="EditVolunTable" style="width:100%;">
             <tr>
                 <th >
@@ -167,7 +165,6 @@
                 </td>
             </tr>
         </table>
-    </form>
 </asp:Content>
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="head">

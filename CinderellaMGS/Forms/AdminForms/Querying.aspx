@@ -4,8 +4,6 @@
     <h2>Querying</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-
-    <form id="form1" runat="server">
         <table id="QueryTable">
             <tr>
                 <td colspan ="3">
@@ -26,9 +24,6 @@
                 </td>
             </tr>
         </table>
-       
-    </form>
-
 </asp:Content>
 
 <asp:Content ID="Content4" runat="server" contentplaceholderid="head">

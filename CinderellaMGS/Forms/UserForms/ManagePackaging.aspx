@@ -4,7 +4,6 @@
     <h2>Manage Packaging</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
 
     <table id="PackMangTable" style="width:60%;">
         <tr>
@@ -20,7 +19,5 @@
             <td class="auto-style8">Marks a package as ready to be sent out</td>
         </tr>
     </table>
-
-    </form>
 </asp:Content>
 

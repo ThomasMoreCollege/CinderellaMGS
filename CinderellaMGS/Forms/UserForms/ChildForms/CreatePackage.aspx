@@ -4,8 +4,6 @@
     <h2>Create Package</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-
-    <form id="form1" runat="server">
         <div>
             <asp:Label runat="server" forecolor="Red" ID="CinderellaValidator" Visible="False">*Please select a Cinderella</asp:Label><br />
 
@@ -146,8 +144,6 @@
                 <td><asp:Button ID="CheckoutButton" runat="server" Text="Checkout" OnClick="CheckoutButton_Click" /></td>
             </tr>
         </table>
-
-    </form>
 
 </asp:Content>
 

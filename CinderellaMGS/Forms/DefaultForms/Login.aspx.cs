@@ -13,27 +13,7 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        if (IsPostBack)
-        {
-        
-        }
-
-
-        // Checking if a session is running
-        if ((Session["CurrentUser"] == null) || (Session["CurrentUser"].ToString()) != "Admin")
-        {
-            // Sets admin menu to not visible
-            (this.Master as MasterPage).RevealAdmin(false);
-            (this.Master as MasterPage).RevealAllUserFeatures(false);
-        }
-        else if ((Session["CurrentUser"].ToString()) == "Admin")
-        {
-            // Sets admin menu links to visible for admin access
-            (this.Master as MasterPage).RevealAdmin(true);
-            (this.Master as MasterPage).RevealAllUserFeatures(true);
-        }
-
+        (this.Master as MasterPage).ManageMasterLayout();
     }
 
     protected void LoginButton_Click(object sender, EventArgs e)
@@ -61,9 +41,19 @@ public partial class Login : System.Web.UI.Page
         }
         else
         {
-            // Sets up the session for keeping track of username and directs to HomePage
+            //Query to retrieve the account type
+            string acctTypeQuery = "SELECT Account_Type FROM Accounts WHERE Username='" + UsernameTextBox.Text + "' AND Password='" + PasswordTextBox.Text + "'";
+            
+            //Execute query 
+            SqlCommand com2 = new SqlCommand(acctTypeQuery, conn);
+
+            //Store account type into a string variable
+            string acctType = com2.ExecuteScalar().ToString();
+
+            // Sets up the session for keeping track of username and account type and re-directs to HomePage
             LoginErrorLabel.Visible = false;
             Session["CurrentUser"] = UsernameTextBox.Text;
+            Session["CurrentAccType"] = acctType;
             Response.Redirect("HomePage.aspx");
         }
 

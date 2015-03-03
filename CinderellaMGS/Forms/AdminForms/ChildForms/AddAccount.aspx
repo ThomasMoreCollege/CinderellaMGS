@@ -5,7 +5,6 @@
     <h2>Add Account</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
             <div id="AddAcctTable" style="width: 40%; float: left;">
                 <table id="NewUserTable" style="width: 100%;">
                     <tr>
@@ -119,7 +118,6 @@
                     </tr>
                 </table>
             </div>
-    </form>
 </asp:Content>
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="head">

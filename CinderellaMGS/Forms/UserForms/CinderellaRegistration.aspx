@@ -5,7 +5,6 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <form id="form1" runat="server">
         
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="errorLabel" headertext="There were errors on the page:" />
         <table style="width:50%;" id="RegistrationTable">
@@ -211,8 +210,6 @@
                 </td>
             </tr>
         </table>
-            
-</form>
 </asp:Content>
 
 <asp:Content ID="Content4" runat="server" contentplaceholderid="head">
