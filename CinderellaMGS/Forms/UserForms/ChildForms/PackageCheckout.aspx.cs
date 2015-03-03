@@ -39,6 +39,8 @@ public partial class Forms_UserForms_ChildForms_PackageCheckout : System.Web.UI.
 
             // Creating a variable to hold a string of the Cinderella's ID
             string SelectedPackageCinderellaID = CinderellaPackageGridView.SelectedValue.ToString();
+            // Creating a variable to hold the current time
+            string now = DateTime.Now.ToString();
 
             //Initialize database connection with "DefaultConnection" setup in the web.config
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
@@ -52,6 +54,23 @@ public partial class Forms_UserForms_ChildForms_PackageCheckout : System.Web.UI.
             // Execute query
             SqlCommand comm1 = new SqlCommand(sql, conn);
             comm1.ExecuteNonQuery();
+
+            // SQL string to UPDATE Cinderella 'Waiting' status to not current
+            sql = "UPDATE CinderellaStatusRecord "
+                    + "SET IsCurrent = 'N', EndTime = '" + now + "' "
+                    + "WHERE Cinderella_ID = '" + SelectedPackageCinderellaID + "' AND IsCurrent = 'Y'";
+
+            // Execute query
+            SqlCommand comm2 = new SqlCommand(sql, conn);
+            comm2.ExecuteNonQuery();
+
+            // SQL string to INSERT Cinderella 'Checked Out' status to StatusRecord
+            sql = "INSERT INTO CinderellaStatusRecord(Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+                    + "VALUES ('" + SelectedPackageCinderellaID + "', '" + now + "', 'Checked Out', 'Y')";
+
+            // Execute query
+            SqlCommand comm3 = new SqlCommand(sql, conn);
+            comm3.ExecuteNonQuery();
 
             //REMEMBER TO CLOSE CONNECTION!!
             conn.Close();

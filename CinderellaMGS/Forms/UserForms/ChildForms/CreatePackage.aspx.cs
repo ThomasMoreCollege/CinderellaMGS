@@ -103,28 +103,35 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             comm1.ExecuteNonQuery();
 
             // SQL string to UPDATE Cinderella status 
-            sql = "UPDATE CinderellaStatusRecord SET EndTime = '" + now + "', IsCurrent = 'N' WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
+            sql = "UPDATE CinderellaStatusRecord "
+                    + "SET EndTime = '" + now + "', IsCurrent = 'N' "
+                    + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
 
             // Execute query
             SqlCommand comm2 = new SqlCommand(sql, conn);
             comm2.ExecuteNonQuery();
 
-            // SQL string to INSERT Waiting status into StatusRecord
-            sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + SelectedCinderellaID + "', '" + now + "', 'Waiting for Package', 'Y')";
+            // SQL string to INSERT Waiting status into CinderellaStatusRecord
+            sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+                    + "VALUES ('" + SelectedCinderellaID + "', '" + now + "', 'Waiting for Package', 'Y')";
 
             // Execute query
             SqlCommand comm3 = new SqlCommand(sql, conn);
             comm3.ExecuteNonQuery();
             
-            // SQL string to SELECT volunteer ID from selected Cinderella and assign it to a varirable
-            sql = "SELECT Volunteer_ID FROM Cinderella WHERE CinderellaID = '" + SelectedCinderellaID + "'";
+            // SQL string to SELECT Volunteer ID from selected Cinderella and assign it to a varirable
+            sql = "SELECT Volunteer_ID "
+                    + "FROM Cinderella "
+                    + "WHERE CinderellaID = '" + SelectedCinderellaID + "'";
             
             // Execute query
             SqlCommand comm4 = new SqlCommand(sql, conn);
             string GodmotherID = comm4.ExecuteScalar().ToString();
 
             // SQL string to UPDATE Godmother status 
-            sql = "UPDATE VolunteerStatusRecord SET EndTime = '" + now + "', IsCurrent = 'N' WHERE Volunteer_ID = '" + GodmotherID + "' AND IsCurrent = 'Y'";
+            sql = "UPDATE VolunteerStatusRecord "
+                    + "SET EndTime = '" + now + "', IsCurrent = 'N' "
+                    + "WHERE Volunteer_ID = '" + GodmotherID + "' AND IsCurrent = 'Y'";
            
 
             // Execute query
@@ -132,7 +139,8 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             comm5.ExecuteNonQuery();
 
             // SQL string to INSERT On Break status into StatusRecord
-            sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + GodmotherID + "', '" + now + "', 'On Break', 'Y')";
+            sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
+                    + "VALUES ('" + GodmotherID + "', '" + now + "', 'On Break', 'Y')";
 
             // Execute query
             SqlCommand comm6 = new SqlCommand(sql, conn);
