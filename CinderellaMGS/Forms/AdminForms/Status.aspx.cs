@@ -94,12 +94,10 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
 
         CinderellaCheckedOutLabel.Text = total.ToString();
 
-        // SQL to count total Volunteers with CurrentStatus 'Pending' and have a shift today
-        string VolSQL = "SELECT COUNT (VolunteerStatusRecord.Volunteer_ID) "
+        // SQL to count total Volunteers with CurrentStatus 'Pending'
+        string VolSQL = "SELECT COUNT (Volunteer_ID) "
                 + "FROM VolunteerStatusRecord "
-                + "INNER JOIN VolunteerShiftRecord "
-                + "ON VolunteerStatusRecord.Volunteer_ID = VolunteerShiftRecord.Volunteer_ID "
-                + "WHERE Status_Name = 'Pending' AND IsCurrent = 'Y' AND Shift_Name = 'Friday'";
+                + "WHERE Status_Name = 'Pending' AND IsCurrent = 'Y'";
 
         // Execute query
         SqlCommand comm7 = new SqlCommand(VolSQL, conn);
