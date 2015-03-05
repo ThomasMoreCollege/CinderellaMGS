@@ -18,6 +18,8 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
     protected void searchShoppingCindButton_Click1(object sender, EventArgs e)
     {
+        updateSuccessLabel.Visible = false;
+        nameDisplaySuccessMessage.Visible = false;
         shoppingCinderellaListBox.Enabled = true;
         CinderellasInAlterationListBox.Items.Clear();
 
@@ -80,11 +82,34 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         insertNewRole.ExecuteNonQuery();
 
         /*
-        // Create a new entry in the package table.
-        string packageUpdate = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, Dresslength, InPackaging, InAlterations) VALUES ('" + getID + "', '" + DressSizeDropDownList.SelectedValue + "', '" + DressColorDropDownList.SelectedValue + "', '" + DressLengthDropDownList.SelectedValue + "', 'N', 'Y')";
-        SqlCommand insertNewPackage = new SqlCommand(packageUpdate, conn1);
-        insertNewPackage.ExecuteNonQuery();
+        string ifQuery = "SELECT Package.Cinderella_ID FROM Package INNER JOIN Cinderella"
+        + "ON Package.Cinderella_ID = Cinderella.CinderellaID WHERE Cinderella.FirstName = '" + shoppingCinderellaListBox.SelectedItem.Text + "'";
+        SqlCommand ifCommand = new SqlCommand(ifQuery, conn1);
+        string testPackageRecord = Convert.ToString(ifCommand.ExecuteScalar());
+
+
+
+
+
+        if (testPackageRecord == null)
+        {
+            // Create a new entry in the package table.
+            string packageUpdate = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, Dresslength, InPackaging, InAlterations) VALUES ('" + getID + "', '" + DressSizeDropDownList.SelectedValue + "', '" + DressColorDropDownList.SelectedValue + "', '" + DressLengthDropDownList.SelectedValue + "', 'N', 'Y')";
+            SqlCommand insertNewPackage = new SqlCommand(packageUpdate, conn1);
+            insertNewPackage.ExecuteNonQuery();
+        }
+        else
+        {
+            string packageUpdate = "Update Package DressSize = '" + DressSizeDropDownList.SelectedValue + "'";
+            SqlCommand updatePackage = new SqlCommand(packageUpdate, conn1);
+            updatePackage.ExecuteNonQuery();
+        }
         */
+
+
+
+
+
 
         //Initialize a string variable to hold a query.
         // Get a list of the Cinerella's currently in alterations.
@@ -108,6 +133,8 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
     }
     protected void shoppingCinderellaListBox_SelectedIndexChanged1(object sender, EventArgs e)
     {
+        updateSuccessLabel.Visible = false;
+        nameDisplaySuccessMessage.Visible = false;
         DressSizeDropDownList.Enabled = true;
         DressColorDropDownList.Enabled = true;
         DressLengthDropDownList.Enabled = true;
@@ -116,6 +143,8 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
     protected void CinderellasInAlterationListBox_SelectedIndexChanged1(object sender, EventArgs e)
     {
+        updateSuccessLabel.Visible = false;
+        nameDisplaySuccessMessage.Visible = false;
         StrapsCheckBox.Enabled = true;
         GeneralMendingCheckBox.Enabled = true;
         GeneralTakeinCheckBox.Enabled = true;
@@ -141,19 +170,58 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         SeamstressDropDownList.Enabled = false;
 
         // Alteration's user entry checks.
-        int testStraps = 0;
+        char testStraps = ' ';
+        char testMending = ' ';
+        char testTakeIn = ' ';
+        char testZipper = ' ';
+        char testDarts = ' ';
+        char testBust = ' ';
+        char testHem = ' ';
+
 
 
         if (StrapsCheckBox.Checked == true)
-            testStraps = 1;
+            testStraps = 'Y';
         else
-            testStraps = 0;
+            testStraps = 'N';
 
+        if (GeneralMendingCheckBox.Checked == true)
+            testMending = 'Y';
+        else
+            testMending = 'N';
 
+        if (GeneralTakeinCheckBox.Checked == true)
+            testTakeIn = 'Y';
+        else
+            testTakeIn = 'N';
 
+        if (FixZipperCheckBox.Checked == true)
+            testZipper = 'Y';
+        else
+            testZipper = 'N';
 
+        if (DartsCheckBox.Checked == true)
+            testDarts = 'Y';
+        else
+            testDarts = 'N';
 
+        if (BustCheckBox.Checked == true)
+            testBust = 'Y';
+        else
+            testBust = 'N';
 
+        if (HemCheckBox.Checked == true)
+            testHem = 'Y';
+        else
+            testHem = 'N';
+
+        StrapsCheckBox.Checked = false;
+        GeneralMendingCheckBox.Checked = false;
+        GeneralTakeinCheckBox.Checked = false;
+        FixZipperCheckBox.Checked = false;
+        DartsCheckBox.Checked = false;
+        BustCheckBox.Checked = false;
+        HemCheckBox.Checked = false;
 
 
         //Initialize database connection with "DefaultConnection" setup in the web.config
@@ -176,7 +244,11 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
 
         // Update the alterations table with the user inputed data form the form.
-        string alterationChange = "INSERT INTO Alteration (Cinderella_ID, Straps, Volunteer_ID) VALUES ('" + getCinID + "', '" + testStraps + "', '" + getVolID + "')";
+        string alterationChange = "INSERT INTO Alteration (Cinderella_ID, AlterationNotes, Straps, Darts, FixZipper, GeneralMending, Bust, Hem, GeneralTakeIn, Volunteer_ID)"
+        + "VALUES ('" + getCinID + "', '" + notesTextBox.Text  + "', '" + testStraps + "', '" + testDarts + "', '" + testZipper + "', '" + testMending 
+        + "', '" + testBust + "', '" + testHem + "', '" + testTakeIn + "', '" + getVolID + "')";
+
+
         SqlCommand insertNewRole = new SqlCommand(alterationChange, conn1);
         insertNewRole.ExecuteNonQuery();
 
@@ -190,12 +262,36 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         SqlCommand updateRole = new SqlCommand(wiatingForDressChange, conn1);
         updateRole.ExecuteNonQuery();
 
+        updateSuccessLabel.Visible = true;
+        nameDisplaySuccessMessage.Visible = true;
+        updateSuccessLabel.ForeColor = System.Drawing.Color.Green;
+        nameDisplaySuccessMessage.ForeColor = System.Drawing.Color.Green;
+        nameDisplaySuccessMessage.Text = "Updated: " + CinderellasInAlterationListBox.SelectedItem.Text;
+
+
+        //Initialize a string variable to hold a query.
+        // Get a list of the Cinerella's currently in alterations.
+        string getShoppingCins = "SELECT Cinderella.FirstName, Cinderella.LastName FROM Cinderella INNER JOIN CinderellaStatusRecord ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID WHERE CinderellaStatusRecord.Status_Name = 'Alterations' AND CinderellaStatusRecord.IsCurrent = 'Y'";
+
+        //Execute query 
+        SqlCommand com3 = new SqlCommand(getShoppingCins, conn1);
+
+        // Display the results from the getShoppingsCins query in the CinderellasInAlterationsListBox.
+        SqlDataAdapter mySqlDataAdapter = new SqlDataAdapter(com3);
+        DataSet myDataSet = new DataSet();
+        mySqlDataAdapter.Fill(myDataSet);
+        CinderellasInAlterationListBox.DataSource = myDataSet;
+        CinderellasInAlterationListBox.DataTextField = "FirstName";
+        CinderellasInAlterationListBox.DataValueField = "FirstName";
+        CinderellasInAlterationListBox.DataBind();
+
+        CinderellasInAlterationListBox.DataBind();
+        notesTextBox.Text = "";
 
         // TO DO.................
-        // Add all data to the insert query.
         // Update the package query.
         // Add a check on cinderella_id in the package table to see if there is a record already estabilished for the cinderella. If true -> update, if false -> insert.
-        // Add a success message to the user saying that the changes were recorded.
+        // What dress sizes are are using --> Check on all drop down lists...
 
         // Close the connection.
         conn1.Close();

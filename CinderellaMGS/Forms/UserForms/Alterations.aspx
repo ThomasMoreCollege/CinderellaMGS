@@ -187,7 +187,13 @@ WHERE VolunteerRoleRecord.Role_Name = 'Alterations' AND VolunteerRoleRecord.IsCu
                 <td>
                     <asp:Button ID="submitDressButton" runat="server" Text="Submit" Enabled="False" OnClick="submitDressButton_Click" />
                 </td>
+                
             </tr>
+            <tr><td>
+                <asp:Label ID="updateSuccessLabel" runat="server" Enabled="False" Text="Success!" Visible="False"></asp:Label>
+                </td><td>
+                    <asp:Label ID="nameDisplaySuccessMessage" runat="server" Enabled="False" Text="Label" Visible="False"></asp:Label>
+                </td></tr>
             
         </table>
 
