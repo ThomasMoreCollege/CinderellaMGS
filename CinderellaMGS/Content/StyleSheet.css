@@ -349,13 +349,21 @@ figure{
     border-collapse: collapse;
 }
 
-    #ManualPairTable td {
-        text-align:center;
-    }
+#ManualPairTable td {
+    text-align:center;
+}
 
 #middleRow {
  border-top: 1px solid #999999;
  border-bottom: 1px solid #999999;
+}
+
+#VolChckInRow {
+    border-bottom: 1px solid #999999;
+}
+
+#mgeRoleRow {
+    border-bottom: 1px solid #999999;
 }
 
 #PasswordBorder {
