@@ -31,7 +31,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="FirstNameValidator" runat="server"
                      ControlToValidate="FirstTextBox"
-                     ErrorMessage="First Name is required!" Display="Dynamic"><font color="red">Please enter a first name!</font>
+                     ErrorMessage="First Name is required!" Display="Dynamic"><font color="red">Please enter a first name.</font>
                      </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -49,7 +49,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="LastNameValidator" runat="server"
                      ControlToValidate="LastNameTextBox"
-                     ErrorMessage="Last Name is required!" Display="Dynamic"><font color="red">Please enter a last name!</font>
+                     ErrorMessage="Last Name is required!" Display="Dynamic"><font color="red">Please enter a last name.</font>
                      </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -65,7 +65,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <asp:RegularExpressionValidator ID="EmailExpressionValidator" runat="server" ErrorMessage="Please enter a valid email address!" Display="Dynamic" ForeColor="Red" ControlToValidate="EmailTextBox" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="EmailExpressionValidator" runat="server" ErrorMessage="Please enter a valid email address." Display="Dynamic" ForeColor="Red" ControlToValidate="EmailTextBox" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -157,18 +157,10 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:CheckBox ID="existingReferralCheckBox" 
-                        AutoPostBack ="true"
-                        runat="server" 
-                        OnCheckedChanged="existingReferralCheckBox_CheckedChanged" 
-                        Text="Existing Referral" />
+                    <asp:RadioButton ID="ExistingReferralRadioButton" runat="server" AutoPostBack="True" GroupName="ReferralGroup" OnCheckedChanged="ExistingReferralRadioButton_CheckedChanged" Text="Existing Referral " />
                 </td>
                 <td>
-                    <asp:CheckBox ID="newReferralCheckBox" 
-                        AutoPostBack ="true"
-                        runat="server" 
-                        OnCheckedChanged="newReferralCheckBox_CheckedChanged" 
-                        Text="New Referral" />
+                    <asp:RadioButton ID="NewReferralRadioButton" runat="server" AutoPostBack="True" GroupName="ReferralGroup" OnCheckedChanged="NewReferralRadioButton_CheckedChanged" Text="New Referral" />
                 </td>
             </tr>
             <tr>
@@ -181,7 +173,7 @@
                 <td class="auto-style3" >
                     Existing Referral:</td>
                 <td class="TableInputCell">
-                    <asp:DropDownList ID="referralDropDownList" runat="server" DataSourceID="ReferralDS" DataTextField="Agency" DataValueField="Agency">
+                    <asp:DropDownList ID="referralDropDownList" runat="server" DataSourceID="ReferralDS" DataTextField="Agency" DataValueField="Agency" BackColor="LightGray">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="ReferralDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString2 %>" SelectCommand="SELECT [Agency] FROM [Referrals]"></asp:SqlDataSource>
                 </td>
@@ -195,7 +187,7 @@
                 <td>
                     &nbsp;</td>
                 <td class="auto-style3">
-                    New Referral First Name:</td>
+                    *New Referral First Name:</td>
                 <td class="TableInputCell"><asp:TextBox ID="NewReferralFirstNameTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
@@ -205,7 +197,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="NewReferalFirstNameValidator" runat="server"
                      ControlToValidate="NewReferralFirstNameTextBox"
-                     ErrorMessage="Referral First Name is required!" Display="Dynamic"><font color="red">Please enter a referral first name!</font>
+                     ErrorMessage="Referral First Name is required!" Display="Dynamic"><font color="red">Please enter a referral first name.</font>
                      </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -213,7 +205,7 @@
                 <td>
                     &nbsp;</td>
                 <td class="auto-style3">
-                    New Referral Last Name:</td>
+                    *New Referral Last Name:</td>
                 <td class="TableInputCell"><asp:TextBox ID="NewReferralLastNameTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
@@ -223,7 +215,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="NewReferalLastNameValidator" runat="server"
                      ControlToValidate="NewReferralLastNameTextBox"
-                     ErrorMessage="Referral Last Name is required!" Display="Dynamic"><font color="red">Please enter a referral Last name!</font>
+                     ErrorMessage="Referral Last Name is required!" Display="Dynamic"><font color="red">Please enter a referral last name.</font>
                      </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -231,7 +223,7 @@
                 <td>
                     &nbsp;</td>
                 <td class="auto-style3">
-                    New Referral Phone Number:</td>
+                    *New Referral Phone Number:</td>
                 <td class="TableInputCell"><asp:TextBox ID="NewReferralPhoneTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
@@ -241,15 +233,16 @@
                 <td>
                  <asp:RequiredFieldValidator ID="NewReferalPhoneValidator" runat="server"
                      ControlToValidate="NewReferralPhoneTextBox"
-                     ErrorMessage="Referral Phone Number is required!" Display="Dynamic"><font color="red">Please enter a referral phone number!</font>
+                     ErrorMessage="Referral Phone Number is required!" Display="Dynamic"><font color="red">Please enter a referral phone number.</font>
                      </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" Display="Dynamic" ErrorMessage="Phone number must be 7 to 10 digits long (dash seperated)." ForeColor="Red" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" ControlToValidate="NewReferralPhoneTextBox"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
                 <td>
                     &nbsp;</td>
                 <td class="auto-style3">
-                    New Referral Email:</td>
+                    *New Referral Email:</td>
                 <td class="TableInputCell"><asp:TextBox ID="NewReferralEmailTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
@@ -259,15 +252,16 @@
                 <td>
                  <asp:RequiredFieldValidator ID="NewReferalEmailValidator" runat="server"
                      ControlToValidate="NewReferralEmailTextBox"
-                     ErrorMessage="Referral Email is required!" Display="Dynamic"><font color="red">Please enter a referral Email!</font>
+                     ErrorMessage="Referral Email is required!" Display="Dynamic"><font color="red">Please enter a referral Email.</font>
                      </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" Display="Dynamic" ErrorMessage="Please enter a valid email." ForeColor="Red" ControlToValidate="NewReferralEmailTextBox"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
                 <td>
                     &nbsp;</td>
                 <td class="auto-style3">
-                    &nbsp;New Referral School/Agency:</td>
+                    &nbsp;*New Referral School/Agency:</td>
                 <td class="TableInputCell"><asp:TextBox ID="NewSchoolAgencyTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
@@ -277,7 +271,7 @@
                 <td>
                  <asp:RequiredFieldValidator ID="NewSchoolAgengyValidator" runat="server"
                      ControlToValidate="NewSchoolAgencyTextBox"
-                     ErrorMessage="Referral School/Agency is required!" Display="Dynamic"><font color="red">Please enter a referral school/agency!</font>
+                     ErrorMessage="Referral School/Agency is required!" Display="Dynamic"><font color="red">Please enter a referral school/agency.</font>
                      </asp:RequiredFieldValidator>
                 </td>
             </tr>

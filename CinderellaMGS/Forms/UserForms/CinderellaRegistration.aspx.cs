@@ -24,7 +24,7 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         string appDate = appointmentSelectDateCalender.SelectedDate.ToString().Replace("12:00:00 AM", "");
         string appTime = ddlStartTimeHr.SelectedValue.ToString() + ":" + ddlStartTimeMin.SelectedValue.ToString() + " " + ddlStartTimeAMPM.SelectedValue;
 
-        if (newReferralCheckBox.Checked == true)
+        if (NewReferralRadioButton.Checked == true)
         {
             // Store the user input into easy to insert variables. 
             string firstname = FirstTextBox.Text.Trim();
@@ -97,11 +97,11 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             ddlStartTimeAMPM.SelectedIndex = -1;
             NewReferralLastNameTextBox.Text = "";
 
-            existingReferralCheckBox.Checked = false;
-            newReferralCheckBox.Checked = false;
+            ExistingReferralRadioButton.Checked = false;
+            NewReferralRadioButton.Checked = false;
         }
 
-        else if (existingReferralCheckBox.Checked == true)
+        else if (ExistingReferralRadioButton.Checked == true)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
@@ -163,36 +163,18 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             ddlStartTimeAMPM.SelectedIndex = -1;
             NewReferralLastNameTextBox.Text = "";
 
-            existingReferralCheckBox.Checked = false;
-            newReferralCheckBox.Checked = false;
+            ExistingReferralRadioButton.Checked = false;
+            NewReferralRadioButton.Checked = false;
           
         }
 
     }
 
-    protected void existingReferralCheckBox_CheckedChanged(object sender, EventArgs e)
+    protected void NewReferralRadioButton_CheckedChanged(object sender, EventArgs e)
     {
-        referralDropDownList.Enabled = true;
-        newReferralCheckBox.Checked = false;
-
-        NewReferralFirstNameTextBox.Enabled = false;
-        NewReferralLastNameTextBox.Enabled = false;
-        NewReferralPhoneTextBox.Enabled = false;
-        NewReferralEmailTextBox.Enabled = false;
-        NewSchoolAgencyTextBox.Enabled = false;
-
-        NewReferalFirstNameValidator.Enabled = false;
-        NewReferalLastNameValidator.Enabled = false;
-        NewReferalPhoneValidator.Enabled = false;
-        NewReferalEmailValidator.Enabled = false;
-        NewSchoolAgengyValidator.Enabled = false;
-
-        referralDropDownList.DataBind();
-    }
-    protected void newReferralCheckBox_CheckedChanged(object sender, EventArgs e)
-    {
-        existingReferralCheckBox.Checked = false;
+        ExistingReferralRadioButton.Checked = false;
         referralDropDownList.Enabled = false;
+        referralDropDownList.BackColor = System.Drawing.Color.LightGray;
 
         NewReferralFirstNameTextBox.Enabled = true;
         NewReferralLastNameTextBox.Enabled = true;
@@ -205,6 +187,26 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         NewReferalPhoneValidator.Enabled = true;
         NewReferalEmailValidator.Enabled = true;
         NewSchoolAgengyValidator.Enabled = true;
+
+        referralDropDownList.DataBind();
+    }
+    protected void ExistingReferralRadioButton_CheckedChanged(object sender, EventArgs e)
+    {
+        referralDropDownList.Enabled = true;
+        NewReferralRadioButton.Checked = false;
+        referralDropDownList.BackColor = System.Drawing.Color.White;
+
+        NewReferralFirstNameTextBox.Enabled = false;
+        NewReferralLastNameTextBox.Enabled = false;
+        NewReferralPhoneTextBox.Enabled = false;
+        NewReferralEmailTextBox.Enabled = false;
+        NewSchoolAgencyTextBox.Enabled = false;
+
+        NewReferalFirstNameValidator.Enabled = false;
+        NewReferalLastNameValidator.Enabled = false;
+        NewReferalPhoneValidator.Enabled = false;
+        NewReferalEmailValidator.Enabled = false;
+        NewSchoolAgengyValidator.Enabled = false;
 
         referralDropDownList.DataBind();
     }
