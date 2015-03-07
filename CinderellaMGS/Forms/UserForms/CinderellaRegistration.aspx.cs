@@ -46,26 +46,32 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
 
             //Open the connection 
             conn.Open();
-
-            string getTotalReferrals = "SELECT Count(ReferralID) FROM Referrals";
-            SqlCommand getNumReferrals = new SqlCommand(getTotalReferrals, conn);
-            getNumReferrals.ExecuteNonQuery();
-            int totalReferrals = (Int32)getNumReferrals.ExecuteScalar();
-            totalReferrals = totalReferrals + 1;    // Used for the key counter. (+1 to the number of current rows.)
-
-            string sql = "INSERT INTO Cinderella (FirstName, LastName, Phone, Email, AppointmentDateTime, Note, Referral_ID) VALUES ('" + firstname + "', '" + lastname + "', '" + phoneNumber + "', '" + email + "', '" + appointmentTime + "', '" + notes + "', '" + totalReferrals + "')";
-
-            string cinderellaIDQuery = "SELECT CinderellaID FROM Cinderella WHERE FirstName='" + firstname + "' AND LastName='" + lastname + "' AND Email='" + email + "'";
             
-            string sqlThree = "INSERT INTO Referrals (ReferralID, FirstName, LastName, Phone, Email, Agency) VALUES ('" + totalReferrals + "', '" + newReferralFirstName + "', '" + newReferralLastName + "', '" + newReferralPhone + "', '" + newReferralEmail + "', '" + newReferralAgency + "')";
+            //Query adds new Referral into the database
+            string addReferralQuery = "INSERT INTO Referrals (FirstName, LastName, Phone, Email, Agency) VALUES ('" + newReferralFirstName + "', '" + newReferralLastName + "', '" + newReferralPhone + "', '" + newReferralEmail + "', '" + newReferralAgency + "')";
+
+            // Execute adding new referral into database
+            SqlCommand addReferral = new SqlCommand(addReferralQuery, conn);
+            addReferral.ExecuteNonQuery();
+
+            //Query retrieves ID of new Referral
+            string referralIDQuery = "SELECT ReferralID FROM Referrals WHERE FirstName='" + newReferralFirstName + "' AND LastName='" + newReferralLastName + "' AND Phone='" + newReferralPhone + "' AND Email='" + newReferralEmail  + "'";
+
+            //Execute query to retrieve new referral ID
+            SqlCommand newReferralID = new SqlCommand(referralIDQuery, conn);
+
+            //Retrieve results from query and store in a varaible 
+            int referralID = Convert.ToInt32(newReferralID.ExecuteScalar().ToString());
+
+            //Query to added new Cinderella into the database
+            string addCinderellaQuery = "INSERT INTO Cinderella (FirstName, LastName, Phone, Email, AppointmentDateTime, Note, Referral_ID) VALUES ('" + firstname + "', '" + lastname + "', '" + phoneNumber + "', '" + email + "', '" + appointmentTime + "', '" + notes + "', '" + referralID + "')";
 
             // Execute query
-            SqlCommand comm3 = new SqlCommand(sqlThree, conn);
-            comm3.ExecuteNonQuery();
+            SqlCommand addCinderella = new SqlCommand(addCinderellaQuery, conn);
+            addCinderella.ExecuteNonQuery();
 
-            // Execute query
-            SqlCommand comm1 = new SqlCommand(sql, conn);
-            comm1.ExecuteNonQuery();
+            //Get newly added Cinderellas' ID 
+            string cinderellaIDQuery = "SELECT CinderellaID FROM Cinderella WHERE FirstName='" + firstname + "' AND LastName='" + lastname + "' AND Email='" + email + "'";
 
             //Execute query 
             SqlCommand newCinderellaID = new SqlCommand(cinderellaIDQuery, conn);
@@ -73,11 +79,12 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             //Retrieve results from query and store in a varaible 
             string cinderellaID = newCinderellaID.ExecuteScalar().ToString();
 
-            string sqlTwo = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + cinderellaID + "', GetDate(), 'Pending', 'Y')";
+            //Quesry to add record of the Cinderellas' status
+            string addCinderellaStatusRecordQuery = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + cinderellaID + "', GetDate(), 'Pending', 'Y')";
 
             // Execute query
-            SqlCommand comm2 = new SqlCommand(sqlTwo, conn);
-            comm2.ExecuteNonQuery();
+            SqlCommand addCinderellaStatusRecord = new SqlCommand(addCinderellaStatusRecordQuery, conn);
+            addCinderellaStatusRecord.ExecuteNonQuery();
 
             conn.Close();
 

@@ -254,7 +254,7 @@
                      ControlToValidate="NewReferralEmailTextBox"
                      ErrorMessage="Referral Email is required!" Display="Dynamic"><font color="red">Please enter a referral Email.</font>
                      </asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" Display="Dynamic" ErrorMessage="Please enter a valid email." ForeColor="Red" ControlToValidate="NewReferralEmailTextBox"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" Display="Dynamic" ErrorMessage="Please enter a valid email." ForeColor="Red" ControlToValidate="NewReferralEmailTextBox" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
