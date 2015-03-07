@@ -81,28 +81,33 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         SqlCommand insertNewRole = new SqlCommand(alterationChange, conn1);
         insertNewRole.ExecuteNonQuery();
 
+        
+
+
+
         /*
-        string ifQuery = "SELECT Package.Cinderella_ID FROM Package INNER JOIN Cinderella"
-        + "ON Package.Cinderella_ID = Cinderella.CinderellaID WHERE Cinderella.FirstName = '" + shoppingCinderellaListBox.SelectedItem.Text + "'";
+        string ifQuery = "SELECT CASE WHEN EXISTS (SELECT Package.Cinderella_ID FROM Package "
+	        + "INNER JOIN Cinderella ON Package.Cinderella_ID = Cinderella.CinderellaID " 
+            + "WHERE Cinderella.FirstName = '" + shoppingCinderellaListBox.SelectedItem.Text + "') THEN 1 ELSE 0 END AS AnyData";
         SqlCommand ifCommand = new SqlCommand(ifQuery, conn1);
-        string testPackageRecord = Convert.ToString(ifCommand.ExecuteScalar());
+        // int testPackageRecord = ifCommand.ExecuteNonQuery();
 
-
-
-
-
-        if (testPackageRecord == null)
+        if (ifCommand.ExecuteNonQuery() == 1)
         {
+            // 
+            string packageUpdate = "Update Package SET DressSize = '" + DressSizeDropDownList.SelectedItem.Text + "', "
+                         + "DressColor = '" + DressColorDropDownList.SelectedItem.Text + "', DressLength = '"
+                         + DressLengthDropDownList.SelectedItem.Text + "' WHERE Cinderella_ID = '" + getID + "'";
+            SqlCommand updatePackage = new SqlCommand(packageUpdate, conn1);
+            updatePackage.ExecuteNonQuery();
+        }
+        else if (ifCommand.ExecuteNonQuery() == 0)
+        {
+            // Working.
             // Create a new entry in the package table.
             string packageUpdate = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, Dresslength, InPackaging, InAlterations) VALUES ('" + getID + "', '" + DressSizeDropDownList.SelectedValue + "', '" + DressColorDropDownList.SelectedValue + "', '" + DressLengthDropDownList.SelectedValue + "', 'N', 'Y')";
             SqlCommand insertNewPackage = new SqlCommand(packageUpdate, conn1);
             insertNewPackage.ExecuteNonQuery();
-        }
-        else
-        {
-            string packageUpdate = "Update Package DressSize = '" + DressSizeDropDownList.SelectedValue + "'";
-            SqlCommand updatePackage = new SqlCommand(packageUpdate, conn1);
-            updatePackage.ExecuteNonQuery();
         }
         */
 
@@ -292,6 +297,8 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         // Update the package query.
         // Add a check on cinderella_id in the package table to see if there is a record already estabilished for the cinderella. If true -> update, if false -> insert.
         // What dress sizes are are using --> Check on all drop down lists...
+        // Instert Dress Recieved/PIcked up
+        // Date/ID key update problem with back to back status ends/begins.
 
         // Close the connection.
         conn1.Close();
