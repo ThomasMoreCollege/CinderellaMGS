@@ -85,23 +85,25 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
 
 
-        /*
+        
         string ifQuery = "SELECT CASE WHEN EXISTS (SELECT Package.Cinderella_ID FROM Package "
 	        + "INNER JOIN Cinderella ON Package.Cinderella_ID = Cinderella.CinderellaID " 
-            + "WHERE Cinderella.FirstName = '" + shoppingCinderellaListBox.SelectedItem.Text + "') THEN 1 ELSE 0 END AS AnyData";
+            + "WHERE Cinderella.FirstName = '" + shoppingCinderellaListBox.SelectedItem.Text + "') THEN 1 ELSE 0 END";
         SqlCommand ifCommand = new SqlCommand(ifQuery, conn1);
-        // int testPackageRecord = ifCommand.ExecuteNonQuery();
+        object testPackageRecord = ifCommand.ExecuteScalar();
 
-        if (ifCommand.ExecuteNonQuery() == 1)
+        
+        if (testPackageRecord.ToString() == "1")
         {
-            // 
+            // Working.
+            // Update an already existing entry.
             string packageUpdate = "Update Package SET DressSize = '" + DressSizeDropDownList.SelectedItem.Text + "', "
                          + "DressColor = '" + DressColorDropDownList.SelectedItem.Text + "', DressLength = '"
                          + DressLengthDropDownList.SelectedItem.Text + "' WHERE Cinderella_ID = '" + getID + "'";
             SqlCommand updatePackage = new SqlCommand(packageUpdate, conn1);
             updatePackage.ExecuteNonQuery();
         }
-        else if (ifCommand.ExecuteNonQuery() == 0)
+        else if (testPackageRecord.ToString() == "0")
         {
             // Working.
             // Create a new entry in the package table.
@@ -109,7 +111,6 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
             SqlCommand insertNewPackage = new SqlCommand(packageUpdate, conn1);
             insertNewPackage.ExecuteNonQuery();
         }
-        */
 
 
 

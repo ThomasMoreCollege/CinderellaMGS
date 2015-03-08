@@ -178,7 +178,7 @@ WHERE VolunteerRoleRecord.Role_Name = 'Alterations' AND VolunteerRoleRecord.IsCu
             <tr>
                 <td class="auto-style15"></td>
                 <td class="auto-style5"></td>
-                <td></td>
+                <td>&nbsp;</td>
                 <td class="auto-style9"></td>
                 <td class="auto-style10"></td>
                 <td class="auto-style11">
