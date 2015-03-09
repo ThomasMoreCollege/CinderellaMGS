@@ -253,13 +253,13 @@ b{
 	padding-left: 20px;	
 }
 
+table 
+
 table {
 	margin: auto auto 25px 0px;
 }
 
-td {
-
-	padding: 5px;
+adding: 5px;
     }
 
 
@@ -294,7 +294,8 @@ iframe{
 }
 
 .dateLayout td, th{
-	padding: 10px;	
+	padding: 10px;
+    text-align: left;
 }
 
 .dateLayout tr:nth-of-type(odd){
@@ -362,6 +363,10 @@ figure{
     border-bottom: 1px solid #999999;
 }
 
+#topApptMangerRow {
+    border-top: 1px solid #999999;
+}
+
 #mgeRoleRow {
     border-bottom: 1px solid #999999;
 }
@@ -371,6 +376,11 @@ figure{
 }
 
 #AccMngTable {
+    float:left;
+    border-collapse: collapse;
+}
+
+#AppMngTable2 {
     float:left;
     border-collapse: collapse;
 }

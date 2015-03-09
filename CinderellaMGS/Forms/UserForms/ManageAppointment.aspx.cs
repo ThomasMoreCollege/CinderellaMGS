@@ -29,9 +29,9 @@ public partial class Forms_UserForms_ManageAppointment : System.Web.UI.Page
         if (CinderellaGridView.SelectedRow == null)
         {
             // Outputs error message if no Cinderella is selected
-            String errorVar = "Please select a Cinderella";
+            //String errorVar = "Please select a Cinderella";
 
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + errorVar + "');", true);
+            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + errorVar + "');", true);
         }
         else
         {
@@ -65,6 +65,12 @@ public partial class Forms_UserForms_ManageAppointment : System.Web.UI.Page
             CinderellaGridView.DataBind();
             CinderellaGridView.SelectedIndex = -1;
         }
+
+        ChangeAppointmentButton.Enabled = false;
         
+    }
+    protected void CinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ChangeAppointmentButton.Enabled = true;
     }
 }

@@ -13,9 +13,9 @@
                 <td colspan="3" class="auto-style1">
 
                     <strong>Cinderella Information:
-                </strong>
-
-                </td>
+                    <br />
+                    <br />
+                </strong><em>*Required Fields</em></td>
             </tr>
             <tr>
                 <td>
@@ -143,7 +143,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3" class="auto-style1"><em>*Cinderella must have a referral</em></td>
+                <td colspan="3" class="auto-style1"><em>Note: Cinderellas must have a referral</em></td>
             </tr>
             <tr>
                 <td></td>

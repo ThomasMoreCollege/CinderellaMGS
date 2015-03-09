@@ -18,7 +18,7 @@
             <tr>
                 <td rowspan="16" class="auto-style5">
                     <asp:GridView ID="VolunteerGridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataSourceID="VolunteersToBeEdittedSqlDataSource" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="VolunteerGridView_SelectedIndexChanged" DataKeyNames="VolunteerID">
-                        <AlternatingRowStyle BackColor="pink" />
+                        
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" />
                             <asp:BoundField DataField="VolunteerID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="VolunteerID" />
@@ -33,6 +33,7 @@
                         <SortedAscendingHeaderStyle BackColor="#808080" />
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#383838" />
+                        <AlternatingRowStyle BackColor="pink" />
                     </asp:GridView>
                     <asp:SqlDataSource ID="VolunteersToBeEdittedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [VolunteerID], [LastName], [FirstName] FROM [Volunteer]"></asp:SqlDataSource>
                 </td>
