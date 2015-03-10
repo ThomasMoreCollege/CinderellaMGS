@@ -89,7 +89,14 @@
                     Appointment Date:</td>
                 <td class="TableInputCell">
 
-                    <asp:Calendar ID="appointmentSelectDateCalender" runat="server"></asp:Calendar>
+                    <asp:Calendar ID="appointmentSelectDateCalender" runat="server" OnSelectionChanged="appointmentSelectDateCalender_SelectionChanged"></asp:Calendar>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <asp:CustomValidator ID="dateCustVal" OnServerValidate="DateCustVal_Validate" runat="server" ErrorMessage="Please select a date." Display="Dynamic" ForeColor="Red"></asp:CustomValidator>
                 </td>
             </tr>
             <tr>     

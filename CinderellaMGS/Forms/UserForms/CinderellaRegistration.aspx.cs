@@ -24,7 +24,7 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         string appDate = appointmentSelectDateCalender.SelectedDate.ToString().Replace("12:00:00 AM", "");
         string appTime = ddlStartTimeHr.SelectedValue.ToString() + ":" + ddlStartTimeMin.SelectedValue.ToString() + " " + ddlStartTimeAMPM.SelectedValue;
 
-        if (NewReferralRadioButton.Checked == true)
+        if (NewReferralRadioButton.Checked == true && IsValid == true)
         {
             // Store the user input into easy to insert variables. 
             string firstname = FirstTextBox.Text.Trim();
@@ -108,7 +108,7 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             NewReferralRadioButton.Checked = false;
         }
 
-        else if (ExistingReferralRadioButton.Checked == true)
+        else if (ExistingReferralRadioButton.Checked == true && IsValid == true)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
@@ -216,6 +216,22 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         NewSchoolAgengyValidator.Enabled = false;
 
         referralDropDownList.DataBind();
+    }
+    protected void appointmentSelectDateCalender_SelectionChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void DateCustVal_Validate(object source, ServerValidateEventArgs args)
+    {
+        if (appointmentSelectDateCalender.SelectedDate == null
+        || appointmentSelectDateCalender.SelectedDate == new DateTime(0001, 1, 1, 0, 0, 0))
+        {
+            args.IsValid = false;
+        }
+        else
+        {
+            args.IsValid = true;
+        }
     }
 }
 
