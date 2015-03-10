@@ -46,23 +46,9 @@
             <tr>
                 <td class="auto-style12">Size :</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DressSizeDropDownList" runat="server" style="text-align: center" Enabled="False">
-                        <asp:ListItem>2</asp:ListItem>
-                        <asp:ListItem>4</asp:ListItem>
-                        <asp:ListItem>6</asp:ListItem>
-                        <asp:ListItem>8</asp:ListItem>
-                        <asp:ListItem>10</asp:ListItem>
-                        <asp:ListItem>12</asp:ListItem>
-                        <asp:ListItem>14</asp:ListItem>
-                        <asp:ListItem>16</asp:ListItem>
-                        <asp:ListItem>18</asp:ListItem>
-                        <asp:ListItem>20</asp:ListItem>
-                        <asp:ListItem>22</asp:ListItem>
-                        <asp:ListItem>24</asp:ListItem>
-                        <asp:ListItem>26</asp:ListItem>
-                        <asp:ListItem>28</asp:ListItem>
-                        <asp:ListItem>30</asp:ListItem>
+                    <asp:DropDownList ID="DressSizeDropDownList" runat="server" style="text-align: center" Enabled="False" DataSourceID="DressSizeLengthDS" DataTextField="sizeLength" DataValueField="sizeLength">
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="DressSizeLengthDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT * FROM [DressSizeLength]"></asp:SqlDataSource>
                 </td>
                 <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style10"></td>
@@ -78,23 +64,9 @@
                 <td class="auto-style12">
                     Color:</td>
                 <td>
-                    <asp:DropDownList ID="DressColorDropDownList" runat="server" Enabled="False" style="width: 95px">
-                        <asp:ListItem>Brown</asp:ListItem>
-                        <asp:ListItem>Yellow</asp:ListItem>
-                        <asp:ListItem>Orange</asp:ListItem>
-                        <asp:ListItem>Coral</asp:ListItem>
-                        <asp:ListItem>Pink</asp:ListItem>
-                        <asp:ListItem>Red</asp:ListItem>
-                        <asp:ListItem>Green</asp:ListItem>
-                        <asp:ListItem>Aqua/Green</asp:ListItem>
-                        <asp:ListItem>Purple</asp:ListItem>
-                        <asp:ListItem>Aqua/Blue</asp:ListItem>
-                        <asp:ListItem>Blue</asp:ListItem>
-                        <asp:ListItem>Silver</asp:ListItem>
-                        <asp:ListItem>Grey</asp:ListItem>
-                        <asp:ListItem>Black</asp:ListItem>
-                        <asp:ListItem>White</asp:ListItem>
+                    <asp:DropDownList ID="DressColorDropDownList" runat="server" Enabled="False" style="width: 95px" DataSourceID="DressColorDS" DataTextField="dressColor" DataValueField="dressColor">
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="DressColorDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT * FROM [DressColor]"></asp:SqlDataSource>
                 </td>
                 <td class="auto-style3" >
                     &nbsp;</td>
@@ -111,27 +83,7 @@
                 <td class="auto-style12">
                     Length:</td>
                 <td  class="auto-style5">
-                    <asp:DropDownList ID="DressLengthDropDownList" runat="server" Enabled="False">
-                        <asp:ListItem>2</asp:ListItem>
-                        <asp:ListItem>4</asp:ListItem>
-                        <asp:ListItem>6</asp:ListItem>
-                        <asp:ListItem>8</asp:ListItem>
-                        <asp:ListItem>10</asp:ListItem>
-                        <asp:ListItem>12</asp:ListItem>
-                        <asp:ListItem>14</asp:ListItem>
-                        <asp:ListItem>16</asp:ListItem>
-                        <asp:ListItem>18</asp:ListItem>
-                        <asp:ListItem>20</asp:ListItem>
-                        <asp:ListItem>22</asp:ListItem>
-                        <asp:ListItem>24</asp:ListItem>
-                        <asp:ListItem>26</asp:ListItem>
-                        <asp:ListItem>28</asp:ListItem>
-                        <asp:ListItem>30</asp:ListItem>
-                        <asp:ListItem>32</asp:ListItem>
-                        <asp:ListItem>34</asp:ListItem>
-                        <asp:ListItem>36</asp:ListItem>
-                        <asp:ListItem>38</asp:ListItem>
-                        <asp:ListItem>40</asp:ListItem>
+                    <asp:DropDownList ID="DressLengthDropDownList" runat="server" Enabled="False" DataSourceID="DressSizeLengthDS" DataTextField="sizeLength" DataValueField="sizeLength">
                     </asp:DropDownList>
                 </td>
                 <td  class="auto-style3"></td>
