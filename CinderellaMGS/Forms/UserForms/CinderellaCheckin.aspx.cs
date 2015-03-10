@@ -41,14 +41,17 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
             conn.Open();
 
             // SQL string to UPDATE Pending status 
-            string sql = "UPDATE CinderellaStatusRecord SET EndTime = '" + now + "', IsCurrent = 'N' WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
+            string sql = "UPDATE CinderellaStatusRecord "
+                        + "SET EndTime = '" + now + "', IsCurrent = 'N' "
+                        + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
 
             // Execute query
             SqlCommand comm1 = new SqlCommand(sql, conn);
             comm1.ExecuteNonQuery();
 
             // SQL string to INSERT Waiting status into StatusRecord
-            sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + SelectedCinderellaID + "', '" + now + "', 'Waiting for Godmother', 'Y')";
+            sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+                    + "VALUES ('" + SelectedCinderellaID + "', '" + now + "', 'Waiting for Godmother', 'Y')";
 
             // Execute query
             SqlCommand comm2 = new SqlCommand(sql, conn);
