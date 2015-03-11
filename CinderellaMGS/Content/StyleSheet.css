@@ -467,6 +467,7 @@ textarea{
 
 #VolunteerGridView {
     width:100%;
+    text-align: left;
 }
 
 #ClockingTable td{
