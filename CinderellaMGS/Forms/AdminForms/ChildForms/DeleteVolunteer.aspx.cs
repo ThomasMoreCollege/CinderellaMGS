@@ -53,7 +53,7 @@ public partial class Forms_AdminForms_ChildForms_DeleteVolunteer : System.Web.UI
     protected void DeleteVoluntFormButton_Click(object sender, EventArgs e)
     {
 
-        //REMOVE VOLUNTEER FROM ALL REFERENCING TABLES FIRST !!!!
+        //Only soft Removal is to be used for this application
 
 
         //Initialize database connection with "DefaultConnection" setup in the web.config
@@ -63,17 +63,14 @@ public partial class Forms_AdminForms_ChildForms_DeleteVolunteer : System.Web.UI
         conn2.Open();
 
         //Initialize a string variable to hold a query
-        string deleteUserQuery = "DELETE FROM Volunteer "
-                                    + "WHERE VolunteerID=@Vid";
-
+        string softDeleteVolQuery = "UPDATE Volunteer "
+                                        + "SET IsValid='N' "
+                                        + "WHERE VolunteerID='" + VolunteerGridView.SelectedValue.ToString() + "'";
         //Execute query 
-        SqlCommand deleteAccount = new SqlCommand(deleteUserQuery, conn2);
-
-        //Add values to variables in the query
-        deleteAccount.Parameters.AddWithValue("@Vid", VolunteerGridView.SelectedValue.ToString());
+        SqlCommand softDeleteVol = new SqlCommand(softDeleteVolQuery, conn2);
 
         //Execute Query 
-        deleteAccount.ExecuteNonQuery();
+        softDeleteVol.ExecuteNonQuery();
 
         //REMEMBER TO CLOSE CONNECTION!!
         conn2.Close();

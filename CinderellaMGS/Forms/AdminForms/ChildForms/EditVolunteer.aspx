@@ -4,7 +4,7 @@
     <h2>Edit Volunteer</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">        
-        <table id="EditVolunTable" style="width:100%;">
+        <table id="EditVolunTable">
             <tr>
                 <th >
                     
@@ -21,7 +21,7 @@
                         
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" />
-                            <asp:BoundField DataField="VolunteerID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="VolunteerID" />
+                            <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" InsertVisible="False" ReadOnly="True" SortExpression="VolunteerID" />
                             <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
                             <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                         </Columns>
@@ -35,7 +35,11 @@
                         <SortedDescendingHeaderStyle BackColor="#383838" />
                         <AlternatingRowStyle BackColor="pink" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="VolunteersToBeEdittedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [VolunteerID], [LastName], [FirstName] FROM [Volunteer]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="VolunteersToBeEdittedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [VolunteerID], [LastName], [FirstName] FROM [Volunteer] WHERE ([IsValid] = @IsValid)">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="Y" Name="IsValid" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </td>
                 <td class="auto-style14">First Name:</td>
                 <td class="auto-style16">
@@ -157,11 +161,10 @@
             <tr>
                 <td class="auto-style9">&nbsp;</td>
                 <td class="auto-style11"></td>
-                <td class="auto-style15"></td>
+                <td class="auto-style8"></td>
                 <td class="auto-style17">
                     <asp:Button ID="EditVolunterFormButton" runat="server" Text="Save Changes" Enabled="False" style="text-align: center" OnClick="EditVolunterFormButton_Click" />
-                </td>
-                <td class="auto-style18"> 
+                    &nbsp;&nbsp;<br /> <br />
                     <asp:Button ID="CancelButton" runat="server" CausesValidation="False" Enabled="False" OnClick="CancelButton_Click" Text="Cancel" />
                 </td>
             </tr>
@@ -217,12 +220,6 @@
             text-align: right;
             width: 164px;
         }
-    .auto-style15
-    {
-        width: 268px;
-            text-align: center;
-            height: 33px;
-        }
         .auto-style16
         {
             width: 268px;
@@ -232,11 +229,7 @@
         {
             height: 33px;
             font-size: small;
-            text-align: center;
-        }
-        .auto-style18
-        {
-            height: 33px;
+            text-align: left;
         }
         .auto-style19
         {

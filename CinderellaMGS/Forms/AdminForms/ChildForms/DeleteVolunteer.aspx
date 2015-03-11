@@ -7,7 +7,11 @@
     <table id="DeleteVolTable"style="width:80%;">
         <tr>
             <th class="auto-style1">
-                <asp:SqlDataSource ID="VolunteersToBeDeletedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [VolunteerID], [LastName], [FirstName] FROM [Volunteer]"></asp:SqlDataSource></th>
+                <asp:SqlDataSource ID="VolunteersToBeDeletedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [VolunteerID], [LastName], [FirstName] FROM [Volunteer] WHERE ([IsValid] = @IsValid)">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="Y" Name="IsValid" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource></th>
             <th class="auto-style2">&nbsp;</th>
             <th>Current Information</th>
         </tr>
@@ -17,7 +21,7 @@
                         <AlternatingRowStyle BackColor="pink" />
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" />
-                            <asp:BoundField DataField="VolunteerID" HeaderText="ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />
+                            <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />
                             <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
                             <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                         </Columns>

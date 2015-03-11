@@ -56,8 +56,8 @@ public partial class Forms_AdminForms_GodMotherRegsitration : System.Web.UI.Page
 
         //Open the connection 
         conn.Open();
-        string sql = "INSERT INTO Volunteer (FirstName, LastName, Address, City, State, Zipcode, Phone, Email) "
-                        + "VALUES ( '" + firstName + "', '" + lastName + "', '" + address + "', '" + city + "', '" + state + "', '" + zipCode + "', '" + phone + "', '" + email + "')";
+        string sql = "INSERT INTO Volunteer (FirstName, LastName, Address, City, State, Zipcode, Phone, Email, IsValid) "
+                        + "VALUES ( '" + firstName + "', '" + lastName + "', '" + address + "', '" + city + "', '" + state + "', '" + zipCode + "', '" + phone + "', '" + email + "', 'Y')";
 
         // Execute query
         SqlCommand comm1 = new SqlCommand(sql, conn);
