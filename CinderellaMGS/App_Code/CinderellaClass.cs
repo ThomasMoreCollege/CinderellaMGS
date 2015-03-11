@@ -8,6 +8,7 @@ using System.Web;
 /// </summary>
 public class CinderellaClass
 {
+    //
     public int CinderellaID { get; set; }
     public string FName { get; set; }
     public string LName { get; set; }
@@ -15,7 +16,10 @@ public class CinderellaClass
     public DateTime ArrivalTime { get; set; }
     public int Priority { get; set; }
 
+    // Blank constructor
     public CinderellaClass() { }
+
+    // Constructor taking every variable except for Priority, which is calculated by ScheuleAppointmentTime and ArrivalTime
     public CinderellaClass(int conID, string conFName, string conLName, DateTime conScheduleAppointmentTime, DateTime conArrivalTime)
     {
         CinderellaID = conID;
@@ -24,18 +28,18 @@ public class CinderellaClass
         ScheduleAppointmentTime = conScheduleAppointmentTime;
         ArrivalTime = conArrivalTime;
 
-        
+        // Comparing ScheduleAppointmentTime and ArrivalTime to get Priority
         if ((ScheduleAppointmentTime.Subtract(ArrivalTime).TotalMinutes) >= 15)
         {
-            Priority = 2;
+            Priority = 2;   // Early - Priorty 2
         }
         else if ((ArrivalTime.Subtract(ScheduleAppointmentTime).TotalMinutes) >= 15)
         {
-            Priority = 3;
+            Priority = 3;   // Late - Priority 3
         }
         else
         {
-            Priority = 1;
+            Priority = 1;   // On time - Priority 1
         }
     }
 
