@@ -60,9 +60,20 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
             //REMEMBER TO CLOSE CONNECTION!!
             conn.Close();
 
+            GridViewRow currentRow = CinderellaGridView.SelectedRow;
+
+            string notification = "" + currentRow.Cells[2].Text + " " + currentRow.Cells[1].Text + " has been successfully checked in!";
+            SuccessLabel.Text = notification;
+            SuccessLabel.Visible = true;
+
             // Rebind the data to refresh the Grid
             CinderellaGridView.DataBind();
             CinderellaGridView.SelectedIndex = -1;
+
         }
+    }
+    protected void CinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        SuccessLabel.Visible = false;
     }
 }

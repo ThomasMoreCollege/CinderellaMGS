@@ -99,56 +99,56 @@ public partial class Forms_AdminForms_ChildForms_EditVolunteer : System.Web.UI.P
         //Counts how many text boxes where left empty
         int emptyCounter = 0;
 
-        string firstName = FirstNameTextBox.Text;
+        string firstName = FirstNameTextBox.Text.Trim();
         if (firstName == string.Empty)
         {
             firstName = FirstNameLabel.Text;
             emptyCounter++;
         }
 
-        string lastName = LastNameTextBox.Text;
+        string lastName = LastNameTextBox.Text.Trim();
         if (lastName == string.Empty)
         {
             lastName = LastNameLabel.Text;
             emptyCounter++;
         }
 
-        string email = EmailTextBox.Text;
+        string email = EmailTextBox.Text.Trim();
         if (email == string.Empty)
         {
             email = EmailLabel.Text;
             emptyCounter++;
         }
 
-        string phone = PhoneTextBox.Text;
+        string phone = PhoneTextBox.Text.Trim();
         if (phone == string.Empty)
         {
             phone = PhoneLabel.Text;
             emptyCounter++;
         }
 
-        string address = AddressTextBox.Text;
+        string address = AddressTextBox.Text.Trim();
         if (address == string.Empty)
         {
             address = AddressLabel.Text;
             emptyCounter++;
         }
 
-        string city = CityTextBox.Text;
+        string city = CityTextBox.Text.Trim();
         if (city == string.Empty)
         {
             city = CityLabel.Text;
             emptyCounter++;
         }
 
-        string state = StateTextBox.Text;
+        string state = StateTextBox.Text.Trim();
         if (state == string.Empty)
         {
             state = StateLabel.Text;
             emptyCounter++;
         }
 
-        string zipCode = ZipcodeTextBox.Text;
+        string zipCode = ZipcodeTextBox.Text.Trim();
         if (zipCode == string.Empty)
         {
             zipCode = ZipcodeLabel.Text;

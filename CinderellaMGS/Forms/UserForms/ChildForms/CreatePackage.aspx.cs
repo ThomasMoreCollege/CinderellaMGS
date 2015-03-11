@@ -20,11 +20,9 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
         // Input validation to guarantee a Cinderella is selected
         if (CinderellaGridView.SelectedRow == null)
         {
-            CinderellaValidator.Visible = true;
         }
         else
         {
-            CinderellaValidator.Visible = false;
 
             // Creating variables to hold a string of the Cinderella's ID and the Godmother's ID
             string SelectedCinderellaID = CinderellaGridView.SelectedValue.ToString();
@@ -143,5 +141,10 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
         // Rebind the data to refresh the Grid
         CinderellaGridView.DataBind();
         CinderellaGridView.SelectedIndex = -1;
+        CheckoutButton.Enabled = false;
+    }
+    protected void CinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        CheckoutButton.Enabled = true;
     }
 }

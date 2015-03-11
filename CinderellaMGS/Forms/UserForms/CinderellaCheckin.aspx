@@ -10,20 +10,34 @@
 </asp:Content>
 
 <asp:Content runat="server" ID="MainContent" ContentPlaceHolderID="MainContent">
-        
+        <table>
+            <tr forecolor="Green">
+                <td>
+                    <asp:Label ID="SuccessLabel" runat="server" Text="Label" ForeColor="Green" Visible="False"></asp:Label>
+                </td>
+            </tr>
+        </table>
         <div style ="height:600px; width:650px; overflow:auto;">
             <asp:GridView ID="CinderellaGridView" runat="server" 
                 AllowSorting="True" 
                 AutoGenerateColumns="False" 
                 DataSourceID="Cinderella2015" 
-                DataKeyNames="CinderellaID">
+                DataKeyNames="CinderellaID" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black">
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
                     <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
                     <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                     <asp:BoundField DataField="AppointmentDateTime" HeaderText="Appointment Time" SortExpression="AppointmentDateTime" />
                 </Columns>
-                <SelectedRowStyle BackColor="Fuchsia" />
+                <FooterStyle BackColor="#CCCCCC" />
+                <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#808080" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#383838" />
+                <AlternatingRowStyle BackColor="pink" />
             </asp:GridView>
             <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
                 SelectCommand="SELECT [CinderellaID], 

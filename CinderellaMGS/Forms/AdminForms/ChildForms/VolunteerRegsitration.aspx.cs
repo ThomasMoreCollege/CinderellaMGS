@@ -18,35 +18,35 @@ public partial class Forms_AdminForms_GodMotherRegsitration : System.Web.UI.Page
     protected void RegisterFormButton_Click(object sender, EventArgs e)
     {
 
-        string firstName = FirstTextBox.Text;
-        string lastName = LastNameTextBox.Text;
-        string email = EmailTextBox.Text;
-        
-        string phone = PhoneTextBox.Text;
+        string firstName = FirstTextBox.Text.Trim();
+        string lastName = LastNameTextBox.Text.Trim();
+        string email = EmailTextBox.Text.Trim();
+
+        string phone = PhoneTextBox.Text.Trim();
         if (phone == string.Empty)
         {
             phone = "--";
         }
-        
-        string address = AddresstextBox.Text;
+
+        string address = AddresstextBox.Text.Trim();
         if (address == string.Empty)
         {
             address = "--";
         }
-       
-        string city = CityTextBox.Text;
+
+        string city = CityTextBox.Text.Trim();
         if (city == string.Empty)
         {
             city = "--";
         }
-        
-        string state = StateTextBox.Text;
+
+        string state = StateTextBox.Text.Trim();
         if (state == string.Empty)
         {
             state = "--";
         }
-        
-        string zipCode = ZipCodeTextBox.Text;
+
+        string zipCode = ZipCodeTextBox.Text.Trim();
         if (zipCode == string.Empty)
         {
             zipCode = "--";
