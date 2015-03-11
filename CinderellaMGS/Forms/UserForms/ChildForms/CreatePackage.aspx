@@ -38,7 +38,10 @@
                                     FROM [Cinderella] 
                                     INNER JOIN CinderellaStatusRecord 
                                         ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
-                                    WHERE Status_Name = 'Shopping' AND IsCurrent = 'Y'
+                                    INNER JOIN Package
+                                        ON Cinderella.CinderellaID = Package.Cinderella_ID
+                                    WHERE Status_Name = 'Shopping' AND IsCurrent = 'Y' AND CinderellaID NOT IN (SELECT CinderellaID
+                                                                                                                FROM Package)
                                     ORDER BY [LastName]"></asp:SqlDataSource>
                 </td>
             </tr>

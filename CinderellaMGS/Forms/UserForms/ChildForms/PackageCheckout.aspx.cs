@@ -38,8 +38,10 @@ public partial class Forms_UserForms_ChildForms_PackageCheckout : System.Web.UI.
             //Open the connection 
             conn.Open();
 
-            // SQL string to UPDATE Pending status 
-            string sql = "UPDATE Package SET InPackaging = 'N' WHERE Cinderella_ID = '" + SelectedPackageCinderellaID + "'";
+            // SQL string to UPDATE Package InPackaging status 
+            string sql = "UPDATE Package "
+                            + "SET InPackaging = 'N' "
+                            + "WHERE Cinderella_ID = '" + SelectedPackageCinderellaID + "'";
 
             // Execute query
             SqlCommand comm1 = new SqlCommand(sql, conn);
