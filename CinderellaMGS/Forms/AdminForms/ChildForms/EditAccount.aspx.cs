@@ -113,131 +113,11 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
     }
     protected void EditAccountFormButton_Click(object sender, EventArgs e)
     {
-
-
         //Variable that keeps tally of number of errors
         int errorCounter = 0;
         int catchCounter = 0;
 
-        //Try to change username only if username text box is enabled
-        if (NewUsernameTextBox.Enabled == true)
-        {
-            //Initialize database connection with "DefaultConnection" setup in the web.config
-            SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-            //Open the connection 
-            conn1.Open();
-
-            //Initialize a string variable to hold a query
-            string checkUserNameInput = "SELECT count(*) "
-                                        + "FROM Accounts "
-                                        + "WHERE Username='" + NewUsernameTextBox.Text + "'";
-
-            //Execute query 
-            SqlCommand com1 = new SqlCommand(checkUserNameInput, conn1);
-
-            //Retrieve results from query and store in a varaible 
-            int validUserLogin = Convert.ToInt32(com1.ExecuteScalar().ToString());
-
-            //Check if username textbox is empty
-
-            //Validate if such a user login already exists
-            if (validUserLogin != 0)
-            {
-                //Display error message
-                UserNameErrorLabel.Text = "Username already exists.";
-                UserNameErrorLabel.Visible = true;
-                errorCounter++;
-            }
-            else
-            {
-                UserNameErrorLabel.Visible = false;
-            }
-            if (errorCounter == 0 && IsValid)
-            {
-                try
-                {
-
-                    //Initialize database connection with "DefaultConnection" setup in the web.config
-                    SqlConnection conn2 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-                    //Open the connection 
-                    conn2.Open();
-
-                    string editAcctQuery = "UPDATE Accounts "
-                                            + "SET Username=@Uname WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "'";
-
-                    //Execute query 
-                    SqlCommand editAccount = new SqlCommand(editAcctQuery, conn2);
-
-                    //Add values to variables in the query
-                    editAccount.Parameters.AddWithValue("@Uname", NewUsernameTextBox.Text);
-
-                    editAccount.ExecuteNonQuery();
-
-                    //REMEMBER TO CLOSE CONNECTION!!
-                    conn2.Close();
-
-
-                }
-                catch (Exception ex)
-                {
-                    ChangedAccountLabel.Text = "Account was not added successfully";
-                    ChangedAccountLabel.Visible = true;
-                    catchCounter++;
-
-                };
-            }
-
-
-        }
-        if (NewAccountTypeRadioButtonList.Enabled == true)
-        {
-            if (NewAccountTypeRadioButtonList.SelectedItem.Text == CurrentAcctTypeLabel.Text)
-            {
-                NewAcctTypeErrorLabel.Visible = true;
-                NewAcctTypeErrorLabel.Text = "Account type is already assigned.";
-                errorCounter++;
-            }
-            else
-            {
-                NewAcctTypeErrorLabel.Visible = false;
-            }
-
-            if (errorCounter == 0 && IsValid)
-            {
-                try
-                {
-                    //Initialize database connection with "DefaultConnection" setup in the web.config
-                    SqlConnection conn3 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-                    //Open the connection 
-                    conn3.Open();
-
-                    string editAcctQuery = "UPDATE Accounts "
-                                            + "SET Account_Type=@UacctType "
-                                            + "WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "'";
-
-                    //Execute query 
-                    SqlCommand editAccount = new SqlCommand(editAcctQuery, conn3);
-
-                    //Add values to variables in the query
-                    editAccount.Parameters.AddWithValue("@UacctType", NewAccountTypeRadioButtonList.SelectedItem.Text);
-
-                    editAccount.ExecuteNonQuery();
-
-                    //REMEMBER TO CLOSE CONNECTION!!
-                    conn3.Close();
-                }
-                catch (Exception ex)
-                {
-                    ChangedAccountLabel.Text = "Account was not added successfully";
-                    ChangedAccountLabel.Visible = true;
-                    catchCounter++;
-                };
-            }
-        }
-
+        //Test for password validation and verfication
         if (NewPasswordTextBox.Enabled == true)
         {
             //Initialize database connection with "DefaultConnection" setup in the web.config
@@ -271,7 +151,61 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
                 InvalidPasswordLabel.Visible = false;
             }
             currentPasswordConn.Close();
-            if (errorCounter == 0 && IsValid)
+        }
+
+        //Test for account type verfication and validation
+        if (NewAccountTypeRadioButtonList.Enabled == true)
+        {
+            if (NewAccountTypeRadioButtonList.SelectedItem.Text == CurrentAcctTypeLabel.Text)
+            {
+                NewAcctTypeErrorLabel.Visible = true;
+                NewAcctTypeErrorLabel.Text = "Account type is already assigned.";
+                errorCounter++;
+            }
+            else
+            {
+                NewAcctTypeErrorLabel.Visible = false;
+            }
+        }
+        //Test for username verfication and validation
+        if (NewUsernameTextBox.Enabled == true)
+        {
+            //Initialize database connection with "DefaultConnection" setup in the web.config
+            SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+            //Open the connection 
+            conn1.Open();
+
+            //Initialize a string variable to hold a query
+            string checkUserNameInput = "SELECT count(*) "
+                                        + "FROM Accounts "
+                                        + "WHERE Username='" + NewUsernameTextBox.Text + "'";
+
+            //Execute query 
+            SqlCommand com1 = new SqlCommand(checkUserNameInput, conn1);
+
+            //Retrieve results from query and store in a varaible 
+            int validUserLogin = Convert.ToInt32(com1.ExecuteScalar().ToString());
+
+            //Check if username textbox is empty
+
+            //Validate if such a user login already exists
+            if (validUserLogin != 0)
+            {
+                //Display error message
+                UserNameErrorLabel.Text = "Username already exists.";
+                UserNameErrorLabel.Visible = true;
+                errorCounter++;
+            }
+            else
+            {
+                UserNameErrorLabel.Visible = false;
+            }
+        }
+        //If no errors were made do the appropiate changes
+        if (errorCounter == 0 && IsValid)
+        {
+            if (NewPasswordTextBox.Enabled == true)
             {
                 try
                 {
@@ -301,6 +235,73 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
                     ChangedAccountLabel.Text = "Account was not added successfully";
                     ChangedAccountLabel.Visible = true;
                     catchCounter++;
+                };
+            }
+            if (NewAccountTypeRadioButtonList.Enabled == true)
+            {
+                try
+                {
+                    //Initialize database connection with "DefaultConnection" setup in the web.config
+                    SqlConnection conn3 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+                    //Open the connection 
+                    conn3.Open();
+
+                    string editAcctQuery = "UPDATE Accounts "
+                                            + "SET Account_Type=@UacctType "
+                                            + "WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "'";
+
+                    //Execute query 
+                    SqlCommand editAccount = new SqlCommand(editAcctQuery, conn3);
+
+                    //Add values to variables in the query
+                    editAccount.Parameters.AddWithValue("@UacctType", NewAccountTypeRadioButtonList.SelectedItem.Text);
+
+                    editAccount.ExecuteNonQuery();
+
+                    //REMEMBER TO CLOSE CONNECTION!!
+                    conn3.Close();
+                }
+                catch (Exception ex)
+                {
+                    ChangedAccountLabel.Text = "Account was not added successfully";
+                    ChangedAccountLabel.Visible = true;
+                    catchCounter++;
+                };
+            }
+            if (NewUsernameTextBox.Enabled == true)
+            {
+                try
+                {
+
+                    //Initialize database connection with "DefaultConnection" setup in the web.config
+                    SqlConnection conn2 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+                    //Open the connection 
+                    conn2.Open();
+
+                    string editAcctQuery = "UPDATE Accounts "
+                                            + "SET Username=@Uname WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "'";
+
+                    //Execute query 
+                    SqlCommand editAccount = new SqlCommand(editAcctQuery, conn2);
+
+                    //Add values to variables in the query
+                    editAccount.Parameters.AddWithValue("@Uname", NewUsernameTextBox.Text);
+
+                    editAccount.ExecuteNonQuery();
+
+                    //REMEMBER TO CLOSE CONNECTION!!
+                    conn2.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    ChangedAccountLabel.Text = "Account was not added successfully";
+                    ChangedAccountLabel.Visible = true;
+                    catchCounter++;
+
                 };
             }
         }
@@ -350,6 +351,14 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
 
             ConfirmPasswordTextBox.Enabled = false;
             ConfirmPasswordTextBox.BackColor = System.Drawing.Color.LightGray;
+            
+            //Disable Validators
+            NewUsernameRequiredFieldValidator.Enabled = false;
+
+            //Disable edit and change password buttons
+            EditUserNameButton.Enabled = false;
+            EditAcctTypeButton.Enabled = false;
+            ChangePasswordButton.Enabled = false;
         }
         
     }
