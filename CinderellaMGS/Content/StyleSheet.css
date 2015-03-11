@@ -359,6 +359,9 @@ figure{
  border-bottom: 1px solid #999999;
 }
 
+#firstRow{
+    border-top: 1px solid #999999;
+}
 #VolChckInRow {
     border-bottom: 1px solid #999999;
 }
@@ -467,7 +470,6 @@ textarea{
 
 #VolunteerGridView {
     width:100%;
-    text-align: left;
 }
 
 #ClockingTable td{

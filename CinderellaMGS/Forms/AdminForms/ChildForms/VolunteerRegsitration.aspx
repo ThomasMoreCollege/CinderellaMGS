@@ -9,7 +9,7 @@
         <br />
         <br />
          <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="errorLabel" headertext="There were errors on the page:" />
-        <table style="width:100%;" id="VolunteerInfoTable">
+        <table style="width:50%;" id="VolunteerInfoTable">
             <tr>
                 <td class="auto-style3" >
                     *First Name:</td>
@@ -17,7 +17,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style4"></td>
+                <td></td>
                 <td>
                  <asp:RequiredFieldValidator ID="FirstNameValidator" runat="server"
                      ControlToValidate="FirstTextBox"
@@ -32,7 +32,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style4"></td>
+                <td></td>
                 <td>
                  <asp:RequiredFieldValidator ID="LastNameValidator" runat="server"
                      ControlToValidate="LastNameTextBox"
@@ -47,7 +47,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style4"></td>
+                <td></td>
                 <td>
                  <asp:RequiredFieldValidator ID="EmailValidator" runat="server"
                      ControlToValidate="EmailTextBox"
@@ -63,7 +63,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style4"></td>
+                <td></td>
                 <td>
                     <asp:RegularExpressionValidator ID="PhoneRegularExpressionValidator" runat="server" ErrorMessage="Phone number must be 7 to 10 digits long (dash seperated)." ForeColor="Red" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" ControlToValidate="PhoneTextBox" Display="Dynamic"></asp:RegularExpressionValidator>
                 </td>
@@ -77,7 +77,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style4"></td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
@@ -87,7 +87,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style4"></td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
@@ -97,7 +97,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style4"></td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
@@ -107,7 +107,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style4"></td>
+                <td></td>
                 
                 <td>
                     <asp:RegularExpressionValidator ID="ZipCodeRegularExpressionValidator" runat="server" ErrorMessage="Please enter a valid US zipcode." ForeColor="Red" ValidationExpression="\d{5}(-\d{4})?" ControlToValidate="ZipCodeTextBox" Display="Dynamic"></asp:RegularExpressionValidator>
@@ -127,7 +127,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style4"></td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
@@ -144,7 +144,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style4"></td>
+                <td></td>
                 <td></td>
             </tr>
             <tr>
@@ -161,15 +161,9 @@
         .auto-style2 {
             font-size: small;
             text-align: right;
-            width: 174px;
         }
         .auto-style3 {
             text-align: right;
-            width: 174px;
-        }
-        .auto-style4
-        {
-            width: 174px;
         }
     </style>
 </asp:Content>
