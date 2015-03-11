@@ -129,7 +129,9 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             conn1.Open();
 
             //Initialize a string variable to hold a query
-            string checkUserNameInput = "SELECT count(*) FROM Accounts WHERE Username='" + NewUsernameTextBox.Text + "'";
+            string checkUserNameInput = "SELECT count(*) "
+                                        + "FROM Accounts "
+                                        + "WHERE Username='" + NewUsernameTextBox.Text + "'";
 
             //Execute query 
             SqlCommand com1 = new SqlCommand(checkUserNameInput, conn1);
@@ -162,7 +164,8 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
                     //Open the connection 
                     conn2.Open();
 
-                    string editAcctQuery = "UPDATE Accounts SET Username=@Uname WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "'";
+                    string editAcctQuery = "UPDATE Accounts "
+                                            + "SET Username=@Uname WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "'";
 
                     //Execute query 
                     SqlCommand editAccount = new SqlCommand(editAcctQuery, conn2);
@@ -211,7 +214,9 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
                     //Open the connection 
                     conn3.Open();
 
-                    string editAcctQuery = "UPDATE Accounts SET Account_Type=@UacctType WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "'";
+                    string editAcctQuery = "UPDATE Accounts "
+                                            + "SET Account_Type=@UacctType "
+                                            + "WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "'";
 
                     //Execute query 
                     SqlCommand editAccount = new SqlCommand(editAcctQuery, conn3);
@@ -244,7 +249,9 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
             //Initialize a string variable to hold a query
 
             // string checkUserNameInput = "SELECT count(*) FROM Accounts WHERE Username='" + NewUserNameTextBox.Text + "'";
-            string checkCurrentPassword = "SELECT count(*) FROM Accounts WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "' AND Password='" + CurrentPasswordTextBox.Text + "'";
+            string checkCurrentPassword = "SELECT count(*) "
+                                            + "FROM Accounts "
+                                            + "WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "' AND Password='" + CurrentPasswordTextBox.Text + "'";
 
             //Execute query 
             SqlCommand command1 = new SqlCommand(checkCurrentPassword, currentPasswordConn);
@@ -274,7 +281,9 @@ public partial class Forms_AdminForms_ChildForms_EditAccount : System.Web.UI.Pag
                     //Open the connection 
                     conn4.Open();
 
-                    string editPasswordQuery = "UPDATE Accounts SET Password=@Upassword WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "'";
+                    string editPasswordQuery = "UPDATE Accounts "
+                                                + "SET Password=@Upassword "
+                                                + "WHERE Username='" + CurrentAcctsListBox.SelectedItem.Text + "'";
 
                     //Execute query 
                     SqlCommand editPassword = new SqlCommand(editPasswordQuery, conn4);

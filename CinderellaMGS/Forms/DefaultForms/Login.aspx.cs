@@ -25,7 +25,9 @@ public partial class Login : System.Web.UI.Page
         conn.Open();
         
         //Initialize a string variable to hold a query
-        string checkUserInput = "SELECT count(*) FROM Accounts WHERE Username='" + UsernameTextBox.Text + "' AND Password='" + PasswordTextBox.Text + "'";
+        string checkUserInput = "SELECT count(*) "
+                                + "FROM Accounts "
+                                + "WHERE Username='" + UsernameTextBox.Text + "' AND Password='" + PasswordTextBox.Text + "'";
         
         //Execute query 
         SqlCommand com1 = new SqlCommand(checkUserInput, conn);
@@ -42,7 +44,9 @@ public partial class Login : System.Web.UI.Page
         else
         {
             //Query to retrieve the account type
-            string acctTypeQuery = "SELECT Account_Type FROM Accounts WHERE Username='" + UsernameTextBox.Text + "' AND Password='" + PasswordTextBox.Text + "'";
+            string acctTypeQuery = "SELECT Account_Type "
+                                    + "FROM Accounts "
+                                    + "WHERE Username='" + UsernameTextBox.Text + "' AND Password='" + PasswordTextBox.Text + "'";
             
             //Execute query 
             SqlCommand com2 = new SqlCommand(acctTypeQuery, conn);

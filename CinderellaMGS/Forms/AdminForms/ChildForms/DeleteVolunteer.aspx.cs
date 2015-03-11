@@ -22,7 +22,9 @@ public partial class Forms_AdminForms_ChildForms_DeleteVolunteer : System.Web.UI
         SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
         //Store Query string
-        string retrieveVolunteerInfoQuery = "SELECT FirstName,LastName,Email,Phone,Address,City,State,Zipcode FROM Volunteer WHERE VolunteerID='" + VolunteerGridView.SelectedValue.ToString() + "'";
+        string retrieveVolunteerInfoQuery = "SELECT FirstName,LastName,Email,Phone,Address,City,State,Zipcode "
+                                            + "FROM Volunteer "
+                                            + "WHERE VolunteerID='" + VolunteerGridView.SelectedValue.ToString() + "'";
         
         //Execute query 
         SqlCommand retrieveInfo = new SqlCommand(retrieveVolunteerInfoQuery, conn1);
@@ -61,7 +63,8 @@ public partial class Forms_AdminForms_ChildForms_DeleteVolunteer : System.Web.UI
         conn2.Open();
 
         //Initialize a string variable to hold a query
-        string deleteUserQuery = "DELETE FROM Volunteer WHERE VolunteerID=@Vid";
+        string deleteUserQuery = "DELETE FROM Volunteer "
+                                    + "WHERE VolunteerID=@Vid";
 
         //Execute query 
         SqlCommand deleteAccount = new SqlCommand(deleteUserQuery, conn2);

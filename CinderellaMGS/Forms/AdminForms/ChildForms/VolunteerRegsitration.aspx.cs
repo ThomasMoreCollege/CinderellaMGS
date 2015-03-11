@@ -56,7 +56,8 @@ public partial class Forms_AdminForms_GodMotherRegsitration : System.Web.UI.Page
 
         //Open the connection 
         conn.Open();
-        string sql = "INSERT INTO Volunteer (FirstName, LastName, Address, City, State, Zipcode, Phone, Email) VALUES ( '" + firstName + "', '" + lastName + "', '" + address + "', '" + city + "', '" + state + "', '" + zipCode + "', '" + phone + "', '" + email + "')";
+        string sql = "INSERT INTO Volunteer (FirstName, LastName, Address, City, State, Zipcode, Phone, Email) "
+                        + "VALUES ( '" + firstName + "', '" + lastName + "', '" + address + "', '" + city + "', '" + state + "', '" + zipCode + "', '" + phone + "', '" + email + "')";
 
         // Execute query
         SqlCommand comm1 = new SqlCommand(sql, conn);
@@ -68,7 +69,8 @@ public partial class Forms_AdminForms_GodMotherRegsitration : System.Web.UI.Page
         string newID = comm2.ExecuteScalar().ToString();
 
         //  SQL string to insert Volunteer into VolunteerStatusRecord with a current status of Pending
-        string sqlThree = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + newID + "', GetDate(), 'Pending', 'Y')";
+        string sqlThree = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
+                            + "VALUES ('" + newID + "', GetDate(), 'Pending', 'Y')";
         SqlCommand comm3 = new SqlCommand(sqlThree, conn);
         comm3.ExecuteNonQuery();
 

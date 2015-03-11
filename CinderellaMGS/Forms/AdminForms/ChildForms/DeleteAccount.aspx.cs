@@ -23,7 +23,8 @@ public partial class Forms_AdminForms_ChildForms_DeleteAccount : System.Web.UI.P
         conn.Open();
 
         //Initialize a string variable to hold a query
-        string deleteUserQuery = "DELETE FROM Accounts WHERE Username=@Uname";
+        string deleteUserQuery = "DELETE FROM Accounts "
+                                    + "WHERE Username=@Uname";
 
         //Execute query 
         SqlCommand deleteAccount = new SqlCommand(deleteUserQuery, conn);
@@ -55,7 +56,9 @@ public partial class Forms_AdminForms_ChildForms_DeleteAccount : System.Web.UI.P
         conn1.Open();
 
         //Initialize a string variable to hold a query
-        string retrieveUsernameQuery = "SELECT Username FROM Accounts WHERE Username='" + ExistingAcctsListBox.SelectedItem.Text + "'";
+        string retrieveUsernameQuery = "SELECT Username "
+                                        + "FROM Accounts "
+                                        + "WHERE Username='" + ExistingAcctsListBox.SelectedItem.Text + "'";
 
         //Execute query 
         SqlCommand com1 = new SqlCommand(retrieveUsernameQuery, conn1);
@@ -74,7 +77,9 @@ public partial class Forms_AdminForms_ChildForms_DeleteAccount : System.Web.UI.P
         conn2.Open();
 
         //Initialize a string variable to hold a query
-        string retrieveAcctTypeQuery = "SELECT Account_Type FROM Accounts WHERE Username='" + ExistingAcctsListBox.SelectedItem.Text + "'";
+        string retrieveAcctTypeQuery = "SELECT Account_Type "
+                                        + "FROM Accounts "
+                                        + "WHERE Username='" + ExistingAcctsListBox.SelectedItem.Text + "'";
 
         //Execute query 
         SqlCommand com2 = new SqlCommand(retrieveAcctTypeQuery, conn2);
