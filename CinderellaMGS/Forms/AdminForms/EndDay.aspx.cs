@@ -29,7 +29,7 @@ public partial class Forms_AdminForms_EndDay : System.Web.UI.Page
         // SQL string to select all Volunteers whose current status is not Pending
         string sql = "SELECT Volunteer_ID "
                 + "FROM VolunteerStatusRecord "
-                + "WHERE IsCurrent = 'Y' AND Status_Name != 'Pending'";
+                + "WHERE IsCurrent = 'Y' AND Status_Name != 'Pending' AND Status_Name != 'Deleted'";
         SqlCommand comm1 = new SqlCommand(sql, conn);
 
         //Create a new adapter

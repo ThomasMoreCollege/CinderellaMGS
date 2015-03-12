@@ -6,7 +6,7 @@
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
         <table style="width:100%;">
             <tr>
-                <td colspan="4" class="auto-style1" ><strong>Cinderelas Currently Shopping</strong></td>
+                <td colspan="4" class="auto-style1" ><strong>Cinderellas Currently Shopping</strong></td>
                 <td class="auto-style10">&nbsp;</td>
                 <td colspan="4" class="auto-style1"><strong>Cinderellas in Alterations</strong></td>
             </tr>

@@ -97,11 +97,13 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
         CinderellaCheckedOutLabel.Text = total.ToString();
 
         // SQL to count total Volunteers with CurrentStatus 'Pending' and have a shift today
-        string VolSQL = "SELECT COUNT (VolunteerStatusRecord.Volunteer_ID) "
-                + "FROM VolunteerStatusRecord "
+        string VolSQL = "SELECT COUNT (VolunteerID) "
+                + "FROM Volunteer "
+                + "INNER JOIN VOlunteerStatusRecord "
+                    + "ON Volunteer.VOlunteerID = VolunteerStatusREcord.Volunteer_ID "
                 + "INNER JOIN VolunteerShiftRecord "
-                + "ON VolunteerStatusRecord.Volunteer_ID = VolunteerShiftRecord.Volunteer_ID "
-                + "WHERE Status_Name = 'Pending' AND IsCurrent = 'Y' AND Shift_Name = datename(dw,getdate())";
+                    + "ON VolunteerStatusRecord.Volunteer_ID = VolunteerShiftRecord.Volunteer_ID "
+                + "WHERE Status_Name = 'Pending' AND IsCurrent = 'Y' AND IsValid = 'Y' AND Shift_Name = datename(dw,getdate())";
 
         // Execute query
         SqlCommand comm7 = new SqlCommand(VolSQL, conn);
@@ -110,11 +112,13 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
         VolunteerPendingLabel.Text = total.ToString();
 
         // SQL to count total Volunteers with CurrentStatus 'Ready' and CurrentRole 'Godmother'
-        VolSQL = "SELECT COUNT (VolunteerStatusRecord.Volunteer_ID) "
-                + "FROM VolunteerStatusRecord "
+        VolSQL = "SELECT COUNT (VolunteerID) "
+                + "FROM Volunteer "
+                + "INNER JOIN VolunteerStatusRecord "
+                    + "ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID "
                 + "INNER JOIN VolunteerRoleRecord "
-                + "ON VolunteerStatusRecord.Volunteer_ID = VolunteerRoleRecord.Volunteer_ID "
-                + "WHERE Status_Name = 'Ready' AND VolunteerStatusRecord.IsCurrent = 'Y' AND Role_Name = 'Godmother' AND VolunteerRoleRecord.IsCurrent = 'Y'";
+                    + "ON VolunteerStatusRecord.Volunteer_ID = VolunteerRoleRecord.Volunteer_ID "
+                + "WHERE Status_Name = 'Ready' AND IsValid = 'Y' AND VolunteerStatusRecord.IsCurrent = 'Y' AND Role_Name = 'Godmother' AND VolunteerRoleRecord.IsCurrent = 'Y'";
 
         // Execute query
         SqlCommand comm8 = new SqlCommand(VolSQL, conn);
@@ -123,11 +127,13 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
         VolunteerReadyLabel.Text = total.ToString();
 
         // SQL to count total Volunteers with CurrentStatus 'Shopping' and CurrentRole 'Godmother'
-        VolSQL = "SELECT COUNT (VolunteerStatusRecord.Volunteer_ID) "
-                + "FROM VolunteerStatusRecord "
+        VolSQL = "SELECT COUNT (VolunteerID) "
+                + "FROM Volunteer "
+                + "INNER JOIN VolunteerStatusRecord "
+                    + "ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID "
                 + "INNER JOIN VolunteerRoleRecord "
-                + "ON VolunteerStatusRecord.Volunteer_ID = VolunteerRoleRecord.Volunteer_ID "
-                + "WHERE Status_Name = 'Shopping' AND VolunteerStatusRecord.IsCurrent = 'Y' AND Role_Name = 'Godmother' AND VolunteerRoleREcord.IsCurrent = 'Y'";
+                    + "ON VolunteerStatusRecord.Volunteer_ID = VolunteerRoleRecord.Volunteer_ID "
+                + "WHERE Status_Name = 'Shopping' AND IsValid = 'Y' AND VolunteerStatusRecord.IsCurrent = 'Y' AND Role_Name = 'Godmother' AND VolunteerRoleREcord.IsCurrent = 'Y'";
 
         // Execute query
         SqlCommand comm9 = new SqlCommand(VolSQL, conn);
@@ -136,9 +142,11 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
         VolunteerShoppingLabel.Text = total.ToString();
 
         // SQL to count total Volunteers with CurrentStatus 'On Break'
-        VolSQL = "SELECT COUNT (VolunteerStatusRecord.Volunteer_ID) "
-                + "FROM VolunteerStatusRecord "
-                + "WHERE Status_Name = 'On Break' AND VolunteerStatusRecord.IsCurrent = 'Y'";
+        VolSQL = "SELECT COUNT (VolunteerID) "
+                + "FROM Volunteer "
+                + "INNER JOIN VolunteerStatusRecord "
+                    + "ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID "
+                + "WHERE Status_Name = 'On Break' AND IsValid = 'Y' AND VolunteerStatusRecord.IsCurrent = 'Y'";
 
         // Execute query
         SqlCommand comm10 = new SqlCommand(VolSQL, conn);

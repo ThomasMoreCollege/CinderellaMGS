@@ -59,7 +59,7 @@
                                                 ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID 
                                             INNER JOIN VolunteerStatusRecord
                                                 ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID
-                                            WHERE Role_Name = 'Godmother' AND VolunteerRoleRecord.IsCurrent = 'Y' AND VolunteerStatusRecord.Status_Name = 'Ready' AND VolunteerStatusRecord.IsCurrent = 'Y'
+                                            WHERE Role_Name = 'Godmother' AND IsValid = 'Y' AND VolunteerRoleRecord.IsCurrent = 'Y' AND VolunteerStatusRecord.Status_Name = 'Ready' AND VolunteerStatusRecord.IsCurrent = 'Y'
                                             ORDER BY [LastName]"></asp:SqlDataSource>
                     </div>
                 </td>
