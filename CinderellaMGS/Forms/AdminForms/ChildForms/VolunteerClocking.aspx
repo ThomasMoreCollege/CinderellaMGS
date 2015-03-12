@@ -16,23 +16,26 @@
                             AllowSorting="True" 
                             AutoGenerateColumns="False" 
                             DataSourceID="SqlDataSource1"
-                            DataKeyNames="VolunteerID">
+                            DataKeyNames="VolunteerID" ForeColor="Black">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
+                                <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />
                                 <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
                                 <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                             </Columns>
+                            <FooterStyle BackColor="#CCCCCC" />
+                            <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#808080" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#383838" />
+                            <AlternatingRowStyle BackColor="pink" />
                             <SelectedRowStyle BackColor="Fuchsia" />
                         </asp:GridView>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
-                            SelectCommand="SELECT [VolunteerID],
-                                                    [LastName], 
-                                                    [FirstName] 
-                                            FROM [Volunteer] 
-                                            INNER JOIN VolunteerStatusRecord 
-                                                ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID 
-                                            WHERE Status_Name = 'On Break' AND IsCurrent = 'Y'
-                                            ORDER BY [LastName]">
+                            SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName FROM Volunteer INNER JOIN VolunteerStatusRecord ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID WHERE (VolunteerStatusRecord.Status_Name = 'On Break') AND (VolunteerStatusRecord.IsCurrent = 'Y') AND (Volunteer.IsValid = 'Y') ORDER BY Volunteer.LastName">
                         </asp:SqlDataSource>
                     </div>
                 </td>
@@ -42,23 +45,26 @@
                             AllowSorting="True" 
                             AutoGenerateColumns="False" 
                             DataSourceID="SqlDataSource2"
-                            DataKeyNames="VolunteerID">
+                            DataKeyNames="VolunteerID" ForeColor="Black">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
+                                <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />
                                 <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
                                 <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                             </Columns>
+                            <FooterStyle BackColor="#CCCCCC" />
+                            <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#808080" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#383838" />
+                            <AlternatingRowStyle BackColor="pink" />
                             <SelectedRowStyle BackColor="Fuchsia" />
                         </asp:GridView>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" 
-                            SelectCommand="SELECT [VolunteerID], 
-                                                    [LastName], 
-                                                    [FirstName] 
-                                            FROM [Volunteer]
-                                            INNER JOIN VolunteerStatusRecord
-                                            ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID
-                                            WHERE Status_Name != 'On Break' AND IsCurrent = 'Y'
-                                            ORDER BY [LastName]">
+                            SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName FROM Volunteer INNER JOIN VolunteerStatusRecord ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID WHERE (VolunteerStatusRecord.Status_Name &lt;&gt; 'On Break') AND (VolunteerStatusRecord.IsCurrent = 'Y') AND (Volunteer.IsValid = 'Y') ORDER BY Volunteer.LastName">
                         </asp:SqlDataSource>
                     </div>
                 </td>

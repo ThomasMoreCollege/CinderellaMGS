@@ -10,27 +10,27 @@
                 AllowSorting="True" 
                 AutoGenerateColumns="False" 
                 DataSourceID="Cinderella2015"
-                DataKeyNames ="VolunteerID">
+                DataKeyNames ="VolunteerID" ForeColor="Black">
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
+                    <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />
                     <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
                     <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                 </Columns>
+                <FooterStyle BackColor="#CCCCCC" />
+                <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#808080" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#383838" />
+                <AlternatingRowStyle BackColor="pink" />
                 <SelectedRowStyle BackColor="Fuchsia" />
             </asp:GridView>
             <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
-                SelectCommand="SELECT [VolunteerID],
-                                        [LastName], 
-                                        [FirstName], 
-                                        [Email] 
-                                FROM [Volunteer] 
-                                INNER JOIN VolunteerStatusRecord 
-                                    ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID 
-                                INNER JOIN VolunteerShiftRecord 
-                                    ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
-                                WHERE Status_Name = 'Pending' AND IsCurrent = 'Y' AND Shift_Name = 'Friday'
-                                ORDER BY [LastName]"></asp:SqlDataSource>
+                SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName, Volunteer.Email FROM Volunteer INNER JOIN VolunteerStatusRecord ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID INNER JOIN VolunteerShiftRecord ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID WHERE (VolunteerStatusRecord.Status_Name = 'Pending') AND (VolunteerStatusRecord.IsCurrent = 'Y') AND (VolunteerShiftRecord.Shift_Name = 'Friday') AND (Volunteer.IsValid = 'Y') ORDER BY Volunteer.LastName"></asp:SqlDataSource>
         </div>
         <p>
             <asp:Button ID="CheckInButton" runat="server" OnClick="CheckinButton_Click" Text="Check-In" Width="70px" />

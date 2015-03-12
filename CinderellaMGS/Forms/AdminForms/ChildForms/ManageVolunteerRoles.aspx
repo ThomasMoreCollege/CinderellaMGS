@@ -17,17 +17,13 @@
             </tr>
             <tr>
                 <td>
-                    <asp:SqlDataSource ID="VolunteerDisplayDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.Lastname, Volunteer.FirstName, VolunteerRoleRecord.Role_Name
-FROM Volunteer
-	INNER JOIN VolunteerRoleRecord
-		on Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID
-WHERE VolunteerRoleRecord.isCurrent = 'Y'"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="VolunteerDisplayDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName, VolunteerRoleRecord.Role_Name FROM Volunteer INNER JOIN VolunteerRoleRecord ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID WHERE (VolunteerRoleRecord.IsCurrent = 'Y') AND (Volunteer.IsValid = 'Y')"></asp:SqlDataSource>
                     <div style="height: 200px; width: 600px; overflow: auto;">
                         <asp:GridView ID="VolunteerGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="VolunteerID" DataSourceID="VolunteerDisplayDS" AllowSorting="True" ForeColor="Black" OnSelectedIndexChanged="VolunteerGridView_SelectedIndexChanged1">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" InsertVisible="False" ReadOnly="True" SortExpression="VolunteerID" />
-                                <asp:BoundField DataField="Lastname" HeaderText="Last Name" SortExpression="Lastname" />
+                                <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
                                 <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                                 <asp:BoundField DataField="Role_Name" HeaderText="Current Role" SortExpression="Role_Name" />
                             </Columns>
