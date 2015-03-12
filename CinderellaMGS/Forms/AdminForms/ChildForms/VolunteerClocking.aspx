@@ -35,7 +35,11 @@
                             <SelectedRowStyle BackColor="Fuchsia" />
                         </asp:GridView>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
-                            SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName FROM Volunteer INNER JOIN VolunteerStatusRecord ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID WHERE (VolunteerStatusRecord.Status_Name = 'On Break') AND (VolunteerStatusRecord.IsCurrent = 'Y') AND (Volunteer.IsValid = 'Y') ORDER BY Volunteer.LastName">
+                            SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName 
+                                            FROM Volunteer 
+                                            INNER JOIN VolunteerStatusRecord 
+                                                ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID 
+                                            WHERE (VolunteerStatusRecord.Status_Name = 'On Break') AND (VolunteerStatusRecord.IsCurrent = 'Y') AND (Volunteer.IsValid = 'Y') ORDER BY Volunteer.LastName">
                         </asp:SqlDataSource>
                     </div>
                 </td>
@@ -64,7 +68,11 @@
                             <SelectedRowStyle BackColor="Fuchsia" />
                         </asp:GridView>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" 
-                            SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName FROM Volunteer INNER JOIN VolunteerStatusRecord ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID WHERE (VolunteerStatusRecord.Status_Name &lt;&gt; 'On Break') AND (VolunteerStatusRecord.IsCurrent = 'Y') AND (Volunteer.IsValid = 'Y') ORDER BY Volunteer.LastName">
+                            SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName 
+                                            FROM Volunteer 
+                                            INNER JOIN VolunteerStatusRecord 
+                                                ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID 
+                                            WHERE (VolunteerStatusRecord.Status_Name != 'On Break') AND (VolunteerStatusRecord.IsCurrent = 'Y') AND (Volunteer.IsValid = 'Y') AND (VolunteerStatusRecord.Status_Name != 'Pending') ORDER BY Volunteer.LastName">
                         </asp:SqlDataSource>
                     </div>
                 </td>
