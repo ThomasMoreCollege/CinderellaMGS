@@ -56,8 +56,8 @@ public partial class Login : System.Web.UI.Page
 
             // Sets up the session for keeping track of username and account type and re-directs to HomePage
             LoginErrorLabel.Visible = false;
-            Session["CurrentUser"] = UsernameTextBox.Text;
-            Session["CurrentAccType"] = acctType;
+            Session.Add("CurrentUser", UsernameTextBox.Text);
+            Session.Add("CurrentAccType", acctType);
             Response.Redirect("HomePage.aspx");
         }
 

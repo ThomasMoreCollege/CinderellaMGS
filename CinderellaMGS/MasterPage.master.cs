@@ -85,6 +85,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     public void ManageMasterLayout()
     {
+        Response.ExpiresAbsolute = DateTime.Now.AddDays(-1d);
+        Response.Expires = -1500;
+        Response.CacheControl = "no-cache";
+        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+        Response.Cache.SetNoStore();
         // Checking if a session is running
         if (Session["CurrentAccType"] != null)
         {
@@ -112,6 +118,55 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 LogOffLinkButton.Visible = true;
                 LoginHyperLink.Visible = false;
             }
+            //else
+            //{
+            //    //Disable caching if not logged in 
+            //    Response.ExpiresAbsolute=DateTime.Now.AddDays(-1d);
+            //    Response.Expires =-1500;
+            //    Response.CacheControl = "no-cache";
+            //    string currentPage = HttpContext.Current.Request.Url.AbsolutePath.ToString();
+
+            //    // Redirect to login page if trying to access a page if not logged in
+            //    if (currentPage != "/CinderellaMGS/Forms/DefaultForms/Login.aspx")
+            //    {
+            //        WelcomeLabel.Text = "--";
+            //        WelcomeLabel.Visible = false;
+            //        RevealAdmin(false);
+            //        RevealAllUserFeatures(false);
+            //        RevealAutonmatedPairingOnly(false);
+            //        LogOffLinkButton.Visible = false;
+            //        LoginHyperLink.Visible = true;
+            //        Response.Redirect("~/Forms/DefaultForms/Login.aspx");
+            //    }
+            //    else
+            //    {
+            //        WelcomeLabel.Text = "--";
+            //        WelcomeLabel.Visible = false;
+            //        RevealAdmin(false);
+            //        RevealAllUserFeatures(false);
+            //        RevealAutonmatedPairingOnly(false);
+            //        LogOffLinkButton.Visible = false;
+            //        LoginHyperLink.Visible = true;
+            //        //Response.Redirect("~/Forms/DefaultForms/Login.aspx");
+            //    }
+            //}
+            
+        }
+        else
+        {            
+            // Redirect to login page if trying to access a page if not logged in
+            string currentPage = HttpContext.Current.Request.Url.AbsolutePath.ToString();
+            if (currentPage != "/CinderellaMGS/Forms/DefaultForms/Login.aspx")
+            {
+                WelcomeLabel.Text = "--";
+                WelcomeLabel.Visible = false;
+                RevealAdmin(false);
+                RevealAllUserFeatures(false);
+                RevealAutonmatedPairingOnly(false);
+                LogOffLinkButton.Visible = false;
+                LoginHyperLink.Visible = true;
+                Response.Redirect("~/Forms/DefaultForms/Login.aspx");
+            }
             else
             {
                 WelcomeLabel.Text = "--";
@@ -121,30 +176,23 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 RevealAutonmatedPairingOnly(false);
                 LogOffLinkButton.Visible = false;
                 LoginHyperLink.Visible = true;
+                //Response.Redirect("~/Forms/DefaultForms/Login.aspx");
             }
-            
-        }
-        else
-        {
-            // Sets admin menu to not visible
-            WelcomeLabel.Text = "--";
-            WelcomeLabel.Visible = false;
-            RevealAdmin(false);
-            RevealAllUserFeatures(false);
-            RevealAutonmatedPairingOnly(false);
-            LogOffLinkButton.Visible = false;
-            LoginHyperLink.Visible = true;
-
-
-            // Sets admin menu links to visible for admin access
-            //(this.Master as MasterPage).RevealAdmin(true);
-            //(this.Master as MasterPage).RevealAllUserFeatures(true);
         }
     }
     protected void LogOffLinkButton_Click(object sender, EventArgs e)
     {
         Session["CurrentAccType"] = null;
         Session["CurrentUser"] = null;
+        Session.Clear();
+        Session.RemoveAll();
+        Session.Abandon();
+        Response.ExpiresAbsolute = DateTime.Now.AddDays(-1d);
+        Response.Expires = -1500;
+        Response.CacheControl = "no-cache";
+        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+        Response.Cache.SetNoStore();
         Response.Redirect("~/Forms/DefaultForms/HomePage.aspx");
     }
 }

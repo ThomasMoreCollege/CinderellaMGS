@@ -348,6 +348,11 @@ figure{
     text-align:center;
 }
 
+#LoginTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #middleRow {
  border-top: 1px solid #999999;
  border-bottom: 1px solid #999999;
