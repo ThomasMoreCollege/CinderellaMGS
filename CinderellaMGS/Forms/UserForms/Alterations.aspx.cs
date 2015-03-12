@@ -65,19 +65,24 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         conn1.Open();
 
         // Get the Cinderella's ID.
-        string getCinderellaID = "SELECT CinderellaID FROM Cinderella WHERE FirstName = '" + shoppingCinderellaListBox.SelectedItem.Text + "'";
+        string getCinderellaID = "SELECT CinderellaID "
+                                + "FROM Cinderella "
+                                + "WHERE FirstName = '" + shoppingCinderellaListBox.SelectedItem.Text + "'";
         SqlCommand com1 = new SqlCommand(getCinderellaID, conn1);
         string getID = Convert.ToString(com1.ExecuteScalar().ToString());
 
         // Update the EndTime and the isCurrent values for the 'Shopping' status entry in the CinderellaStatusRecord table.
-        string updateSelectedCinderella = "UPDATE CinderellaStatusRecord SET EndTime = '" + DateTime.Now + "', IsCurrent = 'N' WHERE Cinderella_ID = '" + getID + "' AND IsCurrent = 'Y'";
+        string updateSelectedCinderella = "UPDATE CinderellaStatusRecord "
+                                            + "SET EndTime = '" + DateTime.Now + "', IsCurrent = 'N' "
+                                            + "WHERE Cinderella_ID = '" + getID + "' AND IsCurrent = 'Y'";
         SqlCommand updateRole = new SqlCommand(updateSelectedCinderella, conn1);
         updateRole.ExecuteNonQuery();
 
 
 
         // Change the Cinderella's state to 'Alterations' in the CinderellaStatusRecord table.
-        string alterationChange = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + getID + "', '" + DateTime.Now + "', 'Alterations', 'Y')";
+        string alterationChange = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+                                    + "VALUES ('" + getID + "', '" + DateTime.Now + "', 'Alterations', 'Y')";
         SqlCommand insertNewRole = new SqlCommand(alterationChange, conn1);
         insertNewRole.ExecuteNonQuery();
 
@@ -97,9 +102,11 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         {
             // Working.
             // Update an already existing entry.
-            string packageUpdate = "Update Package SET DressSize = '" + DressSizeDropDownList.SelectedItem.Text + "', "
-                         + "DressColor = '" + DressColorDropDownList.SelectedItem.Text + "', DressLength = '"
-                         + DressLengthDropDownList.SelectedItem.Text + "' WHERE Cinderella_ID = '" + getID + "'";
+            string packageUpdate = "Update Package "
+                                    + "SET DressSize = '" + DressSizeDropDownList.SelectedItem.Text + "', "
+                                        + "DressColor = '" + DressColorDropDownList.SelectedItem.Text + "', "
+                                        + "DressLength = '" + DressLengthDropDownList.SelectedItem.Text + "' "
+                                    + "WHERE Cinderella_ID = '" + getID + "'";
             SqlCommand updatePackage = new SqlCommand(packageUpdate, conn1);
             updatePackage.ExecuteNonQuery();
         }
@@ -107,7 +114,8 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         {
             // Working.
             // Create a new entry in the package table.
-            string packageUpdate = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, Dresslength, InPackaging, InAlterations) VALUES ('" + getID + "', '" + DressSizeDropDownList.SelectedValue + "', '" + DressColorDropDownList.SelectedValue + "', '" + DressLengthDropDownList.SelectedValue + "', 'N', 'Y')";
+            string packageUpdate = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, Dresslength, InPackaging, InAlterations) "
+                                    + "VALUES ('" + getID + "', '" + DressSizeDropDownList.SelectedValue + "', '" + DressColorDropDownList.SelectedValue + "', '" + DressLengthDropDownList.SelectedValue + "', 'N', 'Y')";
             SqlCommand insertNewPackage = new SqlCommand(packageUpdate, conn1);
             insertNewPackage.ExecuteNonQuery();
         }
@@ -119,7 +127,11 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
         //Initialize a string variable to hold a query.
         // Get a list of the Cinerella's currently in alterations.
-        string getShoppingCins = "SELECT Cinderella.FirstName, Cinderella.LastName FROM Cinderella INNER JOIN CinderellaStatusRecord ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID WHERE CinderellaStatusRecord.Status_Name = 'Alterations' AND CinderellaStatusRecord.IsCurrent = 'Y'";
+        string getShoppingCins = "SELECT Cinderella.FirstName, Cinderella.LastName "
+                                    + "FROM Cinderella "
+                                    + "INNER JOIN CinderellaStatusRecord "
+                                         + "ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID "
+                                    + "WHERE CinderellaStatusRecord.Status_Name = 'Alterations' AND CinderellaStatusRecord.IsCurrent = 'Y'";
 
         //Execute query 
         SqlCommand com2 = new SqlCommand(getShoppingCins, conn1);
@@ -238,33 +250,48 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
         // Get the Cinderella's ID.
         // Get the Cinderella's ID.
-        string getCinderellaID = "SELECT CinderellaID FROM Cinderella WHERE FirstName = '" + CinderellasInAlterationListBox.SelectedItem.Text + "'";
+        string getCinderellaID = "SELECT CinderellaID "
+                                    + "FROM Cinderella "
+                                    + "WHERE FirstName = '" + CinderellasInAlterationListBox.SelectedItem.Text + "'";
         SqlCommand com1 = new SqlCommand(getCinderellaID, conn1);
         string getCinID = Convert.ToString(com1.ExecuteScalar().ToString());
 
 
         // Get the Volunteer's ID.
-        string getVolunteerID = "SELECT VolunteerID FROM Volunteer WHERE LastName = '" + SeamstressDropDownList.SelectedItem.Text + "'";
+        string getVolunteerID = "SELECT VolunteerID "
+                                + "FROM Volunteer "
+                                + "WHERE LastName = '" + SeamstressDropDownList.SelectedItem.Text + "'";
         SqlCommand com2 = new SqlCommand(getVolunteerID, conn1);
         string getVolID = Convert.ToString(com2.ExecuteScalar().ToString());
 
 
         // Update the alterations table with the user inputed data form the form.
         string alterationChange = "INSERT INTO Alteration (Cinderella_ID, AlterationNotes, Straps, Darts, FixZipper, GeneralMending, Bust, Hem, GeneralTakeIn, Volunteer_ID)"
-        + "VALUES ('" + getCinID + "', '" + notesTextBox.Text  + "', '" + testStraps + "', '" + testDarts + "', '" + testZipper + "', '" + testMending 
-        + "', '" + testBust + "', '" + testHem + "', '" + testTakeIn + "', '" + getVolID + "')";
+        + "VALUES ('" + getCinID + "', '" 
+                        + notesTextBox.Text  + "', '" 
+                        + testStraps + "', '" 
+                        + testDarts + "', '" 
+                        + testZipper + "', '" 
+                        + testMending + "', '" 
+                        + testBust + "', '" 
+                        + testHem + "', '" 
+                        + testTakeIn + "', '" 
+                        + getVolID + "')";
 
 
         SqlCommand insertNewRole = new SqlCommand(alterationChange, conn1);
         insertNewRole.ExecuteNonQuery();
 
         // Update the EndTime and the isCurrent values for the 'Alterations' status entry in the CinderellaStatusRecord table.
-        string updateSelectedCinderella = "UPDATE CinderellaStatusRecord SET EndTime = '" + DateTime.Now + "', IsCurrent = 'N' WHERE Cinderella_ID = '" + getCinID + "' AND IsCurrent = 'Y'";
+        string updateSelectedCinderella = "UPDATE CinderellaStatusRecord "
+                                            + "SET EndTime = '" + DateTime.Now + "', IsCurrent = 'N' "
+                                            + "WHERE Cinderella_ID = '" + getCinID + "' AND IsCurrent = 'Y'";
         SqlCommand updateRoleEndTime = new SqlCommand(updateSelectedCinderella, conn1);
         updateRoleEndTime.ExecuteNonQuery();
 
         // Change the Cinderella's state to 'Waiting for Dress' in the CinderellaStatusRecord table.
-        string wiatingForDressChange = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) VALUES ('" + getCinID + "', '" + DateTime.Now + "', 'Waiting for Dress', 'Y')";
+        string wiatingForDressChange = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+                                        + "VALUES ('" + getCinID + "', '" + DateTime.Now + "', 'Waiting for Dress', 'Y')";
         SqlCommand updateRole = new SqlCommand(wiatingForDressChange, conn1);
         updateRole.ExecuteNonQuery();
 
@@ -277,7 +304,11 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
         //Initialize a string variable to hold a query.
         // Get a list of the Cinerella's currently in alterations.
-        string getShoppingCins = "SELECT Cinderella.FirstName, Cinderella.LastName FROM Cinderella INNER JOIN CinderellaStatusRecord ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID WHERE CinderellaStatusRecord.Status_Name = 'Alterations' AND CinderellaStatusRecord.IsCurrent = 'Y'";
+        string getShoppingCins = "SELECT Cinderella.FirstName, Cinderella.LastName "
+                                    + "FROM Cinderella "
+                                    + "INNER JOIN CinderellaStatusRecord "
+                                        + "ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID "
+                                    + "WHERE CinderellaStatusRecord.Status_Name = 'Alterations' AND CinderellaStatusRecord.IsCurrent = 'Y'";
 
         //Execute query 
         SqlCommand com3 = new SqlCommand(getShoppingCins, conn1);
