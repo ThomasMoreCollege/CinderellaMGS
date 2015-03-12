@@ -5,8 +5,9 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br />
-    <asp:Button ID="Button1" runat="server" Text="Add" OnClick="Button1_Click1" /><asp:Button ID="Button2" runat="server" Text="Pop" /><br />
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    <asp:Button ID="Button1" runat="server" Text="Add" OnClick="Button1_Click1" UseSubmitBehavior="False" /><asp:Button ID="Button2" runat="server" Text="Pop" OnClick="Button2_Click" UseSubmitBehavior="False" /><br />
+    Number of Nodes:&nbsp;&nbsp; <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label> <br />
+    Value of last Node:&nbsp;&nbsp; <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
 
 
 </asp:Content>

@@ -6,99 +6,103 @@ using System.Web;
 /// <summary>
 /// Summary description for CinderellaQueue
 /// </summary>
+/// 
 namespace CinderellaQueue
 {
-	class CinderellaNode
-	{
-    private int value;       // Value in a node
-    private CinderellaNode next; // Pointer to the next node
+    public class CinderellaQueue
+    {
+        CinderellaNode front;
+        CinderellaNode rear;
+        int numItems;
 
-
-       private CinderellaNode _front;  // The front of the queue
-       private CinderellaNode _rear;   // The rear of the queue
-       private int _numItems;      // Number of items in the queue
-
-       // Constructor
-       public CinderellaNode()
-       {
-           _front = null;
-           _rear = null;
-           _numItems = 0;
-       }
-
-       // Destructor
-       public ~CinderellaNode()
-       {
+        public CinderellaQueue()
+        {
+            front = null;
+            rear = null;
+            numItems = 0;
+        }
+        ~CinderellaQueue()
+        {
            clear();
-       }
-        
-        public int getNodesLeft(){
-            return _numItems;
         }
 
-       // Queue operations
-       public void enqueue(int val)
-       {
-           CinderellaNode newNode;
+        public int getValofLastNode()
+        {
+            return rear.Number;
+        }
 
-           // Create a new node and store num there.
-           newNode = new CinderellaNode();
-           newNode.value = val;
-           newNode.next = null;
+        public int getNumItems()
+        {
+            return numItems;
+        }
 
-           // Adjust front and rear as necessary.
-           if (isEmpty())
-           {
-              _front = newNode;
-              _rear = newNode;
-           }
-           else
-           {
-              _rear.next = newNode;
-              _rear = newNode;
-           }
+        // Queue operations
+        public void enqueue(int val)
+        {
+            CinderellaNode newNode;
 
-           // Update numItems.
-           _numItems++;
-       }
-       public void dequeue()
-       {
+            // Create a new node and store num there.
+            newNode = new CinderellaNode();
+            newNode.Number = val;
+            newNode.Next = null;
 
-           if (isEmpty())
-           {
-               //cout << "The queue is empty.\n";
-           }
-           else
-           {
-               // Save the front node value in num.
-               //val = _front.value;
+            // Adjust front and rear as necessary.
+            if (isEmpty())
+            {
+                front = newNode;
+                rear = newNode;
+            }
+            else
+            {
+                rear.Next = newNode;
+                rear = newNode;
+            }
 
-               // Remove the front node and delete it.
-               CinderellaNode temp;
-               temp = new CinderellaNode();   
-               temp = _front;
-               _front = _front.next;
-               temp = null;   //<------Come Back to this later 
+            // Update numItems.
+            numItems++;
+        }
+        public void dequeue()
+        {
 
-               // Update numItems.
-               _numItems--;
-           }
-       }
-       public bool isEmpty()
-       {
-           bool status;
+            if (isEmpty())
+            {
+                //cout << "The queue is empty.\n";
+            }
+            else
+            {
+                // Save the front node value in num.
+                //val = _front.value;
 
-           if (_numItems > 0)
-               status = false;
-           else
-               status = true;
-           return status;
-       }
-       public void clear()
-       { 
-           while (!isEmpty())
-               dequeue();
-       }
+                // Remove the front node and delete it.
+                CinderellaNode temp;
+                temp = new CinderellaNode();
+                temp = front;
+                front = front.Next;
+                temp = null;   //<------Come Back to this later 
 
-	}
+                // Update numItems.
+                numItems--;
+
+                if (numItems == 0)
+                {
+                    rear = null;
+                }
+            }
+        }
+        public bool isEmpty()
+        {
+            bool status;
+
+            if (numItems > 0)
+                status = false;
+            else
+                status = true;
+            return status;
+        }
+        public void clear()
+        {
+            while (!isEmpty())
+                dequeue();
+        }
+    }
 }
