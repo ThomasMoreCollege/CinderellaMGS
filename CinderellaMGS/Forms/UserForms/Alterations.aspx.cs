@@ -16,165 +16,44 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         (this.Master as MasterPage).ManageMasterLayout();
     }
 
-    protected void searchShoppingCindButton_Click1(object sender, EventArgs e)
-    {
-        updateSuccessLabel.Visible = false;
-        nameDisplaySuccessMessage.Visible = false;
-        shoppingCinderellaListBox.Enabled = true;
-        CinderellasInAlterationListBox.Items.Clear();
-
-
-        //Initialize database connection with "DefaultConnection" setup in the web.config
-        SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-        //Open the connection 
-        conn1.Open();
-
-        //Initialize a string variable to hold a query
-        string getAvailableCins = "SELECT Cinderella.FirstName FROM Cinderella INNER JOIN CinderellaStatusRecord on Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID WHERE CinderellaStatusRecord.Status_Name = 'Shopping' AND CinderellaStatusRecord.isCurrent = 'Y' AND Cinderella.LastName = '" + searchTextBox.Text + "'";
-
-        //Execute query 
-        SqlCommand com1 = new SqlCommand(getAvailableCins, conn1);
-
-
-        SqlDataAdapter mySqlDataAdapter = new SqlDataAdapter(com1);
-        DataSet myDataSet = new DataSet();
-        mySqlDataAdapter.Fill(myDataSet);
-        shoppingCinderellaListBox.DataSource = myDataSet;
-        shoppingCinderellaListBox.DataTextField = "FirstName";
-        shoppingCinderellaListBox.DataValueField = "FirstName";
-        shoppingCinderellaListBox.DataBind();
-
-        conn1.Close();
-    }
-
-  
     protected void AltertationsCheckinButton_Click(object sender, EventArgs e)
     {
         DressSizeDropDownList.Enabled = false;
         DressColorDropDownList.Enabled = false;
         DressLengthDropDownList.Enabled = false;
         AltertationsCheckinButton.Enabled = false;
-        AltertationsCheckinButton.Enabled = false;
-        shoppingCinderellaListBox.Enabled = false;
 
         //Initialize database connection with "DefaultConnection" setup in the web.config
         SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
+        // Variable to hold the shopping Cinderella
+        string SelectedShoppingCinderellaID = CinderellaShoppingGridView.SelectedValue.ToString();
+
         //Open the connection 
         conn1.Open();
 
-        // Get the Cinderella's ID.
-        string getCinderellaID = "SELECT CinderellaID "
-                                + "FROM Cinderella "
-                                + "WHERE FirstName = '" + shoppingCinderellaListBox.SelectedItem.Text + "'";
-        SqlCommand com1 = new SqlCommand(getCinderellaID, conn1);
-        string getID = Convert.ToString(com1.ExecuteScalar().ToString());
+        // SQL to insert the Cinderella's Dress information into Package
+        string sql = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, DressLength, InAlterations) "
+                    + "VALUES ('" + SelectedShoppingCinderellaID + "', '"
+                                    + DressSizeDropDownList.SelectedValue + "', '"
+                                    + DressColorDropDownList.SelectedValue + "', '"
+                                    + DressLengthDropDownList.SelectedValue + "', 'Y')";
+        // Execute SQL
+        SqlCommand com1 = new SqlCommand(sql, conn1);
+        com1.ExecuteNonQuery();
 
-        // Update the EndTime and the isCurrent values for the 'Shopping' status entry in the CinderellaStatusRecord table.
-        string updateSelectedCinderella = "UPDATE CinderellaStatusRecord "
-                                            + "SET EndTime = '" + DateTime.Now + "', IsCurrent = 'N' "
-                                            + "WHERE Cinderella_ID = '" + getID + "' AND IsCurrent = 'Y'";
-        SqlCommand updateRole = new SqlCommand(updateSelectedCinderella, conn1);
-        updateRole.ExecuteNonQuery();
-
-
-
-        // Change the Cinderella's state to 'Alterations' in the CinderellaStatusRecord table.
-        string alterationChange = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
-                                    + "VALUES ('" + getID + "', '" + DateTime.Now + "', 'Alterations', 'Y')";
-        SqlCommand insertNewRole = new SqlCommand(alterationChange, conn1);
-        insertNewRole.ExecuteNonQuery();
-
-        
-
-
-
-        
-        string ifQuery = "SELECT CASE WHEN EXISTS (SELECT Package.Cinderella_ID FROM Package "
-	        + "INNER JOIN Cinderella ON Package.Cinderella_ID = Cinderella.CinderellaID " 
-            + "WHERE Cinderella.FirstName = '" + shoppingCinderellaListBox.SelectedItem.Text + "') THEN 1 ELSE 0 END";
-        SqlCommand ifCommand = new SqlCommand(ifQuery, conn1);
-        object testPackageRecord = ifCommand.ExecuteScalar();
-
-        
-        if (testPackageRecord.ToString() == "1")
-        {
-            // Working.
-            // Update an already existing entry.
-            string packageUpdate = "Update Package "
-                                    + "SET DressSize = '" + DressSizeDropDownList.SelectedItem.Text + "', "
-                                        + "DressColor = '" + DressColorDropDownList.SelectedItem.Text + "', "
-                                        + "DressLength = '" + DressLengthDropDownList.SelectedItem.Text + "' "
-                                    + "WHERE Cinderella_ID = '" + getID + "'";
-            SqlCommand updatePackage = new SqlCommand(packageUpdate, conn1);
-            updatePackage.ExecuteNonQuery();
-        }
-        else if (testPackageRecord.ToString() == "0")
-        {
-            // Working.
-            // Create a new entry in the package table.
-            string packageUpdate = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, Dresslength, InPackaging, InAlterations) "
-                                    + "VALUES ('" + getID + "', '" + DressSizeDropDownList.SelectedValue + "', '" + DressColorDropDownList.SelectedValue + "', '" + DressLengthDropDownList.SelectedValue + "', 'N', 'Y')";
-            SqlCommand insertNewPackage = new SqlCommand(packageUpdate, conn1);
-            insertNewPackage.ExecuteNonQuery();
-        }
-
-
-
-
-
-
-        //Initialize a string variable to hold a query.
-        // Get a list of the Cinerella's currently in alterations.
-        string getShoppingCins = "SELECT Cinderella.FirstName, Cinderella.LastName "
-                                    + "FROM Cinderella "
-                                    + "INNER JOIN CinderellaStatusRecord "
-                                         + "ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID "
-                                    + "WHERE CinderellaStatusRecord.Status_Name = 'Alterations' AND CinderellaStatusRecord.IsCurrent = 'Y'";
-
-        //Execute query 
-        SqlCommand com2 = new SqlCommand(getShoppingCins, conn1);
-
-        // Display the results from the getShoppingsCins query in the CinderellasInAlterationsListBox.
-        SqlDataAdapter mySqlDataAdapter = new SqlDataAdapter(com2);
-        DataSet myDataSet = new DataSet();
-        mySqlDataAdapter.Fill(myDataSet);
-        CinderellasInAlterationListBox.DataSource = myDataSet;
-        CinderellasInAlterationListBox.DataTextField = "FirstName";
-        CinderellasInAlterationListBox.DataValueField = "FirstName";
-        CinderellasInAlterationListBox.DataBind();
-
+        //REMEMBER TO CLOSE CONNECTION!!
         conn1.Close();
 
+        // Rebind the data to refresh the grid
+        CinderellaDressAlterationsGridView.DataBind();
+        CinderellaDressAlterationsGridView.SelectedIndex = -1;
 
-    }
-    protected void shoppingCinderellaListBox_SelectedIndexChanged1(object sender, EventArgs e)
-    {
-        updateSuccessLabel.Visible = false;
-        nameDisplaySuccessMessage.Visible = false;
-        DressSizeDropDownList.Enabled = true;
-        DressColorDropDownList.Enabled = true;
-        DressLengthDropDownList.Enabled = true;
-        AltertationsCheckinButton.Enabled = true;
+        CinderellaShoppingGridView.DataBind();
+        CinderellaShoppingGridView.SelectedIndex = -1;
     }
 
-    protected void CinderellasInAlterationListBox_SelectedIndexChanged1(object sender, EventArgs e)
-    {
-        updateSuccessLabel.Visible = false;
-        nameDisplaySuccessMessage.Visible = false;
-        StrapsCheckBox.Enabled = true;
-        GeneralMendingCheckBox.Enabled = true;
-        GeneralTakeinCheckBox.Enabled = true;
-        FixZipperCheckBox.Enabled = true;
-        notesTextBox.Enabled = true;
-        DartsCheckBox.Enabled = true;
-        BustCheckBox.Enabled = true;
-        HemCheckBox.Enabled = true;
-        submitDressButton.Enabled = true;
-        SeamstressDropDownList.Enabled = true;
-    }
-    protected void submitDressButton_Click(object sender, EventArgs e)
+    protected void submitAlterationsButton_Click(object sender, EventArgs e)
     {
         StrapsCheckBox.Enabled = false;
         GeneralMendingCheckBox.Enabled = false;
@@ -184,55 +63,48 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         DartsCheckBox.Enabled = false;
         BustCheckBox.Enabled = false;
         HemCheckBox.Enabled = false;
-        submitDressButton.Enabled = false;
+        submitAlterationsButton.Enabled = false;
         SeamstressDropDownList.Enabled = false;
 
         // Alteration's user entry checks.
-        char testStraps = ' ';
-        char testMending = ' ';
-        char testTakeIn = ' ';
-        char testZipper = ' ';
-        char testDarts = ' ';
-        char testBust = ' ';
-        char testHem = ' ';
+        char testStraps = 'N';
+        char testMending = 'N';
+        char testTakeIn = 'N';
+        char testZipper = 'N';
+        char testDarts = 'N';
+        char testBust = 'N';
+        char testHem = 'N';
 
-
-
-        if (StrapsCheckBox.Checked == true)
-            testStraps = 'Y';
-        else
-            testStraps = 'N';
-
-        if (GeneralMendingCheckBox.Checked == true)
-            testMending = 'Y';
-        else
-            testMending = 'N';
-
+        if (StrapsCheckBox.Checked == true) 
+        { 
+            testStraps = 'Y'; 
+        }
+        if (GeneralMendingCheckBox.Checked == true) 
+        { 
+            testMending = 'Y'; 
+        }
         if (GeneralTakeinCheckBox.Checked == true)
+        {
             testTakeIn = 'Y';
-        else
-            testTakeIn = 'N';
-
+        }
         if (FixZipperCheckBox.Checked == true)
+        {
             testZipper = 'Y';
-        else
-            testZipper = 'N';
-
+        }
         if (DartsCheckBox.Checked == true)
+        {
             testDarts = 'Y';
-        else
-            testDarts = 'N';
-
+        }
         if (BustCheckBox.Checked == true)
+        {
             testBust = 'Y';
-        else
-            testBust = 'N';
-
+        }
         if (HemCheckBox.Checked == true)
+        {
             testHem = 'Y';
-        else
-            testHem = 'N';
+        }
 
+        // Resetting the checkboxes
         StrapsCheckBox.Checked = false;
         GeneralMendingCheckBox.Checked = false;
         GeneralTakeinCheckBox.Checked = false;
@@ -241,21 +113,13 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         BustCheckBox.Checked = false;
         HemCheckBox.Checked = false;
 
-
         //Initialize database connection with "DefaultConnection" setup in the web.config
         SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
         //Open the connection.
         conn1.Open();
 
-        // Get the Cinderella's ID.
-        // Get the Cinderella's ID.
-        string getCinderellaID = "SELECT CinderellaID "
-                                    + "FROM Cinderella "
-                                    + "WHERE FirstName = '" + CinderellasInAlterationListBox.SelectedItem.Text + "'";
-        SqlCommand com1 = new SqlCommand(getCinderellaID, conn1);
-        string getCinID = Convert.ToString(com1.ExecuteScalar().ToString());
-
+        string SelectedCinderellaID = CinderellaDressAlterationsGridView.SelectedValue.ToString();
 
         // Get the Volunteer's ID.
         string getVolunteerID = "SELECT VolunteerID "
@@ -267,62 +131,51 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
         // Update the alterations table with the user inputed data form the form.
         string alterationChange = "INSERT INTO Alteration (Cinderella_ID, AlterationNotes, Straps, Darts, FixZipper, GeneralMending, Bust, Hem, GeneralTakeIn, Volunteer_ID)"
-        + "VALUES ('" + getCinID + "', '" 
-                        + notesTextBox.Text  + "', '" 
-                        + testStraps + "', '" 
-                        + testDarts + "', '" 
-                        + testZipper + "', '" 
-                        + testMending + "', '" 
-                        + testBust + "', '" 
-                        + testHem + "', '" 
-                        + testTakeIn + "', '" 
-                        + getVolID + "')";
-
-
+                                    + "VALUES ('" + SelectedCinderellaID + "', '" 
+                                                    + notesTextBox.Text  + "', '" 
+                                                    + testStraps + "', '" 
+                                                    + testDarts + "', '" 
+                                                    + testZipper + "', '" 
+                                                    + testMending + "', '" 
+                                                    + testBust + "', '" 
+                                                    + testHem + "', '" 
+                                                    + testTakeIn + "', '" 
+                                                    + getVolID + "')";
+        
+        // Execute SQL
         SqlCommand insertNewRole = new SqlCommand(alterationChange, conn1);
         insertNewRole.ExecuteNonQuery();
 
-        // Update the EndTime and the isCurrent values for the 'Alterations' status entry in the CinderellaStatusRecord table.
+        // Update the Cinderella's current status to Not Current
         string updateSelectedCinderella = "UPDATE CinderellaStatusRecord "
                                             + "SET EndTime = '" + DateTime.Now + "', IsCurrent = 'N' "
-                                            + "WHERE Cinderella_ID = '" + getCinID + "' AND IsCurrent = 'Y'";
+                                            + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
+        // Execute SQL
         SqlCommand updateRoleEndTime = new SqlCommand(updateSelectedCinderella, conn1);
         updateRoleEndTime.ExecuteNonQuery();
 
         // Change the Cinderella's state to 'Waiting for Dress' in the CinderellaStatusRecord table.
-        string wiatingForDressChange = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
-                                        + "VALUES ('" + getCinID + "', '" + DateTime.Now + "', 'Waiting for Dress', 'Y')";
-        SqlCommand updateRole = new SqlCommand(wiatingForDressChange, conn1);
+        string waitingForDressChange = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+                                        + "VALUES ('" + SelectedCinderellaID + "', '" + DateTime.Now + "', 'Waiting for Dress', 'Y')";
+        // Execute SQL
+        SqlCommand updateRole = new SqlCommand(waitingForDressChange, conn1);
         updateRole.ExecuteNonQuery();
 
+        // Outputting message to verify transaction
         updateSuccessLabel.Visible = true;
         nameDisplaySuccessMessage.Visible = true;
         updateSuccessLabel.ForeColor = System.Drawing.Color.Green;
         nameDisplaySuccessMessage.ForeColor = System.Drawing.Color.Green;
-        nameDisplaySuccessMessage.Text = "Updated: " + CinderellasInAlterationListBox.SelectedItem.Text;
+        nameDisplaySuccessMessage.Text = "Updated: " + CinderellaDressAlterationsGridView.SelectedRow.Cells[2].Text + "'s Dress";
 
+        // Rebind the data to refresh the grid
+        CinderellaDressAlterationsGridView.DataBind();
+        CinderellaDressAlterationsGridView.SelectedIndex = -1;
 
-        //Initialize a string variable to hold a query.
-        // Get a list of the Cinerella's currently in alterations.
-        string getShoppingCins = "SELECT Cinderella.FirstName, Cinderella.LastName "
-                                    + "FROM Cinderella "
-                                    + "INNER JOIN CinderellaStatusRecord "
-                                        + "ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID "
-                                    + "WHERE CinderellaStatusRecord.Status_Name = 'Alterations' AND CinderellaStatusRecord.IsCurrent = 'Y'";
+        CinderellaShoppingGridView.DataBind();
+        CinderellaShoppingGridView.SelectedIndex = -1;
 
-        //Execute query 
-        SqlCommand com3 = new SqlCommand(getShoppingCins, conn1);
-
-        // Display the results from the getShoppingsCins query in the CinderellasInAlterationsListBox.
-        SqlDataAdapter mySqlDataAdapter = new SqlDataAdapter(com3);
-        DataSet myDataSet = new DataSet();
-        mySqlDataAdapter.Fill(myDataSet);
-        CinderellasInAlterationListBox.DataSource = myDataSet;
-        CinderellasInAlterationListBox.DataTextField = "FirstName";
-        CinderellasInAlterationListBox.DataValueField = "FirstName";
-        CinderellasInAlterationListBox.DataBind();
-
-        CinderellasInAlterationListBox.DataBind();
+        // Resetting the notes textbox
         notesTextBox.Text = "";
 
         // TO DO.................
@@ -332,8 +185,27 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         // Instert Dress Recieved/PIcked up
         // Date/ID key update problem with back to back status ends/begins.
 
-        // Close the connection.
+        //REMEMBER TO CLOSE CONNECTION!!
         conn1.Close();
-
+    }
+    protected void CinderellaDressAlterationsGridView_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        StrapsCheckBox.Enabled = true;
+        GeneralMendingCheckBox.Enabled = true;
+        GeneralTakeinCheckBox.Enabled = true;
+        FixZipperCheckBox.Enabled = true;
+        notesTextBox.Enabled = true;
+        DartsCheckBox.Enabled = true;
+        BustCheckBox.Enabled = true;
+        HemCheckBox.Enabled = true;
+        submitAlterationsButton.Enabled = true;
+        SeamstressDropDownList.Enabled = true;
+    }
+    protected void CinderellaShoppingGridView_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DressSizeDropDownList.Enabled = true;
+        DressColorDropDownList.Enabled = true;
+        DressLengthDropDownList.Enabled = true;
+        AltertationsCheckinButton.Enabled = true;
     }
 }

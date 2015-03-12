@@ -4,33 +4,84 @@
     <h2>Alterations</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
+
+
         <table style="width:100%;">
             <tr>
                 <td colspan="4" class="auto-style1" ><strong>Cinderellas Currently Shopping</strong></td>
-                <td class="auto-style10">&nbsp;</td>
                 <td colspan="4" class="auto-style1"><strong>Cinderellas in Alterations</strong></td>
             </tr>
             <tr>
-                <td class="auto-style12">Search Last Name:</td>
-                
-                <td class="auto-style3">
-                    <asp:TextBox ID="searchTextBox" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style9">
-                    <asp:Button ID="searchShoppingCindButton" runat="server" OnClick="searchShoppingCindButton_Click1" Text="Search" />
-                </td>
-                <td class="auto-style10"></td>
-                <td></td>
-                <td colspan="2" rowspan="3">
-                    <asp:ListBox ID="CinderellasInAlterationListBox" runat="server" AutoPostBack="True" Height="139px" OnSelectedIndexChanged="CinderellasInAlterationListBox_SelectedIndexChanged1" Width="312px"></asp:ListBox>
+                <td colspan="4" rowspan="3">
+                    <div style = "height:300px; width:300px; overflow:auto;">
+                        <asp:GridView ID="CinderellaShoppingGridView" runat="server" 
+                            AllowSorting="True" 
+                            AutoGenerateColumns="False" 
+                            DataSourceID="Cinderella2015" 
+                            DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="CinderellaShoppingGridView_SelectedIndexChanged">
+                            <Columns>
+                                <asp:CommandField ShowSelectButton="True" />
+                                <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                                <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                            </Columns>
+                            <FooterStyle BackColor="#CCCCCC" />
+                            <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#808080" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#383838" />
+                            <AlternatingRowStyle BackColor="pink" />
+                        </asp:GridView>
+                        <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
+                            SelectCommand="SELECT [CinderellaID], 
+                                                    [LastName], 
+                                                    [FirstName]
+                                            FROM [Cinderella] 
+                                            INNER JOIN CinderellaStatusRecord 
+                                                ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
+                                            WHERE Status_Name = 'Shopping' AND IsCurrent = 'Y'
+                                            ORDER BY [LastName]">
+                        </asp:SqlDataSource>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td colspan="4" rowspan="3">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:ListBox ID="shoppingCinderellaListBox" runat="server" AutoPostBack="True" Height="141px" OnSelectedIndexChanged="shoppingCinderellaListBox_SelectedIndexChanged1" Width="244px" style="margin-left: 0px"></asp:ListBox>
+                    <div style = "height:300px; width:300px; overflow:auto;">
+                        <asp:GridView ID="CinderellaDressAlterationsGridView" runat="server" 
+                            AllowSorting="True" 
+                            AutoGenerateColumns="False" 
+                            DataSourceID="PackageDataSource" 
+                            DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="CinderellaDressAlterationsGridView_SelectedIndexChanged">
+                            <Columns>
+                                <asp:CommandField ShowSelectButton="True" />
+                                <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                                <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                            </Columns>
+                            <FooterStyle BackColor="#CCCCCC" />
+                            <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#808080" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#383838" />
+                            <AlternatingRowStyle BackColor="pink" />
+                        </asp:GridView>
+                        <asp:SqlDataSource ID="PackageDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
+                            SelectCommand="SELECT [CinderellaID], 
+                                                    [LastName], 
+                                                    [FirstName]
+                                            FROM [Cinderella] 
+                                            INNER JOIN Package 
+                                                ON Cinderella.CinderellaID = Package.Cinderella_ID 
+                                            WHERE InAlterations = 'Y'
+                                            ORDER BY [LastName]">
+                        </asp:SqlDataSource>
+                    </div>  
                 </td>
-                <td class="auto-style10"></td>
             </tr>
             <tr>
                 <td class="auto-style10">&nbsp;</td>
@@ -41,7 +92,8 @@
                     <asp:CheckBox ID="StrapsCheckBox" runat="server" Text="Straps Add/Adjust" CssClass="auto-style2" Enabled="False" />
                 </td>
                 <td class="auto-style2">
-                    Notes:</td>
+                    Notes:
+                </td>
             </tr>
             <tr>
                 <td class="auto-style12">Size :</td>
@@ -107,11 +159,14 @@
                 <td class="auto-style69">
                     <asp:DropDownList ID="SeamstressDropDownList" runat="server" DataSourceID="VolunteerNameDS" DataTextField="LastName" DataValueField="LastName" Enabled="False">
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="VolunteerNameDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT Volunteer.LastName
-FROM Volunteer
-	INNER JOIN VolunteerRoleRecord
-	 ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID
-WHERE VolunteerRoleRecord.Role_Name = 'Alterations' AND VolunteerRoleRecord.IsCurrent = 'Y'"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="VolunteerNameDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" 
+                        SelectCommand="SELECT Volunteer.LastName
+                            FROM Volunteer
+	                        INNER JOIN VolunteerRoleRecord
+	                            ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID
+                            WHERE VolunteerRoleRecord.Role_Name = 'Alterations' AND VolunteerRoleRecord.IsCurrent = 'Y'">
+
+                    </asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
@@ -137,7 +192,7 @@ WHERE VolunteerRoleRecord.Role_Name = 'Alterations' AND VolunteerRoleRecord.IsCu
                     <asp:CheckBox ID="HemCheckBox" runat="server" Text="Hem" CssClass="auto-style13" style="font-size: small" Enabled="False" />
                     </td>
                 <td>
-                    <asp:Button ID="submitDressButton" runat="server" Text="Submit" Enabled="False" OnClick="submitDressButton_Click" />
+                    <asp:Button ID="submitAlterationsButton" runat="server" Text="Submit" Enabled="False" OnClick="submitAlterationsButton_Click" />
                 </td>
                 
             </tr>
