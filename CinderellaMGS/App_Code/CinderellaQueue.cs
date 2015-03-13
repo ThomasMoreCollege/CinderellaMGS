@@ -31,6 +31,11 @@ namespace CinderellaQueue
             return rear.Cinderella;
         }
 
+        public CinderellaClass getValofFrontNode()
+        {
+            return front.Cinderella;
+        }
+
         public int getNumItems()
         {
             return numItems;
@@ -67,15 +72,25 @@ namespace CinderellaQueue
                 }
                 else
                 {
-                    while (cursor.Next.Cinderella.Priority <= newNode.Cinderella.Priority)
+                    // Setting newNode as the rear if cursor was the last node
+                    if (cursor == rear)
                     {
-                        // Setting the cursor to its NEXT node or breaking if cursor is rear
-                        if (cursor == rear)
+                    }
+                    else
+                    {
+
+                        while (cursor.Next.Cinderella.Priority <= newNode.Cinderella.Priority)
                         {
-                            break;
-                        }
-                        cursor = cursor.Next;
-                    };
+                            cursor = cursor.Next;
+
+                            // Setting the cursor to its NEXT node or breaking if cursor is rear
+                            if (cursor == rear)
+                            {
+                                break;
+                            }
+                            
+                        };
+                    }
 
                     // Setting newNode as the cursor's next, and newNode's next as cursor's previous next
                     CinderellaNode temp = new CinderellaNode();
@@ -88,6 +103,7 @@ namespace CinderellaQueue
                     {
                         rear = newNode;
                     }
+                    
                 }
             }
 

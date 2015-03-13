@@ -13,23 +13,34 @@ using System.Configuration;
 
 public partial class Forms_UserForms_TestPage : System.Web.UI.Page
 {
-
     public static CinderellaQueue.CinderellaQueue testQueue = new CinderellaQueue.CinderellaQueue();
 
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-    protected void Button1_Click1(object sender, EventArgs e)
+
+    protected void VolunteerGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
-        //testQueue.enqueue(Convert.ToInt32(TextBox1.Text));
-        //Label1.Text = testQueue.getNumItems().ToString();
-        //Label2.Text = testQueue.getValofLastNode().ToString();
-        
+        GridViewRow currentRow = CinderellaGridView.SelectedRow;
+
+        CinderellaClass selectedCinderella = new CinderellaClass(Convert.ToInt32(currentRow.Cells[1].Text), currentRow.Cells[2].Text, currentRow.Cells[3].Text, Convert.ToDateTime(currentRow.Cells[4].Text), Convert.ToDateTime(currentRow.Cells[5].Text));
+
+        Label1.Text = selectedCinderella.Priority.ToString();
+
     }
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void AddButton_Click(object sender, EventArgs e)
     {
-       // testQueue.dequeue();
-       // Label1.Text = testQueue.getNumItems().ToString();
-       // Label2.Text = testQueue.getValofLastNode().ToString();
+        GridViewRow currentRow = CinderellaGridView.SelectedRow;
+
+        CinderellaClass selectedCinderella = new CinderellaClass(Convert.ToInt32(currentRow.Cells[1].Text), currentRow.Cells[2].Text, currentRow.Cells[3].Text, Convert.ToDateTime(currentRow.Cells[4].Text), Convert.ToDateTime(currentRow.Cells[5].Text));
+
+        testQueue.enqueue(selectedCinderella);
+
+        NumofCinLabel.Text = testQueue.getNumItems().ToString();
+        FrontCinLabel.Text = testQueue.getValofFrontNode().CinderellaID.ToString();
+    }
+    protected void ButtonPop_Click(object sender, EventArgs e)
+    {
+
     }
 }
