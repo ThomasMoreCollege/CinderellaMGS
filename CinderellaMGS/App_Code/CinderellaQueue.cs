@@ -28,7 +28,7 @@ namespace CinderellaQueue
 
         public int getValofLastNode()
         {
-            return rear.Number;
+            return rear.Cinderella;
         }
 
         public int getNumItems()
@@ -43,7 +43,7 @@ namespace CinderellaQueue
 
             // Create a new node and store num there.
             newNode = new CinderellaNode();
-            newNode.Number = val;
+            newNode.Cinderella = val;
             newNode.Next = null;
 
             // Adjust front and rear as necessary.
@@ -70,8 +70,6 @@ namespace CinderellaQueue
             }
             else
             {
-                // Save the front node value in num.
-                //val = _front.value;
 
                 // Remove the front node and delete it.
                 CinderellaNode temp;

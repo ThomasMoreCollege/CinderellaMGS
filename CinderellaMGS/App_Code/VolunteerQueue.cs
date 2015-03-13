@@ -28,7 +28,7 @@ namespace VolunteerQueue
 
         public int getValofLastNode()
         {
-            return rear.Number;
+            return rear.Volunteer;
         }
 
         public int getNumItems()
@@ -37,13 +37,13 @@ namespace VolunteerQueue
         }
 
         // Queue operations
-        public void enqueue(int val)
+        public void enqueue(VolunteerNode val)
         {
             VolunteerNode newNode;
 
             // Create a new node and store num there.
             newNode = new VolunteerNode();
-            newNode.Number = val;
+            newNode.Volunteer = val;
             newNode.Next = null;
 
             // Adjust front and rear as necessary.
@@ -70,8 +70,6 @@ namespace VolunteerQueue
             }
             else
             {
-                // Save the front node value in num.
-                //val = _front.value;
 
                 // Remove the front node and delete it.
                 VolunteerNode temp;
