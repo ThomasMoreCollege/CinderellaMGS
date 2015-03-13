@@ -8,13 +8,40 @@ using System.Web;
 /// </summary>
 public class VolunteerClass
 {
-    public int VolunteerID { get; set; }
-    public string FName { get; set; }
-    public string LName { get; set; }
+    private int _volunteerID;
+    private string _firstName;
+    private string _lastName;
+
+    //Blank Constructor 
 	public VolunteerClass()
 	{
-        VolunteerID = 0;
-        FName = "";
-        LName = "";
+        _volunteerID = 0;
+        _firstName = "";
+        _lastName = "";
 	}
+
+    //Constructor to initialize varaibles 
+    public VolunteerClass(int conID, string conFName, string conLName)
+    {
+        _volunteerID = conID;
+        _firstName = conFName;
+        _lastName = conLName;
+    }
+
+    //Property accessors and mutators
+    public int VolunteerID
+    {
+        get { return _volunteerID; }
+        set { _volunteerID = value; }
+    }
+    public string FirstName
+    {
+        get { return _firstName; }
+        set { _firstName = value; }
+    }
+    public string LastName
+    {
+        get { return _lastName; }
+        set { _lastName = value; }
+    }
 }
