@@ -46,7 +46,7 @@ namespace CinderellaQueue
             newNode.Cinderella = val;
             newNode.Next = null;
 
-            // Adjust front and rear as necessary.
+            // Setting newNode as front and rear if no nodes are in queue
             if (isEmpty())
             {
                 front = newNode;
@@ -54,8 +54,41 @@ namespace CinderellaQueue
             }
             else
             {
-                rear.Next = newNode;
-                rear = newNode;
+                // Cursor node to point to node in front of target position
+                CinderellaNode cursor = new CinderellaNode();
+
+                cursor = front;
+
+                // Checking if the new Node should be front
+                if (cursor.Cinderella.Priority > newNode.Cinderella.Priority)
+                {
+                    newNode.Next = cursor;
+                    front = newNode;
+                }
+                else
+                {
+                    while (cursor.Next.Cinderella.Priority <= newNode.Cinderella.Priority)
+                    {
+                        // Setting the cursor to its NEXT node or breaking if cursor is rear
+                        if (cursor == rear)
+                        {
+                            break;
+                        }
+                        cursor = cursor.Next;
+                    };
+
+                    // Setting newNode as the cursor's next, and newNode's next as cursor's previous next
+                    CinderellaNode temp = new CinderellaNode();
+                    temp = cursor.Next;
+                    cursor.Next = newNode;
+                    newNode.Next = temp;
+
+                    // Setting newNode as the rear if cursor was the last node
+                    if (cursor == rear)
+                    {
+                        rear = newNode;
+                    }
+                }
             }
 
             // Update numItems.
