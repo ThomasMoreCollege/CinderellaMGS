@@ -10,19 +10,19 @@ namespace CinderellaQueue
 {
 	public class CinderellaNode
 	{
-        private int _number;       // Value in a node
+        private CinderellaClass _cinderella;       // Value in a node
         private CinderellaNode _next; // Pointer to the next node
 
        // Constructor
        public CinderellaNode()
        {
-           _number = 0;
+           _cinderella = null;
            _next = null;
        }
-       public int Number
+       public CinderellaClass Cinderella
        {
-           get { return _number; }
-           set { _number = value; }
+           get { return _cinderella; }
+           set { _cinderella = value; }
        }
        public CinderellaNode Next
        {
