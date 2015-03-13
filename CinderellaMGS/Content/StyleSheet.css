@@ -416,6 +416,7 @@ figure{
 #CheckoutTable {
     float:left;
     border-collapse:collapse;
+    width: 818px;
 }
 
 #DressCheckoutTable {

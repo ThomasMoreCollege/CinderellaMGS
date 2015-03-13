@@ -8,6 +8,7 @@
         <table id="CheckoutTable">
             <tr>
                 <th>Cinderellas</th>
+                <th>Dresses in Alterations</th>
             </tr>
             <tr>
                 <td>
@@ -42,7 +43,46 @@
                                         ON Cinderella.CinderellaID = Package.Cinderella_ID
                                     WHERE Status_Name = 'Shopping' AND IsCurrent = 'Y' AND CinderellaID NOT IN (SELECT CinderellaID
                                                                                                                 FROM Package)
-                                    ORDER BY [LastName]"></asp:SqlDataSource>
+                                    ORDER BY [LastName]">
+                    </asp:SqlDataSource>
+                </td>
+                <td>
+                    <asp:GridView ID="DressesInAlterationsGridView" runat="server"
+                        AllowSorting="True"
+                        AutoGenerateColumns="False"
+                        DataSourceID="DressDataSource"
+                        DataKeyNames="CinderellaID" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black">
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="True" />
+                            <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                            <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                            <asp:BoundField DataField="DressSize" HeaderText="Dress Size" SortExpression="DressSize" />
+                            <asp:BoundField DataField="DressColor" HeaderText="Dress Color" SortExpression="DressColor" />
+                            <asp:BoundField DataField="DressLength" HeaderText="Dress Length" SortExpression="DressLength" />
+                        </Columns>
+                        <FooterStyle BackColor="#CCCCCC" />
+                        <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                        <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#808080" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#383838" />
+                        <AlternatingRowStyle BackColor="pink" />
+                    </asp:GridView>
+                    <asp:SqlDataSource ID="DressDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                        SelectCommand="SELECT [CinderellaID], 
+                                            [LastName], 
+                                            [FirstName],
+                                            [DressSize],
+                                            [DressColor],
+                                            [DressLength]
+                                    FROM [Cinderella] 
+                                    INNER JOIN Package 
+                                        ON Cinderella.CinderellaID = Package.Cinderella_ID 
+                                    WHERE InAlterations = 'Y'
+                                    ORDER BY [LastName]">
+                    </asp:SqlDataSource>
                 </td>
             </tr>
         </table>
@@ -134,12 +174,14 @@
                 <td></td>
                 <td></td>
             </tr>
-            <td>
+            <tr>
+                <td>
                 <asp:CheckBox ID="BraceletCheckBox" runat="server" Text="Bracelet" />
             </td>
             <td>
                 <asp:CheckBox ID="OtherCheckBox" runat="server" Text="Other" />
             </td>
+            </tr>
             <tr>
                 <td></td>
                 <td></td>
@@ -210,6 +252,7 @@
     <style type="text/css">
         #form1 {
             height: 1076px;
+            width: 1500px;
         }
     </style>
 </asp:Content>
