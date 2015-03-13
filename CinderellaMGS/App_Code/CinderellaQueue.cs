@@ -37,7 +37,7 @@ namespace CinderellaQueue
         }
 
         // Queue operations
-        public void enqueue(int val)
+        public void enqueue(CinderellaClass val)
         {
             CinderellaNode newNode;
 

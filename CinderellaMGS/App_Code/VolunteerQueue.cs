@@ -37,7 +37,7 @@ namespace VolunteerQueue
         }
 
         // Queue operations
-        public void enqueue(VolunteerNode val)
+        public void enqueue(VolunteerClass val)
         {
             VolunteerNode newNode;
 
