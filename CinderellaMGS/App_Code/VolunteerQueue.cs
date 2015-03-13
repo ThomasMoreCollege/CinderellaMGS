@@ -26,7 +26,7 @@ namespace VolunteerQueue
             clear();
         }
 
-        public int getValofLastNode()
+        public VolunteerClass getValofLastNode()
         {
             return rear.Volunteer;
         }

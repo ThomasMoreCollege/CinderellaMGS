@@ -146,5 +146,21 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
     protected void CinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
         CheckoutButton.Enabled = true;
+
+        // Enabling Dress information drop-downs and removing Dresses selector
+        DressesInAlterationsGridView.SelectedIndex = -1;
+        DressSizeDropDown.Enabled = true;
+        DressColorDropDown.Enabled = true;
+        DressLengthDropDown.Enabled = true;
+    }
+    protected void DressesInAlterationsGridView_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        CheckoutButton.Enabled = true;
+
+        // Disabling Dress information drop-downs and removing Cinderella selector
+        CinderellaGridView.SelectedIndex = -1;
+        DressSizeDropDown.Enabled = false;
+        DressColorDropDown.Enabled = false;
+        DressLengthDropDown.Enabled = false;
     }
 }

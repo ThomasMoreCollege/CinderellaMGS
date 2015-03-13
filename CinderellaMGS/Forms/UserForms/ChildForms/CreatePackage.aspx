@@ -7,7 +7,7 @@
     <div id="CinderellaCheckPackageGrid" style="width: 70%; float: left;">
         <table id="CheckoutTable">
             <tr>
-                <th>Cinderellas</th>
+                <th>Cinderellas Shopping</th>
                 <th>Dresses in Alterations</th>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
                         AllowSorting="True"
                         AutoGenerateColumns="False"
                         DataSourceID="DressDataSource"
-                        DataKeyNames="CinderellaID" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black">
+                        DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="DressesInAlterationsGridView_SelectedIndexChanged">
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" />
                             <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />

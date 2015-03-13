@@ -26,7 +26,7 @@ namespace CinderellaQueue
            clear();
         }
 
-        public int getValofLastNode()
+        public CinderellaClass getValofLastNode()
         {
             return rear.Cinderella;
         }
