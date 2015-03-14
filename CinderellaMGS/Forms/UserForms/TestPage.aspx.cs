@@ -23,7 +23,7 @@ public partial class Forms_UserForms_TestPage : System.Web.UI.Page
     {
         GridViewRow currentRow = CinderellaGridView.SelectedRow;
 
-        CinderellaClass selectedCinderella = new CinderellaClass(Convert.ToInt32(currentRow.Cells[1].Text), currentRow.Cells[2].Text, currentRow.Cells[3].Text, Convert.ToDateTime(currentRow.Cells[4].Text), Convert.ToDateTime(currentRow.Cells[5].Text));
+        CinderellaClass selectedCinderella = new CinderellaClass(Convert.ToInt32(currentRow.Cells[1].Text));
 
         Label1.Text = selectedCinderella.Priority.ToString();
 
@@ -32,7 +32,7 @@ public partial class Forms_UserForms_TestPage : System.Web.UI.Page
     {
         GridViewRow currentRow = CinderellaGridView.SelectedRow;
 
-        CinderellaClass selectedCinderella = new CinderellaClass(Convert.ToInt32(currentRow.Cells[1].Text), currentRow.Cells[2].Text, currentRow.Cells[3].Text, Convert.ToDateTime(currentRow.Cells[4].Text), Convert.ToDateTime(currentRow.Cells[5].Text));
+        CinderellaClass selectedCinderella = new CinderellaClass(Convert.ToInt32(currentRow.Cells[1].Text));
 
         testQueue.enqueue(selectedCinderella);
 
@@ -41,6 +41,15 @@ public partial class Forms_UserForms_TestPage : System.Web.UI.Page
     }
     protected void ButtonPop_Click(object sender, EventArgs e)
     {
-
+        testQueue.dequeue();
+        NumofCinLabel.Text = testQueue.getNumItems().ToString();
+        FrontCinLabel.Text = testQueue.getValofFrontNode().CinderellaID.ToString();
+    }
+    protected void SelectivePopButton_Click(object sender, EventArgs e)
+    {
+        int CinderellaID = Convert.ToInt32(TextBox.Text);
+        testQueue.selectiveDequeue(CinderellaID);
+        NumofCinLabel.Text = testQueue.getNumItems().ToString();
+        FrontCinLabel.Text = testQueue.getValofFrontNode().CinderellaID.ToString();
     }
 }

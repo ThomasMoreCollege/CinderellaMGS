@@ -35,6 +35,8 @@
         <tr>
             <td>
 
+                Priority of Selected Cinderella:
+
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
             </td>
@@ -43,8 +45,17 @@
             <td>
                 <asp:Button ID="AddButton" runat="server" Text="Add" OnClick="AddButton_Click" />
             &nbsp;&nbsp;&nbsp;
-                <asp:Button ID="ButtonPop" runat="server" Text="Pop" OnClick="ButtonPop_Click" />
-            &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;<asp:Button ID="ButtonPop" runat="server" Text="Pop" OnClick="ButtonPop_Click" />
+            &nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+
+                <asp:TextBox ID="TextBox" runat="server"></asp:TextBox>
+
+            &nbsp;&nbsp;
+                <asp:Button ID="SelectivePopButton" runat="server" OnClick="SelectivePopButton_Click" Text="SelectivePop" />
+
             </td>
         </tr>
         <tr>

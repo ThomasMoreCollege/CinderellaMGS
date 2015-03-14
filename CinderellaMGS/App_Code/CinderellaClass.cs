@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.SqlClient; //Must be include if using SQL
+using System.Configuration; //Must be include if using SQL
+using System.Data; // Must be included if using data tables
 
 /// <summary>
 /// Summary description for CinderellaClass
@@ -20,13 +23,39 @@ public class CinderellaClass
     public CinderellaClass() { }
 
     // Constructor taking every variable except for Priority, which is calculated by ScheuleAppointmentTime and ArrivalTime
-    public CinderellaClass(int conID, string conFName, string conLName, DateTime conScheduleAppointmentTime, DateTime conArrivalTime)
+    public CinderellaClass(int conID)
     {
+        //Initialize database connection with "DefaultConnection" setup in the web.config
+        SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+        //Store Query string to retrieve all data neede for Cinderella object
+        string retrieveCinderellaInfoQuery = "SELECT Cinderella.FirstName, Cinderella.LastName, "
+                                                 + "Cinderella.AppointmentDateTime, CinderellaStatusRecord.StartTime "
+                                                 + "FROM Cinderella INNER JOIN CinderellaStatusRecord ON "
+                                                 + "Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID "
+                                                 + "WHERE (CinderellaStatusRecord.Status_Name = 'Waiting for Godmother') "
+                                                 + "AND (CinderellaStatusRecord.EndTime IS NULL) "
+                                                 + "AND (CinderellaStatusRecord.IsCurrent = 'Y') " 
+                                                 + "AND (Cinderella.CinderellaID='" + Convert.ToString(conID) + "')";
+
+        //Execute query 
+        SqlCommand retrieveCinderellaInfo = new SqlCommand(retrieveCinderellaInfoQuery, conn1);
+
+        //Create a new adapter
+        SqlDataAdapter adapter = new SqlDataAdapter(retrieveCinderellaInfo);
+
+        //Create a new dataset to hold the query results
+        DataSet dataSet = new DataSet();
+
+        //Store the results in the adapter 
+        adapter.Fill(dataSet);
+
+        //Assigned object variables values from the dataset
         _cinderellaID = conID;
-        _firstName = conFName;
-        _lastName = conLName;
-        _scheduleAppointmentTime = conScheduleAppointmentTime;
-        _arrivalTime = conArrivalTime;
+        _firstName = dataSet.Tables[0].Rows[0]["FirstName"].ToString();
+        _lastName = dataSet.Tables[0].Rows[0]["LastName"].ToString();
+        _scheduleAppointmentTime = Convert.ToDateTime(dataSet.Tables[0].Rows[0]["AppointmentDateTime"].ToString());
+        _arrivalTime = Convert.ToDateTime(dataSet.Tables[0].Rows[0]["StartTime"].ToString());
 
         // Comparing ScheduleAppointmentTime and ArrivalTime to get Priority
         if ((_scheduleAppointmentTime.Subtract(_arrivalTime).TotalMinutes) >= 15)
