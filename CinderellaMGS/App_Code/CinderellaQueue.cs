@@ -41,8 +41,28 @@ namespace CinderellaQueue
             return numItems;
         }
 
+        public void enqueueToFront(CinderellaClass cind)
+        {
+            cind.Priority = 1;
+
+            if (isEmpty())
+            {
+                priorityEnqueue(cind);
+            }
+            else
+            {
+                CinderellaNode newFront;
+                newFront = new CinderellaNode();
+                newFront.Cinderella = cind;
+                newFront.Next = front;
+                front = newFront;
+
+                numItems++;
+            }
+        }
+
         // Queue operations
-        public void enqueue(CinderellaClass val)
+        public void priorityEnqueue(CinderellaClass val)
         {
             CinderellaNode newNode;
 
@@ -202,6 +222,82 @@ namespace CinderellaQueue
                 else
                 {
                     return false;
+                }
+            }
+        }
+
+        public void recalibratePriority()
+        {
+            if (isEmpty())
+            {
+                //Do Nothing 
+            }
+            else
+            {
+                // Cursor node to point to node with target ID
+                CinderellaNode cursor = new CinderellaNode();
+
+                cursor = front;
+
+                for (int i = 0; i < numItems; i++)
+                {
+                    //Temp used to check priority
+                    CinderellaNode temp;
+                    temp = new CinderellaNode();
+                    temp = cursor;
+
+                    if (cursor != rear)
+                    {
+                        cursor = cursor.Next;
+                    }
+
+                    //If cinderella is earlly...
+                    if (temp.Cinderella.Priority == 2)
+                    {
+                        //Time window is subject change
+                        double maxTimeWindow = 15.0;
+
+                        //If the cinderella is now within her time window...
+                        if (temp.Cinderella.InScheduledTimeWindow(maxTimeWindow))
+                        {
+                            //Store the cinderellas' ID before removing them from the queue
+                            int targetCinderellaID = temp.Cinderella.CinderellaID;
+
+                            //Selectively dequeue them
+                            selectiveDequeue(targetCinderellaID);
+
+                            //Recreate instance of the cinderella that has been removed from the queue
+                            CinderellaClass targetedCinderella = new CinderellaClass(targetCinderellaID);
+
+                            //Set the cinderellas' priority to 1
+                            targetedCinderella.Priority = 1;
+
+                            //Insert the cinderella back into the queue
+                            priorityEnqueue(targetedCinderella);
+                        }
+                    }
+                    else if (temp.Cinderella.Priority == 3)
+                    {
+                        double maxWaitTime = 30.0;
+
+                        if (temp.Cinderella.WaitingForXTime(maxWaitTime))
+                        {
+                            //Store the cinderellas' ID before removing them from the queue
+                            int targetCinderellaID = temp.Cinderella.CinderellaID;
+
+                            //Selectively dequeue them
+                            selectiveDequeue(targetCinderellaID);
+
+                            //Recreate instance of the cinderella that has been removed from the queue
+                            CinderellaClass targetedCinderella = new CinderellaClass(targetCinderellaID);
+
+                            //Set the cinderellas' priority to 1
+                            targetedCinderella.Priority = 1;
+
+                            //Insert the cinderella back into the queue
+                            priorityEnqueue(targetedCinderella);
+                        }
+                    }
                 }
             }
         }

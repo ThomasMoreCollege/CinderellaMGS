@@ -44,9 +44,10 @@
         <tr>
             <td>
                 <asp:Button ID="AddButton" runat="server" Text="Add" OnClick="AddButton_Click" />
-            &nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;<asp:Button ID="ButtonPop" runat="server" Text="Pop" OnClick="ButtonPop_Click" />
-            &nbsp;</td>
+                &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="ButtonPop" runat="server" Text="Pop" OnClick="ButtonPop_Click" Width="37px" />
+            &nbsp; &nbsp; &nbsp;<asp:Button ID="AddToFrontButton" runat="server" Text="Add to front" OnClick="AddToFrontButton_Click" />
+               &nbsp; &nbsp; &nbsp; <asp:Button ID="RecalibrateButton" runat="server" Text="Recalibrate" OnClick="RecalibrateButton_Click" />
+            </td>
         </tr>
         <tr>
             <td>
@@ -68,7 +69,11 @@
                 Cinderella in front:&nbsp;&nbsp;<asp:Label ID="FrontCinLabel" runat="server" Text="Label"></asp:Label>
             </td>
         </tr>
-
+        <tr>
+            <td>Priority of front cinderella:
+                <asp:Label ID="PriorityOfFrontNodeLabel" runat="server" Text="Label"></asp:Label>
+            </td>
+        </tr>
     </table>
 </asp:Content>
 

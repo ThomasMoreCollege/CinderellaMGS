@@ -34,16 +34,18 @@ public partial class Forms_UserForms_TestPage : System.Web.UI.Page
 
         CinderellaClass selectedCinderella = new CinderellaClass(Convert.ToInt32(currentRow.Cells[1].Text));
 
-        testQueue.enqueue(selectedCinderella);
+        testQueue.priorityEnqueue(selectedCinderella);
 
         NumofCinLabel.Text = testQueue.getNumItems().ToString();
         FrontCinLabel.Text = testQueue.getValofFrontNode().CinderellaID.ToString();
+        PriorityOfFrontNodeLabel.Text = testQueue.getValofFrontNode().Priority.ToString();
     }
     protected void ButtonPop_Click(object sender, EventArgs e)
     {
         testQueue.dequeue();
         NumofCinLabel.Text = testQueue.getNumItems().ToString();
         FrontCinLabel.Text = testQueue.getValofFrontNode().CinderellaID.ToString();
+        PriorityOfFrontNodeLabel.Text = testQueue.getValofFrontNode().Priority.ToString();
     }
     protected void SelectivePopButton_Click(object sender, EventArgs e)
     {
@@ -51,5 +53,28 @@ public partial class Forms_UserForms_TestPage : System.Web.UI.Page
         testQueue.selectiveDequeue(CinderellaID);
         NumofCinLabel.Text = testQueue.getNumItems().ToString();
         FrontCinLabel.Text = testQueue.getValofFrontNode().CinderellaID.ToString();
+        PriorityOfFrontNodeLabel.Text = testQueue.getValofFrontNode().Priority.ToString();
+    }
+    protected void AddToFrontButton_Click(object sender, EventArgs e)
+    {
+        GridViewRow currentRow = CinderellaGridView.SelectedRow;
+
+        int selectedCinderellaID = Convert.ToInt32(currentRow.Cells[1].Text);
+
+        CinderellaClass selectedCinderella = new CinderellaClass(selectedCinderellaID);
+
+        testQueue.enqueueToFront(selectedCinderella);
+
+        NumofCinLabel.Text = testQueue.getNumItems().ToString();
+        FrontCinLabel.Text = testQueue.getValofFrontNode().CinderellaID.ToString();
+        PriorityOfFrontNodeLabel.Text = testQueue.getValofFrontNode().Priority.ToString();
+    }
+    protected void RecalibrateButton_Click(object sender, EventArgs e)
+    {
+        testQueue.recalibratePriority();
+
+        NumofCinLabel.Text = testQueue.getNumItems().ToString();
+        FrontCinLabel.Text = testQueue.getValofFrontNode().CinderellaID.ToString();
+        PriorityOfFrontNodeLabel.Text = testQueue.getValofFrontNode().Priority.ToString();
     }
 }
