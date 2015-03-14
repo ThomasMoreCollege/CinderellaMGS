@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+//using System.Web.UI.HtmlControls.HtmlElement;
+//using System.Web.UI.HtmlControls.HtmlGenericControl;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
@@ -83,14 +86,33 @@ public partial class MasterPage : System.Web.UI.MasterPage
         }
     }
 
+    public void LoginScreenLayout()
+    {
+        string currentPage = HttpContext.Current.Request.Url.AbsolutePath.ToString();
+        if (currentPage == "/CinderellaMGS/Forms/DefaultForms/Login.aspx")
+        {
+            
+
+            MenuNav.Visible = false;
+            LoginNav.Visible = false;
+
+            content.Style.Add("margin-left", "0px");
+        }
+    }
+
     public void ManageMasterLayout()
     {
+        //Manage login screen view
+        LoginScreenLayout();
+
+        //Disable caching and expire pages if not logged in 
         Response.ExpiresAbsolute = DateTime.Now.AddDays(-1d);
         Response.Expires = -1500;
         Response.CacheControl = "no-cache";
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
         Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
         Response.Cache.SetNoStore();
+
         // Checking if a session is running
         if (Session["CurrentAccType"] != null)
         {

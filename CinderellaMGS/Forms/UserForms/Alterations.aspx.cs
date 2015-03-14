@@ -162,11 +162,11 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         updateRole.ExecuteNonQuery();
 
         // Outputting message to verify transaction
-        updateSuccessLabel.Visible = true;
-        nameDisplaySuccessMessage.Visible = true;
-        updateSuccessLabel.ForeColor = System.Drawing.Color.Green;
-        nameDisplaySuccessMessage.ForeColor = System.Drawing.Color.Green;
-        nameDisplaySuccessMessage.Text = "Updated: " + CinderellaDressAlterationsGridView.SelectedRow.Cells[2].Text + "'s Dress";
+        //updateSuccessLabel.Visible = true;
+        //nameDisplaySuccessMessage.Visible = true;
+        //updateSuccessLabel.ForeColor = System.Drawing.Color.Green;
+        //nameDisplaySuccessMessage.ForeColor = System.Drawing.Color.Green;
+        //nameDisplaySuccessMessage.Text = "Updated: " + CinderellaDressAlterationsGridView.SelectedRow.Cells[2].Text + "'s Dress";
 
         // Rebind the data to refresh the grid
         CinderellaDressAlterationsGridView.DataBind();

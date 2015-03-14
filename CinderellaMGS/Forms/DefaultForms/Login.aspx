@@ -7,12 +7,12 @@
 
 
 <asp:Content runat="server" ID="HeaderTitle" ContentPlaceHolderID="HeaderTitle">
-    <h2>User/Admin Login</h2>
+    <h2>Login</h2>
 </asp:Content>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
     <br />
-    <table id="LoginTable" style="border: 1px solid black; width:45%;">
+    <table id="LoginTable" style="border: 1px solid black; width:30%;">
         <tr>
             <td colspan="2" class="auto-style2">
 

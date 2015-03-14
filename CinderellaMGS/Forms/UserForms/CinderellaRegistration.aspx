@@ -140,7 +140,9 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2"></td>
+                <td class="auto-style2">
+                    <br />
+                </td>
                 <td></td>
                 <td></td>
             </tr>

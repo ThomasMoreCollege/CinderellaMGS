@@ -11,25 +11,26 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="wrapper">
-            <header>
-                <h1>Home</h1>
-            </header>
-            <div id="LoginNav">
+
+        <div id="LoginNav" runat="server">
                 <asp:Label ID="WelcomeLabel" runat="server" Visible="False"></asp:Label>
                 <asp:LinkButton ID="LogOffLinkButton" runat="server" Visible="False" CausesValidation="False" OnClick="LogOffLinkButton_Click">Log Off</asp:LinkButton>
                 <asp:HyperLink ID="LoginHyperLink" runat="server" NavigateUrl="~/Forms/DefaultForms/Login.aspx">Login</asp:HyperLink>
             </div>
-
+        <div id="wrapper">
+            
+            <header>
+                <h1>Home</h1>
+            </header>
             <%-- Horizontal Nav Bar --%>
-            <div id="MenuNav">
+            <div id="MenuNav" runat="server">
 
                 <asp:HyperLink ID="HomeHyperLink" runat="server" NavigateUrl="~/Forms/DefaultForms/HomePage.aspx">Home</asp:HyperLink>&nbsp &nbsp
             <asp:HyperLink ID="AboutHyperLink" runat="server">About</asp:HyperLink>&nbsp &nbsp
             <asp:HyperLink ID="ContactHyperLink" runat="server">Contact</asp:HyperLink>
             </div>
             <%-- Side Navigation Bar --%>
-            <nav>
+            <nav runat="server" id="SideNav" accesskey="SideNav" hidden="hidden">
                 <ul>
                     <li id="UserTitle" runat="server">User Features
                     <ul id="UserFeatures">
@@ -67,7 +68,7 @@
                 </ul>
             </nav>
 
-            <div id="content">
+            <div id="content" runat="server">
 
                 <div id="mainImage">
                     <br />

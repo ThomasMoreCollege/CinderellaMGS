@@ -42,7 +42,6 @@ h1 {
 	height: 100px;
 	text-indent: -9999px;
 	margin-bottom: 0px;
-	margin-bottom: 0;
 	font-family: 'Press Start 2P', cursive;
 	text-transform: uppercase;
 }
@@ -51,10 +50,15 @@ h1 {
     text-align:right;
     font-size: 16px;
     font-weight: bold;
-    padding: 0px 0px 0px 180px;
+    padding: 7px 0px 0px 0px;
     text-decoration: none;
-    margin: 0px 0px 0px 0px;
-    background-color: #FFF;
+    background-color: transparent;
+    margin-left: auto;
+	margin-right: auto;
+    margin-bottom:-15px;
+	width: 100%;
+	min-width: 960px;
+    max-width: 1152px;
 }
 
 #LoginNav a { text-decoration: none; }
@@ -257,6 +261,10 @@ table {
 	margin: auto auto 25px 0px;
 }
 
+td {
+    padding: 5px 5px 5px 5px;
+}
+
 #lineUpsAway{
 	width: 20%;
 	margin: auto;	
@@ -351,6 +359,8 @@ figure{
 #LoginTable {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 15%;
+    margin-top: 10%;
 }
 
 #middleRow {
@@ -358,6 +368,15 @@ figure{
  border-bottom: 1px solid #999999;
 }
 
+#CinderellaInAlterationsTD {
+    border-bottom: 1px solid #999999;
+    float:left;
+}
+
+#CinderellaShoppingTD {
+    border-bottom: 1px solid #999999;
+    /*float:left;*/
+}
 #firstRow{
     border-top: 1px solid #999999;
 }
@@ -456,6 +475,7 @@ figure{
 textarea{
     resize:none;
     margin-top: 0px;
+    text-align: right;
 }
 
 #RolesCheckBoxList input {
