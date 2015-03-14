@@ -7,15 +7,13 @@
     <table>
         <tr>
             <td>
-                <asp:GridView ID="CinderellaGridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataSourceID="CinderellasToBeQueuedSqlDataSource" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="VolunteerGridView_SelectedIndexChanged">
+                <asp:GridView ID="CinderellaGridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataSourceID="CinderellasToBeQueuedSqlDataSource" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="VolunteerGridView_SelectedIndexChanged" DataKeyNames="VolunteerID">
 
                     <Columns>
                         <asp:CommandField ShowSelectButton="True" />
-                        <asp:BoundField DataField="CinderellaID" HeaderText="CinderellaID" InsertVisible="False" ReadOnly="True" SortExpression="CinderellaID" />
+                        <asp:BoundField DataField="VolunteerID" HeaderText="VolunteerID" InsertVisible="False" ReadOnly="True" SortExpression="VolunteerID" />
                         <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
                         <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
-                        <asp:BoundField DataField="AppointmentDateTime" HeaderText="AppointmentDateTime" SortExpression="AppointmentDateTime" />
-                        <asp:BoundField DataField="StartTime" HeaderText="StartTime" SortExpression="StartTime" />
                     </Columns>
                     <FooterStyle BackColor="#CCCCCC" />
                     <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
@@ -27,7 +25,7 @@
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                     <AlternatingRowStyle BackColor="pink" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="CinderellasToBeQueuedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT Cinderella.CinderellaID, Cinderella.FirstName, Cinderella.LastName, Cinderella.AppointmentDateTime, CinderellaStatusRecord.StartTime FROM Cinderella INNER JOIN CinderellaStatusRecord ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID WHERE (CinderellaStatusRecord.Status_Name = 'Waiting for Godmother') AND (CinderellaStatusRecord.EndTime IS NULL) AND (CinderellaStatusRecord.IsCurrent = 'Y')"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="CinderellasToBeQueuedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.FirstName, Volunteer.LastName FROM Volunteer INNER JOIN VolunteerStatusRecord ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID INNER JOIN VolunteerRoleRecord ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID WHERE (VolunteerStatusRecord.Status_Name = 'Ready') AND (VolunteerStatusRecord.IsCurrent = 'Y') AND (VolunteerRoleRecord.Role_Name = 'Godmother') AND (VolunteerRoleRecord.IsCurrent = 'Y')"></asp:SqlDataSource>
             </td>
             
         </tr>
@@ -61,18 +59,16 @@
         </tr>
         <tr>
             <td>
-                Number of Cinderellas in Queue:&nbsp;&nbsp;<asp:Label ID="NumofCinLabel" runat="server" Text="Label"></asp:Label>
+                Number of Volunteers in Queue:&nbsp;&nbsp;<asp:Label ID="NumofCinLabel" runat="server" Text="Label"></asp:Label>
             </td>
         </tr>
         <tr>
             <td>
-                Cinderella in front:&nbsp;&nbsp;<asp:Label ID="FrontCinLabel" runat="server" Text="Label"></asp:Label>
+                Volunteer in front:&nbsp;&nbsp;<asp:Label ID="FrontCinLabel" runat="server" Text="Label"></asp:Label>
             </td>
         </tr>
         <tr>
-            <td>Priority of front cinderella:
-                <asp:Label ID="PriorityOfFrontNodeLabel" runat="server" Text="Label"></asp:Label>
-            </td>
+            <td>&nbsp;</td>
         </tr>
     </table>
 </asp:Content>

@@ -31,6 +31,11 @@ namespace VolunteerQueue
             return rear.Volunteer;
         }
 
+        public VolunteerClass getValofFrontNode()
+        {
+            return front.Volunteer;
+        }
+
         public int getNumItems()
         {
             return numItems;
@@ -61,6 +66,26 @@ namespace VolunteerQueue
             // Update numItems.
             numItems++;
         }
+
+        public void enqueueToFront(VolunteerClass vol)
+        {
+
+            if (isEmpty())
+            {
+                enqueue(vol);
+            }
+            else
+            {
+                VolunteerNode newFront;
+                newFront = new VolunteerNode();
+                newFront.Volunteer = vol;
+                newFront.Next = front;
+                front = newFront;
+
+                numItems++;
+            }
+        }
+
         public void dequeue()
         {
 
@@ -87,6 +112,73 @@ namespace VolunteerQueue
                 }
             }
         }
+        public bool selectiveDequeue(int VolID)
+        {
+            if (isEmpty())
+            {
+                return false;
+            }
+            else
+            {
+                // Cursor node to point to node with target ID
+                VolunteerNode cursor = new VolunteerNode();
+
+                cursor = front;
+
+                // Cursor node to points to node in front of the cursor
+                VolunteerNode previousCursor = new VolunteerNode();
+
+                previousCursor = null;
+
+                //Search for a cinderella with the same ID 
+                while (cursor.Volunteer.VolunteerID != VolID)
+                {
+                    if (cursor == rear)
+                    {
+                        break;
+                    }
+                    previousCursor = cursor;
+                    cursor = cursor.Next;
+                }
+
+                //If id is match remove the cinderella from the queue and reasign pointers accordingly
+                if (cursor.Volunteer.VolunteerID == VolID)
+                {
+                    //If front cinderella matches ID just call dequeue
+                    if (cursor == front)
+                    {
+                        dequeue();
+                    }
+
+                    else
+                    {
+                        //If matching cinderella is the last one in the queue reassign the rear pointer
+                        if (cursor == rear)
+                        {
+                            rear = previousCursor;
+                            previousCursor.Next = null;
+                        }
+                        //Otherwise rearrange the pointer of the previous cinderella to the next possible cinderella
+                        else
+                        {
+                            previousCursor.Next = cursor.Next;
+                        }
+
+                        //Remove cinderella from queue
+                        cursor = null;
+
+                        // Update numItems.
+                        numItems--;
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         public bool isEmpty()
         {
             bool status;

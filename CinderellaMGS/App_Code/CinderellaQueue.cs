@@ -163,10 +163,6 @@ namespace CinderellaQueue
             }
             else
             {
-                // Remove the node that matches the ID.
-                CinderellaNode temp;
-                temp = new CinderellaNode();
-
                 // Cursor node to point to node with target ID
                 CinderellaNode cursor = new CinderellaNode();
 
