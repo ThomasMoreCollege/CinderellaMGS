@@ -54,8 +54,6 @@
                     <li id="AdminTitle" runat="server">Admin Features 
                     <ul id="AdminFeatures">
                         <li>
-                            <asp:HyperLink ID="EndDayHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/EndDay.aspx">End Day</asp:HyperLink></li>
-                        <li>
                             <asp:HyperLink ID="ManageAccountsHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageAccounts.aspx">Manage Accounts</asp:HyperLink></li>
                         <li>
                             <asp:HyperLink ID="ManageVolunteersHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.aspx">Manage Volunteers</asp:HyperLink></li>
