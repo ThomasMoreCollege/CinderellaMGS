@@ -50,15 +50,16 @@
                     <asp:GridView ID="DressesInAlterationsGridView" runat="server"
                         AllowSorting="True"
                         AutoGenerateColumns="False"
-                        DataSourceID="DressDataSource"
-                        DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="DressesInAlterationsGridView_SelectedIndexChanged">
+                        DataSourceID="DressDataSource" 
+                        DataKeyNames="Cinderella_ID" ForeColor="Black" OnSelectedIndexChanged="DressesInAlterationsGridView_SelectedIndexChanged">
                         <Columns>
+
                             <asp:CommandField ShowSelectButton="True" />
-                            <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
-                            <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
-                            <asp:BoundField DataField="DressSize" HeaderText="Dress Size" SortExpression="DressSize" />
-                            <asp:BoundField DataField="DressColor" HeaderText="Dress Color" SortExpression="DressColor" />
-                            <asp:BoundField DataField="DressLength" HeaderText="Dress Length" SortExpression="DressLength" />
+                            <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
+                            <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
+                            <asp:BoundField DataField="dressSize" HeaderText="dressSize" SortExpression="dressSize" />
+                            <asp:BoundField DataField="dressLength" HeaderText="dressLength" SortExpression="dressLength" />
+                            <asp:BoundField DataField="dressColor" HeaderText="dressColor" SortExpression="dressColor" />
                         </Columns>
                         <FooterStyle BackColor="#CCCCCC" />
                         <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
@@ -71,7 +72,7 @@
                         <AlternatingRowStyle BackColor="pink" />
                     </asp:GridView>
                     <asp:SqlDataSource ID="DressDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
-                        SelectCommand="SELECT [CinderellaID], 
+                       SelectCommand="SELECT [CinderellaID], 
                                             [LastName], 
                                             [FirstName],
                                             [DressSize],
@@ -115,10 +116,11 @@
                     <asp:Label ID="Label2" runat="server" Text="Dress Length:"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DressLengthDropDown" runat="server">
+                    <asp:DropDownList ID="DressLengthDropDown" runat="server" DataSourceID="DressLength" DataTextField="sizeLength" DataValueField="sizeLength">
                         <asp:ListItem></asp:ListItem>
                         <asp:ListItem>RANGE OF NUMBERS</asp:ListItem>
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="DressLength" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [sizeLength] FROM [DressSizeLength]"></asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
@@ -131,10 +133,11 @@
                     <asp:Label ID="Label3" runat="server" Text="Dress Color:"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DressColorDropDown" runat="server">
+                    <asp:DropDownList ID="DressColorDropDown" runat="server" DataSourceID="DressColorDataSource" DataTextField="dressColor" DataValueField="dressColor">
                         <asp:ListItem></asp:ListItem>
                         <asp:ListItem>VARIETY OF COLORS</asp:ListItem>
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="DressColorDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [dressColor] FROM [DressColor]"></asp:SqlDataSource>
                 </td>
             </tr>
             <tr>

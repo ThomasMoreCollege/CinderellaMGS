@@ -162,5 +162,10 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
         DressSizeDropDown.Enabled = false;
         DressColorDropDown.Enabled = false;
         DressLengthDropDown.Enabled = false;
+
+        // Entering Dress information into the drops downs 
+        DressSizeDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[3].ToString();
+        DressLengthDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[5].ToString();
+        DressColorDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[4].ToString();
     }
 }
