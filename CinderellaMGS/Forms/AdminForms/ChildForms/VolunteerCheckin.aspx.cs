@@ -29,8 +29,12 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
         {
             // Creating a variable to hold a string of the Volunteer's ID
             string SelectedVolunteerID = VolunteerGridView.SelectedValue.ToString();
+
             // Creating a variable to hold the current time
             string now = DateTime.Now.ToString();
+
+            // Creating a variable to hold the current date
+            DateTime today = DateTime.Today.Date;
 
             //Initialize database connection with "DefaultConnection" setup in the web.config
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
@@ -56,7 +60,7 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
             // SQL string to SELECT the Volunteer's Role for this Shift
             sql = "SELECT Role_Name "
                     + "FROM VolunteerShiftRecord "
-                    + "WHERE Shift_Name = 'Friday' AND Volunteer_ID = '" + SelectedVolunteerID + "'";
+                    + "WHERE Shift_Name = '" + today + "' AND Volunteer_ID = '" + SelectedVolunteerID + "'";
             SqlCommand comm3 = new SqlCommand(sql, conn);
             string ShiftRole = comm3.ExecuteScalar().ToString();
 
