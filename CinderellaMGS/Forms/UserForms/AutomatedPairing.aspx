@@ -7,15 +7,31 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
         <table id="AutoPairTable">
             <tr>
-                <th>Godmothers</th>
-                <th>Cinderellas</th>
+                <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="AutomattedPairingSqlDataSource">
+                    <Columns>
+                        <asp:BoundField DataField="Cinderella" HeaderText="Cinderella" ReadOnly="True" SortExpression="Cinderella" />
+                        <asp:BoundField DataField="Column1" ReadOnly="True" SortExpression="Column1">
+                        <ItemStyle Font-Bold="True" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Volunteer" HeaderText="Volunteer" ReadOnly="True" SortExpression="Volunteer" />
+                    </Columns>
+                    <FooterStyle BackColor="#CCCCCC" />
+                    <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                    <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                    <SortedAscendingHeaderStyle BackColor="#808080" />
+                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                    <SortedDescendingHeaderStyle BackColor="#383838" />
+                    <AlternatingRowStyle BackColor="pink" />
+                </asp:GridView>
+                <asp:SqlDataSource ID="AutomattedPairingSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT Cinderella.FirstName + ' ' + Cinderella.LastName AS Cinderella, 'Is Paired With', Volunteer.FirstName + ' ' + Volunteer.LastName AS Volunteer FROM Cinderella INNER JOIN Volunteer ON Cinderella.Volunteer_ID = Volunteer.VolunteerID INNER JOIN CinderellaStatusRecord ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID WHERE (Cinderella.Volunteer_ID IS NOT NULL) AND (CinderellaStatusRecord.Status_Name = 'Paired') AND (CinderellaStatusRecord.IsCurrent = 'Y')"></asp:SqlDataSource>
             </tr>
             <tr>
                 <td>
-                    <asp:ListBox ID="GodmotherListBox" runat="server" Height="400px" Width="350px"></asp:ListBox>
-                </td>
-                <td>
-                    <asp:ListBox ID="CinderellaListBox" runat="server" Height="400px" Width="350px"></asp:ListBox>
+
+                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+
                 </td>
             </tr>
         </table>
