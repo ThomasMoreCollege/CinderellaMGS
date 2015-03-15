@@ -51,7 +51,7 @@
                         AllowSorting="True"
                         AutoGenerateColumns="False"
                         DataSourceID="DressDataSource" 
-                        DataKeyNames="Cinderella_ID" ForeColor="Black" OnSelectedIndexChanged="DressesInAlterationsGridView_SelectedIndexChanged">
+                        DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="DressesInAlterationsGridView_SelectedIndexChanged">
                         <Columns>
 
                             <asp:CommandField ShowSelectButton="True" />
@@ -81,7 +81,7 @@
                                     FROM [Cinderella] 
                                     INNER JOIN Package 
                                         ON Cinderella.CinderellaID = Package.Cinderella_ID 
-                                    WHERE InAlterations = 'Y'
+                                    WHERE InAlterations = 'Y' AND InPackaging = 'N'
                                     ORDER BY [LastName]">
                     </asp:SqlDataSource>
                 </td>

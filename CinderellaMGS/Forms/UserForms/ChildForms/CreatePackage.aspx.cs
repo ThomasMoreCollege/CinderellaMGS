@@ -17,74 +17,73 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
     }
     protected void CheckoutButton_Click(object sender, EventArgs e)
     {
-        // Input validation to guarantee a Cinderella is selected
-        if (CinderellaGridView.SelectedRow == null)
+        // Creating variables to hold a string of the Cinderella's ID and the Godmother's ID
+        string SelectedCinderellaID = "";
+
+        // Variables to hold information of dress/shoes/jewelry
+        string DressSize = DressSizeDropDown.SelectedValue;
+        string DressLength = DressLengthDropDown.SelectedValue;
+        string DressColor = DressColorDropDown.SelectedValue;
+        string ShoeSize = ShoeSizeDropDown.SelectedValue;
+        string ShoeColor = ShoeColorDropDown.SelectedValue;
+        string Notes = NotesTextBox.Text;
+        string Necklace = "N";
+        string HeadPiece = "N";
+        string Bracelet = "N";
+        string Ring = "N";
+        string Earring = "N"; 
+        string Other = "N";
+
+        // Strings to hold today's date and current time
+        string today = DateTime.Today.ToString();
+        string now = DateTime.Now.ToString();
+
+
+        // Validating all checkboxes
+        if (NecklaceCheckBox.Checked == true)
         {
+            Necklace = "Y";
         }
-        else
+        if (HeadpieceCheckBox.Checked == true)
         {
+            HeadPiece = "Y";
+        }
+        if (BraceletCheckBox.Checked == true)
+        {
+            Bracelet = "Y";
+        }
+        if (RingCheckBox.Checked == true)
+        {
+            Ring = "Y";
+        }
+        if (EarringCheckBox.Checked == true)
+        {
+            Earring = "Y";
+        }
+        if (OtherCheckBox.Checked == true)
+        {
+            Other = "Y";
+        }
 
+        //Initialize database connection with "DefaultConnection" setup in the web.config
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+        //Open the connection 
+        conn.Open();
+
+        // SQL for inserting an entirely new Cinderella Package; no Dress in alterations
+        if (CinderellaGridView.SelectedRow != null)
+        {
             // Creating variables to hold a string of the Cinderella's ID and the Godmother's ID
-            string SelectedCinderellaID = CinderellaGridView.SelectedValue.ToString();
-
-            // Variables to hold information of dress/shoes/jewelry
-            string DressSize = DressSizeDropDown.SelectedValue;
-            string DressLength = DressLengthDropDown.SelectedValue;
-            string DressColor = DressColorDropDown.SelectedValue;
-            string ShoeSize = ShoeSizeDropDown.SelectedValue;
-            string ShoeColor = ShoeColorDropDown.SelectedValue;
-            string Notes = NotesTextBox.Text;
-            string Necklace = "N";
-            string HeadPiece = "N";
-            string Bracelet = "N";
-            string Ring = "N";
-            string Earring = "N"; 
-            string Other = "N";
-
-            // Strings to hold today's date and current time
-            string today = DateTime.Today.ToString();
-            string now = DateTime.Now.ToString();
-
-
-            // Validating all checkboxes
-            if (NecklaceCheckBox.Checked == true)
-            {
-                Necklace = "Y";
-            }
-            if (HeadpieceCheckBox.Checked == true)
-            {
-                HeadPiece = "Y";
-            }
-            if (BraceletCheckBox.Checked == true)
-            {
-                Bracelet = "Y";
-            }
-            if (RingCheckBox.Checked == true)
-            {
-                Ring = "Y";
-            }
-            if (EarringCheckBox.Checked == true)
-            {
-                Earring = "Y";
-            }
-            if (OtherCheckBox.Checked == true)
-            {
-                Other = "Y";
-            }
-
-            //Initialize database connection with "DefaultConnection" setup in the web.config
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-            //Open the connection 
-            conn.Open();
+            SelectedCinderellaID = CinderellaGridView.SelectedValue.ToString();
 
             // SQL string to INSERT package information
             string sql = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, DressLength, ShoeSize, ShoeColor, Necklace, Ring, Bracelet, HeadPiece, Earrings, Other, CheckoutNotes, WhenAvailable, InPackaging)"
-                            + " VALUES ('" + SelectedCinderellaID + "', '" 
-                                            + DressSize + "', '" + DressColor + "', '" + DressLength + "', '" 
-                                            + ShoeSize + "', '" + ShoeColor + "', '" 
-                                            + Necklace + "', '" + Ring + "', '" + Bracelet + "', '" + HeadPiece + "', '" + Earring + "', '" + Other + "', '" 
-                                            + Notes +"', '" + today + "', 'Y')";
+                            + " VALUES ('" + SelectedCinderellaID + "', '"
+                                            + DressSize + "', '" + DressColor + "', '" + DressLength + "', '"
+                                            + ShoeSize + "', '" + ShoeColor + "', '"
+                                            + Necklace + "', '" + Ring + "', '" + Bracelet + "', '" + HeadPiece + "', '" + Earring + "', '" + Other + "', '"
+                                            + Notes + "', '" + today + "', 'Y')";
 
             // Execute query
             SqlCommand comm1 = new SqlCommand(sql, conn);
@@ -106,12 +105,30 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             // Execute query
             SqlCommand comm3 = new SqlCommand(sql, conn);
             comm3.ExecuteNonQuery();
-            
+        }
+        // SQL for updating the Package of a Cinderella whose Dress is in alterations and already in incomplete Package
+        else if (DressesInAlterationsGridView.SelectedRow != null)
+        {
+            // Creating variables to hold a string of the Cinderella's ID and the Godmother's ID
+            SelectedCinderellaID = DressesInAlterationsGridView.SelectedValue.ToString();
+
+            // SQL string to UPDATE package information with rest of articles
+            string sql = "UPDATE Package (ShoeSize, ShoeColor, Necklace, Ring, Bracelet, HeadPiece, Earrings, Other, CheckoutNotes, WhenAvailable, InPackaging)"
+                            + " VALUES ('" + ShoeSize + "', '" + ShoeColor + "', '"
+                                            + Necklace + "', '" + Ring + "', '" + Bracelet + "', '" + HeadPiece + "', '" + Earring + "', '" + Other + "', '"
+                                            + Notes + "', '" + today + "', 'Y')"
+                            + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "'";
+        }
+
+        // Overlapping SQL to update Cinderella's Volunteer's information
+        // Only occurs if a selection is present in a GridView
+        if (CinderellaGridView.SelectedRow != null || DressesInAlterationsGridView.SelectedRow != null)
+        {
             // SQL string to SELECT Volunteer ID from selected Cinderella and assign it to a varirable
-            sql = "SELECT Volunteer_ID "
+            string sql = "SELECT Volunteer_ID "
                     + "FROM Cinderella "
                     + "WHERE CinderellaID = '" + SelectedCinderellaID + "'";
-            
+
             // Execute query
             SqlCommand comm4 = new SqlCommand(sql, conn);
             string GodmotherID = comm4.ExecuteScalar().ToString();
@@ -120,7 +137,7 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             sql = "UPDATE VolunteerStatusRecord "
                     + "SET EndTime = '" + now + "', IsCurrent = 'N' "
                     + "WHERE Volunteer_ID = '" + GodmotherID + "' AND IsCurrent = 'Y'";
-           
+
 
             // Execute query
             SqlCommand comm5 = new SqlCommand(sql, conn);
@@ -133,10 +150,9 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             // Execute query
             SqlCommand comm6 = new SqlCommand(sql, conn);
             comm6.ExecuteNonQuery();
-
-            //REMEMBER TO CLOSE CONNECTION!!
-            conn.Close();
         }
+        //REMEMBER TO CLOSE CONNECTION!!
+        conn.Close();
 
         // Rebind the data to refresh the Grid
         CinderellaGridView.DataBind();
@@ -163,9 +179,10 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
         DressColorDropDown.Enabled = false;
         DressLengthDropDown.Enabled = false;
 
+
         // Entering Dress information into the drops downs 
-        DressSizeDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[3].ToString();
-        DressLengthDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[5].ToString();
-        DressColorDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[4].ToString();
+        DressSizeDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[3].Text.ToString();
+        DressLengthDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[4].Text.ToString();
+        DressColorDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[5].Text.ToString();
     }
 }
