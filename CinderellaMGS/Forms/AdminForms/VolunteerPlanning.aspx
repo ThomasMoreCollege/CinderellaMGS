@@ -35,10 +35,10 @@
     </asp:GridView>
     <asp:SqlDataSource ID="SaturdayAlterationsDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Saturday = 'Alterations'"></asp:SqlDataSource>
+WHERE Saturday = 'Alterations' AND isValid = 'Y'"></asp:SqlDataSource>
     <asp:SqlDataSource ID="FridayAlterationDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Friday = 'Alterations'"></asp:SqlDataSource>
+WHERE Friday = 'Alterations' AND isValid = 'Y'"></asp:SqlDataSource>
     <br />
     <asp:Label ID="dressOrganizersLabel" runat="server" Font-Bold="True" Font-Italic="True" Text="Dress Organizers" Visible="False"></asp:Label>
     <br />
@@ -61,10 +61,10 @@ WHERE Friday = 'Alterations'"></asp:SqlDataSource>
     </asp:GridView>
     <asp:SqlDataSource ID="SaturdayDressOrganizerDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Saturday = 'Dress Organizer'"></asp:SqlDataSource>
+WHERE Saturday = 'Dress Organizer' AND isValid = 'Y'"></asp:SqlDataSource>
     <asp:SqlDataSource ID="FridayDressOrganizersDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Friday = 'Dress Organizer'"></asp:SqlDataSource>
+WHERE Friday = 'Dress Organizer' AND isValid = 'Y'"></asp:SqlDataSource>
     <br />
     <asp:Label ID="personalShoppersLabel" runat="server" Font-Bold="True" Font-Italic="True" Text="Personal Shoppers" Visible="False"></asp:Label>
     <br />
@@ -87,10 +87,10 @@ WHERE Friday = 'Dress Organizer'"></asp:SqlDataSource>
     </asp:GridView>
     <asp:SqlDataSource ID="SaturdayPersonalShoppersDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Saturday = 'Personal Shopper'"></asp:SqlDataSource>
+WHERE Saturday = 'Personal Shopper' AND isValid = 'Y'"></asp:SqlDataSource>
     <asp:SqlDataSource ID="FridayPersonalShoppersDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Friday = 'Personal Shopper'"></asp:SqlDataSource>
+WHERE Friday = 'Personal Shopper' AND isValid = 'Y'"></asp:SqlDataSource>
     <br />
     <asp:Label ID="noRoleReportedLabel" runat="server" Font-Bold="True" Font-Italic="True" Text="No Role Reported" Visible="False"></asp:Label>
     <br />
@@ -113,10 +113,10 @@ WHERE Friday = 'Personal Shopper'"></asp:SqlDataSource>
     </asp:GridView>
     <asp:SqlDataSource ID="SaturdayNoRoleDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Saturday IS NULL"></asp:SqlDataSource>
+WHERE Saturday IS NULL AND isValid = 'Y'"></asp:SqlDataSource>
     <asp:SqlDataSource ID="FridayNoRoleDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Friday IS NULL"></asp:SqlDataSource>
+WHERE Friday IS NULL AND isValid = 'Y'"></asp:SqlDataSource>
     <br />
     <asp:Label ID="notVolunteeringLabel" runat="server" Font-Bold="True" Font-Italic="True" Text="Not Volunteering" Visible="False"></asp:Label>
     <br />
@@ -139,10 +139,10 @@ WHERE Friday IS NULL"></asp:SqlDataSource>
     </asp:GridView>
     <asp:SqlDataSource ID="SaturdayNotVolunteeringDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Saturday = 'Not Volunteering'"></asp:SqlDataSource>
+WHERE Saturday = 'Not Volunteering' AND isValid = 'Y'"></asp:SqlDataSource>
     <asp:SqlDataSource ID="FridayNotVolunteeringDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Friday = 'Not Volunteering'"></asp:SqlDataSource>
+WHERE Friday = 'Not Volunteering' AND isValid = 'Y'"></asp:SqlDataSource>
     <br />
 </asp:Content>
 
