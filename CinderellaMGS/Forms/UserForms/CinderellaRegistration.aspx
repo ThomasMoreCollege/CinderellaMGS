@@ -84,6 +84,25 @@
                 </td>
             </tr>
             <tr>
+                <td class="auto-style4"></td>
+                <td class="auto-style4">Manually Paired:</td>
+                <td>
+                    <asp:RadioButton ID="YesRadioButton" runat="server" GroupName="ManuallyPaired" Text="Yes" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <asp:RadioButton ID="NoRadioButton" runat="server" Checked="True" GroupName="ManuallyPaired" Text="No" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
                 <td></td>
                 <td class="auto-style3">
                     Appointment Date:</td>
@@ -327,6 +346,9 @@
         {
             height: 93px;
             width: 180px;
+        }
+        .auto-style4 {
+            text-align: right;
         }
     </style>
 </asp:Content>

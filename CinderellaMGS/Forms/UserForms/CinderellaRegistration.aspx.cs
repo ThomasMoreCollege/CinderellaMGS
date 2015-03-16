@@ -40,6 +40,15 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             string date = appointmentSelectDateCalender.SelectedDate.ToString("d");
             string time = appTime;
             string appointmentTime = date + ' ' + time;
+            string isManuallyPaired = "";
+            if (NoRadioButton.Checked)
+            {
+                isManuallyPaired = "N";
+            }
+            if (YesRadioButton.Checked)
+            {
+                isManuallyPaired = "Y";
+            }
 
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
@@ -67,8 +76,8 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             int referralID = Convert.ToInt32(newReferralID.ExecuteScalar().ToString());
 
             //Query to added new Cinderella into the database
-            string addCinderellaQuery = "INSERT INTO Cinderella (FirstName, LastName, Phone, Email, AppointmentDateTime, Note, Referral_ID) "
-                                        + "VALUES ('" + firstname + "', '" + lastname + "', '" + phoneNumber + "', '" + email + "', '" + appointmentTime + "', '" + notes + "', '" + referralID + "')";
+            string addCinderellaQuery = "INSERT INTO Cinderella (FirstName, LastName, Phone, Email, AppointmentDateTime, Note, Referral_ID, isManuallyPaired) "
+                                        + "VALUES ('" + firstname + "', '" + lastname + "', '" + phoneNumber + "', '" + email + "', '" + appointmentTime + "', '" + notes + "', '" + referralID + "', '" + isManuallyPaired + "')";
 
             // Execute query
             SqlCommand addCinderella = new SqlCommand(addCinderellaQuery, conn);
@@ -122,15 +131,24 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             //Open the connection 
             conn.Open();
 
+            //Retrieve selected referral
             string agency = referralDropDownList.SelectedItem.Text;
 
+            //Query to retrieve selected referral ID 
             string getAgencyIDQuery = "SELECT referralID "
                                         + "FROM Referrals "
                                         + "WHERE agency = '" + agency + "'";
+
+            //Turn query striing into SQL command 
             SqlCommand getAgencyID = new SqlCommand(getAgencyIDQuery, conn);
+
+            //Execute query
             getAgencyID.ExecuteNonQuery();
+
+            //Store query result into a variable
             int agencyID = (Int32)getAgencyID.ExecuteScalar();
 
+            //Store form data into variables
             string firstname = FirstTextBox.Text.Trim();
             string lastname = LastNameTextBox.Text.Trim();
             string phoneNumber = PhoneNumberTextBox.Text.Trim();
@@ -139,29 +157,43 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             string date = appointmentSelectDateCalender.SelectedDate.ToString("d");
             string time = appTime;
             string appointmentTime = date + ' ' + time;
+            string isManuallyPaired = "";
+            if (NoRadioButton.Checked)
+            {
+                isManuallyPaired = "N";
+            }
+            if (YesRadioButton.Checked)
+            {
+                isManuallyPaired = "Y";
+            }
 
-            string sql = "INSERT INTO Cinderella (FirstName, LastName, Phone, Email, AppointmentDateTime, Note, Referral_ID) "
-                            + "VALUES ('" + firstname + "', '" + lastname + "', '" + phoneNumber + "', '" + email + "', '" + appointmentTime + "', '" + notes + "', '" + agencyID + "')";
+            //Insert Cinderella into Database
+            string addNewCinderellaQuery = "INSERT INTO Cinderella (FirstName, LastName, Phone, Email, AppointmentDateTime, Note, Referral_ID, isManuallyPaired) "
+                            + "VALUES ('" + firstname + "', '" + lastname + "', '" + phoneNumber + "', '" + email + "', '" + appointmentTime + "', '" + notes + "', '" + agencyID + "', '" + isManuallyPaired + "')";
 
+            // Execute query
+            SqlCommand comm1 = new SqlCommand(addNewCinderellaQuery, conn);
+            comm1.ExecuteNonQuery();
+
+            //Query to retrieve ID of newly added Cinderella 
             string cinderellaIDQuery = "SELECT CinderellaID "
                                         + "FROM Cinderella "
                                         + "WHERE FirstName='" + firstname + "' AND LastName='" + lastname + "' AND Email='" + email + "'";
 
-            // Execute query
-            SqlCommand comm1 = new SqlCommand(sql, conn);
-            comm1.ExecuteNonQuery();
-
-            //Execute query 
-            SqlCommand newCinderellaID = new SqlCommand(cinderellaIDQuery, conn);
+            //Turn query string into a SQL command
+            SqlCommand newCinderellaID = new SqlCommand(cinderellaIDQuery, conn);            
 
             //Retrieve results from query and store in a varaible 
             string cinderellaID = newCinderellaID.ExecuteScalar().ToString();
 
-            string sqlTwo = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+            //Insert new status record for new Cinderella
+            string insertNewCinWStatusRecord = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
                             + "VALUES ('" + cinderellaID + "', GetDate(), 'Pending', 'Y')";
 
+            ///Turn query string into a SQL command            
+            SqlCommand comm2 = new SqlCommand(insertNewCinWStatusRecord, conn);
+
             // Execute query
-            SqlCommand comm2 = new SqlCommand(sqlTwo, conn);
             comm2.ExecuteNonQuery();
 
             conn.Close();
