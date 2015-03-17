@@ -101,13 +101,6 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
                     //Copy changes into application queue
                     Application["volunteerQueue"] = volunteerQueueCopy;
 
-                    VolunteerQueue.VolunteerQueue volunteerQueueCopy2 = new VolunteerQueue.VolunteerQueue();
-
-                    volunteerQueueCopy2 = Application["volunteerQueue"] as VolunteerQueue.VolunteerQueue;
-
-                    Label2.Text = volunteerQueueCopy2.getValofFrontNode().VolunteerID.ToString();
-                    Label3.Text = volunteerQueueCopy2.getNumItems().ToString();
-
                     //Unlock Application session
                     Application.UnLock();
 

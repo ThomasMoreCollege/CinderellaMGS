@@ -28,8 +28,7 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
         }
         else
         {
-            try
-            {
+           
                 // Creating a variable to hold a string of the Cinderella's ID
                 string SelectedCinderellaID = CinderellaGridView.SelectedValue.ToString();
 
@@ -71,11 +70,40 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                 // Rebind the data to refresh the Grid
                 CinderellaGridView.DataBind();
                 CinderellaGridView.SelectedIndex = -1;
+            try{
+                //Retrieve ID of selected volunteer
+                int cinID = Convert.ToInt32(SelectedCinderellaID);
+
+                //Create object instance with selected volunteer
+                CinderellaClass checkinCinderella = new CinderellaClass(cinID);
+
+                //Lock application state so that no else can access it 
+                Application.Lock();
+
+                //Initialize a local copy of volunteer queue
+                CinderellaQueue.CinderellaQueue cinderellaAutomatedQueueCopy = new CinderellaQueue.CinderellaQueue();
+
+                //Copy queue in the application session into the local copy
+                cinderellaAutomatedQueueCopy = Application["cinderellaAutomatedQueue"] as CinderellaQueue.CinderellaQueue;
+
+                //Insert volunter to the queue
+                cinderellaAutomatedQueueCopy.enqueueToFront(checkinCinderella);
+
+                //Copy changes into application queue
+                Application["cinderellaAutomatedQueue"] = cinderellaAutomatedQueueCopy;
+
+                //Unlock Application session
+                Application.UnLock();
+
+                SuccessLabel.Text = "Success";
+                SuccessLabel.Visible = true;
 
             }
             catch
             {
-
+                SuccessLabel.Text = "Fail";
+                SuccessLabel.ForeColor = System.Drawing.Color.Red;
+                SuccessLabel.Visible = true;
             }
         }
     }
