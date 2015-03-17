@@ -107,7 +107,7 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             dressUpdate.ExecuteNonQuery();
         }
 
-        // Overlapping SQL to update Cinderella's Volunteer's information
+        // Overlapping SQL to update Cinderella's and Volunteer's information
         // Only occurs if a selection is present in a GridView
         if (CinderellaGridView.SelectedRow != null || DressesInAlterationsGridView.SelectedRow != null)
         {
@@ -183,8 +183,8 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
         CinderellaGridView.SelectedIndex = -1;
 
         // Entering Dress information into the drops downs 
-        DressSizeDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[3].Text.ToString();
-        DressLengthDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[4].Text.ToString();
+        DressSizeDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[4].Text.ToString();
+        DressLengthDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[3].Text.ToString();
         DressColorDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[5].Text.ToString();
     }
 }

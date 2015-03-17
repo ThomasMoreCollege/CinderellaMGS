@@ -130,8 +130,8 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
 
         // Update the alterations table with the user inputed data form the form.
-        string alterationChange = "INSERT INTO Alteration (Cinderella_ID, AlterationNotes, Straps, Darts, FixZipper, GeneralMending, Bust, Hem, GeneralTakeIn, Volunteer_ID)"
-                                    + "VALUES ('" + SelectedCinderellaID + "', '" 
+        string alterationChange = "INSERT INTO Alteration (Cinderella_ID, AlterationNotes, Straps, Darts, FixZipper, GeneralMending, Bust, Hem, GeneralTakeIn, Volunteer_ID, ReadyForPickup)"
+                                    + "VALUES ('" + SelectedCinderellaID + "', '"
                                                     + notesTextBox.Text  + "', '" 
                                                     + testStraps + "', '" 
                                                     + testDarts + "', '" 
@@ -140,33 +140,11 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
                                                     + testBust + "', '" 
                                                     + testHem + "', '" 
                                                     + testTakeIn + "', '" 
-                                                    + getVolID + "')";
+                                                    + getVolID + "', 'N')";
         
         // Execute SQL
         SqlCommand insertNewRole = new SqlCommand(alterationChange, conn1);
         insertNewRole.ExecuteNonQuery();
-
-        // Update the Cinderella's current status to Not Current
-        string updateSelectedCinderella = "UPDATE CinderellaStatusRecord "
-                                            + "SET EndTime = '" + DateTime.Now + "', IsCurrent = 'N' "
-                                            + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
-        // Execute SQL
-        SqlCommand updateRoleEndTime = new SqlCommand(updateSelectedCinderella, conn1);
-        updateRoleEndTime.ExecuteNonQuery();
-
-        // Change the Cinderella's state to 'Waiting for Dress' in the CinderellaStatusRecord table.
-        string waitingForDressChange = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
-                                        + "VALUES ('" + SelectedCinderellaID + "', '" + DateTime.Now + "', 'Waiting for Dress', 'Y')";
-        // Execute SQL
-        SqlCommand updateRole = new SqlCommand(waitingForDressChange, conn1);
-        updateRole.ExecuteNonQuery();
-
-        // Outputting message to verify transaction
-        //updateSuccessLabel.Visible = true;
-        //nameDisplaySuccessMessage.Visible = true;
-        //updateSuccessLabel.ForeColor = System.Drawing.Color.Green;
-        //nameDisplaySuccessMessage.ForeColor = System.Drawing.Color.Green;
-        //nameDisplaySuccessMessage.Text = "Updated: " + CinderellaDressAlterationsGridView.SelectedRow.Cells[2].Text + "'s Dress";
 
         // Rebind the data to refresh the grid
         CinderellaDressAlterationsGridView.DataBind();
@@ -200,6 +178,11 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         HemCheckBox.Enabled = true;
         submitAlterationsButton.Enabled = true;
         SeamstressDropDownList.Enabled = true;
+
+        DressSizeDropDownList.Enabled = false;
+        DressColorDropDownList.Enabled = false;
+        DressLengthDropDownList.Enabled = false;
+        AltertationsCheckinButton.Enabled = false;
     }
     protected void CinderellaShoppingGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -207,5 +190,16 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         DressColorDropDownList.Enabled = true;
         DressLengthDropDownList.Enabled = true;
         AltertationsCheckinButton.Enabled = true;
+
+        StrapsCheckBox.Enabled = false;
+        GeneralMendingCheckBox.Enabled = false;
+        GeneralTakeinCheckBox.Enabled = false;
+        FixZipperCheckBox.Enabled = false;
+        notesTextBox.Enabled = false;
+        DartsCheckBox.Enabled = false;
+        BustCheckBox.Enabled = false;
+        HemCheckBox.Enabled = false;
+        submitAlterationsButton.Enabled = false;
+        SeamstressDropDownList.Enabled = false;
     }
 }
