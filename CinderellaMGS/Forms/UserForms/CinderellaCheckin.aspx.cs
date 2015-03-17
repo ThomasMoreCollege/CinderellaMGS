@@ -39,17 +39,17 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                 //Initialize database connection with "DefaultConnection" setup in the web.config
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
-            //Open the connection 
-            conn.Open();
+                //Open the connection 
+                conn.Open();
 
-            // SQL string to UPDATE Pending status 
-            string sql = "UPDATE CinderellaStatusRecord "
-                        + "SET EndTime = '" + now + "', IsCurrent = 'N' "
-                        + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
+                // SQL string to UPDATE Pending status 
+                string sql = "UPDATE CinderellaStatusRecord "
+                            + "SET EndTime = '" + now + "', IsCurrent = 'N' "
+                            + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
 
-            // Execute query
-            SqlCommand comm1 = new SqlCommand(sql, conn);
-            comm1.ExecuteNonQuery();
+                // Execute query
+                SqlCommand comm1 = new SqlCommand(sql, conn);
+                comm1.ExecuteNonQuery();
 
                 // SQL string to INSERT Waiting status into StatusRecord
                 sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
@@ -68,10 +68,15 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                 SuccessLabel.Text = notification;
                 SuccessLabel.Visible = true;
 
-            // Rebind the data to refresh the Grid
-            CinderellaGridView.DataBind();
-            CinderellaGridView.SelectedIndex = -1;
+                // Rebind the data to refresh the Grid
+                CinderellaGridView.DataBind();
+                CinderellaGridView.SelectedIndex = -1;
 
+            }
+            catch
+            {
+
+            }
         }
     }
     protected void CinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)
