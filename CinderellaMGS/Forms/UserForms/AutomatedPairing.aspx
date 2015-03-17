@@ -27,13 +27,26 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="AutomattedPairingSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT Cinderella.FirstName + ' ' + Cinderella.LastName AS Cinderella, 'Is Paired With', Volunteer.FirstName + ' ' + Volunteer.LastName AS Volunteer FROM Cinderella INNER JOIN Volunteer ON Cinderella.Volunteer_ID = Volunteer.VolunteerID INNER JOIN CinderellaStatusRecord ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID WHERE (Cinderella.Volunteer_ID IS NOT NULL) AND (CinderellaStatusRecord.Status_Name = 'Paired') AND (CinderellaStatusRecord.IsCurrent = 'Y')"></asp:SqlDataSource>
             </tr>
-            <tr>
+            <%--<tr>
                 <td>
-
+                    Number of cinderellas in queue:
                     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
                 </td>
+                <td> 
+                    Cinderella In front: <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                </td>
             </tr>
+            <tr>
+                <td>
+                    Number of volunteers in queue:
+                    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+
+                </td>
+                <td> 
+                    Volunteer In front: <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+                </td>
+            </tr>--%>
         </table>
 </asp:Content>
 

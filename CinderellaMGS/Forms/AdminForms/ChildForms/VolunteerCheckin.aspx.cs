@@ -27,56 +27,99 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
         }
         else
         {
-            // Creating a variable to hold a string of the Volunteer's ID
-            string SelectedVolunteerID = VolunteerGridView.SelectedValue.ToString();
+            
+                // Creating a variable to hold a string of the Volunteer's ID
+                string SelectedVolunteerID = VolunteerGridView.SelectedValue.ToString();
 
-            // Creating a variable to hold the current time
-            string now = DateTime.Now.ToString();
+                // Creating a variable to hold the current time
+                string now = DateTime.Now.ToString();
 
-            // Creating a variable to hold the current date
-            DateTime today = DateTime.Today.Date;
+                // Creating a variable to hold the current date
+                DateTime today = DateTime.Today.Date;
 
-            //Initialize database connection with "DefaultConnection" setup in the web.config
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+                //Initialize database connection with "DefaultConnection" setup in the web.config
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
-            //Open the connection 
-            conn.Open();
+                //Open the connection 
+                conn.Open();
 
-            // SQL string to INSERT Waiting status into StatusRecord
-            string sql = "UPDATE VolunteerStatusRecord "
-                    + "SET EndTime = '" + now + "', IsCurrent = 'N' "
-                    + "WHERE Volunteer_ID = '" + SelectedVolunteerID + "' AND IsCurrent = 'Y'";
-            // Execute query
-            SqlCommand comm1 = new SqlCommand(sql, conn);
-            comm1.ExecuteNonQuery();
+                // SQL string to INSERT Waiting status into StatusRecord
+                string sql = "UPDATE VolunteerStatusRecord "
+                        + "SET EndTime = '" + now + "', IsCurrent = 'N' "
+                        + "WHERE Volunteer_ID = '" + SelectedVolunteerID + "' AND IsCurrent = 'Y'";
+                // Execute query
+                SqlCommand comm1 = new SqlCommand(sql, conn);
+                comm1.ExecuteNonQuery();
 
-            // SQL string to UPDATE Pending status 
-            sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
-                    + "VALUES ('" + SelectedVolunteerID + "', '" + now + "', 'Ready', 'Y')";
-            // Execute query
-            SqlCommand comm2 = new SqlCommand(sql, conn);
-            comm2.ExecuteNonQuery();
+                // SQL string to UPDATE Pending status 
+                sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
+                        + "VALUES ('" + SelectedVolunteerID + "', '" + now + "', 'Ready', 'Y')";
+                // Execute query
+                SqlCommand comm2 = new SqlCommand(sql, conn);
+                comm2.ExecuteNonQuery();
 
-            // SQL string to SELECT the Volunteer's Role for this Shift
-            sql = "SELECT Role_Name "
-                    + "FROM VolunteerShiftRecord "
-                    + "WHERE Shift_Name = '" + today + "' AND Volunteer_ID = '" + SelectedVolunteerID + "'";
-            SqlCommand comm3 = new SqlCommand(sql, conn);
-            string ShiftRole = comm3.ExecuteScalar().ToString();
+                // SQL string to SELECT the Volunteer's Role for this Shift
+                sql = "SELECT Role_Name "
+                        + "FROM VolunteerShiftRecord "
+                        + "WHERE Shift_Name = 'Friday' AND Volunteer_ID = '" + SelectedVolunteerID + "'";
+                SqlCommand comm3 = new SqlCommand(sql, conn);
+                string ShiftRole = comm3.ExecuteScalar().ToString();
 
-            // SQL string to INSERT the Volunteer's RoleRecord 
-            sql = "INSERT INTO VolunteerRoleRecord(Volunteer_ID, StartTime, Role_Name, IsCurrent) "
-                    + "VALUES ('" + SelectedVolunteerID + "', '" + now + "', '" + ShiftRole + "', 'Y')";
-            // Execute query
-            SqlCommand comm4 = new SqlCommand(sql, conn);
-            comm4.ExecuteNonQuery();
+                // SQL string to INSERT the Volunteer's RoleRecord 
+                sql = "INSERT INTO VolunteerRoleRecord(Volunteer_ID, StartTime, Role_Name, IsCurrent) "
+                        + "VALUES ('" + SelectedVolunteerID + "', '" + now + "', '" + ShiftRole + "', 'Y')";
+                // Execute query
+                SqlCommand comm4 = new SqlCommand(sql, conn);
+                comm4.ExecuteNonQuery();
 
-            //REMEMBER TO CLOSE CONNECTION!!
-            conn.Close();
+                //REMEMBER TO CLOSE CONNECTION!!
+                conn.Close();
 
-            // Rebind the data to refresh the Grid
-            VolunteerGridView.DataBind();
-            VolunteerGridView.SelectedIndex = -1;
+                // Rebind the data to refresh the Grid
+                VolunteerGridView.DataBind();
+                VolunteerGridView.SelectedIndex = -1;
+                try
+                {
+                    //Retrieve ID of selected volunteer
+                    int volID = Convert.ToInt32(SelectedVolunteerID);
+
+                    //Create object instance with selected volunteer
+                    VolunteerClass checkinVolunteer = new VolunteerClass(volID);
+
+                    //Lock application state so that no else can access it 
+                    Application.Lock();
+
+                    //Initialize a local copy of volunteer queue
+                    VolunteerQueue.VolunteerQueue volunteerQueueCopy = new VolunteerQueue.VolunteerQueue();
+
+                    //Copy queue in the application session into the local copy
+                    volunteerQueueCopy = Application["volunteerQueue"] as VolunteerQueue.VolunteerQueue;
+
+                    //Insert volunter to the queue
+                    volunteerQueueCopy.enqueueToFront(checkinVolunteer);
+
+                    //Copy changes into application queue
+                    Application["volunteerQueue"] = volunteerQueueCopy;
+
+                    VolunteerQueue.VolunteerQueue volunteerQueueCopy2 = new VolunteerQueue.VolunteerQueue();
+
+                    volunteerQueueCopy2 = Application["volunteerQueue"] as VolunteerQueue.VolunteerQueue;
+
+                    Label2.Text = volunteerQueueCopy2.getValofFrontNode().VolunteerID.ToString();
+                    Label3.Text = volunteerQueueCopy2.getNumItems().ToString();
+
+                    //Unlock Application session
+                    Application.UnLock();
+
+                    ResultLabel.Text = "Success";
+                    ResultLabel.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    ResultLabel.Text = "Fail";
+                    ResultLabel.ForeColor = System.Drawing.Color.Red;
+                    ResultLabel.Visible = true;
+                }
         }
     }
 }

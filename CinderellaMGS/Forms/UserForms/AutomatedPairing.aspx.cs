@@ -10,16 +10,17 @@ using System.Data; // Must be included if using data tables
 
 public partial class Forms_UserForms_AutomatedPairing : System.Web.UI.Page
 {
-    public static VolunteerQueue.VolunteerQueue volunteerQueue = new VolunteerQueue.VolunteerQueue();
-    public static CinderellaQueue.CinderellaQueue cinderellaQueue = new CinderellaQueue.CinderellaQueue();
-    public static int counter = 0;
-
+    VolunteerQueue.VolunteerQueue volunteerQueue = new VolunteerQueue.VolunteerQueue();
+    CinderellaQueue.CinderellaQueue cinderellaQueue = new CinderellaQueue.CinderellaQueue();
     protected void Page_Load(object sender, EventArgs e)
     {
         (this.Master as MasterPage).ManageMasterLayout();
 
-        counter++;
-        Label1.Text = counter.ToString();
+        Application.Lock();
+
+        volunteerQueue = Application["volunteerQueue"] as VolunteerQueue.VolunteerQueue;
+        cinderellaQueue = Application["cinderellaAutomatedQueue"] as CinderellaQueue.CinderellaQueue;
+
         if (!(volunteerQueue.isEmpty()) && !(cinderellaQueue.isEmpty()))
         {
             int volunteerID = volunteerQueue.getValofFrontNode().VolunteerID;
@@ -54,7 +55,7 @@ public partial class Forms_UserForms_AutomatedPairing : System.Web.UI.Page
             //Query to end cinderella's "Waiting For Godmother" status record in the database
             string endCurrentCinStatusQuery = "UPDATE CinderellaStatusRecord "
                                     + "SET IsCurrent='N', EndTime='" + now + "' "
-                                    + "WHERE IsCurrent='Y'";
+                                    + "WHERE IsCurrent='Y' And Cinderella_ID='" + cinderellaID + "'";
 
             //Turn string into a SQL command
             SqlCommand endCurrentCinStatus = new SqlCommand(endCurrentCinStatusQuery, conn);
@@ -79,7 +80,7 @@ public partial class Forms_UserForms_AutomatedPairing : System.Web.UI.Page
             //Query to end volunteer's "Waiting For Godmother" status record in the database
             string endCurrentVolStatusQuery = "UPDATE VolunteerStatusRecord "
                                     + "SET IsCurrent='N', EndTime='" + now + "' "
-                                    + "WHERE IsCurrent='Y'";
+                                    + "WHERE IsCurrent='Y' AND Volunteer_ID='" + volunteerID + "'";
 
             //Turn string into a SQL command
             SqlCommand endCurrentVolStatus = new SqlCommand(endCurrentVolStatusQuery, conn);
@@ -99,5 +100,25 @@ public partial class Forms_UserForms_AutomatedPairing : System.Web.UI.Page
             conn.Close();
         }
         Response.AppendHeader("Refresh", 10 + "; URL=AutomatedPairing.aspx");
+        //CinderellaQueue.CinderellaQueue queueCopy = new CinderellaQueue.CinderellaQueue();
+        //Application.Lock();
+        //queueCopy = Application["cinderellaAutomatedQueue"] as CinderellaQueue.CinderellaQueue;
+
+        //Label1.Text = queueCopy.getNumItems().ToString();
+
+        //Label2.Text = queueCopy.getValofFrontNode().CinderellaID.ToString();
+
+        //Application.UnLock();
+
+        //VolunteerQueue.VolunteerQueue queueCopy2 = new VolunteerQueue.VolunteerQueue();
+         
+        //Application.Lock();
+        //queueCopy2 = Application["volunteerQueue"] as VolunteerQueue.VolunteerQueue;
+
+        //Label3.Text = queueCopy2.getNumItems().ToString();
+
+        //Label4.Text = queueCopy2.getValofFrontNode().VolunteerID.ToString();
+
+        //Application.UnLock();
     }
 }

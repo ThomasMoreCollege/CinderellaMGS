@@ -28,14 +28,16 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
         }
         else
         {
-            // Creating a variable to hold a string of the Cinderella's ID
-            string SelectedCinderellaID = CinderellaGridView.SelectedValue.ToString();
+            try
+            {
+                // Creating a variable to hold a string of the Cinderella's ID
+                string SelectedCinderellaID = CinderellaGridView.SelectedValue.ToString();
 
-            // Creating a variable to hold the current time
-            string now = DateTime.Now.ToString();
+                // Creating a variable to hold the current time
+                string now = DateTime.Now.ToString();
 
-            //Initialize database connection with "DefaultConnection" setup in the web.config
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+                //Initialize database connection with "DefaultConnection" setup in the web.config
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
             //Open the connection 
             conn.Open();
@@ -49,22 +51,22 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
             SqlCommand comm1 = new SqlCommand(sql, conn);
             comm1.ExecuteNonQuery();
 
-            // SQL string to INSERT Waiting status into StatusRecord
-            sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
-                    + "VALUES ('" + SelectedCinderellaID + "', '" + now + "', 'Waiting for Godmother', 'Y')";
+                // SQL string to INSERT Waiting status into StatusRecord
+                sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+                        + "VALUES ('" + SelectedCinderellaID + "', '" + now + "', 'Waiting for Godmother', 'Y')";
 
-            // Execute query
-            SqlCommand comm2 = new SqlCommand(sql, conn);
-            comm2.ExecuteNonQuery();
+                // Execute query
+                SqlCommand comm2 = new SqlCommand(sql, conn);
+                comm2.ExecuteNonQuery();
 
-            //REMEMBER TO CLOSE CONNECTION!!
-            conn.Close();
+                //REMEMBER TO CLOSE CONNECTION!!
+                conn.Close();
 
-            GridViewRow currentRow = CinderellaGridView.SelectedRow;
+                GridViewRow currentRow = CinderellaGridView.SelectedRow;
 
-            string notification = "" + currentRow.Cells[2].Text + " " + currentRow.Cells[1].Text + " has been successfully checked in!";
-            SuccessLabel.Text = notification;
-            SuccessLabel.Visible = true;
+                string notification = "" + currentRow.Cells[2].Text + " " + currentRow.Cells[1].Text + " has been successfully checked in!";
+                SuccessLabel.Text = notification;
+                SuccessLabel.Visible = true;
 
             // Rebind the data to refresh the Grid
             CinderellaGridView.DataBind();

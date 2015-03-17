@@ -53,6 +53,15 @@
 
         <p>
             <asp:Button ID="CheckInButton" runat="server" OnClick="CheckInButton_Click" Text="Check-In" Width="70px" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cinderella ID is added to the queue in the queue:
+            <asp:Label ID="Label2" runat="server" ForeColor="Green" Text="Label"></asp:Label>
+        </p>
+        <p>
+            Number of cinderellas in Application queue:
+            <asp:Label ID="Label3" runat="server" ForeColor="Green" Text="Label"></asp:Label>
+        </p>
+        <p>
+            <asp:Label ID="Label1" runat="server" ForeColor="Red" Text="Label"></asp:Label>
         </p>
 
 </asp:Content>

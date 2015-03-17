@@ -5,7 +5,19 @@
 </asp:Content>
 
 <asp:Content runat="server" ID="MainContent" ContentPlaceHolderID="MainContent">
-        <div style ="height:600px; width:650px; overflow:auto;">
+    
+    <table>
+        <tr>
+            <td><asp:Label ID="ResultLabel" runat="server" Text="Label" ForeColor="Green" Visible="False"></asp:Label>
+                <br />
+                Number of volunteers in queue:<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                <br />
+                Id of front volunteer:
+                <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+            </td>
+        </tr>
+    </table>
+    <div style ="height:600px; width:650px; overflow:auto;">
             <asp:GridView ID="VolunteerGridView" runat="server" 
                 AllowSorting="True" 
                 AutoGenerateColumns="False" 
