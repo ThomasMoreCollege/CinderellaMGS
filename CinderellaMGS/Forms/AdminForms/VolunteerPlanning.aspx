@@ -35,10 +35,16 @@
     </asp:GridView>
     <asp:SqlDataSource ID="SaturdayAlterationsDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Saturday = 'Alterations' AND isValid = 'Y'"></asp:SqlDataSource>
+ INNER JOIN VolunteerShiftRecord
+  ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
+WHERE Volunteer.IsValid = 'Y' AND VolunteerShiftRecord.Shift_Name = 'Saturday'
+		AND VolunteerShiftRecord.Role_Name = 'Alterations'"></asp:SqlDataSource>
     <asp:SqlDataSource ID="FridayAlterationDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Friday = 'Alterations' AND isValid = 'Y'"></asp:SqlDataSource>
+ INNER JOIN VolunteerShiftRecord
+  ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
+WHERE Volunteer.IsValid = 'Y' AND VolunteerShiftRecord.Shift_Name = 'Friday'
+		AND VolunteerShiftRecord.Role_Name = 'Alterations'"></asp:SqlDataSource>
     <br />
     <asp:Label ID="dressOrganizersLabel" runat="server" Font-Bold="True" Font-Italic="True" Text="Dress Organizers" Visible="False"></asp:Label>
     <br />
@@ -61,12 +67,19 @@ WHERE Friday = 'Alterations' AND isValid = 'Y'"></asp:SqlDataSource>
     </asp:GridView>
     <asp:SqlDataSource ID="SaturdayDressOrganizerDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Saturday = 'Dress Organizer' AND isValid = 'Y'"></asp:SqlDataSource>
+ INNER JOIN VolunteerShiftRecord
+  ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
+WHERE Volunteer.IsValid = 'Y' AND VolunteerShiftRecord.Shift_Name = 'Saturday'
+		AND VolunteerShiftRecord.Role_Name = 'Dress Organizer'"></asp:SqlDataSource>
     <asp:SqlDataSource ID="FridayDressOrganizersDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Friday = 'Dress Organizer' AND isValid = 'Y'"></asp:SqlDataSource>
+ INNER JOIN VolunteerShiftRecord
+  ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
+WHERE Volunteer.IsValid = 'Y' AND VolunteerShiftRecord.Shift_Name = 'Friday'
+		AND VolunteerShiftRecord.Role_Name = 'Dress Organizer'
+"></asp:SqlDataSource>
     <br />
-    <asp:Label ID="personalShoppersLabel" runat="server" Font-Bold="True" Font-Italic="True" Text="Personal Shoppers" Visible="False"></asp:Label>
+    <asp:Label ID="personalShoppersLabel" runat="server" Font-Bold="True" Font-Italic="True" Text="Personal Shoppers (Godmothers)" Visible="False"></asp:Label>
     <br />
     <br />
     <br />
@@ -87,10 +100,16 @@ WHERE Friday = 'Dress Organizer' AND isValid = 'Y'"></asp:SqlDataSource>
     </asp:GridView>
     <asp:SqlDataSource ID="SaturdayPersonalShoppersDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Saturday = 'Personal Shopper' AND isValid = 'Y'"></asp:SqlDataSource>
+ INNER JOIN VolunteerShiftRecord
+  ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
+WHERE Volunteer.IsValid = 'Y' AND VolunteerShiftRecord.Shift_Name = 'Saturday'
+		AND VolunteerShiftRecord.Role_Name = 'Godmother'"></asp:SqlDataSource>
     <asp:SqlDataSource ID="FridayPersonalShoppersDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Friday = 'Personal Shopper' AND isValid = 'Y'"></asp:SqlDataSource>
+ INNER JOIN VolunteerShiftRecord
+  ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
+WHERE Volunteer.IsValid = 'Y' AND VolunteerShiftRecord.Shift_Name = 'Friday'
+		AND VolunteerShiftRecord.Role_Name = 'Godmother'"></asp:SqlDataSource>
     <br />
     <asp:Label ID="noRoleReportedLabel" runat="server" Font-Bold="True" Font-Italic="True" Text="No Role Reported" Visible="False"></asp:Label>
     <br />
@@ -113,10 +132,16 @@ WHERE Friday = 'Personal Shopper' AND isValid = 'Y'"></asp:SqlDataSource>
     </asp:GridView>
     <asp:SqlDataSource ID="SaturdayNoRoleDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Saturday IS NULL AND isValid = 'Y'"></asp:SqlDataSource>
+ INNER JOIN VolunteerShiftRecord
+  ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
+WHERE Volunteer.IsValid = 'Y' AND VolunteerShiftRecord.Shift_Name = 'Saturday'
+		AND VolunteerShiftRecord.Role_Name = 'Undecided'"></asp:SqlDataSource>
     <asp:SqlDataSource ID="FridayNoRoleDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Friday IS NULL AND isValid = 'Y'"></asp:SqlDataSource>
+ INNER JOIN VolunteerShiftRecord
+  ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
+WHERE Volunteer.IsValid = 'Y' AND VolunteerShiftRecord.Shift_Name = 'Friday'
+		AND VolunteerShiftRecord.Role_Name = 'Undecided'"></asp:SqlDataSource>
     <br />
     <asp:Label ID="notVolunteeringLabel" runat="server" Font-Bold="True" Font-Italic="True" Text="Not Volunteering" Visible="False"></asp:Label>
     <br />
@@ -139,10 +164,16 @@ WHERE Friday IS NULL AND isValid = 'Y'"></asp:SqlDataSource>
     </asp:GridView>
     <asp:SqlDataSource ID="SaturdayNotVolunteeringDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Saturday = 'Not Volunteering' AND isValid = 'Y'"></asp:SqlDataSource>
+ INNER JOIN VolunteerShiftRecord
+  ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
+WHERE Volunteer.IsValid = 'Y' AND VolunteerShiftRecord.Shift_Name = 'Saturday'
+		AND VolunteerShiftRecord.Role_Name = 'Not Volunteering'"></asp:SqlDataSource>
     <asp:SqlDataSource ID="FridayNotVolunteeringDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT FirstName, LastName
 FROM Volunteer
-WHERE Friday = 'Not Volunteering' AND isValid = 'Y'"></asp:SqlDataSource>
+ INNER JOIN VolunteerShiftRecord
+  ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID
+WHERE Volunteer.IsValid = 'Y' AND VolunteerShiftRecord.Shift_Name = 'Friday'
+		AND VolunteerShiftRecord.Role_Name = 'Not Volunteering'"></asp:SqlDataSource>
     <br />
 </asp:Content>
 
