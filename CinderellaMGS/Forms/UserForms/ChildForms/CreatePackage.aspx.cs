@@ -79,7 +79,7 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
 
             // SQL string to INSERT package information
             string sql = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, DressLength, ShoeSize, ShoeColor, Necklace, Ring, Bracelet, HeadPiece, Earrings, Other, CheckoutNotes, WhenAvailable, InPackaging)"
-                            + " VALUES ('" + SelectedCinderellaID + "', '"
+                            + "VALUES ('" + SelectedCinderellaID + "', '"
                                             + DressSize + "', '" + DressColor + "', '" + DressLength + "', '"
                                             + ShoeSize + "', '" + ShoeColor + "', '"
                                             + Necklace + "', '" + Ring + "', '" + Bracelet + "', '" + HeadPiece + "', '" + Earring + "', '" + Other + "', '"
@@ -88,23 +88,6 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             // Execute query
             SqlCommand comm1 = new SqlCommand(sql, conn);
             comm1.ExecuteNonQuery();
-
-            // SQL string to UPDATE Cinderella status 
-            sql = "UPDATE CinderellaStatusRecord "
-                    + "SET EndTime = '" + now + "', IsCurrent = 'N' "
-                    + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
-
-            // Execute query
-            SqlCommand comm2 = new SqlCommand(sql, conn);
-            comm2.ExecuteNonQuery();
-
-            // SQL string to INSERT Waiting status into CinderellaStatusRecord
-            sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
-                    + "VALUES ('" + SelectedCinderellaID + "', '" + now + "', 'Waiting for Package', 'Y')";
-
-            // Execute query
-            SqlCommand comm3 = new SqlCommand(sql, conn);
-            comm3.ExecuteNonQuery();
         }
         // SQL for updating the Package of a Cinderella whose Dress is in alterations and already in incomplete Package
         else if (DressesInAlterationsGridView.SelectedRow != null)
@@ -112,12 +95,16 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             // Creating variables to hold a string of the Cinderella's ID and the Godmother's ID
             SelectedCinderellaID = DressesInAlterationsGridView.SelectedValue.ToString();
 
-            // SQL string to UPDATE package information with rest of articles
-            string sql = "UPDATE Package (ShoeSize, ShoeColor, Necklace, Ring, Bracelet, HeadPiece, Earrings, Other, CheckoutNotes, WhenAvailable, InPackaging)"
-                            + " VALUES ('" + ShoeSize + "', '" + ShoeColor + "', '"
-                                            + Necklace + "', '" + Ring + "', '" + Bracelet + "', '" + HeadPiece + "', '" + Earring + "', '" + Other + "', '"
-                                            + Notes + "', '" + today + "', 'Y')"
+            // SQL string to UPDATE package information with articles
+            string sql = "UPDATE Package "
+                            + "SET DressSize='" + DressSize + "', DressColor='" + DressColor + "', DressLength='" + DressLength + "', "
+                                            + "ShoeSize='" + ShoeSize + "', ShoeColor='" + ShoeColor + "', "
+                                            + "Necklace='" + Necklace + "', Ring='" + Ring + "', Bracelet='" + Bracelet + "', Headpiece='" + HeadPiece + "', Earrings='" + Earring + "', Other='" + Other + "', "
+                                            + "CheckoutNotes='" +Notes + "', WhenAvailable='" + today + "', InPackaging='Y' "
                             + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "'";
+            // Execute query
+            SqlCommand dressUpdate = new SqlCommand(sql, conn);
+            dressUpdate.ExecuteNonQuery();
         }
 
         // Overlapping SQL to update Cinderella's Volunteer's information
@@ -150,6 +137,23 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             // Execute query
             SqlCommand comm6 = new SqlCommand(sql, conn);
             comm6.ExecuteNonQuery();
+
+            // SQL string to UPDATE Cinderella status 
+            sql = "UPDATE CinderellaStatusRecord "
+                    + "SET EndTime = '" + now + "', IsCurrent = 'N' "
+                    + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
+
+            // Execute query
+            SqlCommand comm2 = new SqlCommand(sql, conn);
+            comm2.ExecuteNonQuery();
+
+            // SQL string to INSERT Waiting status into CinderellaStatusRecord
+            sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+                    + "VALUES ('" + SelectedCinderellaID + "', '" + now + "', 'Waiting for Package', 'Y')";
+
+            // Execute query
+            SqlCommand comm3 = new SqlCommand(sql, conn);
+            comm3.ExecuteNonQuery();
         }
         //REMEMBER TO CLOSE CONNECTION!!
         conn.Close();
@@ -157,28 +161,26 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
         // Rebind the data to refresh the Grid
         CinderellaGridView.DataBind();
         CinderellaGridView.SelectedIndex = -1;
+        DressesInAlterationsGridView.DataBind();
+        DressesInAlterationsGridView.SelectedIndex = -1;
+
+        // Disabling checkout button
         CheckoutButton.Enabled = false;
     }
     protected void CinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
         CheckoutButton.Enabled = true;
 
-        // Enabling Dress information drop-downs and removing Dresses selector
+        // Removing Dresses selector
         DressesInAlterationsGridView.SelectedIndex = -1;
-        DressSizeDropDown.Enabled = true;
-        DressColorDropDown.Enabled = true;
-        DressLengthDropDown.Enabled = true;
+
     }
     protected void DressesInAlterationsGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
         CheckoutButton.Enabled = true;
 
-        // Disabling Dress information drop-downs and removing Cinderella selector
+        // Removing Cinderella selector
         CinderellaGridView.SelectedIndex = -1;
-        DressSizeDropDown.Enabled = false;
-        DressColorDropDown.Enabled = false;
-        DressLengthDropDown.Enabled = false;
-
 
         // Entering Dress information into the drops downs 
         DressSizeDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[3].Text.ToString();
