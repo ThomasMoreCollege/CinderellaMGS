@@ -20,7 +20,7 @@
                         </tr>
                         <tr>
                             <td id="CinderellaShoppingTD" colspan="2">
-                                <div style ="height:400px;overflow:auto;">
+                                <div style ="height:400px;overflow:auto; overflow-x:hidden;">
                                     <asp:GridView ID="CinderellaShoppingGridView" runat="server"
                                         AllowSorting="True"
                                         AutoGenerateColumns="False"
@@ -50,7 +50,8 @@
                                                         INNER JOIN CinderellaStatusRecord 
                                                             ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
                                                         WHERE Status_Name = 'Shopping' AND IsCurrent = 'Y'
-                                                        ORDER BY [LastName]"></asp:SqlDataSource>
+                                                        ORDER BY [LastName]">
+                                </asp:SqlDataSource>
                             </td>
                         </tr>
                         <tr>
@@ -96,19 +97,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <asp:SqlDataSource ID="PackageDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
-                                    SelectCommand="SELECT [CinderellaID], 
-                                                                [LastName], 
-                                                                [FirstName],
-                                                                [DressSize],
-                                                                [DressColor],
-                                                                [DressLength]
-                                                        FROM [Cinderella] 
-                                                        INNER JOIN Package 
-                                                            ON Cinderella.CinderellaID = Package.Cinderella_ID
-                                                        WHERE InAlterations = 'Y'
-                                                        ORDER BY [LastName]"></asp:SqlDataSource>
-                                <div id="CinderellaInAlterationsTD" style="height: 400px; overflow: auto;">
+                                <div id="CinderellaInAlterationsTD" style="height: 400px; overflow: auto; overflow-x:hidden;">
                                     <asp:GridView ID="CinderellaDressAlterationsGridView" runat="server"
                                         AllowSorting="True"
                                         AutoGenerateColumns="False"
@@ -132,6 +121,19 @@
                                         <SortedDescendingHeaderStyle BackColor="#383838" />
                                         <AlternatingRowStyle BackColor="pink" />
                                     </asp:GridView>
+                                    <asp:SqlDataSource ID="PackageDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                                        SelectCommand="SELECT [CinderellaID], 
+                                                                    [LastName], 
+                                                                    [FirstName],
+                                                                    [DressSize],
+                                                                    [DressColor],
+                                                                    [DressLength]
+                                                            FROM [Cinderella] 
+                                                            INNER JOIN Package 
+                                                                ON Cinderella.CinderellaID = Package.Cinderella_ID
+                                                            WHERE InAlterations = 'Y'
+                                                            ORDER BY [LastName]">
+                                    </asp:SqlDataSource>
                                 </div>
                             </td>
                         </tr>
