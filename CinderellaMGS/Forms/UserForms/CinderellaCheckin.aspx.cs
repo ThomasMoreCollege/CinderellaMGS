@@ -70,7 +70,9 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                 // Rebind the data to refresh the Grid
                 CinderellaGridView.DataBind();
                 CinderellaGridView.SelectedIndex = -1;
+            
             try{
+
                 //Retrieve ID of selected volunteer
                 int cinID = Convert.ToInt32(SelectedCinderellaID);
 
