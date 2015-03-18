@@ -127,7 +127,9 @@
                                                             FROM [Cinderella] 
                                                             INNER JOIN Package 
                                                                 ON Cinderella.CinderellaID = Package.Cinderella_ID
-                                                            WHERE InAlterations = 'Y'
+                                                            INNER JOIN Alteration
+                                                                ON Cinderella.CinderellaID = Alteration.Cinderella_ID
+                                                            WHERE InAlterations = 'Y' AND ReadyForPickup = 'N'
                                                             ORDER BY [LastName]">
                                     </asp:SqlDataSource>
                                 </div>

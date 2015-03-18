@@ -14,10 +14,17 @@
         </tr>
         <tr id="middleRow">
             <td class="auto-style7">
+                <asp:Button ID="EditPackageButton" runat="server" Text="Edit Package" Height="31px" Width="125px" PostBackUrl="~/Forms/UserForms/ChildForms/EditPackage.aspx"/>
+            </td>
+            <td class="auto-style8">Edits the information of a complete package</td>
+        </tr>
+        <tr>
+            <td class="auto-style7">
                 <asp:Button ID="PackageCheckoutButton" runat="server" Text="Checkout Package" Height="31px" Width="125px" PostBackUrl="~/Forms/UserForms/ChildForms/PackageCheckout.aspx"/>
             </td>
             <td class="auto-style8">Marks a package as ready to be sent out</td>
         </tr>
+
     </table>
 </asp:Content>
 
