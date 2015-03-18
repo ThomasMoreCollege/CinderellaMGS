@@ -2,12 +2,12 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeaderTitle" Runat="Server">
-    <h2>Automated Pairings</h2>
+    <h2>Pairings</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
         <table id="AutoPairTable">
             <tr>
-                <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="AutomattedPairingSqlDataSource" Width="100%" Height="100">
+                <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="AutomattedPairingSqlDataSource" Width="100%" Height="100px">
                     <Columns>
                         <asp:BoundField DataField="Cinderella" HeaderText="Cinderella" ReadOnly="True" SortExpression="Cinderella" />
                         <asp:BoundField DataField="Column1" ReadOnly="True" SortExpression="Column1">
@@ -25,7 +25,14 @@
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                     <AlternatingRowStyle BackColor="pink" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="AutomattedPairingSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT Cinderella.FirstName + ' ' + Cinderella.LastName AS Cinderella, 'Is Paired With', Volunteer.FirstName + ' ' + Volunteer.LastName AS Volunteer FROM Cinderella INNER JOIN Volunteer ON Cinderella.Volunteer_ID = Volunteer.VolunteerID INNER JOIN CinderellaStatusRecord ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID WHERE (Cinderella.Volunteer_ID IS NOT NULL) AND (CinderellaStatusRecord.Status_Name = 'Paired') AND (CinderellaStatusRecord.IsCurrent = 'Y')"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="AutomattedPairingSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT Cinderella.FirstName + ' ' + Cinderella.LastName AS Cinderella, 'Is Paired With', Volunteer.FirstName + ' ' + Volunteer.LastName AS Volunteer
+FROM Cinderella 
+ INNER JOIN Volunteer 
+	ON Cinderella.Volunteer_ID = Volunteer.VolunteerID 
+ INNER JOIN CinderellaStatusRecord 
+	ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
+WHERE (Cinderella.Volunteer_ID IS NOT NULL) AND (CinderellaStatusRecord.Status_Name = 'Paired') AND (CinderellaStatusRecord.IsCurrent = 'Y')
+ORDER BY CinderellaStatusRecord.StartTime DESC"></asp:SqlDataSource>
             </tr>
             <%--<tr>
                 <td>
@@ -55,7 +62,6 @@
         #form1 {
             height: 480px;
         }
+
     </style>
 </asp:Content>
-
-
