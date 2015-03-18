@@ -102,7 +102,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
 
             MenuNav.Visible = false;
-            LoginNav.Visible = false;
+            LoginNav.Visible = true;
             SideNav.Visible = false;
             
 
