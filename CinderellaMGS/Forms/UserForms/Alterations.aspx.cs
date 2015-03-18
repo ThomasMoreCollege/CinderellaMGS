@@ -18,39 +18,53 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
     protected void AltertationsCheckinButton_Click(object sender, EventArgs e)
     {
-        DressSizeDropDownList.Enabled = false;
-        DressColorDropDownList.Enabled = false;
-        DressLengthDropDownList.Enabled = false;
-        AltertationsCheckinButton.Enabled = false;
+        // Checking if the DressDropDowns have selected values
+        if (DressSizeDropDownList.SelectedValue == "1") { DressSizeErrorLabel.Visible = true; }
+        else { DressSizeErrorLabel.Visible = false; }
 
-        //Initialize database connection with "DefaultConnection" setup in the web.config 
-        SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        if (DressColorDropDownList.SelectedValue == "1") { DressColorErrorLabel.Visible = true; }
+        else { DressColorErrorLabel.Visible = false; }
 
-        // Variable to hold the shopping Cinderella
-        string SelectedShoppingCinderellaID = CinderellaShoppingGridView.SelectedValue.ToString();
+        if (DressLengthDropDownList.SelectedValue == "1") { DressLengthErrorLabel.Visible = true; }
+        else { DressLengthErrorLabel.Visible = false; }
 
-        //Open the connection 
-        conn1.Open();
+        if ((DressLengthErrorLabel.Visible == false) && (DressColorErrorLabel.Visible == false) && (DressSizeErrorLabel.Visible == false))
+        {
 
-        // SQL to insert the Cinderella's Dress information into Package
-        string sql = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, DressLength, InAlterations) "
-                    + "VALUES ('" + SelectedShoppingCinderellaID + "', '"
-                                    + DressSizeDropDownList.SelectedValue + "', '"
-                                    + DressColorDropDownList.SelectedValue + "', '"
-                                    + DressLengthDropDownList.SelectedValue + "', 'Y')";
-        // Execute SQL
-        SqlCommand com1 = new SqlCommand(sql, conn1);
-        com1.ExecuteNonQuery();
+            DressSizeDropDownList.Enabled = false;
+            DressColorDropDownList.Enabled = false;
+            DressLengthDropDownList.Enabled = false;
+            AltertationsCheckinButton.Enabled = false;
 
-        //REMEMBER TO CLOSE CONNECTION!!
-        conn1.Close();
+            //Initialize database connection with "DefaultConnection" setup in the web.config 
+            SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
-        // Rebind the data to refresh the grid
-        CinderellaDressAlterationsGridView.DataBind();
-        CinderellaDressAlterationsGridView.SelectedIndex = -1;
+            // Variable to hold the shopping Cinderella
+            string SelectedShoppingCinderellaID = CinderellaShoppingGridView.SelectedValue.ToString();
 
-        CinderellaShoppingGridView.DataBind();
-        CinderellaShoppingGridView.SelectedIndex = -1;
+            //Open the connection 
+            conn1.Open();
+
+            // SQL to insert the Cinderella's Dress information into Package
+            string sql = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, DressLength, InAlterations) "
+                        + "VALUES ('" + SelectedShoppingCinderellaID + "', '"
+                                        + DressSizeDropDownList.SelectedValue + "', '"
+                                        + DressColorDropDownList.SelectedValue + "', '"
+                                        + DressLengthDropDownList.SelectedValue + "', 'Y')";
+            // Execute SQL
+            SqlCommand com1 = new SqlCommand(sql, conn1);
+            com1.ExecuteNonQuery();
+
+            //REMEMBER TO CLOSE CONNECTION!!
+            conn1.Close();
+
+            // Rebind the data to refresh the grid
+            CinderellaDressAlterationsGridView.DataBind();
+            CinderellaDressAlterationsGridView.SelectedIndex = -1;
+
+            CinderellaShoppingGridView.DataBind();
+            CinderellaShoppingGridView.SelectedIndex = -1;
+        }
     }
 
     protected void submitAlterationsButton_Click(object sender, EventArgs e)

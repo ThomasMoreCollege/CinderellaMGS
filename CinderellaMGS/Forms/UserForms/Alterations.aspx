@@ -40,36 +40,58 @@
                                 </div>
                                 <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
                                     SelectCommand="SELECT [CinderellaID], 
-                                                                [LastName], 
-                                                                [FirstName]
-                                                        FROM [Cinderella] 
-                                                        INNER JOIN CinderellaStatusRecord 
-                                                            ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
-                                                        WHERE Status_Name = 'Shopping' AND IsCurrent = 'Y'
-                                                        ORDER BY [LastName]">
+                                                        [LastName], 
+                                                        [FirstName]
+                                                    FROM [Cinderella] 
+                                                    INNER JOIN CinderellaStatusRecord 
+                                                        ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
+                                                    WHERE Status_Name = 'Shopping' AND IsCurrent = 'Y' AND CinderellaID NOT IN (SELECT Cinderella_ID
+																			                                                    FROM Package)
+                                                    ORDER BY [LastName]">
                                 </asp:SqlDataSource>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <asp:Label ID="DressSizeErrorLabel" runat="server" Text="Please select a dress size" ForeColor="Red" Visible="False"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>Size :</td>
                             <td>
-                                <asp:DropDownList ID="DressSizeDropDownList" runat="server" Style="text-align: center" Enabled="False" DataSourceID="DressSizeDS" DataTextField="dressSize" DataValueField="dressSize">
+                                <asp:DropDownList ID="DressSizeDropDownList" runat="server" Style="text-align: center" Enabled="False" AppendDataBoundItems="true"
+                                    DataSourceID="DressSizeDS" DataTextField="dressSize" DataValueField="dressSize">
+                                    <asp:ListItem Text="--SELECT--" Value="1">--SELECT--</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="DressSizeDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT [dressSize] FROM [DressSize]"></asp:SqlDataSource>
                             </td>
                         </tr>
                         <tr>
+                            <td colspan="2">
+                                <asp:Label ID="DressColorErrorLabel" runat="server" Text="Please select a dress color" ForeColor="Red" Visible="False"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Color:</td>
                             <td>
-                                <asp:DropDownList ID="DressColorDropDownList" runat="server" Enabled="False" Style="width: 95px" DataSourceID="DressColorDS" DataTextField="dressColor" DataValueField="dressColor">
+                                <asp:DropDownList ID="DressColorDropDownList" runat="server" Enabled="False" Style="width: 95px" AppendDataBoundItems="true"
+                                    DataSourceID="DressColorDS" DataTextField="dressColor" DataValueField="dressColor">
+                                    <asp:ListItem Text="--SELECT--" Value="1">--SELECT--</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="DressColorDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT * FROM [DressColor]"></asp:SqlDataSource>
                             </td>
                         </tr>
                         <tr>
+                            <td colspan="2">
+                                <asp:Label ID="DressLengthErrorLabel" runat="server" Text="Please select a dress length" ForeColor="Red" Visible="False"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Length:</td>
                             <td>
-                                <asp:DropDownList ID="DressLengthDropDownList" runat="server" Enabled="False" DataSourceID="DressLengthDS" DataTextField="dressLength" DataValueField="dressLength">
+                                <asp:DropDownList ID="DressLengthDropDownList" runat="server" Enabled="False" AppendDataBoundItems="true"
+                                    DataSourceID="DressLengthDS" DataTextField="dressLength" DataValueField="dressLength">
+                                    <asp:ListItem Text="--SELECT--" Value="1">--SELECT--</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="DressLengthDS" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [dressLength] FROM [DressLength]"></asp:SqlDataSource>
                             </td>
@@ -93,7 +115,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <div id="CinderellaInAlterationsTD" style="height: 400px; overflow: auto; overflow-x:hidden;">
+                                <div id="CinderellaInAlterationsTD" style="height: 400px; overflow: auto; overflow-x: hidden;">
                                     <asp:GridView ID="CinderellaDressAlterationsGridView" runat="server"
                                         AllowSorting="True"
                                         AutoGenerateColumns="False"
@@ -119,18 +141,29 @@
                                     </asp:GridView>
                                     <asp:SqlDataSource ID="PackageDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
                                         SelectCommand="SELECT [CinderellaID], 
-                                                                    [LastName], 
-                                                                    [FirstName],
-                                                                    [DressSize],
-                                                                    [DressColor],
-                                                                    [DressLength]
+                                                                [LastName], 
+                                                                [FirstName],
+                                                                [DressSize],
+                                                                [DressColor],
+                                                                [DressLength]
                                                             FROM [Cinderella] 
                                                             INNER JOIN Package 
                                                                 ON Cinderella.CinderellaID = Package.Cinderella_ID
                                                             INNER JOIN Alteration
                                                                 ON Cinderella.CinderellaID = Alteration.Cinderella_ID
-                                                            WHERE InAlterations = 'Y' AND ReadyForPickup = 'N'
-                                                            ORDER BY [LastName]">
+                                                            WHERE (InAlterations = 'Y') AND ReadyForPickup = 'N' 
+                                                        UNION ALL
+                                                        SELECT [CinderellaID], 
+                                                            [LastName], 
+                                                            [FirstName],
+                                                            [DressSize],
+                                                            [DressColor],
+                                                            [DressLength]
+                                                        FROM [Cinderella] 
+                                                        INNER JOIN Package 
+                                                            ON Cinderella.CinderellaID = Package.Cinderella_ID
+                                                        WHERE (InAlterations = 'Y') AND CinderellaID NOT IN (SELECT Cinderella_ID
+													                                                        FROM Alteration)">
                                     </asp:SqlDataSource>
                                 </div>
                             </td>
