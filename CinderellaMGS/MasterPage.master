@@ -40,11 +40,7 @@
                         <li>
                             <asp:HyperLink ID="AutomatedPairingHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/AutomatedPairing.aspx">Automated Pairing</asp:HyperLink></li>
                         <li>
-                            <asp:HyperLink ID="CinderellaCheckInHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaCheckin.aspx">Cinderella Check-In</asp:HyperLink></li>
-                        <li>
-                            <asp:HyperLink ID="CinderellRegistrationHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/CinderellaRegistration.aspx">Cinderella Registration</asp:HyperLink></li>
-                        <li>
-                            <asp:HyperLink ID="ManageAppointmentHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/ManageAppointment.aspx">Manage Appointments</asp:HyperLink></li>
+                            <asp:HyperLink ID="ManageCinderellasHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/ManageCinderellas.aspx">Manage Cinderellas</asp:HyperLink></li>
                         <li>
                             <asp:HyperLink ID="ManagePackageHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/ManagePackaging.aspx">Manage Packaging</asp:HyperLink></li>
                         <li>
@@ -57,8 +53,6 @@
                             <asp:HyperLink ID="ManageAccountsHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageAccounts.aspx">Manage Accounts</asp:HyperLink></li>
                         <li>
                             <asp:HyperLink ID="ManageVolunteersHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManageVolunteers.aspx">Manage Volunteers</asp:HyperLink></li>
-                        <li>
-                            <asp:HyperLink ID="ManualPairingHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/ManualPairing.aspx">Manual Pairing</asp:HyperLink></li>
                         <li>
                             <asp:HyperLink ID="StatusHyperLink" runat="server" NavigateUrl="~/Forms/AdminForms/Status.aspx">Status</asp:HyperLink></li>
                     </ul>

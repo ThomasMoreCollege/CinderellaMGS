@@ -26,10 +26,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
             //Enable all user features if they were disabled
             AlterationsHyperLink.Visible = true;
             AutomatedPairingHyperLink.Visible = true;
-            CinderellaCheckInHyperLink.Visible = true;
+            ManageCinderellasHyperLink.Visible = true;
             ManagePackageHyperLink.Visible = true;
-            CinderellRegistrationHyperLink.Visible = true;
-            ManageAppointmentHyperLink.Visible = true;
             ManageShoppingHyperLink.Visible = true;
         }
         else
@@ -49,10 +47,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
             //Enable all user features if they were disabled
             AlterationsHyperLink.Visible = true;
             AutomatedPairingHyperLink.Visible = true;
-            CinderellaCheckInHyperLink.Visible = true;
+            ManageCinderellasHyperLink.Visible = true;
             ManagePackageHyperLink.Visible = true;
-            CinderellRegistrationHyperLink.Visible = true;
-            ManageAppointmentHyperLink.Visible = true;
             ManageShoppingHyperLink.Visible = true;
         }
         else
@@ -72,10 +68,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
             //Disable all other links under user features except for automatted pairing
             AlterationsHyperLink.Visible = false;
             AutomatedPairingHyperLink.Visible = true;
-            CinderellaCheckInHyperLink.Visible = false;
+            ManageCinderellasHyperLink.Visible = false;
             ManagePackageHyperLink.Visible = false;
-            CinderellRegistrationHyperLink.Visible = false;
-            ManageAppointmentHyperLink.Visible = false;
             ManageShoppingHyperLink.Visible = false;
 
         }

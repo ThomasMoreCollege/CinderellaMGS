@@ -12,7 +12,7 @@ public partial class Forms_UserForms_EditCinderella : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        (this.Master as MasterPage).ManageMasterLayout();
     }
     protected void CinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
