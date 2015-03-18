@@ -138,6 +138,11 @@
                             </td>
                         </tr>
                         <tr>
+                            <td colspan="2">
+                                <asp:Label ID="Error" runat="server" Text="Please select a volunteer to work on the dress" ForeColor="Red" Visible="False"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
                             <td style="text-align: right">Alterations:</td>
                             <td colspan="2">
                                 <asp:CheckBox ID="StrapsCheckBox" runat="server" Text="Straps Add/Adjust" Enabled="False" />
@@ -194,7 +199,9 @@
 	                                    INNER JOIN VolunteerRoleRecord
 	                                        ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID
                                         WHERE VolunteerRoleRecord.Role_Name = 'Alterations' AND VolunteerRoleRecord.IsCurrent = 'Y'"></asp:SqlDataSource>
-                                <asp:DropDownList ID="SeamstressDropDownList" runat="server" DataSourceID="VolunteerNameDS" DataTextField="Name" DataValueField="VolunteerID" Enabled="False">
+                                <asp:DropDownList ID="SeamstressDropDownList" runat="server" AppendDataBoundItems="true"
+                                    DataSourceID="VolunteerNameDS" DataTextField="Name" DataValueField="VolunteerID" Enabled="False">
+                                    <asp:ListItem Text="--SELECT--" Value="1">--SELECT--</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                             <td></td>
@@ -225,11 +232,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td></td>
                             <td>
                                 <asp:Button ID="submitAlterationsButton" runat="server" Text="Submit Alteration Changes" Enabled="False" OnClick="submitAlterationsButton_Click" />
                             </td>
-                            <td></td>
                         </tr>
                     </table>
                 </td>
