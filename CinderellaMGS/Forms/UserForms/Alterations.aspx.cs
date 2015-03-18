@@ -23,7 +23,7 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
         DressLengthDropDownList.Enabled = false;
         AltertationsCheckinButton.Enabled = false;
 
-        //Initialize database connection with "DefaultConnection" setup in the web.config
+        //Initialize database connection with "DefaultConnection" setup in the web.config 
         SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
         // Variable to hold the shopping Cinderella
