@@ -3,18 +3,14 @@
 <asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitle" Runat="Server">
     <h2>Alterations</h2>
         <style type="text/css">
-        .style5
-        {
-            width: 100%;
-        }
     </style>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
     <div id="CinderellasShoppingDiv" style="width: 100%; float: left; overflow-x:hidden;">
         <table>
             <tr>
-                <td >
-                    <table class="style5">
+                <td>
+                    <table>
                         <tr>
                             <td colspan="2"><strong>Cinderellas Currently Shopping</strong></td>
                         </tr>
@@ -91,7 +87,7 @@
                     </table>
                 </td>
                 <td>
-                    <table class="style5">
+                    <table>
                         <tr>
                             <td colspan="2"><strong>Cinderella Dresses in Alterations</strong></td>
                         </tr>
@@ -204,7 +200,6 @@
                                     <asp:ListItem Text="--SELECT--" Value="1">--SELECT--</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
-                            <td></td>
                         </tr>
                         <tr>
                             <td class="auto-style14">
@@ -212,7 +207,6 @@
                             <td rowspan="3">
                                 <asp:TextBox ID="notesTextBox" runat="server" Width="187px" Enabled="False" Height="84px" TextMode="MultiLine"></asp:TextBox>
                             </td>
-                            <td rowspan="3"> </td>
                         </tr>
                         <tr>
                             <td></td>
