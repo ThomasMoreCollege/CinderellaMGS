@@ -7,7 +7,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
         <table id="AutoPairTable">
             <tr>
-                <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="AutomattedPairingSqlDataSource">
+                <asp:GridView ID="GridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="AutomattedPairingSqlDataSource" Width="100%" Height="100">
                     <Columns>
                         <asp:BoundField DataField="Cinderella" HeaderText="Cinderella" ReadOnly="True" SortExpression="Cinderella" />
                         <asp:BoundField DataField="Column1" ReadOnly="True" SortExpression="Column1">
