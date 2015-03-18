@@ -106,6 +106,11 @@
                             <th colspan="3">Dress</th>
                         </tr>
                         <tr>
+                            <td colspan="2">
+                                <asp:Label ID="DressSizeErrorLabel" runat="server" Text="Please select a dress size" ForeColor="Red" Visible="False"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <asp:Label ID="Label1" runat="server" Text="Dress Size:"></asp:Label>
                                 &nbsp;</td>
@@ -121,6 +126,11 @@
                             </td>
                         </tr>
                         <tr>
+                            <td colspan="2">
+                                <asp:Label ID="DressLengthErrorLabel" runat="server" Text="Please select a dress length" ForeColor="Red" Visible="False"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <asp:Label ID="Label2" runat="server" Text="Dress Length:"></asp:Label>
                             </td>
@@ -133,6 +143,11 @@
                                     SelectCommand="SELECT [dressLength] 
                                                     FROM [DressLength]">
                                 </asp:SqlDataSource>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <asp:Label ID="DressColorErrorLabel" runat="server" Text="Please select a dress color" ForeColor="Red" Visible="False"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -203,6 +218,11 @@
                             <th colspan="2">Shoes</th>
                         </tr>
                         <tr>
+                            <td colspan="2">
+                                <asp:Label ID="ShoeSizeErrorLabel" runat="server" Text="Please select a dress size" ForeColor="Red" Visible="False"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <asp:Label ID="Label4" runat="server" Text="Shoe Size:"></asp:Label>
                                 &nbsp;</td>
@@ -215,6 +235,11 @@
                                     SelectCommand="SELECT [shoeSize] 
                                                     FROM [ShoeSize]">
                                 </asp:SqlDataSource>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <asp:Label ID="ShoeColorErrorLabel" runat="server" Text="Please select a dress size" ForeColor="Red" Visible="False"></asp:Label>
                             </td>
                         </tr>
                         <tr>
