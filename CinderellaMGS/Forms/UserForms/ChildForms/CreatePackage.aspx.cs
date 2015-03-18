@@ -90,10 +90,10 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             comm1.ExecuteNonQuery();
         }
         // SQL for updating the Package of a Cinderella whose Dress is in alterations and already in incomplete Package
-        else if (DressesInAlterationsGridView.SelectedRow != null)
+        else if (PackagesGridView.SelectedRow != null)
         {
             // Creating variables to hold a string of the Cinderella's ID and the Godmother's ID
-            SelectedCinderellaID = DressesInAlterationsGridView.SelectedValue.ToString();
+            SelectedCinderellaID = PackagesGridView.SelectedValue.ToString();
 
             // SQL string to UPDATE package information with articles
             string sql = "UPDATE Package "
@@ -109,7 +109,7 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
 
         // Overlapping SQL to update Cinderella's and Volunteer's information
         // Only occurs if a selection is present in a GridView
-        if (CinderellaGridView.SelectedRow != null || DressesInAlterationsGridView.SelectedRow != null)
+        if (CinderellaGridView.SelectedRow != null || PackagesGridView.SelectedRow != null)
         {
             // SQL string to SELECT Volunteer ID from selected Cinderella and assign it to a varirable
             string sql = "SELECT Volunteer_ID "
@@ -161,8 +161,8 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
         // Rebind the data to refresh the Grid
         CinderellaGridView.DataBind();
         CinderellaGridView.SelectedIndex = -1;
-        DressesInAlterationsGridView.DataBind();
-        DressesInAlterationsGridView.SelectedIndex = -1;
+        PackagesGridView.DataBind();
+        PackagesGridView.SelectedIndex = -1;
 
         // Disabling checkout button
         CheckoutButton.Enabled = false;
@@ -172,10 +172,10 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
         CheckoutButton.Enabled = true;
 
         // Removing Dresses selector
-        DressesInAlterationsGridView.SelectedIndex = -1;
+        PackagesGridView.SelectedIndex = -1;
 
     }
-    protected void DressesInAlterationsGridView_SelectedIndexChanged(object sender, EventArgs e)
+    protected void PackagesGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
         CheckoutButton.Enabled = true;
 
@@ -183,8 +183,8 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
         CinderellaGridView.SelectedIndex = -1;
 
         // Entering Dress information into the drops downs 
-        DressSizeDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[4].Text.ToString();
-        DressLengthDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[3].Text.ToString();
-        DressColorDropDown.SelectedValue = DressesInAlterationsGridView.SelectedRow.Cells[5].Text.ToString();
+        DressSizeDropDown.SelectedValue = PackagesGridView.SelectedRow.Cells[4].Text.ToString();
+        DressLengthDropDown.SelectedValue = PackagesGridView.SelectedRow.Cells[3].Text.ToString();
+        DressColorDropDown.SelectedValue = PackagesGridView.SelectedRow.Cells[5].Text.ToString();
     }
 }

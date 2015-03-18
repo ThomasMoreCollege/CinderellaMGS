@@ -48,8 +48,9 @@
                                 FROM [Package] 
                                 INNER JOIN Cinderella 
                                      ON Package.Cinderella_ID = Cinderella.CinderellaID 
-                                WHERE InPackaging = 'Y'
-                                ORDER BY [LastName]"></asp:SqlDataSource>
+                                WHERE InPackaging = 'Y' AND InAlterations = 'N'
+                                ORDER BY [LastName]">
+            </asp:SqlDataSource>
         </div>
         <p>
             <asp:label runat="server" Visible =" false" ForeColor="Red" ID="SelectionValidationLabel">*Please select a Cinderella's Package</asp:label><br />

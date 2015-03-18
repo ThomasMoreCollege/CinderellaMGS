@@ -8,7 +8,7 @@
         <table id="CheckoutTable">
             <tr>
                 <th>Cinderellas Shopping</th>
-                <th>Dresses in Alterations</th>
+                <th>Packages</th>
             </tr>
             <tr>
                 <td>
@@ -49,11 +49,11 @@
                     </asp:SqlDataSource>
                 </td>
                 <td>
-                    <asp:GridView ID="DressesInAlterationsGridView" runat="server"
+                    <asp:GridView ID="PackagesGridView" runat="server"
                         AllowSorting="True"
                         AutoGenerateColumns="False"
                         DataSourceID="DressDataSource" 
-                        DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="DressesInAlterationsGridView_SelectedIndexChanged">
+                        DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="PackagesGridView_SelectedIndexChanged">
                         <Columns>
 
                             <asp:CommandField ShowSelectButton="True" />
@@ -83,7 +83,7 @@
                                     FROM [Cinderella] 
                                     INNER JOIN Package 
                                         ON Cinderella.CinderellaID = Package.Cinderella_ID 
-                                    WHERE InAlterations = 'Y' AND InPackaging = 'N'
+                                    WHERE InAlterations = 'Y' OR InPackaging = 'Y'
                                     ORDER BY [LastName]">
                     </asp:SqlDataSource>
                 </td>
@@ -236,15 +236,15 @@
                             <td>
                                 <asp:TextBox ID="NotesTextBox" runat="server" Height="218px" TextMode="MultiLine" Width="500px"></asp:TextBox></td>
                         </tr>
-                        <tr>
-                            <td>
-                                <asp:Button ID="CheckoutButton" runat="server" Text="Check Package in to Packaging" OnClick="CheckoutButton_Click" Enabled="False" /></td>
-                        </tr>
                     </table>
                 </td>
             </tr>
         </table>
     </div>
+
+    <p>
+        <asp:Button ID="CheckoutButton" runat="server" Text="Check Package in to Packaging" OnClick="CheckoutButton_Click" Enabled="False" />
+    </p>
 
 </asp:Content>
 

@@ -36,7 +36,7 @@
                     <ul id="UserFeatures">
                         <%-- Use ASP Hyper Links ONLY!! --%>
                         <li>
-                            <asp:HyperLink ID="ManageAlterationsHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/ManageAlterations.aspx">Manage Alterations</asp:HyperLink></li>
+                            <asp:HyperLink ID="AlterationsHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/Alterations.aspx">Alterations</asp:HyperLink></li>
                         <li>
                             <asp:HyperLink ID="AutomatedPairingHyperLink" runat="server" NavigateUrl="~/Forms/UserForms/AutomatedPairing.aspx">Automated Pairing</asp:HyperLink></li>
                         <li>

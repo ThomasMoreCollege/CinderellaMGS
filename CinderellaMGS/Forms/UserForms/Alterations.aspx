@@ -178,17 +178,23 @@
                                 <asp:CheckBox ID="HemCheckBox" runat="server" Text="Hem" CssClass="auto-style13" Enabled="False" />
                             </td>
                         </tr>
+                                                <tr>
+                            <td></td>
+                            <td colspan="2">
+                                <asp:CheckBox ID="OtherCheckBox" runat="server" Text="Other" CssClass="auto-style13" Enabled="False" />
+                            </td>
+                        </tr>
                         <tr>
                             <td class="auto-style14">
                                 Seamstress:</td>
                             <td>
                                 <asp:SqlDataSource ID="VolunteerNameDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>"
-                                    SelectCommand="SELECT Volunteer.LastName
+                                    SelectCommand="SELECT VolunteerID, (FirstName + ' ' + LastName) as Name
                                         FROM Volunteer
 	                                    INNER JOIN VolunteerRoleRecord
 	                                        ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID
                                         WHERE VolunteerRoleRecord.Role_Name = 'Alterations' AND VolunteerRoleRecord.IsCurrent = 'Y'"></asp:SqlDataSource>
-                                <asp:DropDownList ID="SeamstressDropDownList" runat="server" DataSourceID="VolunteerNameDS" DataTextField="LastName" DataValueField="LastName" Enabled="False">
+                                <asp:DropDownList ID="SeamstressDropDownList" runat="server" DataSourceID="VolunteerNameDS" DataTextField="Name" DataValueField="VolunteerID" Enabled="False">
                                 </asp:DropDownList>
                             </td>
                             <td></td>
@@ -206,6 +212,17 @@
                         </tr>
                         <tr>
                             <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Ready for Pickup?
+                            </td>
+                            <td>
+                                <asp:RadioButtonList ID="PickupRadioButtonList" runat="server">
+                                    <asp:ListItem Value="Y">Yes</asp:ListItem>
+                                    <asp:ListItem Value="N" Selected ="true">No</asp:ListItem>
+                                </asp:RadioButtonList>
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
