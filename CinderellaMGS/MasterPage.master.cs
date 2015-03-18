@@ -100,6 +100,22 @@ public partial class MasterPage : System.Web.UI.MasterPage
         }
     }
 
+    public void PairingScreenLayout()
+    {
+        string currentPage = HttpContext.Current.Request.Url.AbsolutePath.ToString();
+        if (currentPage == "/CinderellaMGS/Forms/UserForms/AutomatedPairing.aspx")
+        {
+
+
+            MenuNav.Visible = false;
+            LoginNav.Visible = false;
+            SideNav.Visible = false;
+            
+
+            content.Style.Add("margin-left", "0px");
+        }
+    }
+
     public void ManageMasterLayout()
     {
         //Manage login screen view
@@ -134,6 +150,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             }
             else if (Session["CurrentAccType"].ToString() == "Pairing")
             {
+                PairingScreenLayout();
                 WelcomeLabel.Text = "Welcome, " + Session["CurrentUser"].ToString() + " | ";
                 WelcomeLabel.Visible = true;
                 RevealAutonmatedPairingOnly(true);
@@ -202,6 +219,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             }
         }
     }
+
     protected void LogOffLinkButton_Click(object sender, EventArgs e)
     {
         Session["CurrentAccType"] = null;
