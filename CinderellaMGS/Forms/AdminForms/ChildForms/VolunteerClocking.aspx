@@ -6,6 +6,15 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
         <table id="ClockingTable">
             <tr>
+                <td style="text-align:center">
+                    <asp:Button ID="TakeOffBreakButton" runat="server" Text="Take off Break" OnClick="TakeOffBreakButton_Click" />
+                        
+                </td>
+                <td style="text-align:center">
+                    <asp:Button ID="SendOnBreakButton" runat="server" Text="Send on Break" OnClick="SendOnBreakButton_Click" />
+                </td>
+            </tr>
+            <tr>
                 <th>Volunteers on Break</th>
                 <th>Working Volunteers</th>
             </tr>
@@ -39,7 +48,10 @@
                                             FROM Volunteer 
                                             INNER JOIN VolunteerStatusRecord 
                                                 ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID 
-                                            WHERE (VolunteerStatusRecord.Status_Name = 'On Break') AND (VolunteerStatusRecord.IsCurrent = 'Y') AND (Volunteer.IsValid = 'Y') ORDER BY Volunteer.LastName">
+                                            WHERE (VolunteerStatusRecord.Status_Name = 'On Break') 
+                                                AND (VolunteerStatusRecord.IsCurrent = 'Y') 
+                                                AND (Volunteer.IsValid = 'Y') 
+                                            ORDER BY Volunteer.LastName">
                         </asp:SqlDataSource>
                     </div>
                 </td>
@@ -72,19 +84,24 @@
                                             FROM Volunteer 
                                             INNER JOIN VolunteerStatusRecord 
                                                 ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID 
-                                            WHERE (VolunteerStatusRecord.Status_Name != 'On Break') AND (VolunteerStatusRecord.IsCurrent = 'Y') AND (Volunteer.IsValid = 'Y') AND (VolunteerStatusRecord.Status_Name != 'Pending') ORDER BY Volunteer.LastName">
+                                            INNER JOIN VolunteerRoleRecord
+                                                ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID
+                                            WHERE (VolunteerStatusRecord.Status_Name != 'On Break') 
+                                                AND (VolunteerStatusRecord.IsCurrent = 'Y') 
+                                                AND (Volunteer.IsValid = 'Y') 
+                                                AND (VolunteerStatusRecord.Status_Name != 'Pending')
+                                                AND (VolunteerRoleRecord.IsCurrent = 'Y')
+                                                AND (Role_Name != 'Alterations') 
+                                            ORDER BY Volunteer.LastName">
                         </asp:SqlDataSource>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td style="text-align:center">
-                    <asp:Button ID="TakeOffBreakButton" runat="server" Text="Take off Break" OnClick="TakeOffBreakButton_Click" />
-                        
-                </td>
-                <td style="text-align:center">
-                    <asp:Button ID="SendOnBreakButton" runat="server" Text="Send on Break" OnClick="SendOnBreakButton_Click" />
-                </td>
+                <td colspan="2"><asp:Label ID="Label1" runat="server" Text="NOTE: Only Volunteers on break or ready to receive a Cinderella" ></asp:Label></td>
+            </tr>
+                    <tr>
+                <td colspan="2"><asp:Label ID="Label2" runat="server" Text="(but NOT currently shopping or paired with a Cinderella) will be shown" ></asp:Label></td>
             </tr>
         </table>   
 </asp:Content>
