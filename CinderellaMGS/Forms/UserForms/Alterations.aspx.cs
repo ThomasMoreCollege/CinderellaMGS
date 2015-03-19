@@ -46,11 +46,11 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
             conn1.Open();
 
             // SQL to insert the Cinderella's Dress information into Package
-            string sql = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, DressLength, InAlterations) "
+            string sql = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, DressLength, InAlterations, InPackaging) "
                         + "VALUES ('" + SelectedShoppingCinderellaID + "', '"
                                         + DressSizeDropDownList.SelectedValue + "', '"
                                         + DressColorDropDownList.SelectedValue + "', '"
-                                        + DressLengthDropDownList.SelectedValue + "', 'Y')";
+                                        + DressLengthDropDownList.SelectedValue + "', 'Y', 'N')";
             // Execute SQL
             SqlCommand com1 = new SqlCommand(sql, conn1);
             com1.ExecuteNonQuery();
