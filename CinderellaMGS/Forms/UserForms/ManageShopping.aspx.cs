@@ -71,6 +71,10 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
         SqlCommand comm5 = new SqlCommand(sql, conn1);
         comm5.ExecuteNonQuery();
 
+        // Notifying user of success
+        NotificationLabel.Text = "Cinderella " + PairedCinderellaGridView.SelectedRow.Cells[1].Text.ToString()
+                                    + " and Volunteer " + PairedCinderellaGridView.SelectedRow.Cells[3].Text.ToString() + " successfully changed from Paired to Shopping";
+        NotificationLabel.Visible = true;
 
         //REMEMBER TO CLOSE CONNECTION!!
         conn1.Close();
@@ -155,6 +159,10 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
         SqlCommand comm5 = new SqlCommand(sql, conn1);
         comm5.ExecuteNonQuery();
 
+        // Notifying user of success
+        NotificationLabel.Text = "Cinderella " + ShoppingGridView.SelectedRow.Cells[1].Text.ToString()
+                                    + " and Volunteer " + ShoppingGridView.SelectedRow.Cells[3].Text.ToString() + " successfully changed from Shopping to Paired";
+        NotificationLabel.Visible = true;
 
         //REMEMBER TO CLOSE CONNECTION!!
         conn1.Close();

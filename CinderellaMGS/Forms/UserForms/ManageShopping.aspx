@@ -102,9 +102,9 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">&nbsp;</td>
-                <td></td>
-                <td></td>
+                <td colspan="3">
+                    <asp:Label ID="NotificationLabel" runat="server" Text="Cinderella XXX and Volunter YYY successfully ZZZ" ForeColor="Green" Visible="False"></asp:Label>
+                </td>
             </tr>
             <tr>
                 <td><strong>Needs Manual Pairing</strong></td>
