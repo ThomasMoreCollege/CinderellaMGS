@@ -8,6 +8,29 @@
     
     <table id="NewUserTable" style="width: 100%;">
         <tr>
+            <td>
+                <asp:Label ID="dropDownLabel" runat="server" Text="Select a Role:"></asp:Label>&nbsp;&nbsp;
+                    <asp:DropDownList ID="roleDropDownList" runat="server" AutoPostBack="True" DataValueField="&quot;
+                        SELECT RoleType.RoleName 
+                        FROM RoleType 
+                        WHERE RoleType.RoleName &lt;&gt; 'Administrator' AND RoleType.RoleName &lt;&gt; (SELECT RoleType.RoleName 
+                                                                                                        FROM RoleType INNER JOIN VolunteerRoleRecord ON RoleType.RoleName = VolunteerRoleRecord.Role_Name INNER JOIN Volunteer ON VolunteerRoleRecord.Volunteer_ID = Volunteer.VolunteerID WHERE VolunteerRoleRecord.IsCurrent = 'Y' AND Volunteer.LastName = '&quot; + volunteerListBox.SelectedItem.Text + &quot;')&quot;" Enabled="False" OnSelectedIndexChanged="roleDropDownList_SelectedIndexChanged1">
+                        <asp:ListItem Text="Select Role" Value="0" />
+                    </asp:DropDownList>
+                &nbsp;&nbsp;
+                    <asp:Button ID="changeRoleButton" runat="server" Text="Change Role" OnClick="changeRoleButton_Click" Enabled="False" />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="userNotificationLabel" runat="server" Enabled="False" BorderColor="Lime"></asp:Label>
+            </td>
+        </tr>
+        <tr>
             <td class="auto-style3">
                 <strong>Manage Volunteer Roles:</strong>
             </td>
@@ -52,35 +75,12 @@
                     </asp:GridView>
                 </div>
             </td>
-            <td>&nbsp;</td>
         </tr>
         <tr>
-            <td id="firstRow">
-                <br />
-            </td>
+            <td><asp:Label ID="Label1" runat="server" Text="NOTE: Only Volunteers on break or ready to receive a Cinderella" ></asp:Label></td>
         </tr>
-        <tr>
-            <td>
-                <asp:Label ID="dropDownLabel" runat="server" Text="Select a Role:"></asp:Label>&nbsp;&nbsp;
-                    <asp:DropDownList ID="roleDropDownList" runat="server" AutoPostBack="True" DataValueField="&quot;
-                        SELECT RoleType.RoleName 
-                        FROM RoleType 
-                        WHERE RoleType.RoleName &lt;&gt; 'Administrator' AND RoleType.RoleName &lt;&gt; (SELECT RoleType.RoleName 
-                                                                                                        FROM RoleType INNER JOIN VolunteerRoleRecord ON RoleType.RoleName = VolunteerRoleRecord.Role_Name INNER JOIN Volunteer ON VolunteerRoleRecord.Volunteer_ID = Volunteer.VolunteerID WHERE VolunteerRoleRecord.IsCurrent = 'Y' AND Volunteer.LastName = '&quot; + volunteerListBox.SelectedItem.Text + &quot;')&quot;" Enabled="False" OnSelectedIndexChanged="roleDropDownList_SelectedIndexChanged1">
-                        <asp:ListItem Text="Select Role" Value="0" />
-                    </asp:DropDownList>
-                &nbsp;&nbsp;
-                    <asp:Button ID="changeRoleButton" runat="server" Text="Change Role" OnClick="changeRoleButton_Click" Enabled="False" />
-            </td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="userNorificationLabel" runat="server" Enabled="False" BorderColor="Lime"></asp:Label>
-            </td>
+                <tr>
+            <td><asp:Label ID="Label2" runat="server" Text="(but NOT currently shopping or paired with a Cinderella) will be shown" ></asp:Label></td>
         </tr>
     </table>
 

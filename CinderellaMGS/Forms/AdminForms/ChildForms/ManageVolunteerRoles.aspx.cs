@@ -31,12 +31,15 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
 
         string getVolunteerID = VolunteerGridView.SelectedValue.ToString();
 
-        string updateCurrentRole = "UPDATE VolunteerRoleRecord SET EndTime = '" + DateTime.Now + "', IsCurrent = 'N' WHERE Volunteer_ID = '" + getVolunteerID + "' AND IsCurrent = 'Y'";
+        string updateCurrentRole = "UPDATE VolunteerRoleRecord "
+                                    + "SET EndTime = '" + DateTime.Now + "', IsCurrent = 'N' "
+                                    + "WHERE Volunteer_ID = '" + getVolunteerID + "' AND IsCurrent = 'Y'";
 
         SqlCommand updateRole = new SqlCommand(updateCurrentRole, conn);
         updateRole.ExecuteNonQuery();
 
-        string sql = "INSERT INTO VolunteerRoleRecord (Volunteer_ID, StartTime, Role_Name, IsCurrent) VALUES ( '" + getVolunteerID + "', '" + DateTime.Now + "', '" + roleDropDownList.SelectedItem.Text + "', '" + 'Y' + "')";
+        string sql = "INSERT INTO VolunteerRoleRecord (Volunteer_ID, StartTime, Role_Name, IsCurrent) "
+                        + "VALUES ( '" + getVolunteerID + "', '" + DateTime.Now + "', '" + roleDropDownList.SelectedItem.Text + "', '" + 'Y' + "')";
 
         // Execute query
         SqlCommand comm1 = new SqlCommand(sql, conn);
@@ -46,12 +49,12 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
         roleDropDownList.DataBind();
         VolunteerGridView.DataBind();
 
-        userNorificationLabel.ForeColor = System.Drawing.Color.Green;
+        userNotificationLabel.ForeColor = System.Drawing.Color.Green;
 
         GridViewRow currentRow = VolunteerGridView.SelectedRow;
 
         string notification = "Successfully changed " + currentRow.Cells[2].Text + " " + currentRow.Cells[3].Text + " to a " + currentRow.Cells[4].Text + " role!";
-        userNorificationLabel.Text = notification;
+        userNotificationLabel.Text = notification;
         roleDropDownList.Enabled = false;
         changeRoleButton.Enabled = false;
         VolunteerGridView.SelectedIndex = -1;
@@ -66,8 +69,8 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
     protected void VolunteerGridView_SelectedIndexChanged1(object sender, EventArgs e)
     {
         roleDropDownList.Enabled = true;
-        userNorificationLabel.Enabled = false;
-        userNorificationLabel.Text = "";
+        userNotificationLabel.Enabled = false;
+        userNotificationLabel.Text = "";
         changeRoleButton.Enabled = true;
 
 
@@ -78,7 +81,16 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
         conn1.Open();
 
         //Initialize a string variable to hold a query
-        string getAvailableRoles = "SELECT RoleType.RoleName FROM RoleType WHERE RoleType.RoleName <> 'Administrator' AND RoleType.RoleName <> (SELECT RoleType.RoleName FROM RoleType INNER JOIN VolunteerRoleRecord ON RoleType.RoleName = VolunteerRoleRecord.Role_Name INNER JOIN Volunteer ON VolunteerRoleRecord.Volunteer_ID = Volunteer.VolunteerID WHERE VolunteerRoleRecord.IsCurrent = 'Y' AND VolunteerRoleRecord.Volunteer_ID = '" + VolunteerGridView.SelectedValue.ToString() + "')";
+        string getAvailableRoles = "SELECT RoleType.RoleName "
+                                    + "FROM RoleType "
+                                    + "WHERE RoleType.RoleName <> 'Administrator' "
+                                            + "AND RoleType.RoleName <> (SELECT RoleType.RoleName "
+                                                                        + "FROM RoleType "
+                                                                        + "INNER JOIN VolunteerRoleRecord "
+                                                                            + "ON RoleType.RoleName = VolunteerRoleRecord.Role_Name "
+                                                                        + "INNER JOIN Volunteer "
+                                                                            + "ON VolunteerRoleRecord.Volunteer_ID = Volunteer.VolunteerID "
+                                                                        + "WHERE VolunteerRoleRecord.IsCurrent = 'Y' AND VolunteerRoleRecord.Volunteer_ID = '" + VolunteerGridView.SelectedValue.ToString() + "')";
 
         //Execute query 
         SqlCommand com1 = new SqlCommand(getAvailableRoles, conn1);
@@ -92,7 +104,12 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
         roleDropDownList.DataValueField = "RoleName";
         roleDropDownList.DataBind();
 
-        string getSelectedVolunteerRole = "SELECT VolunteerRoleRecord.Role_Name FROM VolunteerRoleRecord INNER JOIN Volunteer ON VolunteerRoleRecord.Volunteer_ID = Volunteer.VolunteerID WHERE Volunteer.VolunteerID = '" + VolunteerGridView.SelectedValue.ToString() + "' AND VolunteerRoleRecord.IsCurrent = 'Y'";
+        string getSelectedVolunteerRole = "SELECT VolunteerRoleRecord.Role_Name "
+                                            + "FROM VolunteerRoleRecord "
+                                            + "INNER JOIN Volunteer "
+                                                + "ON VolunteerRoleRecord.Volunteer_ID = Volunteer.VolunteerID "
+                                            + "WHERE Volunteer.VolunteerID = '" + VolunteerGridView.SelectedValue.ToString() + "' "
+                                                        + "AND VolunteerRoleRecord.IsCurrent = 'Y'";
 
         SqlCommand com2 = new SqlCommand(getSelectedVolunteerRole, conn1);
 
