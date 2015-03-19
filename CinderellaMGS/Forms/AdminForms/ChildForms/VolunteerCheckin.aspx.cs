@@ -104,14 +104,12 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
                 //Unlock Application session
                 Application.UnLock();
 
-                ResultLabel.Text = "Success";
+                ResultLabel.Text = "Godmother placed in queue";
                 ResultLabel.Visible = true;
             }
             catch (Exception ex)
             {
-                ResultLabel.Text = "Fail";
-                ResultLabel.ForeColor = System.Drawing.Color.Red;
-                ResultLabel.Visible = true;
+                ResultLabel.Visible = false;
             }
         }
     }

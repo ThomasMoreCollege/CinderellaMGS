@@ -17,6 +17,9 @@
                 </td>
             </tr>
         </table>
+        <p>
+            <asp:Button ID="CheckInButton" runat="server" OnClick="CheckInButton_Click" Text="Check-In" Width="70px" />
+        </p>
         <div style ="height:600px; width:80%; overflow:auto;">
             <asp:GridView ID="CinderellaGridView" runat="server" 
                 AllowSorting="True" 
@@ -50,10 +53,6 @@
                                 WHERE Status_Name = 'Pending' AND IsCurrent = 'Y'
                                 ORDER BY [AppointmentDateTime]"></asp:SqlDataSource>
         </div>
-
-        <p>
-            <asp:Button ID="CheckInButton" runat="server" OnClick="CheckInButton_Click" Text="Check-In" Width="70px" />
-        </p>
 
 </asp:Content>
 

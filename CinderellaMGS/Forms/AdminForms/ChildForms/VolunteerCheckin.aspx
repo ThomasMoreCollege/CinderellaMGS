@@ -8,11 +8,15 @@
     
     <table>
         <tr>
-            <td><asp:Label ID="ResultLabel" runat="server" Text="Label" ForeColor="Green" Visible="False"></asp:Label>
+            <td>
+                <asp:Label ID="ResultLabel" runat="server" Text="Label" ForeColor="Green" Visible="False"></asp:Label>
                 <br />
             </td>
         </tr>
     </table>
+         <p>
+            <asp:Button ID="CheckInButton" runat="server" OnClick="CheckinButton_Click" Text="Check-In" Width="70px" />
+        </p>
     <div style ="height:600px; width:80%; overflow:auto; border-bottom:1px solid #999999;"">
             <asp:GridView ID="VolunteerGridView" runat="server" 
                 AllowSorting="True" 
@@ -38,11 +42,17 @@
                 <SelectedRowStyle BackColor="Fuchsia" />
             </asp:GridView>
             <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
-                SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName, Volunteer.Email FROM Volunteer INNER JOIN VolunteerStatusRecord ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID INNER JOIN VolunteerShiftRecord ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID WHERE (VolunteerStatusRecord.Status_Name = 'Pending') AND (VolunteerStatusRecord.IsCurrent = 'Y') AND (VolunteerShiftRecord.Shift_Name = 'Friday') AND (Volunteer.IsValid = 'Y') ORDER BY Volunteer.LastName"></asp:SqlDataSource>
+                SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName, Volunteer.Email 
+                                FROM Volunteer 
+                                INNER JOIN VolunteerStatusRecord 
+                                    ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID 
+                                INNER JOIN VolunteerShiftRecord 
+                                    ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID 
+                                WHERE (VolunteerStatusRecord.Status_Name = 'Pending') 
+                                        AND (VolunteerStatusRecord.IsCurrent = 'Y') 
+                                        AND (VolunteerShiftRecord.Shift_Name = 'Friday') 
+                                        AND (Volunteer.IsValid = 'Y') ORDER BY Volunteer.LastName"></asp:SqlDataSource>
         </div>
-        <p>
-            <asp:Button ID="CheckInButton" runat="server" OnClick="CheckinButton_Click" Text="Check-In" Width="70px" />
-        </p>
 
 </asp:Content>
 
