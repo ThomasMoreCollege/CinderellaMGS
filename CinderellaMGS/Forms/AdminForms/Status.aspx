@@ -35,12 +35,6 @@
             </td>
         </tr>
         <tr>
-            <td>Dress In Alterations</td>
-            <td>
-                <asp:Label ID="DressAlterationsLabel" runat="server" Text="Label"></asp:Label>
-            </td>
-        </tr>
-        <tr>
             <td>Checked Out</td>
             <td>
                 <asp:Label ID="CinderellaCheckedOutLabel" runat="server" Text="Label"></asp:Label>
@@ -66,12 +60,6 @@
             </td>
         </tr>
         <tr>
-            <td>Godmothers Shopping</td>
-            <td>
-                <asp:Label ID="VolunteerShoppingLabel" runat="server" Text="Label"></asp:Label>
-            </td>
-        </tr>
-        <tr>
             <td>Volunteers&nbsp; On Break</td>
             <td>
                 <asp:Label ID="VolunteerOnBreakLabel" runat="server" Text="Label"></asp:Label>
@@ -88,6 +76,12 @@
             <td>In Packaging</td>
             <td>
                 <asp:Label ID="PackagingLabel" runat="server" Text="Label"></asp:Label>
+            </td>
+        </tr>
+                <tr>
+            <td>Dress In Alterations</td>
+            <td>
+                <asp:Label ID="DressAlterationsLabel" runat="server" Text="Label"></asp:Label>
             </td>
         </tr>
         <tr>

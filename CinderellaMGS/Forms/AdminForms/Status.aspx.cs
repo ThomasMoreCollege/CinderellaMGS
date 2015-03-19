@@ -73,16 +73,6 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
 
         WaitingForPackageLabel.Text = total.ToString();
 
-        // SQL to count total Cinderells with currentStatus 'Waiting for Dress'
-        CinderSQL = "SELECT COUNT (Cinderella_ID) "
-                + "FROM CinderellaStatusRecord "
-                + "WHERE Status_Name = 'Waiting for Dress' AND IsCurrent = 'Y'";
-        // Execute query
-        SqlCommand comm5 = new SqlCommand(CinderSQL, conn);
-        total = Convert.ToInt32(comm5.ExecuteScalar());
-
-        DressAlterationsLabel.Text = total.ToString();
-
         // SQL to count total Cinderellas with CurrentStatus 'Checked Out' for today
         CinderSQL = "SELECT COUNT (CinderellaID) "
                 + "FROM Cinderella "
@@ -100,7 +90,7 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
         string VolSQL = "SELECT COUNT (VolunteerID) "
                 + "FROM Volunteer "
                 + "INNER JOIN VOlunteerStatusRecord "
-                    + "ON Volunteer.VOlunteerID = VolunteerStatusREcord.Volunteer_ID "
+                    + "ON Volunteer.VOlunteerID = VolunteerStatusRecord.Volunteer_ID "
                 + "INNER JOIN VolunteerShiftRecord "
                     + "ON VolunteerStatusRecord.Volunteer_ID = VolunteerShiftRecord.Volunteer_ID "
                 + "WHERE Status_Name = 'Pending' AND IsCurrent = 'Y' AND IsValid = 'Y' AND Shift_Name = datename(dw,getdate())";
@@ -126,21 +116,6 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
 
         VolunteerReadyLabel.Text = total.ToString();
 
-        // SQL to count total Volunteers with CurrentStatus 'Shopping' and CurrentRole 'Godmother'
-        VolSQL = "SELECT COUNT (VolunteerID) "
-                + "FROM Volunteer "
-                + "INNER JOIN VolunteerStatusRecord "
-                    + "ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID "
-                + "INNER JOIN VolunteerRoleRecord "
-                    + "ON VolunteerStatusRecord.Volunteer_ID = VolunteerRoleRecord.Volunteer_ID "
-                + "WHERE Status_Name = 'Shopping' AND IsValid = 'Y' AND VolunteerStatusRecord.IsCurrent = 'Y' AND Role_Name = 'Godmother' AND VolunteerRoleREcord.IsCurrent = 'Y'";
-
-        // Execute query
-        SqlCommand comm9 = new SqlCommand(VolSQL, conn);
-        total = Convert.ToInt32(comm9.ExecuteScalar());
-
-        VolunteerShoppingLabel.Text = total.ToString();
-
         // SQL to count total Volunteers with CurrentStatus 'On Break'
         VolSQL = "SELECT COUNT (VolunteerID) "
                 + "FROM Volunteer "
@@ -164,6 +139,16 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
         total = Convert.ToInt32(comm11.ExecuteScalar());
 
         PackagingLabel.Text = total.ToString();
+
+        // SQL to count total Dresses in Alterations
+        CinderSQL = "SELECT COUNT (Cinderella_ID) "
+                + "FROM Package "
+                + "WHERE InAlterations = 'Y'";
+        // Execute query
+        SqlCommand comm5 = new SqlCommand(CinderSQL, conn);
+        total = Convert.ToInt32(comm5.ExecuteScalar());
+
+        DressAlterationsLabel.Text = total.ToString();
 
         // SQL to count total Packages with InPackaging 'N'
         PackSQL = "SELECT COUNT (Cinderella_ID) "
