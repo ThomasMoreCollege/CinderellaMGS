@@ -369,9 +369,7 @@ figure{
 }
 
 #middleRow {
- border-top: 1px solid
-
-9999;
+ border-top: 1px solid #999999;
  border-bottom: 1px solid #999999;
 }
 
@@ -510,12 +508,9 @@ figure{
     text-align: center;
 }
 
-textarea{
- 
-
-textarea{
-    resize:none;
-    mar
+textarea {
+    resize: none;
+}
 
 textarea{
     resize:none;
@@ -523,12 +518,12 @@ textarea{
     text-align: right;
 }
 
-ight;
+/*ight;
     display: inline-block; 
     zoom: 1;
     *display: inline; 
-}
-st label {
+}*/
+#RolesCheckBoxList label {
     float: left;
 }
 
