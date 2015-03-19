@@ -222,6 +222,10 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
     }
     protected void CinderellaDressAlterationsGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
+        if (CinderellaShoppingGridView.SelectedIndex != -1)
+        {
+            CinderellaShoppingGridView.SelectedIndex = -1;
+        }
         // Enabling all the Alterations information 
         StrapsCheckBox.Enabled = true;
         GeneralMendingCheckBox.Enabled = true;
@@ -319,6 +323,10 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
     }
     protected void CinderellaShoppingGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
+        if (CinderellaDressAlterationsGridView.SelectedIndex != -1)
+        {
+            CinderellaDressAlterationsGridView.SelectedIndex = -1;
+        }
         // Enabling all the dress information
         DressSizeDropDownList.Enabled = true;
         DressColorDropDownList.Enabled = true;
