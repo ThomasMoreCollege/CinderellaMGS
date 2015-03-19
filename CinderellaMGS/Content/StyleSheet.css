@@ -57,8 +57,8 @@ h1 {
 	margin-right: auto;
     margin-bottom:-15px;
 	width: 100%;
-	min-width: 960px;
-    max-width: 1152px;
+    min-width: 1152px;
+    max-width: 1350px;
 }
 
 #LoginNav a { text-decoration: none; }
@@ -373,6 +373,18 @@ figure{
  border-bottom: 1px solid #999999;
 }
 
+#firstHalf {
+    border-right: 1px solid #999999;
+}
+
+#secondHalf{
+    border-right: 1px solid #999999;
+}
+
+#middleRowForCreatePackage {
+    border-bottom: 1px solid #999999;
+}
+
 #CinderellaInAlterationsTD {
     border-bottom: 1px solid #999999;
     float:left;
@@ -410,6 +422,16 @@ figure{
 }
 
 #AccMngTable {
+    float:left;
+    border-collapse: collapse;
+}
+
+#CreatePackageGrids {
+    float:left;
+    border-collapse: collapse;
+}
+
+#FullPackage{
     float:left;
     border-collapse: collapse;
 }
@@ -487,12 +509,15 @@ figure{
 
 textarea{
     resize:none;
+    mar
+
+textarea{
+    resize:none;
     margin-top: 0px;
     text-align: right;
 }
 
-#RolesCheckBoxList input {
-    float: right;
+ight;
     display: inline-block; 
     zoom: 1;
     *display: inline; 

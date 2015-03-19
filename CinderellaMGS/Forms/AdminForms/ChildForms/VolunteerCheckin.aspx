@@ -13,7 +13,7 @@
             </td>
         </tr>
     </table>
-    <div style ="height:600px; width:650px; overflow:auto;">
+    <div style ="height:600px; width:80%; overflow:auto; border-bottom:1px solid #999999;"">
             <asp:GridView ID="VolunteerGridView" runat="server" 
                 AllowSorting="True" 
                 AutoGenerateColumns="False" 

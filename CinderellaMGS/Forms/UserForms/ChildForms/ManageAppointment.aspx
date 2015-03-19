@@ -15,7 +15,7 @@
             <th>Cinderella</th>
         </tr>
     </table>
-    <div style ="height:400px; width:700px; overflow:auto; border-bottom:1px solid #999999;">
+    <div style ="height:400px; width:80%; overflow:auto; border-bottom:1px solid #999999;">
         <table id="AppMngTable" style="width:70%;">
             <tr >
                 <td>

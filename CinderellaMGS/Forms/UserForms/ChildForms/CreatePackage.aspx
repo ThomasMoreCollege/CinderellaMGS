@@ -4,14 +4,16 @@
     <h2>Create Package</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="Server">
-    <div id="CinderellaCheckPackageGrid" style="width: 100%; float: left; overflow-x:hidden;">
-        <table id="CheckoutTable">
-            <tr>
-                <th>Cinderellas Shopping</th>
-                <th>Packages</th>
-            </tr>
-            <tr>
-                <td>
+    <table id="CreatePackageGrids">
+        <tr>
+            <td>
+                <strong>Cinderellas Shopping</strong>
+            </td>
+            <td><strong>Dresses From Alterations</strong></td>
+        </tr>
+        <tr style="border-bottom:1px solid #999999;">
+            <td>
+                <div style="height: 400px; overflow: auto;">
                     <asp:GridView ID="CinderellaGridView" runat="server"
                         AllowSorting="True"
                         AutoGenerateColumns="False"
@@ -32,27 +34,27 @@
                         <SortedDescendingHeaderStyle BackColor="#383838" />
                         <AlternatingRowStyle BackColor="pink" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
-                        SelectCommand="SELECT [CinderellaID], 
+                </div>
+                <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                    SelectCommand="SELECT [CinderellaID], 
                                             [LastName], 
                                             [FirstName]
                                     FROM [Cinderella] 
                                     INNER JOIN CinderellaStatusRecord 
                                         ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
-                                    INNER JOIN Package
-                                        ON Cinderella.CinderellaID = Package.Cinderella_ID
                                     WHERE Status_Name = 'Shopping' 
                                             AND IsCurrent = 'Y' 
-                                            AND CinderellaID NOT IN (SELECT CinderellaID
+                                            AND CinderellaID NOT IN (SELECT Cinderella_ID
                                                                         FROM Package)
-                                    ORDER BY [LastName]">
-                    </asp:SqlDataSource>
-                </td>
-                <td>
+                                    ORDER BY [LastName]"></asp:SqlDataSource>
+
+            </td>
+            <td>
+                <div style="height: 400px; overflow: auto;">
                     <asp:GridView ID="PackagesGridView" runat="server"
                         AllowSorting="True"
                         AutoGenerateColumns="False"
-                        DataSourceID="DressDataSource" 
+                        DataSourceID="DressDataSource"
                         DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="PackagesGridView_SelectedIndexChanged">
                         <Columns>
 
@@ -73,8 +75,9 @@
                         <SortedDescendingHeaderStyle BackColor="#383838" />
                         <AlternatingRowStyle BackColor="pink" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="DressDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
-                       SelectCommand="SELECT [CinderellaID], 
+                </div>
+                <asp:SqlDataSource ID="DressDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                    SelectCommand="SELECT [CinderellaID], 
                                             [LastName], 
                                             [FirstName],
                                             [DressSize],
@@ -84,16 +87,14 @@
                                     INNER JOIN Package 
                                         ON Cinderella.CinderellaID = Package.Cinderella_ID 
                                     WHERE InAlterations = 'Y' AND InPackaging = 'N'
-                                    ORDER BY [LastName]">
-                    </asp:SqlDataSource>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div id="FullPackageTable" style="width: 100%; float: left; overflow-x:hidden;">
-        <table id="FullPackage" border="1">
-            <tr>
-                <td>
+                                    ORDER BY [LastName]"></asp:SqlDataSource>
+
+            </td>
+        </tr>
+    </table>
+        <table id="FullPackage">
+            <tr id="middleRowForCreatePackage">
+                <td id="firstHalf">
                     <table>
                         <tr>
                             <th colspan="3">Dress</th>
@@ -190,7 +191,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td id="secondHalf">
                     <table>
                         <tr>
                             <th colspan="2">Shoes</th>
@@ -234,16 +235,18 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="NotesTextBox" runat="server" Height="218px" TextMode="MultiLine" Width="500px"></asp:TextBox></td>
+                                <asp:TextBox ID="NotesTextBox" runat="server" Height="92px" TextMode="MultiLine" Width="382px"></asp:TextBox></td>
                         </tr>
                     </table>
                 </td>
             </tr>
+            <tr>
+                <td colspan="2"><asp:Button ID="CheckoutButton" runat="server" Text="Check Package in to Packaging" OnClick="CheckoutButton_Click" Enabled="False" /></td>
+            </tr>
         </table>
-    </div>
 
     <p>
-        <asp:Button ID="CheckoutButton" runat="server" Text="Check Package in to Packaging" OnClick="CheckoutButton_Click" Enabled="False" />
+        
     </p>
 
 </asp:Content>

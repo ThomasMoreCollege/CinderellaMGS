@@ -9,21 +9,24 @@
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeaderTitle" Runat="Server">
+    <h2>Edit Cinderella</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <table id="EditVolunTable">
-        <tr>
-            <th >
+
+    <div style ="height:600px; width:80%; overflow:auto; border-bottom:1px solid #999999;"">
+        <table>
+            <tr>
+                <td>
+
                 <asp:Label ID="SuccessLabel" runat="server" Text="Update Successful!" ForeColor="#009900" style="font-weight: 700" Visible="False"></asp:Label>
-            </th>
-            <th class="auto-style11"></th>
-            <th class="auto-style4">Current Information:</th>
-            <th>New Information:</th>
-        </tr>
-        <tr>
-            <td rowspan="9" class="auto-style5">
-                <div id="" style="overflow-y: scroll; height:400px;">
-                <asp:GridView ID="CinderellaGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="CinderellaID" DataSourceID="CinderellaDS" Width="100px" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged">
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                <asp:SqlDataSource ID="CinderellaDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT [CinderellaID], [LastName], [FirstName] FROM [Cinderella]"></asp:SqlDataSource>
+                <asp:GridView ID="CinderellaGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="CinderellaID" DataSourceID="CinderellaDS" Width="100px" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black">
                     <Columns>
                         <asp:CommandField ShowSelectButton="True" />
                         <asp:BoundField DataField="CinderellaID" HeaderText="CinderellaID" InsertVisible="False" ReadOnly="True" SortExpression="CinderellaID" />
@@ -40,9 +43,18 @@
                         <SortedDescendingHeaderStyle BackColor="#383838" />
                         <AlternatingRowStyle BackColor="pink" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="CinderellaDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT [CinderellaID], [LastName], [FirstName] FROM [Cinderella]"></asp:SqlDataSource>
-            </div>
-        </td>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table id="EditVolunTable">
+        <tr>
+            <th class="auto-style11"></th>
+            <th class="auto-style4">Current Information:</th>
+            <th>New Information:</th>
+        </tr>
+        <tr>
             <td class="auto-style14">First Name:</td>
             <td class="auto-style16">
                 <asp:Label ID="FirstNameLabel" runat="server" Text="--"></asp:Label>
@@ -111,9 +123,8 @@
         <tr>
             <td class="auto-style9">&nbsp;</td>
             <td class="auto-style11"></td>
-            <td class="auto-style8"></td>
-            <td class="auto-style17">
-                <asp:Button ID="EditCinderellaFormButton" runat="server" Enabled="False" Text="Save Changes" OnClick="EditCinderellaFormButton_Click1" />
+            <td class="auto-style8">
+                <asp:Button ID="EditCinderellaFormButton" runat="server" Enabled="False" OnClick="EditCinderellaFormButton_Click1" Text="Save Changes" />
                 <br />
                 <br />
                 <asp:Button ID="CancelButton" runat="server" Enabled="False" OnClick="CancelButton_Click" Text="Cancel" />

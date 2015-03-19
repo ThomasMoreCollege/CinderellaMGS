@@ -22,41 +22,38 @@
                             <asp:Parameter DefaultValue="Y" Name="IsValid" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-                    <asp:GridView ID="VolunteerGridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataSourceID="VolunteersToBeEdittedSqlDataSource" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="VolunteerGridView_SelectedIndexChanged" DataKeyNames="VolunteerID">
-                        
-                        <Columns>
-                            <asp:CommandField ShowSelectButton="True" />
-                            <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" InsertVisible="False" ReadOnly="True" SortExpression="VolunteerID" />
-                            <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
-                            <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
-                        </Columns>
-                        <FooterStyle BackColor="#CCCCCC" />
-                        <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                        <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#808080" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#383838" />
-                        <AlternatingRowStyle BackColor="pink" />
-                    </asp:GridView>
+                    <div style ="height:400px; width:100%; overflow:auto; border-bottom:1px solid #999999;">
+                        <asp:GridView ID="VolunteerGridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataSourceID="VolunteersToBeEdittedSqlDataSource" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="VolunteerGridView_SelectedIndexChanged" DataKeyNames="VolunteerID">
 
+                            <Columns>
+                                <asp:CommandField ShowSelectButton="True" />
+                                <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" InsertVisible="False" ReadOnly="True" SortExpression="VolunteerID" />
+                                <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                                <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                            </Columns>
+                            <FooterStyle BackColor="#CCCCCC" />
+                            <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#808080" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#383838" />
+                            <AlternatingRowStyle BackColor="pink" />
+                        </asp:GridView>
+                    </div>
                 </td>
             </tr>
         </table>
     </div>       
+    <div>
         <table id="EditVolunTable">
             <tr>
-                <th >
-                    
-                    &nbsp;</th>
                 <th class="auto-style11"></th>
                 <th class="auto-style4">Current Information:</th>
                 <th>New Information:</th>
             </tr>
             <tr>
-                <td rowspan="16" class="auto-style5">
-                    &nbsp;</td>
                 <td class="auto-style14">First Name:</td>
                 <td class="auto-style16">
                     <asp:Label ID="FirstNameLabel" runat="server" Text="--"></asp:Label>
@@ -177,14 +174,15 @@
             <tr>
                 <td class="auto-style9">&nbsp;</td>
                 <td class="auto-style11"></td>
-                <td class="auto-style8"></td>
-                <td class="auto-style17">
-                    <asp:Button ID="EditVolunterFormButton" runat="server" Text="Save Changes" Enabled="False" style="text-align: center" OnClick="EditVolunterFormButton_Click" />
-                    &nbsp;&nbsp;<br /> <br />
+                <td class="auto-style8">
+                    <asp:Button ID="EditVolunterFormButton" runat="server" Enabled="False" OnClick="EditVolunterFormButton_Click" Style="text-align: center" Text="Save Changes" />
+                    &nbsp;&nbsp;<br />
+                    <br />
                     <asp:Button ID="CancelButton" runat="server" CausesValidation="False" Enabled="False" OnClick="CancelButton_Click" Text="Cancel" />
                 </td>
             </tr>
         </table>
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="head">
