@@ -17,6 +17,30 @@
             <tr>
                 <td>
 
+                    <asp:SqlDataSource ID="VolunteersToBeEdittedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [VolunteerID], [LastName], [FirstName] FROM [Volunteer] WHERE ([IsValid] = @IsValid)">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="Y" Name="IsValid" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:GridView ID="VolunteerGridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataSourceID="VolunteersToBeEdittedSqlDataSource" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="VolunteerGridView_SelectedIndexChanged" DataKeyNames="VolunteerID">
+                        
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="True" />
+                            <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" InsertVisible="False" ReadOnly="True" SortExpression="VolunteerID" />
+                            <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                            <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                        </Columns>
+                        <FooterStyle BackColor="#CCCCCC" />
+                        <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                        <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#808080" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#383838" />
+                        <AlternatingRowStyle BackColor="pink" />
+                    </asp:GridView>
+
                 </td>
             </tr>
         </table>
@@ -32,12 +56,7 @@
             </tr>
             <tr>
                 <td rowspan="16" class="auto-style5">
-                    <asp:SqlDataSource ID="VolunteersToBeEdittedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [VolunteerID], [LastName], [FirstName] FROM [Volunteer] WHERE ([IsValid] = @IsValid)">
-                        <SelectParameters>
-                            <asp:Parameter DefaultValue="Y" Name="IsValid" Type="String" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style14">First Name:</td>
                 <td class="auto-style16">
                     <asp:Label ID="FirstNameLabel" runat="server" Text="--"></asp:Label>
