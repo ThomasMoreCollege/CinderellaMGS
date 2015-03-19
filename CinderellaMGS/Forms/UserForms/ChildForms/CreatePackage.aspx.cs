@@ -207,8 +207,8 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
         CinderellaGridView.SelectedIndex = -1;
 
         // Entering Dress information into the drops downs 
-        DressSizeDropDown.SelectedValue = PackagesGridView.SelectedRow.Cells[4].Text.ToString();
-        DressLengthDropDown.SelectedValue = PackagesGridView.SelectedRow.Cells[3].Text.ToString();
+        DressSizeDropDown.SelectedValue = PackagesGridView.SelectedRow.Cells[3].Text.ToString();
+        DressLengthDropDown.SelectedValue = PackagesGridView.SelectedRow.Cells[4].Text.ToString();
         DressColorDropDown.SelectedValue = PackagesGridView.SelectedRow.Cells[5].Text.ToString();
     }
 }

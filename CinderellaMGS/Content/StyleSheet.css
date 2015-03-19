@@ -369,7 +369,9 @@ figure{
 }
 
 #middleRow {
- border-top: 1px solid #999999;
+ border-top: 1px solid
+
+9999;
  border-bottom: 1px solid #999999;
 }
 
@@ -434,6 +436,7 @@ figure{
 #FullPackage{
     float:left;
     border-collapse: collapse;
+    height: 816px;
 }
 
 #AppMngTable2 {
@@ -508,6 +511,9 @@ figure{
 }
 
 textarea{
+ 
+
+textarea{
     resize:none;
     mar
 
@@ -522,7 +528,7 @@ ight;
     zoom: 1;
     *display: inline; 
 }
-#RolesCheckBoxList label {
+st label {
     float: left;
 }
 
