@@ -34,34 +34,14 @@ FROM Cinderella
 WHERE (Cinderella.Volunteer_ID IS NOT NULL) AND (CinderellaStatusRecord.Status_Name = 'Paired') AND (CinderellaStatusRecord.IsCurrent = 'Y')
 ORDER BY CinderellaStatusRecord.StartTime DESC"></asp:SqlDataSource>
             </tr>
-            <%--<tr>
-                <td>
-                    Number of cinderellas in queue:
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-
-                </td>
-                <td> 
-                    Cinderella In front: <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Number of volunteers in queue:
-                    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
-
-                </td>
-                <td> 
-                    Volunteer In front: <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
-                </td>
-            </tr>--%>
         </table>
 </asp:Content>
 
-<asp:Content ID="Content4" runat="server" contentplaceholderid="head">
+<%--<asp:Content ID="Content4" runat="server" contentplaceholderid="head">
     <style type="text/css">
         #form1 {
             height: 480px;
         }
 
     </style>
-</asp:Content>
+</asp:Content>--%>

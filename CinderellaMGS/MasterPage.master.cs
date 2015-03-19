@@ -85,7 +85,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
         string currentPage = HttpContext.Current.Request.Url.AbsolutePath.ToString();
         if (currentPage == "/CinderellaMGS/Forms/DefaultForms/Login.aspx")
         {
-            
 
             MenuNav.Visible = false;
             LoginNav.Visible = false;
@@ -99,14 +98,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
         string currentPage = HttpContext.Current.Request.Url.AbsolutePath.ToString();
         if (currentPage == "/CinderellaMGS/Forms/UserForms/AutomatedPairing.aspx")
         {
-
-
             MenuNav.Visible = false;
             LoginNav.Visible = true;
             SideNav.Visible = false;
-            
 
             content.Style.Add("margin-left", "0px");
+            
         }
     }
 
@@ -150,6 +147,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 RevealAutonmatedPairingOnly(true);
                 LogOffLinkButton.Visible = true;
                 LoginHyperLink.Visible = false;
+
+
             }
             //else
             //{

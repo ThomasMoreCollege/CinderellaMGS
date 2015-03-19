@@ -58,7 +58,16 @@ public partial class Login : System.Web.UI.Page
             LoginErrorLabel.Visible = false;
             Session.Add("CurrentUser", UsernameTextBox.Text);
             Session.Add("CurrentAccType", acctType);
-            Response.Redirect("HomePage.aspx");
+
+            if (Session["CurrentAccType"].ToString() == "Pairing")
+            {
+                Response.Redirect("~/Forms/UserForms/AutomatedPairing.aspx");
+            }
+            else
+            {
+                Response.Redirect("HomePage.aspx");
+            }
+            
         }
 
         //REMEMBER TO CLOSE CONNECTION!!

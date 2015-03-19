@@ -3,38 +3,35 @@
 <asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitle" Runat="Server">
     <h2>Edit Volunteer</h2>
 </asp:Content>
-<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">        
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server"> 
+    
+    <div>
+        <table>
+            <tr>
+                <td>
+
+                    <asp:Label ID="SuccessLabel" runat="server" Text="Update Successful!" ForeColor="#009900" style="font-weight: 700" Visible="False"></asp:Label>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+        </table>
+    </div>       
         <table id="EditVolunTable">
             <tr>
                 <th >
                     
-                    <asp:Label ID="SuccessLabel" runat="server" Text="Update Successful!" ForeColor="#009900" style="font-weight: 700" Visible="False"></asp:Label>
-                    
-                </th>
+                    &nbsp;</th>
                 <th class="auto-style11"></th>
                 <th class="auto-style4">Current Information:</th>
                 <th>New Information:</th>
             </tr>
             <tr>
                 <td rowspan="16" class="auto-style5">
-                    <asp:GridView ID="VolunteerGridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataSourceID="VolunteersToBeEdittedSqlDataSource" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="VolunteerGridView_SelectedIndexChanged" DataKeyNames="VolunteerID">
-                        
-                        <Columns>
-                            <asp:CommandField ShowSelectButton="True" />
-                            <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" InsertVisible="False" ReadOnly="True" SortExpression="VolunteerID" />
-                            <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
-                            <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
-                        </Columns>
-                        <FooterStyle BackColor="#CCCCCC" />
-                        <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                        <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#808080" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#383838" />
-                        <AlternatingRowStyle BackColor="pink" />
-                    </asp:GridView>
                     <asp:SqlDataSource ID="VolunteersToBeEdittedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [VolunteerID], [LastName], [FirstName] FROM [Volunteer] WHERE ([IsValid] = @IsValid)">
                         <SelectParameters>
                             <asp:Parameter DefaultValue="Y" Name="IsValid" Type="String" />
