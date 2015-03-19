@@ -25,14 +25,16 @@
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                     <AlternatingRowStyle BackColor="pink" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="AutomattedPairingSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT Cinderella.FirstName + ' ' + Cinderella.LastName AS Cinderella, 'Is Paired With', Volunteer.FirstName + ' ' + Volunteer.LastName AS Volunteer
-FROM Cinderella 
- INNER JOIN Volunteer 
-	ON Cinderella.Volunteer_ID = Volunteer.VolunteerID 
- INNER JOIN CinderellaStatusRecord 
-	ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
-WHERE (Cinderella.Volunteer_ID IS NOT NULL) AND (CinderellaStatusRecord.Status_Name = 'Paired') AND (CinderellaStatusRecord.IsCurrent = 'Y')
-ORDER BY CinderellaStatusRecord.StartTime DESC"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="AutomattedPairingSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
+                    SelectCommand="SELECT Cinderella.FirstName + ' ' + Cinderella.LastName AS Cinderella, 'Is Paired With', Volunteer.FirstName + ' ' + Volunteer.LastName AS Volunteer
+                                    FROM Cinderella 
+                                     INNER JOIN Volunteer 
+	                                    ON Cinderella.Volunteer_ID = Volunteer.VolunteerID 
+                                     INNER JOIN CinderellaStatusRecord 
+	                                    ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
+                                    WHERE (Cinderella.Volunteer_ID IS NOT NULL) AND (CinderellaStatusRecord.Status_Name = 'Paired') AND (CinderellaStatusRecord.IsCurrent = 'Y')
+                                    ORDER BY CinderellaStatusRecord.StartTime DESC">
+                </asp:SqlDataSource>
             </tr>
         </table>
 </asp:Content>

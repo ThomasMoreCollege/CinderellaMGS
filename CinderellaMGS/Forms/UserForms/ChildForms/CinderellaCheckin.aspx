@@ -51,7 +51,8 @@
                                 INNER JOIN CinderellaStatusRecord 
                                     ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
                                 WHERE Status_Name = 'Pending' AND IsCurrent = 'Y'
-                                ORDER BY [AppointmentDateTime]"></asp:SqlDataSource>
+                                ORDER BY [AppointmentDateTime]">
+            </asp:SqlDataSource>
         </div>
 
 </asp:Content>
