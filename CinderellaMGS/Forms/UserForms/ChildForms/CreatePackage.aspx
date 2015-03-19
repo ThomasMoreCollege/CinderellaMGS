@@ -104,7 +104,9 @@
                                 <asp:Label ID="Label1" runat="server" Text="Dress Size:"></asp:Label>
                                 &nbsp;</td>
                             <td>
-                                <asp:DropDownList ID="DressSizeDropDown" runat="server" DataSourceID="DressSizeDataSource" DataTextField="dressSize" DataValueField="dressSize">
+                                <asp:DropDownList ID="DressSizeDropDown" runat="server" AppendDataBoundItems="true"
+                                    DataSourceID="DressSizeDataSource" DataTextField="dressSize" DataValueField="dressSize">
+                                    <asp:ListItem Text="--SELECT--" Value="1">--SELECT--</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="DressSizeDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [dressSize] FROM [DressSize]"></asp:SqlDataSource>
                             </td>
@@ -112,14 +114,17 @@
                         <tr>
                             <td></td>
                             <td>
-                                <asp:RequiredFieldValidator ID="DressSizeValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="DressSizeDropDown" ForeColor="Red" Display="Dynamic">*Please select a dress size</asp:RequiredFieldValidator></td>
+                                <asp:Label ID="DressSizeErrorLabel" runat="server" ForeColor="Red" Text="Please select a dress size" Visible="False"></asp:Label>
+                            </td>
                         </tr>
                         <tr>
                             <td>
                                 <asp:Label ID="Label2" runat="server" Text="Dress Length:"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList ID="DressLengthDropDown" runat="server" DataSourceID="DressLength" DataTextField="dressLength" DataValueField="dressLength">
+                                <asp:DropDownList ID="DressLengthDropDown" runat="server" AppendDataBoundItems="true"
+                                    DataSourceID="DressLength" DataTextField="dressLength" DataValueField="dressLength">
+                                    <asp:ListItem Text="--SELECT--" Value="1">--SELECT--</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="DressLength" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [dressLength] FROM [DressLength]"></asp:SqlDataSource>
                             </td>
@@ -127,14 +132,17 @@
                         <tr>
                             <td></td>
                             <td>
-                                <asp:RequiredFieldValidator ID="DressLengthValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="DressLengthDropDown" ForeColor="Red" Display="Dynamic">*Please select a dress length</asp:RequiredFieldValidator></td>
+                                <asp:Label ID="DressLengthErrorLabel" runat="server" ForeColor="Red" Text="Please select a dress length" Visible="False"></asp:Label>
+                            </td>
                         </tr>
                         <tr>
                             <td>
                                 <asp:Label ID="Label3" runat="server" Text="Dress Color:"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList ID="DressColorDropDown" runat="server" DataSourceID="DressColorDataSource" DataTextField="dressColor" DataValueField="dressColor">
+                                <asp:DropDownList ID="DressColorDropDown" runat="server" AppendDataBoundItems="true"
+                                    DataSourceID="DressColorDataSource" DataTextField="dressColor" DataValueField="dressColor">
+                                    <asp:ListItem Text="--SELECT--" Value="1">--SELECT--</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="DressColorDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [dressColor] FROM [DressColor]"></asp:SqlDataSource>
                             </td>
@@ -142,7 +150,8 @@
                         <tr>
                             <td></td>
                             <td>
-                                <asp:RequiredFieldValidator ID="DressColorValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="DressColorDropDown" ForeColor="Red" Display="Dynamic">*Please select a dress color</asp:RequiredFieldValidator></td>
+                                <asp:Label ID="DressColorErrorLabel" runat="server" ForeColor="Red" Text="Please select a dress color" Visible="False"></asp:Label>
+                            </td>
                         </tr>
                                 </table>
                 </td>
@@ -201,7 +210,9 @@
                                 <asp:Label ID="Label4" runat="server" Text="Shoe Size:"></asp:Label>
                                 &nbsp;</td>
                             <td>
-                                <asp:DropDownList ID="ShoeSizeDropDown" runat="server" DataSourceID="ShoeSizeDataSource" DataTextField="shoeSize" DataValueField="shoeSize">
+                                <asp:DropDownList ID="ShoeSizeDropDown" runat="server" AppendDataBoundItems="true"
+                                    DataSourceID="ShoeSizeDataSource" DataTextField="shoeSize" DataValueField="shoeSize">
+                                    <asp:ListItem Text="--SELECT--" Value="1">--SELECT--</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="ShoeSizeDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [shoeSize] FROM [ShoeSize]"></asp:SqlDataSource>
                             </td>
@@ -209,14 +220,17 @@
                         <tr>
                             <td></td>
                             <td>
-                                <asp:RequiredFieldValidator ID="ShoeSizeValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="ShoeSizeDropDown" ForeColor="Red" Display="Dynamic">*Please select a shoe size</asp:RequiredFieldValidator></td>
+                                <asp:Label ID="ShoeSizeErrorLabel" runat="server" ForeColor="Red" Text="Please select a shoe size" Visible="False"></asp:Label>
+                            </td>
                         </tr>
                         <tr>
                             <td>
                                 <asp:Label ID="Label5" runat="server" Text="Shoe Color:"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList ID="ShoeColorDropDown" runat="server" DataSourceID="ShoeColorDataSource" DataTextField="shoeColor" DataValueField="shoeColor">
+                                <asp:DropDownList ID="ShoeColorDropDown" runat="server" AppendDataBoundItems="true"
+                                    DataSourceID="ShoeColorDataSource" DataTextField="shoeColor" DataValueField="shoeColor">
+                                    <asp:ListItem Text="--SELECT--" Value="1">--SELECT--</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="ShoeColorDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [shoeColor] FROM [ShoeColor]"></asp:SqlDataSource>
                             </td>
@@ -224,7 +238,8 @@
                         <tr>
                             <td></td>
                             <td>
-                                <asp:RequiredFieldValidator ID="ShoeColorValidator" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="ShoeColorDropDown" ForeColor="Red" Display="Dynamic">*Please select a shoe color</asp:RequiredFieldValidator></td>
+                                <asp:Label ID="ShoeColorErrorLabel" runat="server" ForeColor="Red" Text="Please select a shoe color" Visible="False"></asp:Label>
+                            </td>
                         </tr>
                     </table>
                 </td>
