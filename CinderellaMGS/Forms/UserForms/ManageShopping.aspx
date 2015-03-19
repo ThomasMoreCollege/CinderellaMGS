@@ -13,7 +13,7 @@
                 <td><strong>Currently Shopping</strong></td>
             </tr>
             <tr>
-                <td rowspan="2" class="auto-style2">
+                <td rowspan="3" class="auto-style2">
                     <div style="height: 300px;" >
                         <asp:GridView ID="PairedCinderellaGridView" runat="server" 
                             AllowSorting="True" 
@@ -55,7 +55,7 @@
                 <td class="auto-style1">
                     <asp:Button ID="GoShoppingButton" runat="server" Text="Go Shopping" OnClick="GoShoppingButton_Click" />
                 </td>
-                <td rowspan="2" class="auto-style2">
+                <td rowspan="3" class="auto-style2">
                     <div style="height: 300px;">
                         <asp:GridView ID="ShoppingGridView" runat="server" 
                             AllowSorting="True" 
@@ -96,9 +96,13 @@
                 </td>
             </tr>
             <tr>
-
                 <td class="auto-style1">
                     <asp:Button ID="UndoShoppingButton" runat="server" Text="Undo Shoppping" OnClick="UndoShoppingButton_Click" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">
+                    <asp:Button ID="BreakPairingButton" runat="server" Text="Break Pairing" OnClick="BreakPairingButton_Click" />
                 </td>
             </tr>
             <tr>

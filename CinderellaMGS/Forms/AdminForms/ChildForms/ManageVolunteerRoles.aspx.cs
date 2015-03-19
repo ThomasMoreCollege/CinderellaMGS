@@ -45,6 +45,40 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
         SqlCommand comm1 = new SqlCommand(sql, conn);
         comm1.ExecuteNonQuery();
 
+        if (roleDropDownList.SelectedItem.Text == "Godmother")
+        {
+            try
+            {
+                //Retrieve ID of selected volunteer
+                int volID = Convert.ToInt32(getVolunteerID);
+
+                //Create object instance with selected volunteer
+                VolunteerClass checkinVolunteer = new VolunteerClass(volID);
+
+                //Lock application state so that no else can access it 
+                Application.Lock();
+
+                //Initialize a local copy of volunteer queue
+                VolunteerQueue.VolunteerQueue volunteerQueueCopy = new VolunteerQueue.VolunteerQueue();
+
+                //Copy queue in the application session into the local copy
+                volunteerQueueCopy = Application["volunteerQueue"] as VolunteerQueue.VolunteerQueue;
+
+                //Insert volunter to the queue
+                volunteerQueueCopy.enqueueToFront(checkinVolunteer);
+
+                //Copy changes into application queue
+                Application["volunteerQueue"] = volunteerQueueCopy;
+
+                //Unlock Application session
+                Application.UnLock();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         conn.Close();
         roleDropDownList.DataBind();
         VolunteerGridView.DataBind();
