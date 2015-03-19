@@ -61,7 +61,7 @@
                             AllowSorting="True" 
                             AutoGenerateColumns="False" 
                             DataSourceID="CinderellaShoppingDataSource" 
-                            DataKeyNames="CinderellaID" Width="100%" Height="100px">
+                            DataKeyNames="CinderellaID" Width="100%" Height="100px" OnSelectedIndexChanged="ShoppingGridView_SelectedIndexChanged">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="Cinderella" HeaderText="Cinderella" ReadOnly="True" SortExpression="Cinderella" />
@@ -98,7 +98,7 @@
             <tr>
 
                 <td class="auto-style1">
-                    <asp:Button ID="UndoShoppingButton" runat="server" Text="Undo Shoppping" />
+                    <asp:Button ID="UndoShoppingButton" runat="server" Text="Undo Shoppping" OnClick="UndoShoppingButton_Click" />
                 </td>
             </tr>
             <tr>
