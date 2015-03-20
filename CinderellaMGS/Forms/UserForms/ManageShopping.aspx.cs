@@ -207,6 +207,9 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
         string selectedCinderellaID = ManualCinderellaGridView.SelectedValue.ToString();
         string selectedVolunteerID = VolunteerPairingGridView.SelectedValue.ToString();
 
+        // Variable to hold current time
+        DateTime now = DateTime.Now;
+
         //Write query to retrieve current CinderellaStatus
         string retrieveCinderellaCurrentStatusQuery = "SELECT Status_Name "
                                     + "FROM CinderellaStatusRecord "
@@ -226,8 +229,131 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
         string currentCinderellaStatus = retrieveCinderellaCurrentStatus.ExecuteScalar().ToString();
         string currentVolunteerStatus = retrieveVolunteerCurrentStatus.ExecuteScalar().ToString();
 
-        if (currentCinderellaStatus == "Waiting for Godmother" && currentVolunteerStatus == "Ready")
+        // Checking if the Cinderella is already paired to a volunteer
+        if (currentCinderellaStatus == "Paired")
         {
+            // SQL string to get Volunteer paired to selected Cinderella
+            string sql = "SELECT Volunteer_ID "
+                            + "FROM Cinderella "
+                            + "WHERE CinderellaID = '" + selectedCinderellaID + "'";
+            // Execute Query
+            SqlCommand comm1 = new SqlCommand(sql, conn);
+            string pairedVolunteer = comm1.ExecuteScalar().ToString();
+
+            // SQL string to UPDATE the paired Volunteer's status
+            sql = "UPDATE VolunteerStatusRecord "
+                            + "SET EndTime = '" + now + "', IsCurrent = 'N'"
+                            + "WHERE Volunteer_ID = '" + pairedVolunteer + "' AND IsCurrent = 'Y'";
+            // Execute query string into a SQL command
+            SqlCommand comm2 = new SqlCommand(sql, conn);
+            comm2.ExecuteNonQuery();
+
+            // SQL string to INSERT a new Ready status for volunteer
+            sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
+                    + "VALUES ('" + pairedVolunteer + "', '" + now + "', 'Ready', 'Y')";
+            SqlCommand comm3 = new SqlCommand(sql, conn);
+            comm3.ExecuteNonQuery();
+
+            // re-adding the pairedVolunteer to the queue at front
+            try
+            {
+                //Retrieve ID of selected volunteer
+                int volID = Convert.ToInt32(pairedVolunteer);
+
+                //Create object instance with selected volunteer
+                VolunteerClass oldVolunteer = new VolunteerClass(volID);
+
+                //Lock application state so that no else can access it 
+                Application.Lock();
+
+                //Initialize a local copy of volunteer queue
+                VolunteerQueue.VolunteerQueue volunteerQueueCopy = new VolunteerQueue.VolunteerQueue();
+
+                //Copy queue in the application session into the local copy
+                volunteerQueueCopy = Application["volunteerQueue"] as VolunteerQueue.VolunteerQueue;
+
+                //Insert volunter to the queue
+                volunteerQueueCopy.enqueueToFront(oldVolunteer);
+
+                //Copy changes into application queue
+                Application["volunteerQueue"] = volunteerQueueCopy;
+
+                //Unlock Application session
+                Application.UnLock();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        // Checking if the Volunteer is already paired to a Cinderella
+        if (currentVolunteerStatus == "Paired")
+        {
+            // SQL string to get Cinderella paired to selected Volunteer
+            string sql = "SELECT CinderellaID "
+                            + "FROM Cinderella "
+                            + "WHERE Volunteer_ID = '" + selectedVolunteerID + "'";
+            // Execute Query
+            SqlCommand comm1 = new SqlCommand(sql, conn);
+            string pairedCinderella = comm1.ExecuteScalar().ToString();
+
+            // SQL string to UPDATE all Cinderellas to 
+            sql = "UPDATE Cinderella "
+                    + "SET Volunteer_ID = NULL "
+                    + "WHERE Volunteer_ID = '" + selectedCinderellaID + "'";
+            // Execute Query
+            SqlCommand comm2 = new SqlCommand(sql, conn);
+            comm2.ExecuteNonQuery();
+
+            // SQL string to UPDATE the paired Cinderella's status
+            sql = "UPDATE CinderellaStatusRecord "
+                            + "SET EndTime = '" + now + "', IsCurrent = 'N'"
+                            + "WHERE Cinderella_ID = '" + pairedCinderella + "' AND IsCurrent = 'Y'";
+            // Execute query string into a SQL command
+            SqlCommand comm3 = new SqlCommand(sql, conn);
+            comm3.ExecuteNonQuery();
+
+            // SQL string to INSERT a new status of Waiting for Godmother for Cinderella
+            sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+                    + "VALUES ('" + pairedCinderella + "', '" + now + "', 'Waiting for Godmother', 'Y')";
+            SqlCommand comm4 = new SqlCommand(sql, conn);
+            comm4.ExecuteNonQuery();
+
+            // Re-adding pairedCinderella to the queue at front
+            try
+            {
+
+                //Retrieve ID of selected volunteer
+                int cinID = Convert.ToInt32(pairedCinderella);
+
+                //Create object instance with selected volunteer
+                CinderellaClass oldCinderella = new CinderellaClass(cinID);
+
+                //Lock application state so that no else can access it 
+                Application.Lock();
+
+                //Initialize a local copy of volunteer queue
+                CinderellaQueue.CinderellaQueue cinderellaAutomatedQueueCopy = new CinderellaQueue.CinderellaQueue();
+
+                //Copy queue in the application session into the local copy
+                cinderellaAutomatedQueueCopy = Application["cinderellaAutomatedQueue"] as CinderellaQueue.CinderellaQueue;
+
+                //Insert volunter to the queue
+                cinderellaAutomatedQueueCopy.enqueueToFront(oldCinderella);
+
+                //Copy changes into application queue
+                Application["cinderellaAutomatedQueue"] = cinderellaAutomatedQueueCopy;
+
+                //Unlock Application session
+                Application.UnLock();
+            }
+            catch
+            {
+
+            }
+        }
+
             //Query to pair cinderella in the database
             string pairCinderellaQuery = "UPDATE Cinderella "
                                     + "SET Volunteer_ID='" + selectedVolunteerID + "' "
@@ -238,9 +364,6 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
 
             // Execute query
             pairCinderella.ExecuteNonQuery();
-
-            //Get current Time
-            DateTime now = DateTime.Now;
 
             /************************
             * Edit Cinderella Info *
@@ -258,7 +381,8 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
             endCurrentCinStatus.ExecuteNonQuery();
 
             //Insert new status record "Paired" for volunteer
-            string addNewCinStatusRecordQuery = "INSERT INTO CinderellaStatusRecord (Cinderella_ID,StartTime,Status_Name,IsCurrent) VALUES ('" + selectedCinderellaID + "', '" + now + "', 'Paired', 'Y')";
+            string addNewCinStatusRecordQuery = "INSERT INTO CinderellaStatusRecord (Cinderella_ID,StartTime,Status_Name,IsCurrent) "
+                                                + "VALUES ('" + selectedCinderellaID + "', '" + now + "', 'Paired', 'Y')";
 
             //Execute query 
             SqlCommand addNewCinStatusRecord = new SqlCommand(addNewCinStatusRecordQuery, conn);
@@ -282,14 +406,14 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
             endCurrentVolStatus.ExecuteNonQuery();
 
             //Insert new status record "Paired" for volunteer
-            string addNewVolStatusRecordQuery = "INSERT INTO VolunteerStatusRecord (Volunteer_ID,StartTime,Status_Name,IsCurrent) VALUES ('" + selectedVolunteerID + "', '" + now + "', 'Paired', 'Y')";
+            string addNewVolStatusRecordQuery = "INSERT INTO VolunteerStatusRecord (Volunteer_ID,StartTime,Status_Name,IsCurrent) "
+                                                + "VALUES ('" + selectedVolunteerID + "', '" + now + "', 'Paired', 'Y')";
 
             //Execute query 
             SqlCommand addNewVolStatusRecord = new SqlCommand(addNewVolStatusRecordQuery, conn);
 
             //Execute Query 
             addNewVolStatusRecord.ExecuteNonQuery();
-        }
 
         //testing.....
         Label1.Text = currentCinderellaStatus;

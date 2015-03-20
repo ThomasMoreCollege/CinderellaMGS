@@ -143,9 +143,8 @@
                                         FROM [Cinderella] 
                                         INNER JOIN CinderellaStatusRecord 
                                             ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
-                                        WHERE Status_Name = 'Waiting for Godmother' 
+                                        WHERE (Status_Name = 'Waiting for Godmother' OR Status_Name = 'Paired') 
                                             AND IsCurrent = 'Y'
-                                            AND IsManuallyPaired = 'Y'
                                         ORDER BY [StartTime]"></asp:SqlDataSource>
             </td>
             <td class="auto-style1">

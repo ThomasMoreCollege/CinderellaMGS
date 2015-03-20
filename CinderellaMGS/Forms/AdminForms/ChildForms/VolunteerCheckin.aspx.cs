@@ -96,7 +96,7 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
                 volunteerQueueCopy = Application["volunteerQueue"] as VolunteerQueue.VolunteerQueue;
 
                 //Insert volunter to the queue
-                volunteerQueueCopy.enqueueToFront(checkinVolunteer);
+                volunteerQueueCopy.enqueue(checkinVolunteer);
 
                 //Copy changes into application queue
                 Application["volunteerQueue"] = volunteerQueueCopy;
