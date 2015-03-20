@@ -258,11 +258,15 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
             SqlCommand comm2 = new SqlCommand(sql, conn);
             comm2.ExecuteNonQuery();
 
-            // SQL string to INSERT a new Ready status for volunteer
-            sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
-                    + "VALUES ('" + pairedVolunteer + "', '" + now + "', 'Ready', 'Y')";
-            SqlCommand comm3 = new SqlCommand(sql, conn);
-            comm3.ExecuteNonQuery();
+            // Guaranteeing that the INSERTED 'Ready' status will not interefere with the later INSERTED 'Paired' status
+            if (pairedVolunteer != selectedVolunteerID.ToString())
+            {
+                // SQL string to INSERT a new Ready status for volunteer
+                sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
+                        + "VALUES ('" + pairedVolunteer + "', '" + now + "', 'Ready', 'Y')";
+                SqlCommand comm3 = new SqlCommand(sql, conn);
+                comm3.ExecuteNonQuery();
+            }
 
             // re-adding the pairedVolunteer to the queue at front
             try
