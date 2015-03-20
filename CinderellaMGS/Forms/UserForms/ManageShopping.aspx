@@ -113,7 +113,7 @@
         </tr>
         <tr>
             <td rowspan="2" class="auto-style2">
-                <div style="overflow: auto">
+                <div style="overflow: auto; height: 300px;">
                     <asp:GridView ID="ManualCinderellaGridView" runat="server"
                         AllowSorting="True"
                         AutoGenerateColumns="False"
@@ -145,13 +145,14 @@
                                             ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
                                         WHERE (Status_Name = 'Waiting for Godmother' OR Status_Name = 'Paired') 
                                             AND IsCurrent = 'Y'
-                                        ORDER BY [StartTime]"></asp:SqlDataSource>
+                                        ORDER BY [StartTime]">
+                </asp:SqlDataSource>
             </td>
             <td class="auto-style1">
                 <asp:Button ID="ManualPairButton" runat="server" Enabled="False" OnClick="ManualPairButton_Click" Text="Pair" Font-Size="X-Large" Height="63px" Width="93px" />
             </td>
             <td rowspan="2">
-                <div style="overflow: auto">
+                <div style="overflow: auto; height: 300px;">
                     <asp:GridView ID="VolunteerPairingGridView" runat="server"
                         AllowSorting="True"
                         AutoGenerateColumns="False"
@@ -188,7 +189,8 @@
                                             AND Role_Name = 'Godmother'
                                             AND VolunteerRoleRecord.IsCurrent = 'Y'
                                             AND IsValid = 'Y'
-                                        ORDER BY VolunteerStatusRecord.StartTime"></asp:SqlDataSource>
+                                        ORDER BY VolunteerStatusRecord.StartTime">
+                </asp:SqlDataSource>
             </td>
         </tr>
         <tr>
