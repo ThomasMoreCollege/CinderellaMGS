@@ -52,11 +52,19 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                     comm.ExecuteNonQuery();
                 }
 
+                // SQL string to select the Cinderella's paired status
+                string sql = "SELECT isManuallyPaired "
+                                + "FROM Cinderella "
+                                + "WHERE CinderellaID = '" + SelectedCinderellaID + "'";
+                // Execute query
+                SqlCommand getPairingStatus = new SqlCommand(sql, conn);
+                string CinderellaPairStatus = getPairingStatus.ExecuteScalar().ToString();
+
 
 
 
                 // SQL string to UPDATE Pending status 
-                string sql = "UPDATE CinderellaStatusRecord "
+                sql = "UPDATE CinderellaStatusRecord "
                             + "SET EndTime = '" + now + "', IsCurrent = 'N' "
                             + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
 
@@ -102,7 +110,7 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                 Application.Lock();
 
                 // If manually paired skip insert into QUEUE
-                if (needsManualPairingCheckBox.Checked == true)
+                if (CinderellaPairStatus == "Y")
                 {
                   
                 }
