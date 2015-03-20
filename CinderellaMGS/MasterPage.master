@@ -27,7 +27,7 @@
 
                 <asp:HyperLink ID="HomeHyperLink" runat="server" NavigateUrl="~/Forms/DefaultForms/HomePage.aspx">Home</asp:HyperLink>&nbsp &nbsp
             <asp:HyperLink ID="AboutHyperLink" runat="server" NavigateUrl="~/Forms/DefaultForms/About.aspx">About</asp:HyperLink>&nbsp &nbsp
-            <asp:HyperLink ID="ContactHyperLink" runat="server">Contact</asp:HyperLink>
+            <asp:HyperLink ID="ContactHyperLink" runat="server" NavigateUrl="~/Forms/DefaultForms/Contact.aspx">Contact</asp:HyperLink>
             </div>
             <%-- Side Navigation Bar --%>
             <nav runat="server" id="SideNav" accesskey="SideNav" hidden="hidden">
