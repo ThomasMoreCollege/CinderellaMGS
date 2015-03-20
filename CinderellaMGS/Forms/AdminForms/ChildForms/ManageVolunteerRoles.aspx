@@ -27,8 +27,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Label ID="userNotificationLabel" runat="server" Enabled="False" BorderColor="Lime"></asp:Label>
-            </td>
+                &nbsp;</td>
         </tr>
         <tr>
             <td class="auto-style3">
