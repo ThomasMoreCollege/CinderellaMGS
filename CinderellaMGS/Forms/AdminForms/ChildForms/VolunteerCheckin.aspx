@@ -50,7 +50,7 @@
                                     ON Volunteer.VolunteerID = VolunteerShiftRecord.Volunteer_ID 
                                 WHERE (VolunteerStatusRecord.Status_Name = 'Pending') 
                                         AND (VolunteerStatusRecord.IsCurrent = 'Y') 
-                                        AND (VolunteerShiftRecord.Shift_Name = 'Friday') 
+                                        AND (VolunteerShiftRecord.Shift_Name = datename(dw,getdate())) 
                                         AND (Volunteer.IsValid = 'Y') ORDER BY Volunteer.LastName"></asp:SqlDataSource>
         </div>
 

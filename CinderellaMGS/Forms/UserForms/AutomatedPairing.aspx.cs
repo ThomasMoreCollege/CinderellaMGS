@@ -21,6 +21,8 @@ public partial class Forms_UserForms_AutomatedPairing : System.Web.UI.Page
         volunteerQueue = Application["volunteerQueue"] as VolunteerQueue.VolunteerQueue;
         cinderellaQueue = Application["cinderellaAutomatedQueue"] as CinderellaQueue.CinderellaQueue;
 
+        cinderellaQueue.recalibratePriority();
+
         if (!(volunteerQueue.isEmpty()) && !(cinderellaQueue.isEmpty()))
         {
             int volunteerID = volunteerQueue.getValofFrontNode().VolunteerID;
