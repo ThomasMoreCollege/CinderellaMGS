@@ -44,8 +44,9 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                 conn.Open();
 
                 if (needsManualPairingCheckBox.Checked == true){
-                    string updateCinderellaManPairStatus = "UPDATE Cinderella SET isManuallyPaired = 'Y' WHERE CinderellaID = '" + CinderellaGridView.SelectedValue.ToString() + "'";
-
+                    string updateCinderellaManPairStatus = "UPDATE Cinderella "
+                                                            + "SET isManuallyPaired = 'Y' "
+                                                            + "WHERE CinderellaID = '" + CinderellaGridView.SelectedValue.ToString() + "'";
                     // Execute query
                     SqlCommand comm = new SqlCommand(updateCinderellaManPairStatus, conn);
                     comm.ExecuteNonQuery();
@@ -100,24 +101,31 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                 //Lock application state so that no else can access it 
                 Application.Lock();
 
-                //Initialize a local copy of volunteer queue
-                CinderellaQueue.CinderellaQueue cinderellaAutomatedQueueCopy = new CinderellaQueue.CinderellaQueue();
+                // If manually paired skip insert into QUEUE
+                if (needsManualPairingCheckBox.Checked == true)
+                {
+                  
+                }
+                else
+                {
+                    //Initialize a local copy of volunteer queue
+                    CinderellaQueue.CinderellaQueue cinderellaAutomatedQueueCopy = new CinderellaQueue.CinderellaQueue();
 
-                //Copy queue in the application session into the local copy
-                cinderellaAutomatedQueueCopy = Application["cinderellaAutomatedQueue"] as CinderellaQueue.CinderellaQueue;
+                    //Copy queue in the application session into the local copy
+                    cinderellaAutomatedQueueCopy = Application["cinderellaAutomatedQueue"] as CinderellaQueue.CinderellaQueue;
 
-                //Insert volunter to the queue
-                cinderellaAutomatedQueueCopy.priorityEnqueue(checkinCinderella);
+                    //Insert volunter to the queue
+                    cinderellaAutomatedQueueCopy.priorityEnqueue(checkinCinderella);
 
-                //Copy changes into application queue
-                Application["cinderellaAutomatedQueue"] = cinderellaAutomatedQueueCopy;
+                    //Copy changes into application queue
+                    Application["cinderellaAutomatedQueue"] = cinderellaAutomatedQueueCopy;
 
-                //Unlock Application session
-                Application.UnLock();
+                    //Unlock Application session
+                    Application.UnLock();
 
-                SuccessLabel.Text = "Success";
-                SuccessLabel.Visible = true;
-
+                    SuccessLabel.Text = "Success";
+                    SuccessLabel.Visible = true;
+                }
             }
             catch
             {
