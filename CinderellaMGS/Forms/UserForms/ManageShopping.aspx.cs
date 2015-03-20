@@ -105,9 +105,14 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
         GoShoppingButton.Enabled = true;
         BreakPairingButton.Enabled = true;
 
-        //Disablign the undo controls
+        //Disabling the undo controls
         UndoShoppingButton.Enabled = false;
         ShoppingGridView.SelectedIndex = -1;
+
+        // Disabling the manual pair controls
+        ManualCinderellaGridView.SelectedIndex = -1;
+        VolunteerPairingGridView.SelectedIndex = -1;
+        ManualPairButton.Enabled = false;
     }
     protected void ShoppingGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -118,6 +123,11 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
         GoShoppingButton.Enabled = false;
         BreakPairingButton.Enabled = false;
         PairedCinderellaGridView.SelectedIndex = -1;
+
+        // Disabling the manual pair controls
+        ManualCinderellaGridView.SelectedIndex = -1;
+        VolunteerPairingGridView.SelectedIndex = -1;
+        ManualPairButton.Enabled = false;
     }
     protected void UndoShoppingButton_Click(object sender, EventArgs e)
     {
@@ -444,6 +454,15 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
             ManualPairButton.Enabled = false;
         }
 
+        // Disabling the go shopping controls
+        GoShoppingButton.Enabled = false;
+        BreakPairingButton.Enabled = false;
+        PairedCinderellaGridView.SelectedIndex = -1;
+
+        //Disabling the undo controls
+        UndoShoppingButton.Enabled = false;
+        ShoppingGridView.SelectedIndex = -1;
+
     }
     protected void VolunteerPairingGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -456,6 +475,15 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
         {
             ManualPairButton.Enabled = false;
         }
+
+        // Disabling the go shopping controls
+        GoShoppingButton.Enabled = false;
+        BreakPairingButton.Enabled = false;
+        PairedCinderellaGridView.SelectedIndex = -1;
+
+        //Disabling the undo controls
+        UndoShoppingButton.Enabled = false;
+        ShoppingGridView.SelectedIndex = -1;
     }
     protected void ManualCinderellaGridView_DataBound(object sender, EventArgs e)
     {
