@@ -18,6 +18,8 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
 
     protected void CheckInButton_Click(object sender, EventArgs e)
     {
+        
+        
         // Checking to make sure a Cinderella is selected
         if (CinderellaGridView.SelectedRow == null)
         {
@@ -40,6 +42,17 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
 
                 //Open the connection 
                 conn.Open();
+
+                if (needsManualPairingCheckBox.Checked == true){
+                    string updateCinderellaManPairStatus = "UPDATE Cinderella SET isManuallyPaired = 'Y' WHERE CinderellaID = '" + CinderellaGridView.SelectedValue.ToString() + "'";
+
+                    // Execute query
+                    SqlCommand comm = new SqlCommand(updateCinderellaManPairStatus, conn);
+                    comm.ExecuteNonQuery();
+                }
+
+
+
 
                 // SQL string to UPDATE Pending status 
                 string sql = "UPDATE CinderellaStatusRecord "
@@ -70,6 +83,11 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                 // Rebind the data to refresh the Grid
                 CinderellaGridView.DataBind();
                 CinderellaGridView.SelectedIndex = -1;
+
+
+                // Make the NeedsManualPairingCheckBox in accessable.
+                needsManualPairingCheckBox.Checked = false;
+                needsManualPairingCheckBox.Enabled = false;
             
             try{
 
@@ -89,7 +107,7 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                 cinderellaAutomatedQueueCopy = Application["cinderellaAutomatedQueue"] as CinderellaQueue.CinderellaQueue;
 
                 //Insert volunter to the queue
-                cinderellaAutomatedQueueCopy.enqueueToFront(checkinCinderella);
+                cinderellaAutomatedQueueCopy.priorityEnqueue(checkinCinderella);
 
                 //Copy changes into application queue
                 Application["cinderellaAutomatedQueue"] = cinderellaAutomatedQueueCopy;
@@ -112,5 +130,6 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
     protected void CinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
         SuccessLabel.Visible = false;
+        needsManualPairingCheckBox.Enabled = true;
     }
 }

@@ -19,6 +19,8 @@
         </table>
         <p>
             <asp:Button ID="CheckInButton" runat="server" OnClick="CheckInButton_Click" Text="Check-In" Width="70px" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:CheckBox ID="needsManualPairingCheckBox" runat="server" Enabled="False" Text="Cinderella Needs Manual Pairing" />
         </p>
         <div style ="height:600px; width:80%; overflow:auto;">
             <asp:GridView ID="CinderellaGridView" runat="server" 
