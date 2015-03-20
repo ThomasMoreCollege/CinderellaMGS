@@ -328,11 +328,17 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
             SqlCommand comm3 = new SqlCommand(sql, conn);
             comm3.ExecuteNonQuery();
 
-            // SQL string to INSERT a new status of Waiting for Godmother for Cinderella
-            sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
-                    + "VALUES ('" + pairedCinderella + "', '" + now + "', 'Waiting for Godmother', 'Y')";
-            SqlCommand comm4 = new SqlCommand(sql, conn);
-            comm4.ExecuteNonQuery();
+
+            // Guaranteeing that the INSERTED 'Waiting for Godmother' status will not interefere with the later INSERTED 'Paired' status
+            if (pairedCinderella != selectedCinderellaID.ToString())
+            {
+                // SQL string to INSERT a new status of Waiting for Godmother for Cinderella
+                sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+                        + "VALUES ('" + pairedCinderella + "', '" + now + "', 'Waiting for Godmother', 'Y')";
+                SqlCommand comm4 = new SqlCommand(sql, conn);
+                comm4.ExecuteNonQuery();
+            }
+
 
             // Re-adding pairedCinderella to the queue at front
             try
