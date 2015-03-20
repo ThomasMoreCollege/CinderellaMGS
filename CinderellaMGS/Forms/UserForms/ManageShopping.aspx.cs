@@ -20,7 +20,7 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
         // Disabling controls until a gridview is selected
         GoShoppingButton.Enabled = false;
         UndoShoppingButton.Enabled = false;
-        BreakPairingButton.Enabled = false;
+        //BreakPairingButton.Enabled = false;
     }
     protected void GoShoppingButton_Click(object sender, EventArgs e)
     {
@@ -97,13 +97,14 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
 
         GoShoppingButton.Enabled = false;
         UndoShoppingButton.Enabled = false;
-        BreakPairingButton.Enabled = false;
+        //BreakPairingButton.Enabled = false;
     }
     protected void PairedCinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
+        NotificationLabel.Visible = false;
         // Enabling the GoShopping button
         GoShoppingButton.Enabled = true;
-        BreakPairingButton.Enabled = true;
+        //BreakPairingButton.Enabled = true;
 
         //Disabling the undo controls
         UndoShoppingButton.Enabled = false;
@@ -116,12 +117,14 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
     }
     protected void ShoppingGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
+        NotificationLabel.Visible = false;
+
         // Enabling the UndoShopping button
         UndoShoppingButton.Enabled = true;
 
         // Disabling the go shopping controls
         GoShoppingButton.Enabled = false;
-        BreakPairingButton.Enabled = false;
+        //BreakPairingButton.Enabled = false;
         PairedCinderellaGridView.SelectedIndex = -1;
 
         // Disabling the manual pair controls
@@ -200,14 +203,16 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
 
         GoShoppingButton.Enabled = false;
         UndoShoppingButton.Enabled = false;
-        BreakPairingButton.Enabled = false;
+        //BreakPairingButton.Enabled = false;
     }
-    protected void BreakPairingButton_Click(object sender, EventArgs e)
-    {
+    //protected void BreakPairingButton_Click(object sender, EventArgs e)
+    //{
 
-    }
+    //}
     protected void ManualPairButton_Click(object sender, EventArgs e)
     {
+        NotificationLabel.Visible = false;
+
         //Initialize database connection with "DefaultConnection" setup in the web.config
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
@@ -435,10 +440,6 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
             //Execute Query 
             addNewVolStatusRecord.ExecuteNonQuery();
 
-        //testing.....
-        Label1.Text = currentCinderellaStatus;
-        Label2.Text = currentVolunteerStatus;
-
         //Refresh databinding
         ManualCinderellaGridView.DataBind();
         VolunteerPairingGridView.DataBind();
@@ -454,6 +455,8 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
     }
     protected void ManualCinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
+        NotificationLabel.Visible = false;
+
         //Enable pair button only if volunteer and cinderella have been selected
         if (ManualCinderellaGridView.SelectedIndex > -1 && VolunteerPairingGridView.SelectedIndex > -1)
         {
@@ -466,7 +469,7 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
 
         // Disabling the go shopping controls
         GoShoppingButton.Enabled = false;
-        BreakPairingButton.Enabled = false;
+        //BreakPairingButton.Enabled = false;
         PairedCinderellaGridView.SelectedIndex = -1;
 
         //Disabling the undo controls
@@ -476,6 +479,8 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
     }
     protected void VolunteerPairingGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
+        NotificationLabel.Visible = false;
+
         //Enable pair button only if volunteer and cinderella have been selected
         if (ManualCinderellaGridView.SelectedIndex > -1 && VolunteerPairingGridView.SelectedIndex > -1)
         {
@@ -488,7 +493,7 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
 
         // Disabling the go shopping controls
         GoShoppingButton.Enabled = false;
-        BreakPairingButton.Enabled = false;
+        //BreakPairingButton.Enabled = false;
         PairedCinderellaGridView.SelectedIndex = -1;
 
         //Disabling the undo controls
