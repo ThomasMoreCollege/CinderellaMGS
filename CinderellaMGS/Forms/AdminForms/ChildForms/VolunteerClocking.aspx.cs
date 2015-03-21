@@ -90,32 +90,48 @@ public partial class Forms_AdminForms_GodmotherClocking : System.Web.UI.Page
             // Creating a variable to hold the current time
             string now = DateTime.Now.ToString();
 
-            // SQL string to update the Volunteer's current status to not current
-            string sql = "UPDATE VolunteerStatusRecord "
-                            + "SET EndTime = '" + now + "', IsCurrent = 'N' "
-                            + "WHERE Volunteer_ID = '" + SelectedVolunteerID + "' AND IsCurrent = 'Y'";
+            //SQL string to retrieve selected volunteers current status
+            string getCurrentStatusQuery = "SELECT Status_Name "
+                                         + "FROM VolunteerStatusRecord "
+                                         + "WHERE IsCurrent='Y' AND Volunteer_ID='" + SelectedVolunteerID + "'";
 
-            // Execute query
-            SqlCommand comm1 = new SqlCommand(sql, conn);
-            comm1.ExecuteNonQuery();
+            //Turn query string into SQL command
+            SqlCommand getCurrentStatus = new SqlCommand(getCurrentStatusQuery, conn);
 
-            // SQL string to insert new current status of On Break
-            sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
-                    + "VALUES ('" + SelectedVolunteerID + "', '" + now + "', 'On Break', 'Y')";
+            //Retrieve results from query and store in a varaible 
+            string currentVolunteerStatus = getCurrentStatus.ExecuteScalar().ToString();
+            
+            if (currentVolunteerStatus == "Paired")
+            {
 
-            // Execute query
-            SqlCommand comm2 = new SqlCommand(sql, conn);
-            comm2.ExecuteNonQuery();
+            }
+
+            //// SQL string to update the Volunteer's current status to not current
+            //string sql = "UPDATE VolunteerStatusRecord "
+            //                + "SET EndTime = '" + now + "', IsCurrent = 'N' "
+            //                + "WHERE Volunteer_ID = '" + SelectedVolunteerID + "' AND IsCurrent = 'Y'";
+
+            //// Execute query
+            //SqlCommand comm1 = new SqlCommand(sql, conn);
+            //comm1.ExecuteNonQuery();
+
+            //// SQL string to insert new current status of On Break
+            //sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
+            //        + "VALUES ('" + SelectedVolunteerID + "', '" + now + "', 'On Break', 'Y')";
+
+            //// Execute query
+            //SqlCommand comm2 = new SqlCommand(sql, conn);
+            //comm2.ExecuteNonQuery();
 
             //REMEMBER TO CLOSE CONNECTION!!
             conn.Close();
 
-            // Rebind the data to refresh the Grids
-            VolunteerOffBreakGridView.DataBind();
-            VolunteerOffBreakGridView.SelectedIndex = -1;
+            //// Rebind the data to refresh the Grids
+            //VolunteerOffBreakGridView.DataBind();
+            //VolunteerOffBreakGridView.SelectedIndex = -1;
 
-            VolunteerOnBreakGridView.DataBind();
-            VolunteerOnBreakGridView.SelectedIndex = -1;
+            //VolunteerOnBreakGridView.DataBind();
+            //VolunteerOnBreakGridView.SelectedIndex = -1;
         }
     }
 }

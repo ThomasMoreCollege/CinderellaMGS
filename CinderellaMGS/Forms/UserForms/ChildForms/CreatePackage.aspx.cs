@@ -101,12 +101,12 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
                 SelectedCinderellaID = CinderellaGridView.SelectedValue.ToString();
 
                 // SQL string to INSERT package information
-                string sql = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, DressLength, ShoeSize, ShoeColor, Necklace, Ring, Bracelet, HeadPiece, Earrings, Other, CheckoutNotes, WhenAvailable, InPackaging)"
+                string sql = "INSERT INTO Package (Cinderella_ID, DressSize, DressColor, DressLength, ShoeSize, ShoeColor, Necklace, Ring, Bracelet, HeadPiece, Earrings, Other, CheckoutNotes, WhenAvailable, InPackaging, InAlterations)"
                                 + "VALUES ('" + SelectedCinderellaID + "', '"
                                                 + DressSize + "', '" + DressColor + "', '" + DressLength + "', '"
                                                 + ShoeSize + "', '" + ShoeColor + "', '"
                                                 + Necklace + "', '" + Ring + "', '" + Bracelet + "', '" + HeadPiece + "', '" + Earring + "', '" + Other + "', '"
-                                                + Notes + "', '" + today + "', 'Y')";
+                                                + Notes + "', '" + today + "', 'Y', 'N')";
 
                 // Execute query
                 SqlCommand comm1 = new SqlCommand(sql, conn);
