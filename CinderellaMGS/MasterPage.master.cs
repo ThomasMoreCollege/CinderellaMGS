@@ -25,7 +25,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
             //Enable all user features if they were disabled
             AlterationsHyperLink.Visible = true;
-            AutomatedPairingHyperLink.Visible = true;
+            AutomatedPairingHyperLink.Visible = false;
             ManageCinderellasHyperLink.Visible = true;
             ManagePackageHyperLink.Visible = true;
             ManageShoppingHyperLink.Visible = true;
@@ -46,7 +46,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
             //Enable all user features if they were disabled
             AlterationsHyperLink.Visible = true;
-            AutomatedPairingHyperLink.Visible = true;
+            AutomatedPairingHyperLink.Visible = false;
             ManageCinderellasHyperLink.Visible = true;
             ManagePackageHyperLink.Visible = true;
             ManageShoppingHyperLink.Visible = true;
