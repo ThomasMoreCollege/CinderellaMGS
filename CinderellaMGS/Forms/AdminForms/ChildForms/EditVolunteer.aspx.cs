@@ -16,6 +16,10 @@ public partial class Forms_AdminForms_ChildForms_EditVolunteer : System.Web.UI.P
     }
     protected void VolunteerGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
+
+        // Remove the update message from the screen.
+        SuccessLabel.Visible = false;
+        
         //Disable succcess label
         SuccessLabel.Visible = false;
 
@@ -218,7 +222,7 @@ public partial class Forms_AdminForms_ChildForms_EditVolunteer : System.Web.UI.P
                 ZipcodeTextBox.Enabled = false;
 
                 //Display message
-                SuccessLabel.Text = FirstNameLabel.Text + " " + LastNameLabel.Text + " " + "Updated Successfuly!";
+                SuccessLabel.Text = firstName + " " + lastName + " " + "Updated Successfuly!";
                 SuccessLabel.ForeColor = System.Drawing.Color.Green;
                 SuccessLabel.Visible = true;
 
