@@ -18,7 +18,7 @@
             </tr>
         </table>
         <p>
-            <asp:Button ID="CheckInButton" runat="server" OnClick="CheckInButton_Click" Text="Check-In" Width="70px" />
+            <asp:Button ID="CheckInButton" runat="server" OnClick="CheckInButton_Click" Text="Check-In" Width="70px" OnClientClick="javascript:window.scrollTo(0,0);"/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:CheckBox ID="needsManualPairingCheckBox" runat="server" Enabled="False" Text="Cinderella Needs Manual Pairing" />
         </p>

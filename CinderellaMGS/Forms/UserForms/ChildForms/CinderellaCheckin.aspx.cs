@@ -131,7 +131,8 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                     //Unlock Application session
                     Application.UnLock();
 
-                    SuccessLabel.Text = "Success";
+                    string notification2 = "" + currentRow.Cells[2].Text + " " + currentRow.Cells[1].Text + " has been successfully checked in!";
+                    SuccessLabel.Text = notification2;
                     SuccessLabel.Visible = true;
                 }
             }
