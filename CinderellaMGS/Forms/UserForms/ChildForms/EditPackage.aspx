@@ -7,7 +7,9 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="Server">
 
     <div style="border-bottom: 1px solid #999999;">
-
+        <p>
+            <asp:Label ID="UserNotificationLabel" runat="server" Text="Label" Font-Bold="True" ForeColor="Green" Visible="False"></asp:Label>
+        </p>
         <table>
             <tr>
                 <td><strong>Complete Packages</strong></td>
@@ -95,13 +97,9 @@
             <tr>
                 <td>
 
-                    <asp:Button ID="EditPackageButton" runat="server" Text="Edit Package Information" OnClick="EditPackageButton_Click" />
-
                 </td>
                 <td>
-
                     <asp:Button ID="DressDeliveredButton" runat="server" Text="Add Dress to Package" OnClick="DressDeliveredButton_Click" />
-
                 </td>
             </tr>
         </table>
@@ -269,10 +267,14 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:TextBox ID="NotesTextBox" runat="server" Height="112px" TextMode="MultiLine" Width="314px"></asp:TextBox></td>
+                        <asp:TextBox ID="NotesTextBox" runat="server" Height="112px" TextMode="MultiLine" Width="314px"></asp:TextBox>
+                    </td>
                 </tr>
             </table>
         </div>
+        <p>
+            <asp:Button ID="EditPackageButton" runat="server" Text="Edit Package Information" OnClick="EditPackageButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
+        </p>
     </div>
 </asp:Content>
 

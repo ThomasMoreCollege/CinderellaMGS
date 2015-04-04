@@ -33,6 +33,9 @@ public partial class Forms_UserForms_ChildForms_EditPackage : System.Web.UI.Page
    
     protected void DressDeliveredButton_Click(object sender, EventArgs e)
     {
+        // Hiding the notification label
+        UserNotificationLabel.Visible = false;
+
         string SelectedCinderellaID = DressDeliveryGridView.SelectedValue.ToString();
 
         //Initialize database connection with "DefaultConnection" setup in the web.config
@@ -52,12 +55,39 @@ public partial class Forms_UserForms_ChildForms_EditPackage : System.Web.UI.Page
         //REMEMBER TO CLOSE CONNECTION!!
         conn1.Close();
 
+        // Outputting notification lmessage to user
+        UserNotificationLabel.Text = "Cinderella "
+                                    + DressDeliveryGridView.SelectedRow.Cells[2].Text
+                                    + " "
+                                    + DressDeliveryGridView.SelectedRow.Cells[1].Text
+                                    + "'s dress was added to her package!";
+        UserNotificationLabel.Visible = true;
+
         // Rebind the data to refresh the grid
         DressDeliveryGridView.DataBind();
         DressDeliveryGridView.SelectedIndex = -1;
 
         CinderellaPackageGridView.DataBind();
         CinderellaPackageGridView.SelectedIndex = -1;
+
+        // Resetting the Package information
+        DressSizeDropDown.SelectedValue = "1";
+        DressLengthDropDown.SelectedValue = "1";
+        DressColorDropDown.SelectedValue = "1";
+
+        ShoeSizeDropDown.SelectedValue = "1";
+        ShoeColorDropDown.SelectedValue = "1";
+
+        NecklaceCheckBox.Checked = false;
+        RingCheckBox.Checked = false;
+        HeadpieceCheckBox.Checked = false;
+        BraceletCheckBox.Checked = false;
+        EarringCheckBox.Checked = false;
+        OtherCheckBox.Checked = false;
+
+        NotesTextBox.Text = "";
+
+
     }
     protected void DressDeliveryGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -160,6 +190,8 @@ public partial class Forms_UserForms_ChildForms_EditPackage : System.Web.UI.Page
     }
     protected void EditPackageButton_Click(object sender, EventArgs e)
     {
+        UserNotificationLabel.Visible = false;
+
         // Checking if the DressDropDowns have selected values
         if (DressSizeDropDown.SelectedValue == "1") { DressSizeErrorLabel.Visible = true; }
         else { DressSizeErrorLabel.Visible = false; }
@@ -229,6 +261,13 @@ public partial class Forms_UserForms_ChildForms_EditPackage : System.Web.UI.Page
 
             //REMEMBER TO CLOSE CONNECTION!!
             conn1.Close();
+
+            UserNotificationLabel.Text = "Cinderella "
+                                        + CinderellaPackageGridView.SelectedRow.Cells[2].Text
+                                        + " "
+                                        + CinderellaPackageGridView.SelectedRow.Cells[1].Text
+                                        + "'s package was successfully updated!";
+            UserNotificationLabel.Visible = true;
 
             // Rebind the data to refresh the grid
             DressDeliveryGridView.DataBind();
