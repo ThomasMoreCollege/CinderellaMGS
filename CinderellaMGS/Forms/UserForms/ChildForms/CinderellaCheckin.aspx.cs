@@ -31,6 +31,9 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
         else
         {
            
+                // Remove the update message from the screen.
+                SuccessLabel.Visible = false;
+
                 // Creating a variable to hold a string of the Cinderella's ID
                 string SelectedCinderellaID = CinderellaGridView.SelectedValue.ToString();
 
