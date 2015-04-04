@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="Server">
 
-    <div style="float:left; width:80%;">
+    <div style="float:left; width:100%;">
         <p>
             <asp:Label ID="UserNotificationLabel" runat="server" Text="Label" Font-Bold="True" ForeColor="Green" Visible="False"></asp:Label>
         </p>
@@ -100,7 +100,7 @@
             </tr>
         </table>
     </div>
-    
+
     <div style="border-bottom: 1px solid #999999;">
         <div style="height: 30%; width: 40%; float: left; border-right: 1px solid #999999;">
             <table>
@@ -276,7 +276,7 @@
     <style type="text/css">
         #form1 {
             height: 1076px;
-            width: 1600px;
+            width: 1500px;
         }
     </style>
 </asp:Content>
