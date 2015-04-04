@@ -16,6 +16,7 @@
         </tr>
     </table>
     <div style ="height:400px; width:80%; overflow:auto; border-bottom:1px solid #999999;">
+        <asp:Label ID="UserNotificationLabel" runat="server" Text="Label" Font-Bold="True" ForeColor="Green" Visible="False"></asp:Label>
         <table id="AppMngTable" style="width:70%;">
             <tr >
                 <td>
@@ -83,7 +84,7 @@
                     <asp:ListItem Text="12" Value="12" />
                 </asp:DropDownList>
                 <asp:DropDownList ID="ddlStartTimeMin" runat="server" CssClass="DropDown" Width="44px">
-                    <asp:ListItem Text="00" Value="00" Selected="True" />
+                    <asp:ListItem Text="00" Value="0" Selected="True" />
                     <asp:ListItem Text="05" Value="05" />
                     <asp:ListItem Text="10" Value="10" />
                     <asp:ListItem Text="15" Value="15" />
@@ -111,7 +112,7 @@
         <tr>
             <td>
 
-                <asp:Button ID="ChangeAppointmentButton" runat="server" OnClick="ChangeAppointmentButton_Click" Text="Change Appointment Time" Enabled="False" />
+                <asp:Button ID="ChangeAppointmentButton" runat="server" OnClick="ChangeAppointmentButton_Click" Text="Change Appointment Time" Enabled="False" OnClientClick="javascript:window.scrollTo(0,0);"/>
 
             </td>
         </tr>
