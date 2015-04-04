@@ -28,7 +28,7 @@
                     <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />
                     <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
                     <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
-                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                    <asp:BoundField DataField="Role_Name" HeaderText="Role" SortExpression="Role_Name" />
                 </Columns>
                 <FooterStyle BackColor="#CCCCCC" />
                 <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
@@ -42,7 +42,7 @@
                 <SelectedRowStyle BackColor="Fuchsia" />
             </asp:GridView>
             <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
-                SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName, Volunteer.Email 
+                SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName, VolunteerShiftRecord.Role_Name
                                 FROM Volunteer 
                                 INNER JOIN VolunteerStatusRecord 
                                     ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID 

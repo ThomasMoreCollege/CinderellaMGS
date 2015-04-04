@@ -17,6 +17,7 @@ public partial class Forms_UserForms_TestPage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Label2.Text = DateTime.Now.DayOfWeek.ToString();
     }
 
     protected void VolunteerGridView_SelectedIndexChanged(object sender, EventArgs e)

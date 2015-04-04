@@ -61,7 +61,7 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
             // SQL string to SELECT the Volunteer's Role for this Shift
             sql = "SELECT Role_Name "
                     + "FROM VolunteerShiftRecord "
-                    + "WHERE Shift_Name = 'Friday' AND Volunteer_ID = '" + SelectedVolunteerID + "'";
+                    + "WHERE Shift_Name = '" + DateTime.Now.DayOfWeek + "' AND Volunteer_ID = '" + SelectedVolunteerID + "'";
             SqlCommand comm3 = new SqlCommand(sql, conn);
             string ShiftRole = comm3.ExecuteScalar().ToString();
 

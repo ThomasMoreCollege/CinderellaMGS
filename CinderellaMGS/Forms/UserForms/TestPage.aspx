@@ -68,7 +68,9 @@
             </td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td>
+                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            </td>
         </tr>
     </table>
 </asp:Content>

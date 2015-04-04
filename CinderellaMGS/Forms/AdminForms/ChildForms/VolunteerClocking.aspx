@@ -80,7 +80,7 @@
                             <SelectedRowStyle BackColor="Fuchsia" />
                         </asp:GridView>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" 
-                            SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName 
+                            SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName
                                             FROM Volunteer 
                                             INNER JOIN VolunteerStatusRecord 
                                                 ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID 
@@ -90,9 +90,7 @@
                                                 AND (VolunteerStatusRecord.IsCurrent = 'Y') 
                                                 AND (Volunteer.IsValid = 'Y') 
                                                 AND (VolunteerStatusRecord.Status_Name != 'Pending')
-                                                AND (VolunteerRoleRecord.IsCurrent = 'Y')
-                                                AND (Role_Name != 'Alterations') 
-                                            ORDER BY Volunteer.LastName">
+												AND (VolunteerStatusRecord.Status_Name != 'Shopping')">
                         </asp:SqlDataSource>
                     </div>
                 </td>

@@ -134,6 +134,7 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
     }
     protected void UndoShoppingButton_Click(object sender, EventArgs e)
     {
+        
         // String to hold the Selected Cinderella ID
         string SelectedCinderellaID = ShoppingGridView.SelectedValue.ToString();
 
@@ -200,6 +201,9 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
 
         ShoppingGridView.DataBind();
         ShoppingGridView.SelectedIndex = -1;
+
+        // Refresh the databinding for the volunteer grid.
+        VolunteerPairingGridView.DataBind();
 
         GoShoppingButton.Enabled = false;
         UndoShoppingButton.Enabled = false;
@@ -320,7 +324,7 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
             // SQL string to UPDATE all Cinderellas to 
             sql = "UPDATE Cinderella "
                     + "SET Volunteer_ID = NULL "
-                    + "WHERE Volunteer_ID = '" + selectedCinderellaID + "'";
+                    + "WHERE Volunteer_ID = '" + selectedVolunteerID + "'";
             // Execute Query
             SqlCommand comm2 = new SqlCommand(sql, conn);
             comm2.ExecuteNonQuery();
