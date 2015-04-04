@@ -5,7 +5,7 @@
     <h2>Volunteer Registration</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
-    <asp:Label ID="SuccessLabel" runat="server" Font-Bold="True" ForeColor="Lime" Text="Label" Visible="False"></asp:Label>
+    <asp:Label ID="SuccessLabel" runat="server" Font-Bold="True" ForeColor="Green" Text="Label" Visible="False"></asp:Label>
     <br />
     <br />
     <asp:Label ID="VolunteerInfoLabel" runat="server" Font-Bold="True" Font-Size="Large" Text="Volunteer Information:"></asp:Label>
@@ -16,7 +16,7 @@
             <tr>
                 <td class="auto-style3" >
                     *First Name:</td>
-                <td class="TableInputCell"><asp:TextBox ID="FirstTextBox" runat="server"></asp:TextBox>
+                <td class="TableInputCell"><asp:TextBox ID="FirstTextBox" runat="server" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
