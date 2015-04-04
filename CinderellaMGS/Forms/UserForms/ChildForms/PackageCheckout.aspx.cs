@@ -88,6 +88,9 @@ public partial class Forms_UserForms_ChildForms_PackageCheckout : System.Web.UI.
     }
     protected void CinderellaPackageGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
+        // Hide the update label if it is currently being displayed to the user.
+        SuccessLabel.Visible = false;
+        
         string SelectedCinderellaID = CinderellaPackageGridView.SelectedValue.ToString();
         //Initialize database connection with "DefaultConnection" setup in the web.config
         SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);

@@ -126,4 +126,8 @@ public partial class Forms_AdminForms_GodMotherRegsitration : System.Web.UI.Page
         PhoneTextBox.Text = "";
         EmailTextBox.Text = "";
     }
+    protected void FirstTextBox_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }
