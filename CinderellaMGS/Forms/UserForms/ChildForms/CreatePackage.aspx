@@ -46,8 +46,8 @@
                                             AND IsCurrent = 'Y' 
                                             AND CinderellaID NOT IN (SELECT Cinderella_ID
                                                                         FROM Package)
-                                    ORDER BY [LastName]"></asp:SqlDataSource>
-
+                                    ORDER BY [LastName]">
+                </asp:SqlDataSource>
             </td>
             <td>
                 <div style="height: 300px; overflow: auto;">

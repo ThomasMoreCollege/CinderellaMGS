@@ -8,6 +8,13 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Content/StyleSheet.css" rel="stylesheet" />
+    <script type="text/javascript">
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(pageLoaded);
+
+        function pageLoaded(sender, args) {
+            window.scrollTo(0, 0);
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">

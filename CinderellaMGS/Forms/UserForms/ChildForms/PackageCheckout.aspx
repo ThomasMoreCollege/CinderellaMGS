@@ -43,8 +43,9 @@
                                 FROM [Package] 
                                 INNER JOIN Cinderella 
                                      ON Package.Cinderella_ID = Cinderella.CinderellaID 
-                                WHERE InPackaging = 'Y' AND InAlterations = 'N'
-                                ORDER BY [LastName]"></asp:SqlDataSource>
+                                WHERE InPackaging = 'Y' AND (InAlterations = 'N' OR InAlterations IS NULL)
+                                ORDER BY [LastName]">
+                        </asp:SqlDataSource>
                     </div>
                 </td>
             </tr>

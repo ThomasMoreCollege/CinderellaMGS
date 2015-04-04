@@ -330,7 +330,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <asp:Button ID="RegisterCinderellaButton" runat="server" Text="Register" OnClick="RegisterCinderellaButton_Click1" />
+                    <asp:Button ID="RegisterCinderellaButton" runat="server" Text="Register" OnClick="RegisterCinderellaButton_Click1" OnClientClick="javascript:window.scrollTo(0,0);"/>
                 </td>
             </tr>
         </table>
