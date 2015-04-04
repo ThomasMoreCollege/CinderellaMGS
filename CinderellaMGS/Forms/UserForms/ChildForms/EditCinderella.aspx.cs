@@ -70,6 +70,17 @@ public partial class Forms_UserForms_EditCinderella : System.Web.UI.Page
         EmailLabel.Text = "--";
         PhoneLabel.Text = "--";
 
+        //clear  Textboxes
+        FirstNameTextBox.Text = "";
+        LastNameTextBox.Text = "";
+        EmailTextBox.Text = "";
+        PhoneTextBox.Text = "";
+
+        //Display message 
+        SuccessLabel.Text = "No changes were made.";
+        SuccessLabel.ForeColor = System.Drawing.Color.Red;
+        SuccessLabel.Visible = true;
+
         //Set index to nothing for grid view
         CinderellaGridView.SelectedIndex = -1;
 
@@ -146,6 +157,11 @@ public partial class Forms_UserForms_EditCinderella : System.Web.UI.Page
                 EditCinderellaFormButton.Enabled = false;
                 CancelButton.Enabled = false;
 
+                //Display message
+                SuccessLabel.Text = firstName + " " + lastName + " has been update successfully.";
+                SuccessLabel.ForeColor = System.Drawing.Color.Green;
+                SuccessLabel.Visible = true;
+
                 //Disable Textboxes
                 FirstNameTextBox.Enabled = false;
                 LastNameTextBox.Enabled = false;
@@ -158,13 +174,6 @@ public partial class Forms_UserForms_EditCinderella : System.Web.UI.Page
                 LastNameLabel.Text = "--";
                 EmailLabel.Text = "--";
                 PhoneLabel.Text = "--";
-
-
-                //Display message
-                SuccessLabel.Text = "Update Successful!";
-                SuccessLabel.ForeColor = System.Drawing.Color.Green;
-                SuccessLabel.Visible = true;
-
 
                 //Resfresh grid 
                 CinderellaGridView.DataSourceID = "CinderellaDS";

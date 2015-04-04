@@ -12,21 +12,19 @@
     <h2>Edit Cinderella</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-
+    
+    <asp:Label ID="SuccessLabel" runat="server" Text="Update Successful!" ForeColor="#009900" style="font-weight: 700" Visible="False"></asp:Label>
+    
+    <br />
+    
     <div style ="height:600px; width:80%; overflow:auto; border-bottom:1px solid #999999;"">
         <table>
+            
             <tr>
                 <td>
 
-                <asp:Label ID="SuccessLabel" runat="server" Text="Update Successful!" ForeColor="#009900" style="font-weight: 700" Visible="False"></asp:Label>
-
-                </td>
-            </tr>
-            <tr>
-                <td>
-
-                <asp:SqlDataSource ID="CinderellaDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT [CinderellaID], [LastName], [FirstName] FROM [Cinderella]"></asp:SqlDataSource>
-                <asp:GridView ID="CinderellaGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="CinderellaID" DataSourceID="CinderellaDS" Width="100px" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black">
+                <asp:SqlDataSource ID="CinderellaDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT [CinderellaID], [LastName], [FirstName] FROM [Cinderella] ORDER BY [LastName]"></asp:SqlDataSource>
+                <asp:GridView ID="CinderellaGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="CinderellaID" DataSourceID="CinderellaDS" Width="100px" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black" AllowSorting="True">
                     <Columns>
                         <asp:CommandField ShowSelectButton="True" />
                         <asp:BoundField DataField="CinderellaID" HeaderText="CinderellaID" InsertVisible="False" ReadOnly="True" SortExpression="CinderellaID" />
@@ -124,10 +122,10 @@
             <td class="auto-style9">&nbsp;</td>
             <td class="auto-style11"></td>
             <td class="auto-style8">
-                <asp:Button ID="EditCinderellaFormButton" runat="server" Enabled="False" OnClick="EditCinderellaFormButton_Click1" Text="Save Changes" />
+                <asp:Button ID="EditCinderellaFormButton" runat="server" Enabled="False" OnClick="EditCinderellaFormButton_Click1" Text="Save Changes" OnClientClick="javascript:window.scrollTo(0,0);"/>
                 <br />
                 <br />
-                <asp:Button ID="CancelButton" runat="server" Enabled="False" OnClick="CancelButton_Click" Text="Cancel" />
+                <asp:Button ID="CancelButton" runat="server" Enabled="False" OnClick="CancelButton_Click" Text="Cancel" OnClientClick="javascript:window.scrollTo(0,0);"/>
                 <br />
             </td>
         </tr>
