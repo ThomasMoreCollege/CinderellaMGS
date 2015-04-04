@@ -10,6 +10,13 @@
         <table style="width:70%;" id="RegistrationTable">
 
             <tr>
+                <td colspan="3">
+
+                    <asp:Label ID="ConfirmationLabel" runat="server" Font-Bold="True" ForeColor="Green" Text="Label" Visible="False"></asp:Label>
+
+                </td>
+            </tr>
+            <tr>
                 <td colspan="3" class="auto-style1">
 
                     <strong>Cinderella Information:

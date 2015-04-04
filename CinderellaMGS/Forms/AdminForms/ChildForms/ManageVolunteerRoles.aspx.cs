@@ -29,13 +29,47 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
 
         conn.Open();
 
+        //String to get ID of selected Volunteer 
         string getVolunteerID = VolunteerGridView.SelectedValue.ToString();
+
+        //Query to retrieve information needed for confirmation label
+        string volunteerPrevRoleQuery = "SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName, VolunteerRoleRecord.Role_Name "
+                                    + "FROM Volunteer "
+                                    + "INNER JOIN VolunteerRoleRecord "
+                                    + "ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID "
+                                    + "INNER JOIN VolunteerStatusRecord "
+                                    + "ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID "
+                                    + "WHERE VolunteerRoleRecord.IsCurrent = 'Y' "
+                                    + "AND VolunteerRoleRecord.Role_Name != 'Alterations' "
+                                    + "AND Volunteer.IsValid = 'Y' "
+                                    + "AND (Status_Name = 'Ready' OR Status_Name = 'On Break') "
+                                    + "AND VolunteerStatusRecord.IsCurrent = 'Y' "
+                                    + "AND Volunteer.VolunteerID = '" + getVolunteerID + "'";
+
+        //Execute query 
+        SqlCommand volunteerPrevRole = new SqlCommand(volunteerPrevRoleQuery, conn);
+
+        //Create a new adapter
+        SqlDataAdapter adapter = new SqlDataAdapter(volunteerPrevRole);
+
+        //Create a new dataset to hold the query results
+        DataSet dataSet = new DataSet();
+
+        //Store the results in the adapter 
+        adapter.Fill(dataSet);
+
+        //Store info to be used for confirmation label in local variables 
+        string firstName = dataSet.Tables[0].Rows[0]["FirstName"].ToString();
+        string lastName = dataSet.Tables[0].Rows[0]["LastName"].ToString();
+        string oldRole = dataSet.Tables[0].Rows[0]["Role_Name"].ToString();
+        string newRole = roleDropDownList.SelectedItem.Text;
 
         string updateCurrentRole = "UPDATE VolunteerRoleRecord "
                                     + "SET EndTime = '" + DateTime.Now + "', IsCurrent = 'N' "
                                     + "WHERE Volunteer_ID = '" + getVolunteerID + "' AND IsCurrent = 'Y'";
 
         SqlCommand updateRole = new SqlCommand(updateCurrentRole, conn);
+
         updateRole.ExecuteNonQuery();
 
         string sql = "INSERT INTO VolunteerRoleRecord (Volunteer_ID, StartTime, Role_Name, IsCurrent) "
@@ -45,6 +79,8 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
         SqlCommand comm1 = new SqlCommand(sql, conn);
         comm1.ExecuteNonQuery();
 
+
+        //Put Volunteer into pairing queue if role is switched to Godmother
         if (roleDropDownList.SelectedItem.Text == "Godmother")
         {
             try
@@ -79,6 +115,9 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
             }
         }
 
+        ConfirmLabel.Text = firstName + " " + lastName + "'s role has been changed from " + oldRole + " to " + newRole + ".";
+        ConfirmLabel.Visible = true;
+
         conn.Close();
         roleDropDownList.DataBind();
         VolunteerGridView.DataBind();
@@ -102,6 +141,8 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
         roleDropDownList.Enabled = true;
         changeRoleButton.Enabled = true;
 
+        //When a new volunteer is selected do not display confirmation label anymore
+        ConfirmLabel.Visible = false;
 
         //Initialize database connection with "DefaultConnection" setup in the web.config
         SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);

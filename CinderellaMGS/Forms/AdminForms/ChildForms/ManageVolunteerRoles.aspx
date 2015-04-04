@@ -3,10 +3,27 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeaderTitle" Runat="Server">
+    <h2>
+        Role Manager 
+    </h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
     
     <table id="NewUserTable" style="width: 100%;">
+        <tr>
+            <td>
+                <asp:Label ID="ConfirmLabel" runat="server" Text="Label" Font-Bold="True" ForeColor="Green" Visible="False"></asp:Label></td>
+        </tr>
+        <tr>
+            <td class="auto-style3">
+                <strong>Manage Volunteer Roles:</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+        </tr>
         <tr>
             <td>
                 <asp:Label ID="dropDownLabel" runat="server" Text="Select a Role:"></asp:Label>&nbsp;&nbsp;
@@ -19,19 +36,6 @@
                     </asp:DropDownList>
                 &nbsp;&nbsp;
                     <asp:Button ID="changeRoleButton" runat="server" Text="Change Role" OnClick="changeRoleButton_Click" Enabled="False" />
-            </td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td class="auto-style3">
-                <strong>Manage Volunteer Roles:</strong>
             </td>
         </tr>
         <tr>
@@ -76,11 +80,9 @@
             </td>
         </tr>
         <tr>
-            <td><asp:Label ID="Label1" runat="server" Text="NOTE: Only Volunteers on break or ready to receive a Cinderella" ></asp:Label></td>
+            <td><asp:Label ID="Label1" runat="server" Text="NOTE: Volunteers currently shopping wil not be displayed." ></asp:Label></td>
         </tr>
-                <tr>
-            <td><asp:Label ID="Label2" runat="server" Text="(but NOT currently shopping or paired with a Cinderella) will be shown" ></asp:Label></td>
-        </tr>
+
     </table>
 
 </asp:Content>

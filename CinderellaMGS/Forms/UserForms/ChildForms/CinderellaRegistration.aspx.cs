@@ -13,12 +13,13 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        (this.Master as MasterPage).ManageMasterLayout();   
+        (this.Master as MasterPage).ManageMasterLayout();
     }
     
    
     protected void RegisterCinderellaButton_Click1(object sender, EventArgs e)
     {
+        
 
         // Creating a variable to hold the Date (minus the standard 12:00:00 AM setting) and Time of new appointment
         string appDate = appointmentSelectDateCalender.SelectedDate.ToString().Replace("12:00:00 AM", "");
@@ -103,6 +104,9 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             addCinderellaStatusRecord.ExecuteNonQuery();
 
             conn.Close();
+
+            ConfirmationLabel.Text = firstname + " " + lastname + " has been successfully registered.";
+            ConfirmationLabel.Visible = true;
 
             // Revent all text field values back to empty to allow for another Cinderella input.
             FirstTextBox.Text = "";
@@ -197,6 +201,9 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             comm2.ExecuteNonQuery();
 
             conn.Close();
+
+            ConfirmationLabel.Text = firstname + " " + lastname + " has been successfully registered.";
+            ConfirmationLabel.Visible = true;
 
             // Revent all text field values back to empty to allow for another Cinderella input.
             FirstTextBox.Text = "";
