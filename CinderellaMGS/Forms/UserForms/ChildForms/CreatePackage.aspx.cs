@@ -199,9 +199,10 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
 
             // Notifying user that package was created
             UserNotificationLabel.Text = "Cinderella "
-                                        + Cinderella 
+                                        + Cinderella
                                         + "'s package was created. To Edit, see the Edit Package page.";
             UserNotificationLabel.Visible = true;
+            UserNotificationLabel.ForeColor = System.Drawing.Color.Green;
 
             // Rebind the data to refresh the Grid
             CinderellaGridView.DataBind();
@@ -228,6 +229,12 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             OtherCheckBox.Checked = false;
 
             NotesTextBox.Text = "";
+        }
+        else
+        {
+            UserNotificationLabel.Text = "ERROR: Please select all necessary information.";
+            UserNotificationLabel.Visible = true;
+            UserNotificationLabel.ForeColor = System.Drawing.Color.Red;
         }
     }
     protected void CinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)

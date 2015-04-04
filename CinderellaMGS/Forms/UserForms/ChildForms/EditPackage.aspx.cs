@@ -268,6 +268,7 @@ public partial class Forms_UserForms_ChildForms_EditPackage : System.Web.UI.Page
                                         + CinderellaPackageGridView.SelectedRow.Cells[1].Text
                                         + "'s package was successfully updated!";
             UserNotificationLabel.Visible = true;
+            UserNotificationLabel.ForeColor = System.Drawing.Color.Green;
 
             // Rebind the data to refresh the grid
             DressDeliveryGridView.DataBind();
@@ -294,6 +295,10 @@ public partial class Forms_UserForms_ChildForms_EditPackage : System.Web.UI.Page
             DressLengthDropDown.Enabled = true;
             ShoeSizeDropDown.Enabled = true;
             ShoeColorDropDown.Enabled = true;
+
+            UserNotificationLabel.Text = "ERROR: Please select all necessary information.";
+            UserNotificationLabel.ForeColor = System.Drawing.Color.Red;
+            UserNotificationLabel.Visible = true;
         }
     }
 }
