@@ -17,6 +17,7 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
     }
     protected void CheckoutButton_Click(object sender, EventArgs e)
     {
+        UserNotificationLabel.Visible = false;
 
         // Checking if the DressDropDowns have selected values
         if (DressSizeDropDown.SelectedValue == "1") { DressSizeErrorLabel.Visible = true; }
@@ -181,6 +182,27 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             //REMEMBER TO CLOSE CONNECTION!!
             conn.Close();
 
+            string Cinderella = "";
+
+            if (PackagesGridView.SelectedIndex != -1)
+            {
+                Cinderella = PackagesGridView.SelectedRow.Cells[2].Text
+                                    + " "
+                                    + PackagesGridView.SelectedRow.Cells[1].Text;
+            }
+            else
+            {
+                Cinderella = CinderellaGridView.SelectedRow.Cells[2].Text
+                                    + " "
+                                    + CinderellaGridView.SelectedRow.Cells[1].Text;
+            }
+
+            // Notifying user that package was created
+            UserNotificationLabel.Text = "Cinderella "
+                                        + Cinderella 
+                                        + "'s package was created. To Edit, see the Edit Package page.";
+            UserNotificationLabel.Visible = true;
+
             // Rebind the data to refresh the Grid
             CinderellaGridView.DataBind();
             CinderellaGridView.SelectedIndex = -1;
@@ -189,6 +211,23 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
 
             // Disabling checkout button
             CheckoutButton.Enabled = false;
+
+            // Resetting shoes and dresses to default values
+            ShoeSizeDropDown.SelectedValue = "1";
+            ShoeColorDropDown.SelectedValue = "1";
+            DressSizeDropDown.SelectedValue = "1";
+            DressColorDropDown.SelectedValue = "1";
+            DressLengthDropDown.SelectedValue = "1";
+
+            // Clearing the checkboxes
+            NecklaceCheckBox.Checked = false;
+            RingCheckBox.Checked = false;
+            HeadpieceCheckBox.Checked = false;
+            EarringCheckBox.Checked = false;
+            BraceletCheckBox.Checked = false;
+            OtherCheckBox.Checked = false;
+
+            NotesTextBox.Text = "";
         }
     }
     protected void CinderellaGridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -210,5 +249,19 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
         DressSizeDropDown.SelectedValue = PackagesGridView.SelectedRow.Cells[3].Text.ToString();
         DressLengthDropDown.SelectedValue = PackagesGridView.SelectedRow.Cells[4].Text.ToString();
         DressColorDropDown.SelectedValue = PackagesGridView.SelectedRow.Cells[5].Text.ToString();
+
+        // Resetting shoes to default values
+        ShoeSizeDropDown.SelectedValue = "1";
+        ShoeColorDropDown.SelectedValue = "1";
+
+        // Clearing the checkboxes
+        NecklaceCheckBox.Checked = false;
+        RingCheckBox.Checked = false;
+        HeadpieceCheckBox.Checked = false;
+        EarringCheckBox.Checked = false;
+        BraceletCheckBox.Checked = false;
+        OtherCheckBox.Checked = false;
+
+        NotesTextBox.Text = "";
     }
 }

@@ -216,6 +216,9 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
             // Resetting the notes textbox
             notesTextBox.Text = "";
 
+            // Resetting the seamstress drop down to default value
+            SeamstressDropDownList.SelectedValue = "1";
+
             //REMEMBER TO CLOSE CONNECTION!!
             conn1.Close();
         }

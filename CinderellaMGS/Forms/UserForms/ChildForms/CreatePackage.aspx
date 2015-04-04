@@ -4,94 +4,103 @@
     <h2>Create Package</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="Server">
-    <table id="CreatePackageGrids">
-        <tr>
-            <td>
-                <strong>Cinderellas Shopping</strong>
-            </td>
-            <td><strong>Dresses From Alterations</strong></td>
-        </tr>
-        <tr style="border-bottom: 1px solid #999999;">
-            <td>
-                <div style="height: 300px; overflow: auto;">
-                    <asp:GridView ID="CinderellaGridView" runat="server"
-                        AllowSorting="True"
-                        AutoGenerateColumns="False"
-                        DataSourceID="Cinderella2015"
-                        DataKeyNames="CinderellaID" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black">
-                        <Columns>
-                            <asp:CommandField ShowSelectButton="True" />
-                            <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
-                            <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
-                        </Columns>
-                        <FooterStyle BackColor="#CCCCCC" />
-                        <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                        <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#808080" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#383838" />
-                        <AlternatingRowStyle BackColor="pink" />
-                    </asp:GridView>
-                </div>
-                <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
-                    SelectCommand="SELECT [CinderellaID], 
-                                            [LastName], 
-                                            [FirstName]
-                                    FROM [Cinderella] 
-                                    INNER JOIN CinderellaStatusRecord 
-                                        ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
-                                    WHERE Status_Name = 'Shopping' 
-                                            AND IsCurrent = 'Y' 
-                                            AND CinderellaID NOT IN (SELECT Cinderella_ID
-                                                                        FROM Package)
-                                    ORDER BY [LastName]">
-                </asp:SqlDataSource>
-            </td>
-            <td>
-                <div style="height: 300px; overflow: auto;">
-                    <asp:GridView ID="PackagesGridView" runat="server"
-                        AllowSorting="True"
-                        AutoGenerateColumns="False"
-                        DataSourceID="DressDataSource"
-                        DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="PackagesGridView_SelectedIndexChanged">
-                        <Columns>
 
-                            <asp:CommandField ShowSelectButton="True" />
-                            <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
-                            <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
-                            <asp:BoundField DataField="dressSize" HeaderText="Dress Size" SortExpression="dressSize" />
-                            <asp:BoundField DataField="dressLength" HeaderText="Dress Length" SortExpression="dressLength" />
-                            <asp:BoundField DataField="dressColor" HeaderText="Dress Color" SortExpression="dressColor" />
-                        </Columns>
-                        <FooterStyle BackColor="#CCCCCC" />
-                        <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                        <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#808080" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#383838" />
-                        <AlternatingRowStyle BackColor="pink" />
-                    </asp:GridView>
-                </div>
-                <asp:SqlDataSource ID="DressDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
-                    SelectCommand="SELECT [CinderellaID], 
-                                            [LastName], 
-                                            [FirstName],
-                                            [DressSize],
-                                            [DressColor],
-                                            [DressLength]
-                                    FROM [Cinderella] 
-                                    INNER JOIN Package 
-                                        ON Cinderella.CinderellaID = Package.Cinderella_ID 
-                                    WHERE InAlterations = 'Y' AND InPackaging = 'N'
-                                    ORDER BY [LastName]"></asp:SqlDataSource>
+    <div style="float:left; width:80%;">
+        <p>
+            <asp:Label ID="UserNotificationLabel" runat="server" Text="Label" Font-Bold="True" ForeColor="Green" Visible="False"></asp:Label>
+        </p>
+        <table id="CreatePackageGrids">
+            <tr>
+                <td>
+                    <strong>Cinderellas Shopping</strong>
+                </td>
+                <td>
+                    <strong>Dresses From Alterations</strong>
+                </td>
+            </tr>
+            <tr style="border-bottom: 1px solid #999999;">
+                <td>
+                    <div style="height: 300px; overflow: auto;">
+                        <asp:GridView ID="CinderellaGridView" runat="server"
+                            AllowSorting="True"
+                            AutoGenerateColumns="False"
+                            DataSourceID="Cinderella2015"
+                            DataKeyNames="CinderellaID" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black">
+                            <Columns>
+                                <asp:CommandField ShowSelectButton="True" />
+                                <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                                <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                            </Columns>
+                            <FooterStyle BackColor="#CCCCCC" />
+                            <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#808080" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#383838" />
+                            <AlternatingRowStyle BackColor="pink" />
+                        </asp:GridView>
+                    </div>
+                    <asp:SqlDataSource ID="Cinderella2015" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                        SelectCommand="SELECT [CinderellaID], 
+                                                [LastName], 
+                                                [FirstName]
+                                        FROM [Cinderella] 
+                                        INNER JOIN CinderellaStatusRecord 
+                                            ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID 
+                                        WHERE Status_Name = 'Shopping' 
+                                                AND IsCurrent = 'Y' 
+                                                AND CinderellaID NOT IN (SELECT Cinderella_ID
+                                                                            FROM Package)
+                                        ORDER BY [LastName]">
+                    </asp:SqlDataSource>
+                </td>
+                <td>
+                    <div style="height: 300px; overflow: auto;">
+                        <asp:GridView ID="PackagesGridView" runat="server"
+                            AllowSorting="True"
+                            AutoGenerateColumns="False"
+                            DataSourceID="DressDataSource"
+                            DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="PackagesGridView_SelectedIndexChanged">
+                            <Columns>
 
-            </td>
-        </tr>
-    </table>
+                                <asp:CommandField ShowSelectButton="True" />
+                                <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                                <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                                <asp:BoundField DataField="dressSize" HeaderText="Dress Size" SortExpression="dressSize" />
+                                <asp:BoundField DataField="dressLength" HeaderText="Dress Length" SortExpression="dressLength" />
+                                <asp:BoundField DataField="dressColor" HeaderText="Dress Color" SortExpression="dressColor" />
+                            </Columns>
+                            <FooterStyle BackColor="#CCCCCC" />
+                            <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="HotPink" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#808080" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#383838" />
+                            <AlternatingRowStyle BackColor="pink" />
+                        </asp:GridView>
+                    </div>
+                    <asp:SqlDataSource ID="DressDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                        SelectCommand="SELECT [CinderellaID], 
+                                                [LastName], 
+                                                [FirstName],
+                                                [DressSize],
+                                                [DressColor],
+                                                [DressLength]
+                                        FROM [Cinderella] 
+                                        INNER JOIN Package 
+                                            ON Cinderella.CinderellaID = Package.Cinderella_ID 
+                                        WHERE InAlterations = 'Y' AND InPackaging = 'N'
+                                        ORDER BY [LastName]"></asp:SqlDataSource>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+    
     <div style="border-bottom: 1px solid #999999;">
         <div style="height: 30%; width: 40%; float: left; border-right: 1px solid #999999;">
             <table>
@@ -255,7 +264,11 @@
         </div>
     </div>
     <div>
-        <asp:Button ID="CheckoutButton" runat="server" Text="Check Package in to Packaging" OnClick="CheckoutButton_Click" Enabled="False" />
+        <asp:Button ID="CheckoutButton" runat="server" 
+            Text="Check Package in to Packaging" 
+            OnClick="CheckoutButton_Click" 
+            Enabled="False" 
+            OnClientClick="javascript:window.scrollTo(0,0);"/>
     </div>
 </asp:Content>
 
