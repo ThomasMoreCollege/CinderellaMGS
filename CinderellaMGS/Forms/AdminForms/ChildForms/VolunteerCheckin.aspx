@@ -9,7 +9,7 @@
     <table>
         <tr>
             <td>
-                <asp:Label ID="ResultLabel" runat="server" Text="Label" ForeColor="Green" Visible="False"></asp:Label>
+                <asp:Label ID="ResultLabel" runat="server" Text="Label" ForeColor="Green" Visible="False" Font-Bold="True"></asp:Label>
                 <br />
             </td>
         </tr>

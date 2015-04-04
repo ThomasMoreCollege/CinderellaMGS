@@ -42,6 +42,14 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
             // Variable to hold the shopping Cinderella
             string SelectedShoppingCinderellaID = CinderellaShoppingGridView.SelectedValue.ToString();
 
+            GridViewRow currentRow = CinderellaShoppingGridView.SelectedRow;
+
+            string firstName = currentRow.Cells[2].Text;
+            string lastName = currentRow.Cells[1].Text;
+
+            ConfirmationLabel.Text = firstName + " " + lastName + "'s dress has been checked into alterations.";
+            ConfirmationLabel.Visible = true;
+
             //Open the connection 
             conn1.Open();
 
@@ -155,6 +163,11 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
             string SelectedCinderellaID = CinderellaDressAlterationsGridView.SelectedValue.ToString();
 
+            GridViewRow currentRow = CinderellaDressAlterationsGridView.SelectedRow;
+
+            string firstName = currentRow.Cells[2].Text;
+            string lastName = currentRow.Cells[1].Text;
+
             // A SQL Query to check if the Cinderella already has a presence in Alteration
             string sql = "SELECT Cinderella_ID "
                             + "FROM Alteration "
@@ -201,6 +214,17 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
                             + "', ReadyForPickup='" + testReady + "'"
                         + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "'";
 
+                if (PickupRadioButtonList.SelectedValue == "Y")
+                {
+                    ConfirmationLabel.Text =  firstName + " " + lastName + "'s dress is marked ready for pick up.";
+                    ConfirmationLabel.Visible = true;
+                }
+
+                if (PickupRadioButtonList.SelectedValue == "N")
+                {
+                    ConfirmationLabel.Text = "Changes have been saved for " + firstName + " " + lastName + ".";
+                    ConfirmationLabel.Visible = true;
+                }
                 // Execute SQL
                 SqlCommand updateAlteration = new SqlCommand(sql, conn1);
                 updateAlteration.ExecuteNonQuery();
@@ -225,6 +249,8 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
     }
     protected void CinderellaDressAlterationsGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
+        ConfirmationLabel.Visible = false;
+
         if (CinderellaShoppingGridView.SelectedIndex != -1)
         {
             CinderellaShoppingGridView.SelectedIndex = -1;
@@ -326,6 +352,8 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
     }
     protected void CinderellaShoppingGridView_SelectedIndexChanged(object sender, EventArgs e)
     {
+        ConfirmationLabel.Visible = false;
+
         if (CinderellaDressAlterationsGridView.SelectedIndex != -1)
         {
             CinderellaDressAlterationsGridView.SelectedIndex = -1;

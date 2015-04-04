@@ -9,6 +9,11 @@
 
         <table style="border-bottom: 1px solid #999999;">
             <tr>
+                <td colspan="2">
+                    <asp:Label ID="ConfirmationLabel" runat="server" Text="Label" Font-Bold="True" ForeColor="Green" Visible="False"></asp:Label>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     <strong>Cinderellas Currently Shopping</strong>
                 </td>
@@ -18,7 +23,7 @@
             </tr>
             <tr >
                 <td style="height: 300px; width: 39%; overflow: auto; border-right: 1px solid #999999;">
-<%--                    <div >--%>
+                    <%--                    </div>--%>
                         <asp:GridView ID="CinderellaShoppingGridView" runat="server"
                             AllowSorting="True"
                             AutoGenerateColumns="False"
@@ -161,7 +166,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <asp:Button ID="AltertationsCheckinButton" runat="server" Text="Check Dress in to Altertations" Style="text-align: center" Enabled="False" OnClick="AltertationsCheckinButton_Click" />
+                        <asp:Button ID="AltertationsCheckinButton" runat="server" Text="Check Dress in to Altertations" Style="text-align: center" Enabled="False" OnClick="AltertationsCheckinButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
                     </td>
                 </tr>
             </table>
@@ -267,7 +272,7 @@
 
                     </td>
                     <td>
-                        <asp:Button ID="submitAlterationsButton" runat="server" Text="Submit Alteration Changes" Enabled="False" OnClick="submitAlterationsButton_Click" />
+                        <asp:Button ID="submitAlterationsButton" runat="server" Text="Submit Alteration Changes" Enabled="False" OnClick="submitAlterationsButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
                     </td>
                 </tr>
             </table>

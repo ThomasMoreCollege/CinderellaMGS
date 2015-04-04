@@ -124,7 +124,7 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
 
         GridViewRow currentRow = VolunteerGridView.SelectedRow;
 
-        string notification = "Successfully changed " + currentRow.Cells[2].Text + " " + currentRow.Cells[3].Text + " to a " + currentRow.Cells[4].Text + " role!";
+        //string notification = "Successfully changed " + currentRow.Cells[2].Text + " " + currentRow.Cells[3].Text + " to a " + currentRow.Cells[4].Text + " role!";
         roleDropDownList.Enabled = false;
         changeRoleButton.Enabled = false;
         VolunteerGridView.SelectedIndex = -1;
