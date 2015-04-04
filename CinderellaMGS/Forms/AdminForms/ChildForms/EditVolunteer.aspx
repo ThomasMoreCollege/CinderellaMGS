@@ -175,7 +175,7 @@
                 <td class="auto-style9">&nbsp;</td>
                 <td class="auto-style11"></td>
                 <td class="auto-style8">
-                    <asp:Button ID="EditVolunterFormButton" runat="server" Enabled="False" OnClick="EditVolunterFormButton_Click" Style="text-align: center" Text="Save Changes" />
+                    <asp:Button ID="EditVolunterFormButton" runat="server" Enabled="False" OnClick="EditVolunterFormButton_Click" Style="text-align: center" Text="Save Changes" OnClientClick="javascript:window.scrollTo(0,0);"/>
                     &nbsp;&nbsp;<br />
                     <br />
                     <asp:Button ID="CancelButton" runat="server" CausesValidation="False" Enabled="False" OnClick="CancelButton_Click" Text="Cancel" />

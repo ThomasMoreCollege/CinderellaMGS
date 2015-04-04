@@ -74,6 +74,10 @@ public partial class Forms_AdminForms_GodMotherRegsitration : System.Web.UI.Page
         SqlCommand comm3 = new SqlCommand(sqlThree, conn);
         comm3.ExecuteNonQuery();
 
+        string notification = "" + firstName + " " + lastName + " has been successfully registered!";
+        SuccessLabel.Text = notification;
+        SuccessLabel.Visible = true;
+
         // Checking if a Role is selected for the Friday Shift
         if (FridayRolesDropDownList.SelectedValue != "Not Volunteering")
         {

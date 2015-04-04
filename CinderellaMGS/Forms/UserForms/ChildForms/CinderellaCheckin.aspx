@@ -13,7 +13,7 @@
         <table>
             <tr forecolor="Green">
                 <td>
-                    <asp:Label ID="SuccessLabel" runat="server" Text="Label" ForeColor="Green" Visible="False"></asp:Label>
+                    <asp:Label ID="SuccessLabel" runat="server" Text="Label" ForeColor="Green" Visible="False" Font-Bold="True"></asp:Label>
                 </td>
             </tr>
         </table>

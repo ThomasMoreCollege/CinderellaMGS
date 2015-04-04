@@ -217,6 +217,12 @@ public partial class Forms_AdminForms_ChildForms_EditVolunteer : System.Web.UI.P
                 StateTextBox.Enabled = false;
                 ZipcodeTextBox.Enabled = false;
 
+                //Display message
+                SuccessLabel.Text = FirstNameLabel.Text + " " + LastNameLabel.Text + " " + "Updated Successfuly!";
+                SuccessLabel.ForeColor = System.Drawing.Color.Green;
+                SuccessLabel.Visible = true;
+
+
                 //Empty labels
                 FirstNameLabel.Text = "--";
                 LastNameLabel.Text = "--";
@@ -226,11 +232,6 @@ public partial class Forms_AdminForms_ChildForms_EditVolunteer : System.Web.UI.P
                 CityLabel.Text = "--";
                 StateLabel.Text = "--";
                 ZipcodeLabel.Text = "--";
-
-                //Display message
-                SuccessLabel.Text = "Update Successful!";
-                SuccessLabel.ForeColor = System.Drawing.Color.Green;
-                SuccessLabel.Visible = true;
 
 
                 //Resfresh grid 

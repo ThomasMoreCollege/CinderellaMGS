@@ -5,6 +5,9 @@
     <h2>Volunteer Registration</h2>
 </asp:Content>
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
+    <asp:Label ID="SuccessLabel" runat="server" Font-Bold="True" ForeColor="Lime" Text="Label" Visible="False"></asp:Label>
+    <br />
+    <br />
     <asp:Label ID="VolunteerInfoLabel" runat="server" Font-Bold="True" Font-Size="Large" Text="Volunteer Information:"></asp:Label>
         <br />
         <br />
@@ -150,7 +153,7 @@
             <tr>
                 <td class="auto-style2"></td>
                 <td class="TableInputCell">
-                    <asp:Button ID="RegisterFormButton" runat="server" Text="Register" OnClick="RegisterFormButton_Click" />
+                    <asp:Button ID="RegisterFormButton" runat="server" Text="Register" OnClick="RegisterFormButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
                 </td>
             </tr>
         </table>
