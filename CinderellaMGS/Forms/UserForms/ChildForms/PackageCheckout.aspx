@@ -1,19 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="PackageCheckout.aspx.cs" Inherits="Forms_UserForms_ChildForms_PackageCheckout" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style type="text/css">
+        .auto-style1 {
+            width: 379px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeaderTitle" runat="Server">
     <h2>Package Checkout</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="Server">
     <div style="border-bottom: 1px solid #999999;">
+        <br />
+        <asp:Label ID="SuccessLabel" runat="server" Font-Bold="True" ForeColor="#00CC00" Text="Label" Visible="False"></asp:Label>
+        <br />
         <table>
             <tr>
-                <td><strong>Cinderellas Ready For Check-Out</strong>
+                <td class="auto-style1"><strong>
+                    <br />
+                    <br />
+                    Cinderellas Ready For Check-Out</strong>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style1">
                     <div style="height: 300px; overflow-y: auto; overflow-x: hidden;">
                         <asp:GridView ID="CinderellaPackageGridView" runat="server"
                             AllowSorting="True"
@@ -161,7 +172,7 @@
     </div>
     <p>
         <asp:Label runat="server" Visible=" false" ForeColor="Red" ID="SelectionValidationLabel">*Please select a Cinderella's Package</asp:Label><br />
-        <asp:Button ID="CheckOutButton" runat="server" Text="Check-Out Package" OnClick="CheckOutButton_Click" />
+        <asp:Button ID="CheckOutButton" runat="server" Text="Check-Out Package" OnClick="CheckOutButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
     </p>
 </asp:Content>
 

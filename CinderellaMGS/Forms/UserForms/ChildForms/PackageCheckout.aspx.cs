@@ -77,6 +77,10 @@ public partial class Forms_UserForms_ChildForms_PackageCheckout : System.Web.UI.
             //REMEMBER TO CLOSE CONNECTION!!
             conn.Close();
 
+            string notification = CinderellaPackageGridView.SelectedRow.Cells[1].Text + " " + CinderellaPackageGridView.SelectedRow.Cells[2].Text + " has been successfully checked out!";
+            SuccessLabel.Text = notification;
+            SuccessLabel.Visible = true;
+
             // Rebind the data to refresh the Grid
             CinderellaPackageGridView.DataBind();
             CinderellaPackageGridView.SelectedIndex = -1;
