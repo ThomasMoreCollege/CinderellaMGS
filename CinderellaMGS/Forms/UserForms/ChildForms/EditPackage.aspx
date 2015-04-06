@@ -99,7 +99,7 @@
 
                 </td>
                 <td>
-                    <asp:Button ID="DressDeliveredButton" runat="server" Text="Add Dress to Package" OnClick="DressDeliveredButton_Click" />
+                    <asp:Button ID="DressDeliveredButton" runat="server" Text="Add Dress to Package" OnClick="DressDeliveredButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
                 </td>
             </tr>
         </table>

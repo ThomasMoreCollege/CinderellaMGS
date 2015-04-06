@@ -13,7 +13,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="Server">
     <div style="border-bottom: 1px solid #999999;">
         <br />
-        <asp:Label ID="SuccessLabel" runat="server" Font-Bold="True" ForeColor="#00CC00" Text="Label" Visible="False"></asp:Label>
+        <asp:Label ID="SuccessLabel" runat="server" Font-Bold="True" ForeColor="Green" Text="Label" Visible="False"></asp:Label>
         <br />
         <table>
             <tr>
