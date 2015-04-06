@@ -20,7 +20,7 @@
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />
                                 <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
-                                <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                                <asp:BoundField DataField="FirstName" HeaderText="First  Name" SortExpression="FirstName" />
                             </Columns>
                             <FooterStyle BackColor="#CCCCCC" />
                             <HeaderStyle BackColor="Gray" Font-Bold="True" ForeColor="White" />
@@ -32,7 +32,8 @@
                             <SortedDescendingHeaderStyle BackColor="#383838" />
                         </asp:GridView>
                     </div>
-                    <asp:SqlDataSource ID="VolunteersToBeDeletedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [VolunteerID], [LastName], [FirstName] FROM [Volunteer] WHERE ([IsValid] = @IsValid)">
+                    <asp:SqlDataSource ID="VolunteersToBeDeletedSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                         SelectCommand="SELECT Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName FROM Volunteer INNER JOIN VolunteerStatusRecord ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID WHERE (Volunteer.IsValid = @IsValid) AND (VolunteerStatusRecord.Status_Name &lt;&gt; 'Shopping') AND (VolunteerStatusRecord.IsCurrent = 'Y')">
                         <SelectParameters>
                             <asp:Parameter DefaultValue="Y" Name="IsValid" Type="String" />
                         </SelectParameters>

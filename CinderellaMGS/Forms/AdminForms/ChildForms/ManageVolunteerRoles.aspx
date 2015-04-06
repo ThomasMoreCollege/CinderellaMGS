@@ -53,7 +53,7 @@
                                     WHERE VolunteerRoleRecord.IsCurrent = 'Y'
 	                                    AND VolunteerRoleRecord.Role_Name != 'Alterations'
 	                                    AND Volunteer.IsValid = 'Y' 
-	                                    AND (Status_Name = 'Ready' OR Status_Name = 'On Break') 
+	                                    AND (Status_Name = 'Ready' OR Status_Name = 'On Break' OR Status_Name = 'Paired') 
 	                                    AND VolunteerStatusRecord.IsCurrent = 'Y'
                                     GROUP BY  Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName, VolunteerRoleRecord.Role_Name">
                 </asp:SqlDataSource>

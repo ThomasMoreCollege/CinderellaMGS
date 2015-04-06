@@ -313,10 +313,14 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
         // Checking if the Volunteer is already paired to a Cinderella
         if (currentVolunteerStatus == "Paired")
         {
+
             // SQL string to get Cinderella paired to selected Volunteer
             string sql = "SELECT CinderellaID "
                             + "FROM Cinderella "
-                            + "WHERE Volunteer_ID = '" + selectedVolunteerID + "'";
+                            + "INNER JOIN CinderellaStatusRecord "
+                            + "ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID "
+                            + "WHERE Volunteer_ID = '" + selectedVolunteerID + "' AND IsCurrent = 'Y' AND Status_Name = 'Paired'";
+
             // Execute Query
             SqlCommand comm1 = new SqlCommand(sql, conn);
             string pairedCinderella = comm1.ExecuteScalar().ToString();
@@ -324,7 +328,8 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
             // SQL string to UPDATE all Cinderellas to 
             sql = "UPDATE Cinderella "
                     + "SET Volunteer_ID = NULL "
-                    + "WHERE Volunteer_ID = '" + selectedVolunteerID + "'";
+                    + "WHERE CinderellaID = '" + pairedCinderella + "'";
+
             // Execute Query
             SqlCommand comm2 = new SqlCommand(sql, conn);
             comm2.ExecuteNonQuery();
