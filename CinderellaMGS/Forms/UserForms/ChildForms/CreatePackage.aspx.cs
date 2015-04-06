@@ -200,7 +200,9 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             // Notifying user that package was created
             UserNotificationLabel.Text = "Cinderella "
                                         + Cinderella
-                                        + "'s package was created. To Edit, see the Edit Package page.";
+                                        + "'s package was created. "
+                                        + "To Edit the package and add dresses from alterations to it, "
+                                        + "see the Edit Package page.";
             UserNotificationLabel.Visible = true;
             UserNotificationLabel.ForeColor = System.Drawing.Color.Green;
 
