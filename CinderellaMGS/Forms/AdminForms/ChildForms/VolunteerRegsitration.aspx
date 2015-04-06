@@ -7,6 +7,14 @@
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" Runat="Server">
     <asp:Label ID="SuccessLabel" runat="server" Font-Bold="True" ForeColor="Green" Text="Label" Visible="False"></asp:Label>
     <br />
+    <script type="text/javascript">
+        window.onload = function () {
+            var seconds = 5;
+            setTimeout(function () {
+                document.getElementById("<%=SuccessLabel.ClientID %>").style.display = "none";
+            }, seconds * 1000);
+        };
+    </script>
     <br />
     <asp:Label ID="VolunteerInfoLabel" runat="server" Font-Bold="True" Font-Size="Large" Text="Volunteer Information:"></asp:Label>
         <br />

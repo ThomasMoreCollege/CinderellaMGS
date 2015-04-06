@@ -16,6 +16,14 @@
 
                 </td>
             </tr>
+           <script type="text/javascript">
+               window.onload = function () {
+                   var seconds = 5;
+                   setTimeout(function () {
+                       document.getElementById("<%=ConfirmationLabel.ClientID %>").style.display = "none";
+                }, seconds * 1000);
+            };
+            </script>
             <tr>
                 <td colspan="3" class="auto-style1">
 
