@@ -18,6 +18,7 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
 
     protected void AltertationsCheckinButton_Click(object sender, EventArgs e)
     {
+        ConfirmationLabel.Visible = false;
         // Checking if the DressDropDowns have selected values
         if (DressSizeDropDownList.SelectedValue == "1") { DressSizeErrorLabel.Visible = true; }
         else { DressSizeErrorLabel.Visible = false; }
@@ -47,6 +48,7 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
             string firstName = currentRow.Cells[2].Text;
             string lastName = currentRow.Cells[1].Text;
 
+            ConfirmationLabel.ForeColor = System.Drawing.Color.Green;
             ConfirmationLabel.Text = firstName + " " + lastName + "'s dress has been checked into alterations.";
             ConfirmationLabel.Visible = true;
 
@@ -73,13 +75,25 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
             CinderellaShoppingGridView.DataBind();
             CinderellaShoppingGridView.SelectedIndex = -1;
         }
+        else
+        {
+            // Notifying user of errors
+            ConfirmationLabel.Text = "ERROR: Please select all necessary information.";
+            ConfirmationLabel.ForeColor = System.Drawing.Color.Red;
+            ConfirmationLabel.Visible = true;
+        }
     }
 
     protected void submitAlterationsButton_Click(object sender, EventArgs e)
     {
+        ConfirmationLabel.Visible = false;
         if (SeamstressDropDownList.SelectedIndex == 0)
         {
+            // Notifing user of errors
             Error.Visible = true;
+            ConfirmationLabel.Text = "ERROR: Please select all necessary information.";
+            ConfirmationLabel.ForeColor = System.Drawing.Color.Red;
+            ConfirmationLabel.Visible = true;
         }
         else
         {
@@ -214,20 +228,25 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
                             + "', ReadyForPickup='" + testReady + "'"
                         + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "'";
 
-                if (PickupRadioButtonList.SelectedValue == "Y")
-                {
-                    ConfirmationLabel.Text =  firstName + " " + lastName + "'s dress is marked ready for pick up.";
-                    ConfirmationLabel.Visible = true;
-                }
-
-                if (PickupRadioButtonList.SelectedValue == "N")
-                {
-                    ConfirmationLabel.Text = "Changes have been saved for " + firstName + " " + lastName + ".";
-                    ConfirmationLabel.Visible = true;
-                }
+                
                 // Execute SQL
                 SqlCommand updateAlteration = new SqlCommand(sql, conn1);
                 updateAlteration.ExecuteNonQuery();
+            }
+
+            if (PickupRadioButtonList.SelectedValue == "Y")
+            {
+                // Notifying user of success
+                ConfirmationLabel.ForeColor = System.Drawing.Color.Green;
+                ConfirmationLabel.Text = firstName + " " + lastName + "'s dress is marked ready for pick up.";
+                ConfirmationLabel.Visible = true;
+            }
+            else
+            {
+                // Notifying user of success
+                ConfirmationLabel.ForeColor = System.Drawing.Color.Green;
+                ConfirmationLabel.Text = "Changes have been saved for " + firstName + " " + lastName + ".";
+                ConfirmationLabel.Visible = true;
             }
 
             // Rebind the data to refresh the grid
