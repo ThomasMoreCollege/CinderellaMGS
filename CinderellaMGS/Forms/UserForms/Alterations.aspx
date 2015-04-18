@@ -22,7 +22,7 @@
                     <strong>Cinderella Dresses in Alterations</strong></td>
             </tr>
             <tr >
-                <td style="height: 300px; width: 39%; overflow: auto; border-right: 1px solid #999999;">
+                <td style="height: 300px; width: 39%; overflow: auto;">
                     <%--                    </div>--%>
                         <asp:GridView ID="CinderellaShoppingGridView" runat="server"
                             AllowSorting="True"
@@ -166,7 +166,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <asp:Button ID="AltertationsCheckinButton" runat="server" Text="Check Dress in to Altertations" Style="text-align: center" Enabled="False" OnClick="AltertationsCheckinButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
+                        <asp:Button ID="AltertationsCheckinButton" runat="server" Text="Check In Dress" Style="text-align: center" Enabled="False" OnClick="AltertationsCheckinButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
                     </td>
                 </tr>
             </table>
@@ -272,7 +272,7 @@
 
                     </td>
                     <td>
-                        <asp:Button ID="submitAlterationsButton" runat="server" Text="Submit Alteration Changes" Enabled="False" OnClick="submitAlterationsButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
+                        <asp:Button ID="submitAlterationsButton" runat="server" Text="Save Changes" Enabled="False" OnClick="submitAlterationsButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
                     </td>
                 </tr>
             </table>

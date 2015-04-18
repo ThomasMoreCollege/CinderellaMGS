@@ -25,7 +25,7 @@
                             AllowSorting="True"
                             AutoGenerateColumns="False"
                             DataSourceID="Cinderella2015"
-                            DataKeyNames="CinderellaID" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black">
+                            DataKeyNames="CinderellaID" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black" EmptyDataText="There are no Cinderellas currently shopping.">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
@@ -66,8 +66,8 @@
                             <Columns>
 
                                 <asp:CommandField ShowSelectButton="True" />
-                                <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                                 <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                                <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                                 <asp:BoundField DataField="dressSize" HeaderText="Dress Size" SortExpression="dressSize" />
                                 <asp:BoundField DataField="dressLength" HeaderText="Dress Length" SortExpression="dressLength" />
                                 <asp:BoundField DataField="dressColor" HeaderText="Dress Color" SortExpression="dressColor" />
