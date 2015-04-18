@@ -6,12 +6,22 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
         <table id="ClockingTable">
             <tr>
+                <td colspan="2">
+                    <asp:Label ID="ConfirmLabel" runat="server" Text="Label" Visible="False" Font-Bold="True"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <asp:Label ID="ConfirmLabel2" runat="server" Text="Label" Visible="False" Font-Bold="True"></asp:Label>
+                </td>
+            </tr>
+            <tr>
                 <td style="text-align:center">
-                    <asp:Button ID="TakeOffBreakButton" runat="server" Text="Take off Break" OnClick="TakeOffBreakButton_Click" />
+                    <asp:Button ID="TakeOffBreakButton" runat="server" Text="Take off Break" OnClick="TakeOffBreakButton_Click" Enabled="False" />
                         
                 </td>
                 <td style="text-align:center">
-                    <asp:Button ID="SendOnBreakButton" runat="server" Text="Send on Break" OnClick="SendOnBreakButton_Click" />
+                    <asp:Button ID="SendOnBreakButton" runat="server" Text="Send on Break" OnClick="SendOnBreakButton_Click" Enabled="False" />
                 </td>
             </tr>
             <tr>
@@ -25,7 +35,7 @@
                             AllowSorting="True" 
                             AutoGenerateColumns="False" 
                             DataSourceID="SqlDataSource1"
-                            DataKeyNames="VolunteerID" ForeColor="Black">
+                            DataKeyNames="VolunteerID" ForeColor="Black" OnSelectedIndexChanged="VolunteerOnBreakGridView_SelectedIndexChanged">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />
@@ -61,7 +71,7 @@
                             AllowSorting="True" 
                             AutoGenerateColumns="False" 
                             DataSourceID="SqlDataSource2"
-                            DataKeyNames="VolunteerID" ForeColor="Black">
+                            DataKeyNames="VolunteerID" ForeColor="Black" OnSelectedIndexChanged="VolunteerOffBreakGridView_SelectedIndexChanged">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />
@@ -84,8 +94,6 @@
                                             FROM Volunteer 
                                             INNER JOIN VolunteerStatusRecord 
                                                 ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID 
-                                            INNER JOIN VolunteerRoleRecord
-                                                ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID
                                             WHERE (VolunteerStatusRecord.Status_Name != 'On Break') 
                                                 AND (VolunteerStatusRecord.IsCurrent = 'Y') 
                                                 AND (Volunteer.IsValid = 'Y') 
@@ -96,10 +104,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2"><asp:Label ID="Label1" runat="server" Text="NOTE: Only Volunteers on break or ready to receive a Cinderella" ></asp:Label></td>
-            </tr>
-                    <tr>
-                <td colspan="2"><asp:Label ID="Label2" runat="server" Text="(but NOT currently shopping or paired with a Cinderella) will be shown" ></asp:Label></td>
+                <td colspan="2"><asp:Label ID="Label1" runat="server" Text="NOTE: Volunteers currently shopping will not appear in the list." ></asp:Label></td>
             </tr>
         </table>   
 </asp:Content>

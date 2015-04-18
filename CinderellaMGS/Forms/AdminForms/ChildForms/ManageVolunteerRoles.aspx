@@ -15,6 +15,10 @@
                 <asp:Label ID="ConfirmLabel" runat="server" Text="Label" Font-Bold="True" ForeColor="Green" Visible="False"></asp:Label></td>
         </tr>
         <tr>
+            <td>
+                <asp:Label ID="ConfirmLabel2" runat="server" Text="Label" Font-Bold="True" ForeColor="Green" Visible="False"></asp:Label></td>
+        </tr>
+        <tr>
             <td class="auto-style3">
                 <strong>Manage Volunteer Roles:</strong>
             </td>

@@ -8,7 +8,18 @@
     <div>
         <table>
             <tr>
-                <td>Current Information
+                <td>
+                    <asp:Label ID="ConfirmLabel" runat="server" Text="Label" Font-Bold="True" Visible="False"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Current Information
+                </strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    NOTE: Volunteers currently shopping will not appear in the list.
                 </td>
             </tr>
             <tr>
@@ -97,7 +108,7 @@
             <tr>
                 <td class="auto-style3"></td>
                 <td>
-                    <asp:Button ID="DeleteVoluntFormButton" runat="server" Text="Delete" Enabled="False" OnClick="DeleteVoluntFormButton_Click" />
+                    <asp:Button ID="DeleteVoluntFormButton" runat="server" Text="Delete" Enabled="False" OnClick="DeleteVoluntFormButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
                 </td>
             </tr>
         </table>
@@ -107,10 +118,7 @@
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="head">
     <style type="text/css">
-        .auto-style1 {
-            width: 439px;
-        }
-
+        
         .auto-style2 {
             width: 172px;
             text-align: right;
