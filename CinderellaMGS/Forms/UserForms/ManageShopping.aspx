@@ -12,6 +12,11 @@
             </td>
         </tr>
         <tr>
+            <td colspan="3">
+                <asp:Label ID="NotificationLabel" runat="server" Text="Cinderella XXX and Volunter YYY successfully ZZZ" ForeColor="Green" Visible="False" style="font-weight: 700"></asp:Label>
+            </td>
+        </tr>
+        <tr>
             <td colspan="2">
                 <strong>Paired Cinderellas/Volunteers</strong>
             </td>
@@ -124,11 +129,6 @@
             </td>
         </tr>
         <tr>
-            <td colspan="3">
-                <asp:Label ID="NotificationLabel" runat="server" Text="Cinderella XXX and Volunter YYY successfully ZZZ" ForeColor="Green" Visible="False"></asp:Label>
-            </td>
-        </tr>
-        <tr>
             <td><strong>Cinderellas</strong></td>
             <td></td>
             <td><strong>Volunteers</strong></td>
@@ -229,7 +229,7 @@
                                         ORDER BY [StartTime]"></asp:SqlDataSource>
             </td>
             <td class="auto-style1">
-                <asp:Button ID="ManualPairButton" runat="server" Enabled="False" OnClick="ManualPairButton_Click" Text="Pair" Font-Size="X-Large" Height="63px" Width="93px" />
+                <asp:Button ID="ManualPairButton" runat="server" Enabled="False" OnClick="ManualPairButton_Click" Text="Pair" Font-Size="X-Large" Height="63px" Width="93px" OnClientClick="javascript:window.scrollTo(0,0);"/>
             </td>
             <td rowspan="2">
                 <div style="overflow: auto; height: 300px;">

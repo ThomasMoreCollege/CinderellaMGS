@@ -279,7 +279,10 @@ public partial class Forms_AdminForms_ChildForms_ManageVolunteerRoles : System.W
         roleDropDownList.Enabled = false;
         changeRoleButton.Enabled = false;
         VolunteerGridView.SelectedIndex = -1;
-        
+
+
+
+        //Response.Redirect("/CinderellaMGS/Forms/AdminForms/ChildForms/ManageVolunteerRoles.aspx");
     }
 
     protected void roleDropDownList_SelectedIndexChanged1(object sender, EventArgs e)
