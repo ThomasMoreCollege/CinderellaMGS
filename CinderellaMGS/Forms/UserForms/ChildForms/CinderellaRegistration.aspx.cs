@@ -176,10 +176,10 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             SqlCommand comm1 = new SqlCommand(addNewCinderellaQuery, conn);
             comm1.ExecuteNonQuery();
 
-            //Query to retrieve ID of newly added Cinderella 
-            string cinderellaIDQuery = "SELECT CinderellaID "
-                                        + "FROM Cinderella "
-                                        + "WHERE FirstName='" + firstname + "' AND LastName='" + lastname + "' AND Email='" + email + "'";
+            //Get newly added Cinderellas' ID 
+            string cinderellaIDQuery = "SELECT TOP 1 CinderellaID "
+                                     + "FROM Cinderella "
+                                     + "ORDER BY CinderellaID DESC";
 
             //Turn query string into a SQL command
             SqlCommand newCinderellaID = new SqlCommand(cinderellaIDQuery, conn);            
