@@ -27,7 +27,7 @@
                 AllowSorting="True" 
                 AutoGenerateColumns="False" 
                 DataSourceID="Cinderella2015" 
-                DataKeyNames="CinderellaID" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black">
+                DataKeyNames="CinderellaID" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black" EmptyDataText="There are no cinderellas registered for today.">
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
                     <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />

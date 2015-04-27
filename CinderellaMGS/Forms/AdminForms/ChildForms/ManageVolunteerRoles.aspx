@@ -62,7 +62,7 @@
                                     GROUP BY  Volunteer.VolunteerID, Volunteer.LastName, Volunteer.FirstName, VolunteerRoleRecord.Role_Name">
                 </asp:SqlDataSource>
                 <div style="height: 300px; width: 600px; overflow: auto;">
-                    <asp:GridView ID="VolunteerGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="VolunteerID" DataSourceID="VolunteerDisplayDS" AllowSorting="True" ForeColor="Black" OnSelectedIndexChanged="VolunteerGridView_SelectedIndexChanged1">
+                    <asp:GridView ID="VolunteerGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="VolunteerID" DataSourceID="VolunteerDisplayDS" AllowSorting="True" ForeColor="Black" OnSelectedIndexChanged="VolunteerGridView_SelectedIndexChanged1" EmptyDataText="There are no volunteers currently checked in.">
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" />
                             <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" InsertVisible="False" ReadOnly="True" SortExpression="VolunteerID" />

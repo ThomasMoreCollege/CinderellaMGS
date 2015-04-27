@@ -35,7 +35,7 @@
                             AllowSorting="True" 
                             AutoGenerateColumns="False" 
                             DataSourceID="SqlDataSource1"
-                            DataKeyNames="VolunteerID" ForeColor="Black" OnSelectedIndexChanged="VolunteerOnBreakGridView_SelectedIndexChanged">
+                            DataKeyNames="VolunteerID" ForeColor="Black" OnSelectedIndexChanged="VolunteerOnBreakGridView_SelectedIndexChanged" EmptyDataText="There are currently no volunteers on break.">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />
@@ -71,7 +71,7 @@
                             AllowSorting="True" 
                             AutoGenerateColumns="False" 
                             DataSourceID="SqlDataSource2"
-                            DataKeyNames="VolunteerID" ForeColor="Black" OnSelectedIndexChanged="VolunteerOffBreakGridView_SelectedIndexChanged">
+                            DataKeyNames="VolunteerID" ForeColor="Black" OnSelectedIndexChanged="VolunteerOffBreakGridView_SelectedIndexChanged" EmptyDataText="There are currently volunteers working.">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />

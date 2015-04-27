@@ -30,7 +30,7 @@
                             AllowSorting="True"
                             AutoGenerateColumns="False"
                             DataSourceID="Cinderella2015"
-                            DataKeyNames="Cinderella_ID" OnSelectedIndexChanged="CinderellaPackageGridView_SelectedIndexChanged" ForeColor="Black">
+                            DataKeyNames="Cinderella_ID" OnSelectedIndexChanged="CinderellaPackageGridView_SelectedIndexChanged" ForeColor="Black" EmptyDataText="There are no cinderellas ready for check out. ">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />

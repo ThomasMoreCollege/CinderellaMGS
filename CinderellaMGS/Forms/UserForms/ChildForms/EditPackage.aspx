@@ -22,7 +22,7 @@
                             AllowSorting="True"
                             AutoGenerateColumns="False"
                             DataSourceID="Cinderella2015"
-                            DataKeyNames="CinderellaID" OnSelectedIndexChanged="CinderellaPackageGridView_SelectedIndexChanged" ForeColor="Black">
+                            DataKeyNames="CinderellaID" OnSelectedIndexChanged="CinderellaPackageGridView_SelectedIndexChanged" ForeColor="Black" EmptyDataText="There are currently no completed packages.">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
@@ -72,7 +72,7 @@
                             AllowSorting="True"
                             AutoGenerateColumns="False"
                             DataSourceID="DressDeliveryDataSource"
-                            DataKeyNames="CinderellaID" OnSelectedIndexChanged="DressDeliveryGridView_SelectedIndexChanged" ForeColor="Black">
+                            DataKeyNames="CinderellaID" OnSelectedIndexChanged="DressDeliveryGridView_SelectedIndexChanged" ForeColor="Black" EmptyDataText="There are no dresses currently ready in alterations.">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />

@@ -22,7 +22,7 @@
                 AllowSorting="True" 
                 AutoGenerateColumns="False" 
                 DataSourceID="Cinderella2015"
-                DataKeyNames ="VolunteerID" ForeColor="Black">
+                DataKeyNames ="VolunteerID" ForeColor="Black" EmptyDataText="There are no volunteers registered for today.">
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
                     <asp:BoundField DataField="VolunteerID" HeaderText="Volunteer ID" SortExpression="VolunteerID" InsertVisible="False" ReadOnly="True" />

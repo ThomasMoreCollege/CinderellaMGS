@@ -28,7 +28,7 @@
                         AllowSorting="True"
                         AutoGenerateColumns="False"
                         DataSourceID="CinderellaPairedDataSource"
-                        DataKeyNames="CinderellaID" Width="100%" Height="100px" OnSelectedIndexChanged="PairedCinderellaGridView_SelectedIndexChanged" ForeColor="Black">
+                        DataKeyNames="CinderellaID" Width="100%" Height="100px" OnSelectedIndexChanged="PairedCinderellaGridView_SelectedIndexChanged" ForeColor="Black" EmptyDataText="There are no cinderellas currently paired.">
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" />
                             <asp:BoundField DataField="Cinderella" HeaderText="Cinderella" ReadOnly="True" SortExpression="Cinderella" />
@@ -87,7 +87,7 @@
                         AllowSorting="True"
                         AutoGenerateColumns="False"
                         DataSourceID="CinderellaShoppingDataSource"
-                        DataKeyNames="CinderellaID" Width="100%" Height="100px" OnSelectedIndexChanged="ShoppingGridView_SelectedIndexChanged" ForeColor="Black">
+                        DataKeyNames="CinderellaID" Width="100%" Height="100px" OnSelectedIndexChanged="ShoppingGridView_SelectedIndexChanged" ForeColor="Black" EmptyDataText="There are no cinderellas currently shopping.">
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" />
                             <asp:BoundField DataField="Cinderella" HeaderText="Cinderella" ReadOnly="True" SortExpression="Cinderella" />
@@ -200,7 +200,7 @@
                         AutoGenerateColumns="False"
                         OnRowDataBound="ManualCinderellaGridView_DataBound"
                         DataSourceID="Cinderella2015"
-                        DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="ManualCinderellaGridView_SelectedIndexChanged">
+                        DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="ManualCinderellaGridView_SelectedIndexChanged" EmptyDataText="There are no cinderellas available for manual pairing.">
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" />
                             <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
@@ -238,7 +238,7 @@
                         AutoGenerateColumns="False"
                         OnRowDataBound="AllVolunteersGridView_DataBound"
                         DataSourceID="VolunteerPairDataSource"
-                        DataKeyNames="VolunteerID" ForeColor="Black" OnSelectedIndexChanged="VolunteerPairingGridView_SelectedIndexChanged">
+                        DataKeyNames="VolunteerID" ForeColor="Black" OnSelectedIndexChanged="VolunteerPairingGridView_SelectedIndexChanged" EmptyDataText="There are no volunteers available for manual pairing.">
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" />
                             <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />

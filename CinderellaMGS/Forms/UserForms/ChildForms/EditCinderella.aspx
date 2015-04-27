@@ -24,7 +24,7 @@
                 <td>
 
                 <asp:SqlDataSource ID="CinderellaDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT [CinderellaID], [LastName], [FirstName] FROM [Cinderella] ORDER BY [LastName]"></asp:SqlDataSource>
-                <asp:GridView ID="CinderellaGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="CinderellaID" DataSourceID="CinderellaDS" Width="100px" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black" AllowSorting="True">
+                <asp:GridView ID="CinderellaGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="CinderellaID" DataSourceID="CinderellaDS" Width="100px" OnSelectedIndexChanged="CinderellaGridView_SelectedIndexChanged" ForeColor="Black" AllowSorting="True" EmptyDataText="There are no cinderellas currently registered.">
                     <Columns>
                         <asp:CommandField ShowSelectButton="True" />
                         <asp:BoundField DataField="CinderellaID" HeaderText="CinderellaID" InsertVisible="False" ReadOnly="True" SortExpression="CinderellaID" />
