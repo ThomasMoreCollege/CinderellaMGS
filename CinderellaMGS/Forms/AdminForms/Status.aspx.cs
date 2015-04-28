@@ -150,7 +150,7 @@ public partial class Forms_AdminForms_ChildForms_Status : System.Web.UI.Page
 
         DressAlterationsLabel.Text = total.ToString();
 
-        // SQL to count total Packages with InPackaging 'N'
+        // SQL to count total Packages with InPackaging 'N' and InAlterations 'N'
         PackSQL = "SELECT COUNT (Cinderella_ID) "
                 + "FROM Package "
                 + "WHERE InPackaging = 'N'";
