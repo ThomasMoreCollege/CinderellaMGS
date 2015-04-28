@@ -62,7 +62,7 @@
                             AllowSorting="True"
                             AutoGenerateColumns="False"
                             DataSourceID="PackageDataSource"
-                            DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="CinderellaDressAlterationsGridView_SelectedIndexChanged" EmptyDataText="There are no dresses in altertations.">
+                            DataKeyNames="CinderellaID" ForeColor="Black" OnSelectedIndexChanged="CinderellaDressAlterationsGridView_SelectedIndexChanged" EmptyDataText="There are no dresses in alterations.">
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
