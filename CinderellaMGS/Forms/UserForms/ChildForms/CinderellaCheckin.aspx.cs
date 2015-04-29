@@ -61,6 +61,7 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
                                 + "WHERE CinderellaID = '" + SelectedCinderellaID + "'";
                 // Execute query
                 SqlCommand getPairingStatus = new SqlCommand(sql, conn);
+
                 string CinderellaPairStatus = getPairingStatus.ExecuteScalar().ToString();
 
 
@@ -151,5 +152,31 @@ public partial class Forms_CinderellaCheckin : System.Web.UI.Page
     {
         SuccessLabel.Visible = false;
         needsManualPairingCheckBox.Enabled = true;
+
+        // Creating a variable to hold a string of the Cinderella's ID
+        string SelectedCinderellaID = CinderellaGridView.SelectedValue.ToString();
+
+        //Initialize database connection with "DefaultConnection" setup in the web.config
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+        //Open the connection 
+        conn.Open();
+
+        // SQL string to select the Cinderella's paired status
+        string sql = "SELECT isManuallyPaired "
+                        + "FROM Cinderella "
+                        + "WHERE CinderellaID = '" + SelectedCinderellaID + "'";
+        // Execute query
+        SqlCommand getPairingStatus = new SqlCommand(sql, conn);
+        string CinderellaPairStatus = getPairingStatus.ExecuteScalar().ToString();
+
+        if (CinderellaPairStatus == "Y")
+        {
+            needsManualPairingCheckBox.Checked = true;
+        }
+        else
+        {
+            needsManualPairingCheckBox.Checked = false;
+        }
     }
 }

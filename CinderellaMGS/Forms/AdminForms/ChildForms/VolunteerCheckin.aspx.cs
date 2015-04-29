@@ -78,38 +78,45 @@ public partial class Forms_UserForms_VolunteerCheckin : System.Web.UI.Page
             // Rebind the data to refresh the Grid
             VolunteerGridView.DataBind();
             VolunteerGridView.SelectedIndex = -1;
-            try
+
+            ResultLabel.Text = "Volunteer has been checked in";
+            ResultLabel.Visible = true;
+
+            if (ShiftRole == "Godmother")
             {
-                //Retrieve ID of selected volunteer
-                int volID = Convert.ToInt32(SelectedVolunteerID);
+                try
+                {
+                    //Retrieve ID of selected volunteer
+                    int volID = Convert.ToInt32(SelectedVolunteerID);
 
-                //Create object instance with selected volunteer
-                VolunteerClass checkinVolunteer = new VolunteerClass(volID);
+                    //Create object instance with selected volunteer
+                    VolunteerClass checkinVolunteer = new VolunteerClass(volID);
 
-                //Lock application state so that no else can access it 
-                Application.Lock();
+                    //Lock application state so that no else can access it 
+                    Application.Lock();
 
-                //Initialize a local copy of volunteer queue
-                VolunteerQueue.VolunteerQueue volunteerQueueCopy = new VolunteerQueue.VolunteerQueue();
+                    //Initialize a local copy of volunteer queue
+                    VolunteerQueue.VolunteerQueue volunteerQueueCopy = new VolunteerQueue.VolunteerQueue();
 
-                //Copy queue in the application session into the local copy
-                volunteerQueueCopy = Application["volunteerQueue"] as VolunteerQueue.VolunteerQueue;
+                    //Copy queue in the application session into the local copy
+                    volunteerQueueCopy = Application["volunteerQueue"] as VolunteerQueue.VolunteerQueue;
 
-                //Insert volunter to the queue
-                volunteerQueueCopy.enqueue(checkinVolunteer);
+                    //Insert volunter to the queue
+                    volunteerQueueCopy.enqueue(checkinVolunteer);
 
-                //Copy changes into application queue
-                Application["volunteerQueue"] = volunteerQueueCopy;
+                    //Copy changes into application queue
+                    Application["volunteerQueue"] = volunteerQueueCopy;
 
-                //Unlock Application session
-                Application.UnLock();
+                    //Unlock Application session
+                    Application.UnLock();
 
-                ResultLabel.Text = "Godmother placed in queue";
-                ResultLabel.Visible = true;
-            }
-            catch (Exception ex)
-            {
-                ResultLabel.Visible = false;
+                    ResultLabel.Text += " and placed in queue.";
+
+                }
+                catch (Exception ex)
+                {
+                    ResultLabel.Visible = false;
+                }
             }
         }
     }

@@ -108,7 +108,7 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             ConfirmationLabel.Text = firstname + " " + lastname + " has been successfully registered.";
             ConfirmationLabel.Visible = true;
 
-            // Revent all text field values back to empty to allow for another Cinderella input.
+            // Reset all text field values back to empty to allow for another Cinderella input.
             FirstTextBox.Text = "";
             LastNameTextBox.Text = "";
             NewReferralFirstNameTextBox.Text = "";
@@ -123,9 +123,6 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             ddlStartTimeMin.SelectedIndex = -1;
             ddlStartTimeAMPM.SelectedIndex = -1;
             NewReferralLastNameTextBox.Text = "";
-
-            ExistingReferralRadioButton.Checked = false;
-            NewReferralRadioButton.Checked = false;
         }
 
         else if (ExistingReferralRadioButton.Checked == true && IsValid == true)
@@ -222,10 +219,35 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             ddlStartTimeAMPM.SelectedIndex = -1;
             NewReferralLastNameTextBox.Text = "";
 
-            ExistingReferralRadioButton.Checked = false;
-            NewReferralRadioButton.Checked = false;
+
           
         }
+
+
+        ExistingReferralRadioButton.Checked = true;
+        NewReferralRadioButton.Checked = false;
+        referralDropDownList.Enabled = true;
+        referralDropDownList.BackColor = System.Drawing.Color.White;
+
+        NewReferralFirstNameTextBox.Enabled = false;
+        NewReferralLastNameTextBox.Enabled = false;
+        NewReferralPhoneTextBox.Enabled = false;
+        NewReferralEmailTextBox.Enabled = false;
+        NewSchoolAgencyTextBox.Enabled = false;
+
+        NewReferralFirstNameTextBox.BackColor = System.Drawing.Color.Silver;
+        NewReferralLastNameTextBox.BackColor = System.Drawing.Color.Silver;
+        NewReferralPhoneTextBox.BackColor = System.Drawing.Color.Silver;
+        NewReferralEmailTextBox.BackColor = System.Drawing.Color.Silver;
+        NewSchoolAgencyTextBox.BackColor = System.Drawing.Color.Silver;
+
+        NewReferalFirstNameValidator.Enabled = false;
+        NewReferalLastNameValidator.Enabled = false;
+        NewReferalPhoneValidator.Enabled = false;
+        NewReferalEmailValidator.Enabled = false;
+        NewSchoolAgengyValidator.Enabled = false;
+
+        referralDropDownList.DataBind();
 
     }
 
@@ -240,6 +262,12 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         NewReferralPhoneTextBox.Enabled = true;
         NewReferralEmailTextBox.Enabled = true;
         NewSchoolAgencyTextBox.Enabled = true;
+
+        NewReferralFirstNameTextBox.BackColor = System.Drawing.Color.White;
+        NewReferralLastNameTextBox.BackColor = System.Drawing.Color.White;
+        NewReferralPhoneTextBox.BackColor = System.Drawing.Color.White;
+        NewReferralEmailTextBox.BackColor = System.Drawing.Color.White;
+        NewSchoolAgencyTextBox.BackColor = System.Drawing.Color.White;
 
         NewReferalFirstNameValidator.Enabled = true;
         NewReferalLastNameValidator.Enabled = true;
@@ -260,6 +288,12 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
         NewReferralPhoneTextBox.Enabled = false;
         NewReferralEmailTextBox.Enabled = false;
         NewSchoolAgencyTextBox.Enabled = false;
+
+        NewReferralFirstNameTextBox.BackColor = System.Drawing.Color.Silver;
+        NewReferralLastNameTextBox.BackColor = System.Drawing.Color.Silver;
+        NewReferralPhoneTextBox.BackColor = System.Drawing.Color.Silver;
+        NewReferralEmailTextBox.BackColor = System.Drawing.Color.Silver;
+        NewSchoolAgencyTextBox.BackColor = System.Drawing.Color.Silver;
 
         NewReferalFirstNameValidator.Enabled = false;
         NewReferalLastNameValidator.Enabled = false;

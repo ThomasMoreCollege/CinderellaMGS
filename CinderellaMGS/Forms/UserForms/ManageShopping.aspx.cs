@@ -205,6 +205,8 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
         // Refresh the databinding for the volunteer grid.
         VolunteerPairingGridView.DataBind();
 
+        ManualCinderellaGridView.DataBind();
+
         GoShoppingButton.Enabled = false;
         UndoShoppingButton.Enabled = false;
         //BreakPairingButton.Enabled = false;

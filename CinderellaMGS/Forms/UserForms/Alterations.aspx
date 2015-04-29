@@ -126,7 +126,9 @@
                             DataSourceID="DressSizeDS" DataTextField="dressSize" DataValueField="dressSize">
                             <asp:ListItem Text="--SELECT--" Value="1">--SELECT--</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="DressSizeDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" SelectCommand="SELECT [dressSize] FROM [DressSize]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="DressSizeDS" runat="server" ConnectionString="<%$ ConnectionStrings:CinderellaMGS2015TestingConnectionString %>" 
+                            SelectCommand="SELECT [dressSize] 
+                                            FROM [DressSize]"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
@@ -166,7 +168,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <asp:Button ID="AltertationsCheckinButton" runat="server" Text="Check In Dress" Style="text-align: center" Enabled="False" OnClick="AltertationsCheckinButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
+                        <asp:Button ID="AltertationsCheckinButton" runat="server" Text="Check In Dress" Style="text-align: center; height: 26px;" Enabled="False" OnClick="AltertationsCheckinButton_Click" OnClientClick="javascript:window.scrollTo(0,0);"/>
                     </td>
                 </tr>
             </table>

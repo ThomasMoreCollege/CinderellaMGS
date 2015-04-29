@@ -6,9 +6,13 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="Server">
 
     <div style="float:left; width:100%;">
-        <p>
+        <div>
             <asp:Label ID="UserNotificationLabel" runat="server" Text="Label" Font-Bold="True" ForeColor="Green" Visible="False"></asp:Label>
-        </p>
+            <br />
+            <asp:Label ID="UserNotificationLabel2" runat="server" Text="Label" Font-Bold="True" ForeColor="Green" Visible="False"></asp:Label>
+            <br />
+            <br />
+        </div>
         <table id="CreatePackageGrids">
             <tr>
                 <td>

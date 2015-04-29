@@ -247,6 +247,7 @@ public partial class Forms_AdminForms_ChildForms_DeleteVolunteer : System.Web.UI
         //Refresh Grid
         VolunteerGridView.DataSourceID = "VolunteersToBeDeletedSqlDataSource";
         VolunteerGridView.DataBind();
+        VolunteerGridView.SelectedIndex = -1;
 
         FisrtNameLabel.Text = "--";
         LastNameLabel.Text = "--";

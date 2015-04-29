@@ -82,6 +82,10 @@ public partial class Forms_UserForms_Alterations : System.Web.UI.Page
             ConfirmationLabel.ForeColor = System.Drawing.Color.Red;
             ConfirmationLabel.Visible = true;
         }
+
+        DressColorDropDownList.SelectedValue = "1";
+        DressSizeDropDownList.SelectedValue = "1";
+        DressLengthDropDownList.SelectedValue = "1";
     }
 
     protected void submitAlterationsButton_Click(object sender, EventArgs e)

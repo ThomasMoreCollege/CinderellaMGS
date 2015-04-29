@@ -84,7 +84,7 @@
             </td>
         </tr>
         <tr>
-            <td><asp:Label ID="Label1" runat="server" Text="NOTE: Volunteers currently shopping wil not be displayed." ></asp:Label></td>
+            <td><asp:Label ID="Label1" runat="server" Text="NOTE: Volunteers currently shopping are not displayed." ></asp:Label></td>
         </tr>
 
     </table>

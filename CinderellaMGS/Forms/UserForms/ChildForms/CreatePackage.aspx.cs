@@ -200,11 +200,14 @@ public partial class Forms_UserForms_Checkout : System.Web.UI.Page
             // Notifying user that package was created
             UserNotificationLabel.Text = "Cinderella "
                                         + Cinderella
-                                        + "'s package was created. "
-                                        + "To Edit the package and add dresses from alterations to it, "
-                                        + "see the Edit Package page.";
+                                        + "'s package was created.";
             UserNotificationLabel.Visible = true;
             UserNotificationLabel.ForeColor = System.Drawing.Color.Green;
+
+            UserNotificationLabel2.Text = "To Edit the package and add dresses from alterations to it, "
+                                        + "see the Edit Package page.";
+            UserNotificationLabel2.Visible = true;
+            UserNotificationLabel2.ForeColor = System.Drawing.Color.Green;
 
             // Rebind the data to refresh the Grid
             CinderellaGridView.DataBind();
