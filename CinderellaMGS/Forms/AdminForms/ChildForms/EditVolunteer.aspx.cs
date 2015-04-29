@@ -168,7 +168,7 @@ public partial class Forms_AdminForms_ChildForms_EditVolunteer : System.Web.UI.P
                 //Open the connection 
                 conn.Open();
                 string editVolQuery = "UPDATE Volunteer "
-                                        + "SET FirstName=@Vfname,LastName=@Vlname, Address=@Vaddress, City=@Vcity, State=@Vstate, Zipcode=@Vzipcode, Phone=@Vphone, Email=@Vemail "
+                                        + "SET FirstName=@Vfname, LastName=@Vlname, Address=@Vaddress, City=@Vcity, State=@Vstate, Zipcode=@Vzipcode, Phone=@Vphone, Email=@Vemail "
                                         + "WHERE VolunteerID='" + VolunteerGridView.SelectedValue.ToString() + "'";
                 //string sql = "INSERT INTO Volunteer (FirstName, LastName, Address, City, State, Zipcode, Phone, Email) VALUES ( '" + firstName + "', '" + lastName + "', '" + address + "', '" + city + "', '" + state + "', '" + zipCode + "', '" + phone + "', '" + email + "')";
 

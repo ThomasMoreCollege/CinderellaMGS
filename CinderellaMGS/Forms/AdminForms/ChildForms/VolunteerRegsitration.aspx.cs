@@ -63,9 +63,11 @@ public partial class Forms_AdminForms_GodMotherRegsitration : System.Web.UI.Page
         SqlCommand comm1 = new SqlCommand(sql, conn);
         comm1.ExecuteNonQuery();
 
-        // String to retrieve the recently inserted VolunteerID
-        string sqlTwo = "SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY]";
-        SqlCommand comm2 = new SqlCommand(sqlTwo, conn);
+        //Get newly added Volunteers' ID 
+        string volunteerIDQuery = "SELECT TOP 1 VolunteerID "
+                                     + "FROM Volunteer "
+                                     + "ORDER BY VolunteerID DESC";
+        SqlCommand comm2 = new SqlCommand(volunteerIDQuery, conn);
         string newID = comm2.ExecuteScalar().ToString();
 
         //  SQL string to insert Volunteer into VolunteerStatusRecord with a current status of Pending

@@ -66,9 +66,9 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             addReferral.ExecuteNonQuery();
 
             //Query retrieves ID of new Referral
-            string referralIDQuery = "SELECT ReferralID "
-                                    + "FROM Referrals "
-                                    + "WHERE FirstName='" + newReferralFirstName + "' AND LastName='" + newReferralLastName + "' AND Phone='" + newReferralPhone + "' AND Email='" + newReferralEmail  + "'";
+            string referralIDQuery = "SELECT TOP 1 ReferralID "
+                                     + "FROM Referrals "
+                                     + "ORDER BY ReferralID DESC";
 
             //Execute query to retrieve new referral ID
             SqlCommand newReferralID = new SqlCommand(referralIDQuery, conn);
@@ -85,9 +85,9 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             addCinderella.ExecuteNonQuery();
 
             //Get newly added Cinderellas' ID 
-            string cinderellaIDQuery = "SELECT CinderellaID "
-                                        + "FROM Cinderella "
-                                        + "WHERE FirstName='" + firstname + "' AND LastName='" + lastname + "' AND Email='" + email + "'";
+            string cinderellaIDQuery = "SELECT TOP 1 CinderellaID "
+                                     + "FROM Cinderella "
+                                     + "ORDER BY CinderellaID DESC";
 
             //Execute query 
             SqlCommand newCinderellaID = new SqlCommand(cinderellaIDQuery, conn);
@@ -95,7 +95,7 @@ public partial class Forms_UserForms_CinderellaRegistration : System.Web.UI.Page
             //Retrieve results from query and store in a varaible 
             string cinderellaID = newCinderellaID.ExecuteScalar().ToString();
 
-            //Quesry to add record of the Cinderellas' status
+            //Query to add record of the Cinderellas' status
             string addCinderellaStatusRecordQuery = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
                                                     + "VALUES ('" + cinderellaID + "', GetDate(), 'Pending', 'Y')";
 
