@@ -38,50 +38,105 @@ public partial class Forms_UserForms_ManageShopping : System.Web.UI.Page
             //Open the connection.
             conn1.Open();
 
-            // SQL string to get the VolunteerID from the Cinderella entity
-            string sql = "SELECT Volunteer_ID "
-                            + "FROM Cinderella "
-                            + "WHERE CinderellaID = '" + SelectedCinderellaID + "'";
+            //Query to retrieve information needed for confirmation label
+            string cinderellaStatusQuery = "SELECT Status_Name, Volunteer_ID "
+                                        + "FROM Cinderella "
+                                        + "INNER JOIN CinderellaStatusRecord "
+                                            + "ON Cinderella.CinderellaID = CinderellaStatusRecord.Cinderella_ID "
+                                        + "WHERE CinderellaStatusRecord.IsCurrent = 'Y' "
+                                            + "AND Cinderella.CinderellaID = '" + SelectedCinderellaID + "'";
 
-            // Execute SQL
-            SqlCommand comm1 = new SqlCommand(sql, conn1);
+            //Execute query 
+            SqlCommand cinderellaPrevRole = new SqlCommand(cinderellaStatusQuery, conn1);
 
-            string SelectedVolunteerID = comm1.ExecuteScalar().ToString();
+            //Create a new adapter
+            SqlDataAdapter adapter = new SqlDataAdapter(cinderellaPrevRole);
 
-            // SQL string to UPDATE Volunteer's status to not current
-            sql = "UPDATE VolunteerStatusRecord "
-                    + "SET IsCurrent = 'N', EndTime = '" + now + "' "
-                    + "WHERE Volunteer_ID = '" + SelectedVolunteerID + "' AND IsCurrent = 'Y'";
-            // Execute SQL
-            SqlCommand comm4 = new SqlCommand(sql, conn1);
-            comm4.ExecuteNonQuery();
+            //Create a new dataset to hold the query results
+            DataSet dataSet = new DataSet();
 
-            // SQL string to INSERT a new Shopping status for Volunteer
-            sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
-            + "VALUES ('" + SelectedVolunteerID + "', '" + now + "', 'Shopping', 'Y')";
-            // Execute SQL
-            SqlCommand comm5 = new SqlCommand(sql, conn1);
-            comm5.ExecuteNonQuery();
+            //Store the results in the adapter 
+            adapter.Fill(dataSet);
 
-            // SQL string to UPDATE Cinderella's status to not current
-            sql = "UPDATE CinderellaStatusRecord "
-                    + "SET IsCurrent = 'N', EndTime = '" + now + "' "
-                    + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
-            // Execute SQL
-            SqlCommand comm2 = new SqlCommand(sql, conn1);
-            comm2.ExecuteNonQuery();
+            //Store info to be used for confirmation label in local variables 
+            string CinderellaCurrentStatus = dataSet.Tables[0].Rows[0]["Status_Name"].ToString();
+            string pairedVolunteer = dataSet.Tables[0].Rows[0]["Volunteer_ID"].ToString();
 
-            // SQL string to INSERT a new Shopping status for Cinderella
-            sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
-                    + "VALUES ('" + SelectedCinderellaID + "', '" + now + "', 'Shopping', 'Y')";
-            // Execute SQL
-            SqlCommand comm3 = new SqlCommand(sql, conn1);
-            comm3.ExecuteNonQuery();
+            if (CinderellaCurrentStatus == "Paired")
+            {
+                string volunteerStatusRoleQuery = "SELECT Status_Name, Role_Name "
+                                            + "FROM Volunteer "
+                                            + "INNER JOIN VolunteerStatusRecord "
+                                                + "ON Volunteer.VolunteerID = VolunteerStatusRecord.Volunteer_ID "
+                                            + "INNER JOIN VolunteerRoleRecord "
+                                                + "ON Volunteer.VolunteerID = VolunteerRoleRecord.Volunteer_ID "
+                                            + "WHERE VolunteerStatusRecord.IsCurrent = 'Y' "
+                                                + "AND VolunteerRoleRecord.IsCurrent = 'Y' "
+                                                + "AND Volunteer.VolunteerID = '" + pairedVolunteer + "'";
+                //Execute query 
+                SqlCommand volunteerInfo = new SqlCommand(volunteerStatusRoleQuery, conn1);
 
-            // Notifying user of success
-            NotificationLabel.Text = "Cinderella " + PairedCinderellaGridView.SelectedRow.Cells[1].Text.ToString()
-                                        + " and Volunteer " + PairedCinderellaGridView.SelectedRow.Cells[3].Text.ToString() + " successfully changed from Paired to Shopping";
-            NotificationLabel.Visible = true;
+                //Create a new adapter
+                SqlDataAdapter volAdapter = new SqlDataAdapter(volunteerInfo);
+
+                //Create a new dataset to hold the query results
+                DataSet volDataSet = new DataSet();
+
+                //Store the results in the adapter 
+                volAdapter.Fill(volDataSet);
+
+                //Store info to be used for confirmation label in local variables 
+                string VolunteerCurrentStatus = volDataSet.Tables[0].Rows[0]["Status_Name"].ToString();
+                string VolunteerCurrentRole = volDataSet.Tables[0].Rows[0]["Role_Name"].ToString();
+
+                if (VolunteerCurrentStatus == "Paired" && VolunteerCurrentRole == "Godmother")
+                {
+                    // SQL string to get the VolunteerID from the Cinderella entity
+                    string sql = "SELECT Volunteer_ID "
+                                    + "FROM Cinderella "
+                                    + "WHERE CinderellaID = '" + SelectedCinderellaID + "'";
+
+                    // Execute SQL
+                    SqlCommand comm1 = new SqlCommand(sql, conn1);
+
+                    string SelectedVolunteerID = comm1.ExecuteScalar().ToString();
+
+                    // SQL string to UPDATE Volunteer's status to not current
+                    sql = "UPDATE VolunteerStatusRecord "
+                            + "SET IsCurrent = 'N', EndTime = '" + now + "' "
+                            + "WHERE Volunteer_ID = '" + SelectedVolunteerID + "' AND IsCurrent = 'Y'";
+                    // Execute SQL
+                    SqlCommand comm4 = new SqlCommand(sql, conn1);
+                    comm4.ExecuteNonQuery();
+
+                    // SQL string to INSERT a new Shopping status for Volunteer
+                    sql = "INSERT INTO VolunteerStatusRecord (Volunteer_ID, StartTime, Status_Name, IsCurrent) "
+                    + "VALUES ('" + SelectedVolunteerID + "', '" + now + "', 'Shopping', 'Y')";
+                    // Execute SQL
+                    SqlCommand comm5 = new SqlCommand(sql, conn1);
+                    comm5.ExecuteNonQuery();
+
+                    // SQL string to UPDATE Cinderella's status to not current
+                    sql = "UPDATE CinderellaStatusRecord "
+                            + "SET IsCurrent = 'N', EndTime = '" + now + "' "
+                            + "WHERE Cinderella_ID = '" + SelectedCinderellaID + "' AND IsCurrent = 'Y'";
+                    // Execute SQL
+                    SqlCommand comm2 = new SqlCommand(sql, conn1);
+                    comm2.ExecuteNonQuery();
+
+                    // SQL string to INSERT a new Shopping status for Cinderella
+                    sql = "INSERT INTO CinderellaStatusRecord (Cinderella_ID, StartTime, Status_Name, IsCurrent) "
+                            + "VALUES ('" + SelectedCinderellaID + "', '" + now + "', 'Shopping', 'Y')";
+                    // Execute SQL
+                    SqlCommand comm3 = new SqlCommand(sql, conn1);
+                    comm3.ExecuteNonQuery();
+
+                    // Notifying user of success
+                    NotificationLabel.Text = "Cinderella " + PairedCinderellaGridView.SelectedRow.Cells[1].Text.ToString()
+                                                + " and Volunteer " + PairedCinderellaGridView.SelectedRow.Cells[3].Text.ToString() + " successfully changed from Paired to Shopping";
+                    NotificationLabel.Visible = true;
+                }
+            }
 
             //REMEMBER TO CLOSE CONNECTION!!
             conn1.Close();

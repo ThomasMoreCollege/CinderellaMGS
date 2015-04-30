@@ -28,6 +28,7 @@
                         AllowSorting="True"
                         AutoGenerateColumns="False"
                         DataSourceID="CinderellaPairedDataSource"
+                        AutoPostback="Flash"
                         DataKeyNames="CinderellaID" Width="100%" Height="100px" OnSelectedIndexChanged="PairedCinderellaGridView_SelectedIndexChanged" ForeColor="Black" EmptyDataText="There are no cinderellas currently paired.">
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" />
